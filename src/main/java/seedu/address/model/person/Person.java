@@ -27,6 +27,7 @@ public class Person {
     private final Policy policy;
 
     private final Relationship relationship;
+    private final Meeting meeting;
 
     private final Set<Tag> tags = new HashSet<>();
 
@@ -34,7 +35,7 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Relationship relationship,
-                  Policy policy, Set<Tag> tags) {
+                  Policy policy, Meeting meeting, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, relationship, tags);
         this.name = name;
         this.phone = phone;
@@ -42,6 +43,7 @@ public class Person {
         this.address = address;
         this.policy = policy;
         this.relationship = relationship;
+        this.meeting = meeting;
         this.tags.addAll(tags);
     }
 
@@ -67,6 +69,9 @@ public class Person {
 
     public Relationship getRelationship() {
         return relationship;
+    }
+    public Meeting getMeeting() {
+        return meeting;
     }
 
     public boolean isClient() {

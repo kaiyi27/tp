@@ -47,6 +47,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label policy;
     @FXML
+    private Label meeting;
+    @FXML
     private FlowPane tags;
 
     /**
@@ -61,6 +63,7 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         relationship.setText(person.getRelationship().value);
+        meeting.setText(person.getMeeting().displayString());
         if (person.isClient()) {
             if (person.getPolicy().value.equals("")) {
                 policy.setText("No policy assigned");

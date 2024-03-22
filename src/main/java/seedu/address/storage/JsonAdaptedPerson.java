@@ -10,13 +10,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.person.Policy;
-import seedu.address.model.person.Relationship;
+import seedu.address.model.person.*;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -32,6 +26,7 @@ class JsonAdaptedPerson {
     private final String address;
     private final String policy;
     private final String relationship;
+    private final String meeting;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
@@ -41,6 +36,7 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("relationship") String relationship, @JsonProperty("policy") String policy,
+            @JsonProperty("meeting") String meeting,
             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
 
         this.name = name;
@@ -48,6 +44,7 @@ class JsonAdaptedPerson {
         this.email = email;
         this.address = address;
         this.policy = policy;
+        this.meeting = meeting;
         this.relationship = relationship;
 
         if (tags != null) {
@@ -65,6 +62,7 @@ class JsonAdaptedPerson {
         address = source.getAddress().value;
         policy = source.getPolicy().value;
         relationship = source.getRelationship().value;
+        meeting = source.getMeeting().toString();
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -127,9 +125,15 @@ class JsonAdaptedPerson {
         }
         final Policy modelPolicy = new Policy(policy);
 
+        if (meeting == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Meeting.class.getSimpleName()));
+        }
+        final Meeting modelMeeting = new Meeting(meeting);
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelRelationship, modelPolicy, modelTags);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelRelationship,
+                modelPolicy, modelMeeting, modelTags);
 
     }
 
