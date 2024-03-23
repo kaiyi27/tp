@@ -1,10 +1,11 @@
 package seedu.address.model.person;
 
+import static java.util.Objects.requireNonNull;
+
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-import static java.util.Objects.requireNonNull;
 /**
  * Represents a Person's meeting in the address book.
  * Guarantees: immutable; is valid

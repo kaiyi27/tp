@@ -9,6 +9,10 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ScheduleCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Meeting;
+
+/**
+ * Parses input argument and creates a new Schedule Command object
+ */
 public class ScheduleCommandParser implements Parser<ScheduleCommand> {
     /**
      * Parses the user's date time input in string format
@@ -24,7 +28,7 @@ public class ScheduleCommandParser implements Parser<ScheduleCommand> {
         String meetingString;
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
-        } catch (ParseException pe) {
+        }catch(ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ScheduleCommand.MESSAGE_USAGE), pe);
         }
         meetingString = argMultimap.getValue(PREFIX_SCHEDULE).orElse("");
