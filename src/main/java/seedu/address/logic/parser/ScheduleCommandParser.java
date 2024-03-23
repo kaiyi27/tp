@@ -28,14 +28,14 @@ public class ScheduleCommandParser implements Parser<ScheduleCommand> {
         String meetingString;
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
-        }catch(ParseException pe) {
+        } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ScheduleCommand.MESSAGE_USAGE), pe);
         }
         meetingString = argMultimap.getValue(PREFIX_SCHEDULE).orElse("");
         Meeting meeting;
         try {
             meeting = new Meeting(DateTimeUtil.stringToLocalDateTime(meetingString));
-        }catch(ParseException e) {
+        } catch (ParseException e) {
             throw e;
         }
         return new ScheduleCommand(index, meeting);
