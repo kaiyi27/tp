@@ -16,7 +16,7 @@ import seedu.address.model.person.Person;
 /**
  * Adds a meeting to a person in the address book
  */
-public class ScheduleCommand extends Command {
+public class ScheduleMeetingCommand extends Command {
     public static final String COMMAND_WORD = "schedule";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Creates a meeting with the person identified "
@@ -36,7 +36,7 @@ public class ScheduleCommand extends Command {
      * @param index index of the filtered list
      * @param meeting the date and time of meeting
      */
-    public ScheduleCommand(Index index, Meeting meeting) {
+    public ScheduleMeetingCommand(Index index, Meeting meeting) {
         requireAllNonNull(index, meeting);
         this.meeting = meeting;
         this.index = index;
@@ -73,11 +73,11 @@ public class ScheduleCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof ScheduleCommand)) {
+        if (!(other instanceof ScheduleMeetingCommand)) {
             return false;
         }
 
-        ScheduleCommand e = (ScheduleCommand) other;
+        ScheduleMeetingCommand e = (ScheduleMeetingCommand) other;
         return index.equals(e.index)
                 && meeting.equals(e.meeting);
     }
