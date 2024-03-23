@@ -20,6 +20,11 @@ public class Meeting {
         requireNonNull(dateTime);
         this.dateTime = dateTime;
     }
+
+    /**
+     * Constructs a meeting using string format instead
+     * @param dateTimeStorageString date time in string format
+     */
     public Meeting(String dateTimeStorageString) {
         if (dateTimeStorageString.isEmpty()) {
             this.dateTime = null;
@@ -47,6 +52,11 @@ public class Meeting {
         }
         return dateTime.toString();
     }
+
+    /**
+     * Displays the date time in a suitable format
+     * @return the string format of the date time
+     */
     public String displayString() {
         if (dateTime == null) {
             return "";

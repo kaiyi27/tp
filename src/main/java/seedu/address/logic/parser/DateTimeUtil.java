@@ -1,11 +1,13 @@
 package seedu.address.logic.parser;
 
-
-import seedu.address.logic.parser.exceptions.ParseException;
-
-import java.time.*;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.LocalDate;
+import java.time.DayOfWeek;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
+
+import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Contains utility methods to parse valid LocalDateTime format
@@ -13,14 +15,21 @@ import java.time.temporal.TemporalAdjusters;
 public class DateTimeUtil {
     public static final String[] POSSIBLE_DAY_OF_WEEK_FORMATS = {"EEEE", "EEE", "EEEEE"};
     public static final String[] POSSIBLE_DATETIME_FORMATS = {
-            "yyyy-MM-dd HH:mm",
-            "dd-MM-yyyy HH:mm",
-            "yyyyMMdd HH:mm",
-            "yyyy MM dd HH:mm",
-            "dd MM yyyy HH:mm",
-            "ddMMyyyy HH:mm"
-            // Add more formats as needed
+        "yyyy-MM-dd HH:mm",
+        "dd-MM-yyyy HH:mm",
+        "yyyyMMdd HH:mm",
+        "yyyy MM dd HH:mm",
+        "dd MM yyyy HH:mm",
+        "ddMMyyyy HH:mm"
+        // Add more formats as needed
     };
+
+    /**
+     * Converts valid String format to LocalDateTime
+     * @param inputString date time string
+     * @return LocalDateTime format of string
+     * @throws ParseException if invalid format of string
+     */
     public static LocalDateTime stringToLocalDateTime(String inputString) throws ParseException {
         try {
             String dateTimeString = addsTimeIfNonexistent(inputString);
@@ -73,7 +82,7 @@ public class DateTimeUtil {
     private static LocalDate findNextDayOfWeek(LocalDate currentDate, DayOfWeek targetDayOfWeek) {
         return currentDate.with(TemporalAdjusters.nextOrSame(targetDayOfWeek));
     }
-    private static LocalDateTime getLocalDateTimeFromPossibleFormats(String dateString) throws ParseException{
+    private static LocalDateTime getLocalDateTimeFromPossibleFormats(String dateString) throws ParseException {
         for (String format : POSSIBLE_DATETIME_FORMATS) {
             try {
                 LocalDateTime dateTime = LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern(format));

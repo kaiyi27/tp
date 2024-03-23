@@ -4,6 +4,8 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SCHEDULE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import java.util.List;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -11,13 +13,10 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Meeting;
 import seedu.address.model.person.Person;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 /**
  * Adds a meeting to a person in the address book
  */
-public class ScheduleCommand extends Command{
+public class ScheduleCommand extends Command {
     public static final String COMMAND_WORD = "schedule";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Creates a meeting with the person identified "
@@ -28,10 +27,15 @@ public class ScheduleCommand extends Command{
             + PREFIX_SCHEDULE + "[meeting time]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_SCHEDULE + "2025/06/06";
+    public static final String MESSAGE_ADD_MEETING_SUCCESS = "Added meeting at %1$s to Person: %2$s";
     private final Index index;
     private final Meeting meeting;
-    public static final String MESSAGE_ADD_MEETING_SUCCESS = "Added meeting at %1$s to Person: %2$s";
 
+    /**
+     * Adds meeting to person
+     * @param index index of the filtered list
+     * @param meeting the date and time of meeting
+     */
     public ScheduleCommand(Index index, Meeting meeting) {
         requireAllNonNull(index, meeting);
         this.meeting = meeting;
