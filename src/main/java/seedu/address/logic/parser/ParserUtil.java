@@ -173,7 +173,7 @@ public class ParserUtil {
                 // If parsing fails, ignore the exception and try the next format
             }
         }
-        throw new ParseException("enter date using yyyy MM dd");
+        throw new ParseException("Invalid date format. Use YYYY-MM-DD.");
     }
 
     /**

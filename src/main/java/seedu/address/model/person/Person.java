@@ -179,15 +179,8 @@ public class Person {
      *     if scheduling constraints are violated.
      */
     public void addMeeting(Meeting meeting) {
-        LocalDate today = LocalDate.now();
-        LocalDate meetingDate = meeting.getMeetingDate();
-
         if (meetings.size() >= 5) {
             throw new IllegalArgumentException("Cannot have more than 5 meetings.");
-        } else if (meetingDate.isBefore(today)) {
-            throw new IllegalArgumentException("Cannot schedule a meeting in the past.");
-        } else if (meetingDate.isAfter(today.plusYears(1))) { // Assuming 1 year is too far in the future
-            throw new IllegalArgumentException("Cannot schedule a meeting more than a year in the future.");
         } else if (isOverlapWithOtherMeetings(meeting)) {
             throw new IllegalArgumentException("Meeting overlaps with existing meetings with this client.");
         } else {
@@ -201,7 +194,6 @@ public class Person {
      * @param meetings The list of meetings to be set.
      */
     public void setMeetings(List<Meeting> meetings) {
-
         this.meetings = meetings;
 
     }

@@ -86,6 +86,7 @@ public class EditCommand extends Command {
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
+
         if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
@@ -110,9 +111,12 @@ public class EditCommand extends Command {
         Policy samePolicy = personToEdit.getPolicy();
         Relationship sameRelationship = personToEdit.getRelationship();
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        List<Meeting> meetings = personToEdit.getMeetings();
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, sameRelationship,
+        Person EditedPerson = new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, sameRelationship,
                 samePolicy, updatedTags);
+        EditedPerson.setMeetings(meetings);
+        return EditedPerson;
 
     }
 
