@@ -7,9 +7,12 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_NOTES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_TIME;
+import static seedu.address.logic.parser.ParserUtil.getLocalDateTimeFromDayOfWeek;
+import static seedu.address.logic.parser.ParserUtil.isDayOfWeek;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 
@@ -59,12 +62,21 @@ public class ScheduleMeetingCommandParser implements Parser<ScheduleMeetingComma
         LocalTime meetingTime;
         Duration duration;
         try {
-            meetingDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_MEETING_DATE).orElse(""));
-            meetingTime = ParserUtil.parseTime(argMultimap.getValue(PREFIX_MEETING_TIME).orElse(""));
+            String stringMeetingDate = argMultimap.getValue(PREFIX_MEETING_DATE).orElse("");
+            String stringMeetingTime = argMultimap.getValue(PREFIX_MEETING_TIME).orElse("");
+            String stringDateAndTime = stringMeetingDate + " " + stringMeetingTime;
+            if (isDayOfWeek(stringDateAndTime)) {
+                LocalDateTime datetime = getLocalDateTimeFromDayOfWeek(stringDateAndTime);
+                meetingDate = datetime.toLocalDate();
+                meetingTime = datetime.toLocalTime();
+            } else {
+                meetingDate = ParserUtil.parseDate(stringMeetingDate);
+                meetingTime = ParserUtil.parseTime(stringMeetingTime);
+            }
             duration = ParserUtil.parseDuration(argMultimap.getValue(PREFIX_MEETING_DURATION).orElse(""));
-        } catch (DateTimeParseException dtpe) {
+        } catch (ParseException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    ScheduleMeetingCommand.MESSAGE_USAGE), dtpe);
+                    ScheduleMeetingCommand.MESSAGE_USAGE), e);
         }
 
         String agenda = argMultimap.getValue(PREFIX_MEETING_AGENDA)
