@@ -189,11 +189,15 @@ public class ParserUtil {
     public static Duration parseDuration(String durationStr) throws ParseException {
         requireNonNull(durationStr);
         try {
-            long minutes = Long.parseLong(durationStr);
+            long minutes = Long.parseLong(durationStr.trim());
+            if (minutes < 0) {
+                throw new ParseException("Duration must be a non-negative integer.");
+            }
             return Duration.ofMinutes(minutes);
         } catch (NumberFormatException e) {
             throw new ParseException("Invalid duration format. Use minutes as an integer.");
         }
     }
+
 
 }
