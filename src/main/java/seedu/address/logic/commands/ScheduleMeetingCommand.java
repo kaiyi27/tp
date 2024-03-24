@@ -89,7 +89,7 @@ public class ScheduleMeetingCommand extends Command {
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, personToMeetUpdated));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(personToMeetUpdated)));
     }
 
 
