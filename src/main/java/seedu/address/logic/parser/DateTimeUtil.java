@@ -26,13 +26,12 @@ public class DateTimeUtil {
 
     /**
      * Converts valid String format to LocalDateTime
-     * @param inputString date time string
+     * @param dateTimeString date time string
      * @return LocalDateTime format of string
      * @throws ParseException if invalid format of string
      */
-    public static LocalDateTime stringToLocalDateTime(String inputString) throws ParseException {
+    public static LocalDateTime stringToLocalDateTime(String dateTimeString) throws ParseException {
         try {
-            String dateTimeString = addsTimeIfNonexistent(inputString);
             if (isDayOfWeek(dateTimeString)) {
                 return getLocalDateTimeFromDayOfWeek(dateTimeString);
             }
@@ -92,12 +91,6 @@ public class DateTimeUtil {
             }
         }
         throw new ParseException("enter date and time using yyyy MM dd HH:mm");
-    }
-    private static String addsTimeIfNonexistent(String dateString) {
-        if (!dateString.contains(":")) { // might consider using localtime to find time
-            dateString = dateString + " 00:00";
-        }
-        return dateString;
     }
     private static boolean isDayOfWeek(String dateTime) {
         String date = dateTime.split("\\s+")[0];

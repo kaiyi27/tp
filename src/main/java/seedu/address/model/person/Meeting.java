@@ -1,72 +1,132 @@
 package seedu.address.model.person;
 
-import static java.util.Objects.requireNonNull;
-
+import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 /**
- * Represents a Person's meeting in the address book.
- * Guarantees: immutable; is valid
+ * Represents a meeting with a specific date, time, duration, agenda, and optional notes.
  */
 public class Meeting {
-    public final LocalDateTime dateTime;
+    private LocalDate meetingDate;
+    private LocalTime meetingTime;
+
+    private LocalDateTime startDateTime; // New field
+    private Duration duration;
+    private String agenda;
+    private String notes; //make it optional
 
     /**
-     * Constructs a {@code Meeting} with the person
-     * @param dateTime a valid date and time
+     * Constructs a new Meeting object with the specified details.
+     *
+     * @param meetingDate   The date of the meeting.
+     * @param meetingTime   The time of the meeting.
+     * @param duration      The duration of the meeting.
+     * @param agenda        The agenda of the meeting.
+     * @param notes         Optional notes for the meeting.
      */
-    public Meeting(LocalDateTime dateTime) {
-        requireNonNull(dateTime);
-        this.dateTime = dateTime;
+    public Meeting(LocalDate meetingDate, LocalTime meetingTime, Duration duration, String agenda, String notes) {
+        this.meetingDate = meetingDate;
+        this.meetingTime = meetingTime;
+        this.duration = duration;
+        this.agenda = agenda;
+        this.notes = notes;
+        this.startDateTime = LocalDateTime.of(meetingDate, meetingTime); // Initialize new field
     }
 
-    /**
-     * Constructs a meeting using string format instead
-     * @param dateTimeStorageString date time in string format
-     */
-    public Meeting(String dateTimeStorageString) {
-        if (dateTimeStorageString.isEmpty()) {
-            this.dateTime = null;
-        } else {
-            this.dateTime = LocalDateTime.parse(dateTimeStorageString);
-        }
 
+    public LocalDate getMeetingDate() {
+        return meetingDate;
     }
+
+    public void setMeetingDate(LocalDate meetingDate) {
+        this.meetingDate = meetingDate;
+    }
+
+    public LocalTime getMeetingTime() {
+        return meetingTime;
+    }
+
+    public void setMeetingTime(LocalTime meetingTime) {
+        this.meetingTime = meetingTime;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    public String getAgenda() {
+        return agenda;
+    }
+
+    public void setAgenda(String agenda) {
+        this.agenda = agenda;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public LocalDateTime getStartDateTime() {
+        return startDateTime;
+    }
+
     @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof Meeting // instanceof handles nulls
-                && dateTime.equals(((Meeting) other).dateTime)); // state check
+    public int hashCode() {
+        return Objects.hash(meetingDate, meetingTime, duration, agenda, notes);
     }
 
-    /**
-     * Returns ISO format for date time
-     * Returns empty string if null
-     * @return date time for meeting
-     */
     @Override
     public String toString() {
-        if (dateTime == null) {
-            return "";
-        }
-        return dateTime.toString();
+        return "Meeting{"
+                + "meetingDate=" + meetingDate
+                + ", meetingTime=" + meetingTime
+                + ", duration=" + duration
+                + ", agenda='" + agenda + '\''
+                + ", notes='" + notes + '\''
+                + '}';
     }
 
+    // In Meeting class
     /**
-     * Displays the date time in a suitable format
-     * @return the string format of the date time
+     * Checks if this meeting overlaps with another meeting.
+     *
+     * @param other The other meeting to check for overlap.
+     * @return True if there is an overlap, false otherwise.
      */
-    public String displayString() {
-        if (dateTime == null) {
-            return "";
-        }
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
-        if (dateTime.toLocalTime().equals(LocalTime.MIDNIGHT)) {
-            formatter = DateTimeFormatter.ofPattern("MMM dd yyyy");
-        }
+    public boolean overlapsWith(Meeting other) {
+        LocalDateTime start = LocalDateTime.of(this.getMeetingDate(), this.getMeetingTime());
+        LocalDateTime end = start.plus(this.getDuration());
+        LocalDateTime otherStart = LocalDateTime.of(other.getMeetingDate(), other.getMeetingTime());
+        LocalDateTime otherEnd = otherStart.plus(other.getDuration());
 
-        return dateTime.format(formatter);
+        return start.isBefore(otherEnd) && otherStart.isBefore(end);
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Meeting meeting = (Meeting) obj;
+        return Objects.equals(meetingDate, meeting.meetingDate)
+                && Objects.equals(meetingTime, meeting.meetingTime)
+                && Objects.equals(duration, meeting.duration)
+                && Objects.equals(agenda, meeting.agenda)
+                && Objects.equals(notes, meeting.notes);
     }
 }

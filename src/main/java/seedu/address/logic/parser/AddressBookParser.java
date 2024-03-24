@@ -89,8 +89,11 @@ public class AddressBookParser {
 
         case RedoCommand.COMMAND_WORD:
             return new RedoCommand();
+
         case ScheduleMeetingCommand.COMMAND_WORD:
-            return new ScheduleCommandParser().parse(arguments);
+            return new ScheduleMeetingCommandParser().parse(arguments);
+
+
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

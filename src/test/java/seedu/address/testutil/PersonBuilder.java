@@ -1,10 +1,13 @@
 package seedu.address.testutil;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Meeting;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -33,6 +36,9 @@ public class PersonBuilder {
     private Relationship relationship;
     private Set<Tag> tags;
 
+    private List<Meeting> meetings;
+
+
     /**
      * Creates a {@code PersonBuilder} with the default details.
      */
@@ -44,6 +50,7 @@ public class PersonBuilder {
         policy = new Policy(DEFAULT_POLICY);
         relationship = new Relationship(DEFAULT_RELATIONSHIP);
         tags = new HashSet<>();
+        meetings = new ArrayList<>();
     }
 
     /**
@@ -57,6 +64,7 @@ public class PersonBuilder {
         policy = personToCopy.getPolicy();
         relationship = personToCopy.getRelationship();
         tags = new HashSet<>(personToCopy.getTags());
+        meetings = new ArrayList<>(personToCopy.getMeetings());
     }
 
     /**
@@ -115,8 +123,25 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Adds a {@code Meeting} to the {@code Person} that we are building.
+     */
+    public PersonBuilder withMeeting(Meeting meeting) {
+        this.meetings.add(meeting);
+        return this;
+    }
+
+    /**
+     * Builds and returns a new Person object with the specified details.
+     *
+     * @return A new Person object with the specified details.
+     */
     public Person build() {
-        return new Person(name, phone, email, address, relationship, policy, tags);
+        Person p = new Person(name, phone, email, address, relationship, policy, tags);
+
+        p.setMeetings(this.meetings);
+
+        return p;
     }
 
 }

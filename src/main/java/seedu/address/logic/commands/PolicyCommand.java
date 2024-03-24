@@ -63,7 +63,7 @@ public class PolicyCommand extends Command {
 
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), personToEdit.getRelationship(),
-                policy, personToEdit.getMeeting(), personToEdit.getTags());
+                policy, personToEdit.getTags());
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -78,7 +78,7 @@ public class PolicyCommand extends Command {
      */
     private String generateSuccessMessage(Person personToEdit) {
         String message = !policy.value.isEmpty() ? MESSAGE_ADD_POLICY_SUCCESS : MESSAGE_DELETE_POLICY_SUCCESS;
-        return String.format(message, personToEdit);
+        return String.format(message, Messages.format(personToEdit));
     }
 
     @Override

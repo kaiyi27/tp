@@ -33,29 +33,34 @@ class JsonAdaptedPerson {
     private final String address;
     private final String policy;
     private final String relationship;
-    private final String meeting;
-    private final List<JsonAdaptedTag> tags = new ArrayList<>();
+
+    private final List<JsonAdaptedTag> adaptedTags = new ArrayList<>();
+    private final List<JsonAdaptedMeeting> adaptedMeetings = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("relationship") String relationship, @JsonProperty("policy") String policy,
-            @JsonProperty("meeting") String meeting,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
 
+    public JsonAdaptedPerson(@JsonProperty("name") String name,
+                             @JsonProperty("phone") String phone,
+                             @JsonProperty("email") String email,
+                             @JsonProperty("address") String address,
+                             @JsonProperty("relationship") String relationship,
+                             @JsonProperty("policy") String policy,
+                             @JsonProperty("tags") List<JsonAdaptedTag> adaptedTags,
+                             @JsonProperty("meetings") List<JsonAdaptedMeeting> adaptedMeetings) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.policy = policy;
-        this.meeting = meeting;
         this.relationship = relationship;
-
-        if (tags != null) {
-            this.tags.addAll(tags);
+        if (adaptedTags != null) {
+            this.adaptedTags.addAll(adaptedTags);
+        }
+        if (adaptedMeetings != null) {
+            this.adaptedMeetings.addAll(adaptedMeetings);
         }
     }
 
@@ -69,9 +74,11 @@ class JsonAdaptedPerson {
         address = source.getAddress().value;
         policy = source.getPolicy().value;
         relationship = source.getRelationship().value;
-        meeting = source.getMeeting().toString();
-        tags.addAll(source.getTags().stream()
+        adaptedTags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
+                .collect(Collectors.toList()));
+        adaptedMeetings.addAll(source.getMeetings().stream()
+                .map(JsonAdaptedMeeting::new)
                 .collect(Collectors.toList()));
     }
 
@@ -82,8 +89,13 @@ class JsonAdaptedPerson {
      */
     public Person toModelType() throws IllegalValueException {
         final List<Tag> personTags = new ArrayList<>();
-        for (JsonAdaptedTag tag : tags) {
+        for (JsonAdaptedTag tag : adaptedTags) {
             personTags.add(tag.toModelType());
+        }
+
+        final List<Meeting> personMeetings = new ArrayList<>();
+        for (JsonAdaptedMeeting meeting : adaptedMeetings) {
+            personMeetings.add(meeting.toModelType());
         }
 
         if (name == null) {
@@ -132,16 +144,21 @@ class JsonAdaptedPerson {
         }
         final Policy modelPolicy = new Policy(policy);
 
-        if (meeting == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Meeting.class.getSimpleName()));
-        }
-        final Meeting modelMeeting = new Meeting(meeting);
-
         final Set<Tag> modelTags = new HashSet<>(personTags);
+        final Person person = new Person(modelName, modelPhone, modelEmail, modelAddress, modelRelationship,
+                modelPolicy, modelTags);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelRelationship,
-                modelPolicy, modelMeeting, modelTags);
+        // Add meetings to the person
+        for (Meeting meeting : personMeetings) {
+            person.addMeeting(meeting);
+        }
 
+        return person;
     }
 
 }
+
+
+
+
+
