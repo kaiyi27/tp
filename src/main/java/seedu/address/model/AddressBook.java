@@ -2,12 +2,17 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.person.Meeting;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
+
 
 /**
  * Wraps all data at the address-book level
@@ -40,13 +45,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     //// list overwrite operations
 
-    /**
-     * Replaces the contents of the person list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
-     */
-    public void setPersons(List<Person> persons) {
-        this.persons.setPersons(persons);
-    }
+
 
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
@@ -83,8 +82,28 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void setPerson(Person target, Person editedPerson) {
         requireNonNull(editedPerson);
 
-        persons.setPerson(target, editedPerson);
+        // Check if a meeting is being added
+        if (!target.getMeetings().equals(editedPerson.getMeetings())) {
+            // Add the meeting and update the list
+            persons.setPerson(target, editedPerson);
+            sortPersonsByEarliestMeeting();
+        } else {
+            // No meeting is being added, just update the person
+            persons.setPerson(target, editedPerson);
+        }
     }
+    public void setPersons(List<Person> persons) {
+        this.persons.setPersons(persons.stream()
+                .sorted(Comparator.comparing(person -> person.getEarliestMeeting()
+                        .map(Meeting::getStartDateTime)
+                        .orElse(LocalDateTime.MAX)))
+                .collect(Collectors.toList()));
+    }
+
+    public void sortPersonsByEarliestMeeting() {
+        setPersons(getPersonList());
+    }
+
 
     /**
      * Removes {@code key} from this {@code AddressBook}.
