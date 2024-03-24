@@ -2,11 +2,10 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.temporal.TemporalAdjusters;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,6 +28,16 @@ import seedu.address.model.tag.Tag;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String[] POSSIBLE_DAY_OF_WEEK_FORMATS = {"EEEE", "EEE", "EEEEE"};
+    public static final String[] POSSIBLE_DATE_FORMATS = {
+            "yyyy-MM-dd",
+            "dd-MM-yyyy",
+            "yyyyMMdd",
+            "yyyy MM dd",
+            "dd MM yyyy",
+            "ddMMyyyy"
+            // Add more formats as needed
+    };
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -153,16 +162,19 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code date} is invalid.
      */
-    public static LocalDate parseDate(String date) throws ParseException {
-        requireNonNull(date);
-        String trimmedDate = date.trim();
-        try {
-            return LocalDate.parse(trimmedDate, DateTimeFormatter.ISO_LOCAL_DATE);
-        } catch (DateTimeParseException e) {
-            throw new ParseException("Invalid date format. Use YYYY-MM-DD.");
+    public static LocalDate parseDate(String dateString) throws ParseException {
+        requireNonNull(dateString);
+        String trimmedDate = dateString.trim();
+        for (String format : POSSIBLE_DATE_FORMATS) {
+            try {
+                LocalDate date = LocalDate.parse(trimmedDate, DateTimeFormatter.ofPattern(format));
+                return date;
+            } catch (Exception ignored) {
+                // If parsing fails, ignore the exception and try the next format
+            }
         }
+        throw new ParseException("enter date using yyyy MM dd");
     }
-
 
     /**
      * Parses a {@code String time} into a {@code LocalTime}.
@@ -197,6 +209,55 @@ public class ParserUtil {
         } catch (NumberFormatException e) {
             throw new ParseException("Invalid duration format. Use minutes as an integer.");
         }
+    }
+    public static boolean isDayOfWeek(String dateTime) {
+        String date = dateTime.split("\\s+")[0];
+        for (String format : POSSIBLE_DAY_OF_WEEK_FORMATS) {
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+                DayOfWeek.from(formatter.parse(date));
+                return true;
+            } catch (Exception ignored) {
+                // If parsing fails, ignore the exception and try the next format
+            }
+        }
+        return false;
+    }
+    public static LocalDateTime getLocalDateTimeFromDayOfWeek(String dateString) throws ParseException {
+        String[] splitdateString;
+        LocalTime chosenTime;
+        try {
+            splitdateString = dateString.split("\\s+");
+            chosenTime = LocalTime.parse(splitdateString[1], DateTimeFormatter.ofPattern("HH:mm"));
+        } catch (Exception e) {
+            throw new ParseException("Invalid time, use the format of \"day HH:mm\"");
+        }
+        for (String format : POSSIBLE_DAY_OF_WEEK_FORMATS) {
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+                DayOfWeek dayOfWeek = DayOfWeek.from(formatter.parse(splitdateString[0]));
+                LocalDate currentDate = LocalDate.now();
+                LocalDate currentDay = currentDate.with(dayOfWeek);
+                LocalDate nextOccurrence = currentDate.with(TemporalAdjusters.nextOrSame(dayOfWeek));
+                nextOccurrence = checkIfTimeHasPassedOnSameDayAsCurrent(chosenTime, dayOfWeek,
+                        currentDay, nextOccurrence);
+                LocalDateTime dateTime = nextOccurrence.atTime(chosenTime);
+                return dateTime;
+            } catch (Exception ignored) {
+                // If parsing fails, ignore the exception and try the next format
+            }
+        }
+        throw new ParseException("Invalid format for day of week");
+    }
+    private static LocalDate checkIfTimeHasPassedOnSameDayAsCurrent(LocalTime time, DayOfWeek dayOfWeek,
+                                                                    LocalDate currentDay, LocalDate nextOccurrence) {
+        if (nextOccurrence.with(dayOfWeek) == currentDay) {
+            LocalTime currentTime = LocalTime.now();
+            if (time.isBefore(currentTime)) {
+                nextOccurrence = nextOccurrence.plusWeeks(1);
+            }
+        }
+        return nextOccurrence;
     }
 
 

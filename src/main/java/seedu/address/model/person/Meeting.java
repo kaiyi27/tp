@@ -105,7 +105,7 @@ public class Meeting {
      * @return True if there is an overlap, false otherwise.
      */
     public boolean overlapsWith(Meeting other) {
-        LocalDateTime start = LocalDateTime.of(this.getMeetingDate(), this.getMeetingTime());
+        LocalDateTime start = this.startDateTime;
         LocalDateTime end = start.plus(this.getDuration());
         LocalDateTime otherStart = LocalDateTime.of(other.getMeetingDate(), other.getMeetingTime());
         LocalDateTime otherEnd = otherStart.plus(other.getDuration());
