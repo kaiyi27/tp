@@ -38,7 +38,7 @@ public class ScheduleMeetingCommand extends Command {
             + PREFIX_MEETING_AGENDA + "[AGENDA] "
             + PREFIX_MEETING_NOTES + "[NOTES]\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_MEETING_DATE + "2023-03-20 "
+            + PREFIX_MEETING_DATE + "2024-07-19 "
             + PREFIX_MEETING_TIME + "14:00 "
             + PREFIX_MEETING_DURATION + "60 "
             + PREFIX_MEETING_AGENDA + "Discuss new policy "
@@ -65,7 +65,7 @@ public class ScheduleMeetingCommand extends Command {
         List<Person> lastShownList = model.getFilteredPersonList();
 
         if (model.hasMeetingOverlap(this.meeting)) {
-            throw new CommandException("Meeting overlaps with existing meetings.");
+            throw new CommandException(ScheduleMeetingCommand.MESSAGE_MEETING_OVERLAP);
         }
 
         if (index.getZeroBased() >= lastShownList.size()) {
