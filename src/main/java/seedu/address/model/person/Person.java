@@ -6,9 +6,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -160,8 +162,13 @@ public class Person {
     //Meetings composition methods
 
 
+    /**
+     * Returns an immutable list of meetings, sorted by start date and time.
+     */
     public List<Meeting> getMeetings() {
-        return this.meetings;
+        List<Meeting> sortedMeetings = new ArrayList<>(meetings);
+        sortedMeetings.sort(Comparator.comparing(Meeting::getStartDateTime));
+        return Collections.unmodifiableList(sortedMeetings);
     }
 
     /**
@@ -270,5 +277,9 @@ public class Person {
         p.setMeetings(copiedMeetings);
 
         return p;
+    }
+
+    public Optional<Meeting> getEarliestMeeting() {
+        return getMeetings().stream().min(Comparator.comparing(Meeting::getStartDateTime));
     }
 }
