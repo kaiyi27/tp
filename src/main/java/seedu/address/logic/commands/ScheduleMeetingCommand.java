@@ -45,7 +45,6 @@ public class ScheduleMeetingCommand extends Command {
             + PREFIX_MEETING_AGENDA + "Discuss new policy "
             + PREFIX_MEETING_NOTES + "Bring all necessary documents";
 
-    public static final String MESSAGE_SUCCESS = "Meeting scheduled with Person: %1$s";
 
     private final Index index;
     private final Meeting meeting;
@@ -89,7 +88,8 @@ public class ScheduleMeetingCommand extends Command {
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(personToMeetUpdated)));
+        return new CommandResult(String.format(MESSAGE_MEETING_SCHEDULED_SUCCESS,
+                Messages.format(personToMeetUpdated)));
     }
 
 
