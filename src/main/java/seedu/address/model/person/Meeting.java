@@ -81,6 +81,16 @@ public class Meeting {
         return startDateTime;
     }
 
+    /**
+     * Checks if this meeting has already occurred.
+     *
+     * @return True if the meeting is in the past, false otherwise.
+     */
+    public boolean isExpired() {
+        return LocalDateTime.of(meetingDate, meetingTime).isBefore(LocalDateTime.now());
+    }
+
+
     @Override
     public int hashCode() {
         return Objects.hash(meetingDate, meetingTime, duration, agenda, notes);
