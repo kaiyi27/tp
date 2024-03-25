@@ -188,6 +188,11 @@ public class AddCommandTest {
         public boolean hasMeetingOverlap(Meeting meeting) {
             throw new AssertionError("Meeting should not be overlapped.");
         }
+
+        @Override
+        public void removeExpiredMeetings() {
+            throw new AssertionError("Expired Meetings should not exist.");
+        }
     }
 
     /**
