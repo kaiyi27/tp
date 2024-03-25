@@ -1,11 +1,13 @@
 package seedu.address.model;
 
-import seedu.address.model.person.Meeting;
-import seedu.address.model.person.Person;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import seedu.address.model.person.Meeting;
+import seedu.address.model.person.Person;
+
+
 
 /**
  * {@code AddressBook} that keeps track of its own history.
