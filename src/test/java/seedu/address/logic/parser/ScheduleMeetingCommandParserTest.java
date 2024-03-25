@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_NOTES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_TIME;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.testutil.Assert.assertThrows;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ScheduleMeetingCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Meeting;
 
 
@@ -191,6 +193,19 @@ public class ScheduleMeetingCommandParserTest {
                         +
                         PREFIX_MEETING_AGENDA + VALID_AGENDA,
                 new ScheduleMeetingCommand(targetIndex, expectedMeeting));
+    }
+    @Test
+    public void execute_meetingInPast_throwsParseException() {
+        String pastMeetingString = "1 md/29 05 2021 mt/00:00 mdur/60 ma/hi";
+        assertThrows(ParseException.class, "Cannot schedule a meeting in the past.", () ->
+                parser.parse(pastMeetingString));
+    }
+
+    @Test
+    public void execute_meetingInDistantFuture_throwsParseException() {
+        String meetingInDistantFutureString = "2 md/29 05 2026 mt/00:00 mdur/60 ma/hi";
+        assertThrows(ParseException.class, "Cannot schedule a meeting more than a year in the future.", () ->
+                parser.parse(meetingInDistantFutureString));
     }
 
 }
