@@ -36,18 +36,11 @@ public class RescheduleMeetingCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_MEETING_INDEX + "[MEETING INDEX]"
             + PREFIX_MEETING_DATE + "[DATE] "
-            + PREFIX_MEETING_TIME + "[TIME] "
-            + PREFIX_MEETING_DURATION + "[DURATION in minutes] "
-            + PREFIX_MEETING_AGENDA + "[AGENDA] "
-            + PREFIX_MEETING_NOTES + "[NOTES]\n"
+            + PREFIX_MEETING_TIME + "[TIME]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_MEETING_INDEX + "1 "
             + PREFIX_MEETING_DATE + "2024-07-19 "
-            + PREFIX_MEETING_TIME + "14:00 "
-            + PREFIX_MEETING_DURATION + "60 "
-            + PREFIX_MEETING_AGENDA + "Discuss new policy "
-            + PREFIX_MEETING_NOTES + "Bring all necessary documents";
-
+            + PREFIX_MEETING_TIME + "14:00 ";
 
     private final Index personIndex;
     private final Index meetingIndex;

@@ -210,6 +210,25 @@ public class ParserUtil {
             throw new ParseException("Invalid duration format. Use minutes as an integer.");
         }
     }
+    public static LocalDateTime parseLocalDateTime(String stringDate, String stringTime) throws ParseException {
+        try {
+            String stringDateAndTime = stringDate + " " + stringTime;
+            LocalDate meetingDate;
+            LocalTime meetingTime;
+            if (isDayOfWeek(stringDateAndTime)) {
+                LocalDateTime datetime = getLocalDateTimeFromDayOfWeek(stringDateAndTime);
+                meetingDate = datetime.toLocalDate();
+                meetingTime = datetime.toLocalTime();
+            } else {
+                meetingDate = ParserUtil.parseDate(stringDate);
+                meetingTime = ParserUtil.parseTime(stringTime);
+            }
+            LocalDateTime meetingDateTime = LocalDateTime.of(meetingDate, meetingTime);
+            return meetingDateTime;
+        } catch (ParseException e ) {
+            throw e;
+        }
+    }
     public static boolean isDayOfWeek(String dateTime) {
         String date = dateTime.split("\\s+")[0];
         for (String format : POSSIBLE_DAY_OF_WEEK_FORMATS) {
