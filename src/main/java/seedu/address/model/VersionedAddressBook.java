@@ -2,6 +2,12 @@ package seedu.address.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import seedu.address.model.person.Meeting;
+import seedu.address.model.person.Person;
+
+
 
 /**
  * {@code AddressBook} that keeps track of its own history.
@@ -53,8 +59,26 @@ public class VersionedAddressBook extends AddressBook {
             throw new NoUndoableStateException();
         }
         currentStatePointer--;
-        resetData(addressBookStateList.get(currentStatePointer));
+        ReadOnlyAddressBook prevState = addressBookStateList.get(currentStatePointer);
+        AddressBook filteredPrevState = new AddressBook();
+        prevState.getPersonList().forEach(person -> {
+            List<Meeting> updatedMeetings = person.getMeetings().stream()
+                    .filter(meeting -> !meeting.isExpired())
+                    .collect(Collectors.toList());
+            Person updatedPerson = new Person(
+                    person.getName(),
+                    person.getPhone(),
+                    person.getEmail(),
+                    person.getAddress(),
+                    person.getRelationship(),
+                    person.getPolicy(),
+                    person.getTags());
+            updatedPerson.setMeetings(updatedMeetings);
+            filteredPrevState.addPerson(updatedPerson);
+        });
+        resetData(filteredPrevState);
     }
+
 
     /**
      * Restores the address book to its previously undone state which only works
