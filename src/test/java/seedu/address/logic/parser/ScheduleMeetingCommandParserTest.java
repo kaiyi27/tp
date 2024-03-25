@@ -1,14 +1,10 @@
 package seedu.address.logic.parser;
 
-<<<<<<< HEAD
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_AGENDA;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_NOTES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_TIME;
-=======
-import static seedu.address.logic.parser.CliSyntax.*;
->>>>>>> eb8f852b (Add ScheduleMeetingCommandParserTest class and add check for missing parameters for meetings)
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
@@ -22,6 +18,8 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ScheduleMeetingCommand;
 import seedu.address.model.person.Meeting;
+
+
 
 public class ScheduleMeetingCommandParserTest {
 
