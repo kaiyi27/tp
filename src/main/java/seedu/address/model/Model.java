@@ -121,4 +121,11 @@ public interface Model {
     boolean hasMeetingOverlap(Meeting meeting);
 
 
+    /**
+     * Removes expired meetings from all persons in the address book.
+     */
+    void removeExpiredMeetings();
+
+
+
 }
