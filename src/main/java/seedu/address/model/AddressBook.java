@@ -81,7 +81,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void setPerson(Person target, Person editedPerson) {
         requireNonNull(editedPerson);
-
         // Check if a meeting is being added
         if (!target.getMeetings().equals(editedPerson.getMeetings())) {
             // Add the meeting and update the list
