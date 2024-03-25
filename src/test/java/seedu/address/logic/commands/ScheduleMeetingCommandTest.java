@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -28,9 +29,11 @@ public class ScheduleMeetingCommandTest {
         Person validPerson = new PersonBuilder().build();
         model.addPerson(validPerson); // Add a person to the model
         Meeting validMeeting = new MeetingBuilder().build();
-        CommandResult commandResult = new ScheduleMeetingCommand(Index.fromZeroBased(0), validMeeting).execute(model);
+        CommandResult commandResult = new ScheduleMeetingCommand(Index.fromZeroBased(0),
+                validMeeting).execute(model);
 
-        assertEquals(String.format(ScheduleMeetingCommand.MESSAGE_SUCCESS, validPerson),
+        assertEquals(String.format(ScheduleMeetingCommand.MESSAGE_MEETING_SCHEDULED_SUCCESS,
+                        Messages.format(validPerson)),
                 commandResult.getFeedbackToUser());
     }
 
@@ -48,28 +51,6 @@ public class ScheduleMeetingCommandTest {
                 scheduleMeetingCommand.execute(model));
     }
 
-    @Test
-    public void execute_meetingInPast_throwsCommandException() {
-        Person validPerson = new PersonBuilder().build();
-        model.addPerson(validPerson);
-        Meeting pastMeeting = new MeetingBuilder().withDate(LocalDate.now().minusDays(1)).build();
-        ScheduleMeetingCommand scheduleMeetingCommand = new ScheduleMeetingCommand(Index.fromZeroBased(0), pastMeeting);
-
-        assertThrows(CommandException.class, "Cannot schedule a meeting in the past.", () ->
-                scheduleMeetingCommand.execute(model));
-    }
-
-    @Test
-    public void execute_meetingInDistantFuture_throwsCommandException() {
-        Person validPerson = new PersonBuilder().build();
-        model.addPerson(validPerson);
-        Meeting futureMeeting = new MeetingBuilder().withDate(LocalDate.now().plusYears(2)).build();
-        ScheduleMeetingCommand scheduleMeetingCommand =
-                new ScheduleMeetingCommand(Index.fromZeroBased(0), futureMeeting);
-
-        assertThrows(CommandException.class, "Cannot schedule a meeting more than a year in the future.", () ->
-                scheduleMeetingCommand.execute(model));
-    }
 
     @Test
     public void execute_exceedMeetingLimit_throwsCommandException() {

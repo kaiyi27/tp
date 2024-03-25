@@ -43,6 +43,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label policy;
     @FXML
+    private Label meeting;
+    @FXML
     private FlowPane tags;
     @FXML
     private Accordion meetingsAccordion;
