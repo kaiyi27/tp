@@ -13,7 +13,8 @@ public class Meeting {
 
     public static final String MESSAGE_CONSTRAINTS_DATE = "Meeting dates should be in the format YYYY-MM-DD.";
     public static final String MESSAGE_CONSTRAINTS_TIME = "Meeting times should be in the format HH:MM.";
-    public static final String MESSAGE_CONSTRAINTS_DURATION = "Meeting duration should be a positive integer representing minutes.";
+    public static final String MESSAGE_CONSTRAINTS_DURATION =
+            "Meeting duration should be a positive integer representing minutes.";
     public static final String MESSAGE_CONSTRAINTS_AGENDA = "Meeting agenda should not be blank.";
     public static final String MESSAGE_CONSTRAINTS_NOTES = "Meeting notes should not be blank.";
     private LocalDate meetingDate;
