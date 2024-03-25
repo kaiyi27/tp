@@ -1,19 +1,23 @@
 package seedu.address.logic.parser;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_INDEX;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_TIME;
+import static seedu.address.logic.parser.ParserUtil.parseLocalDateTime;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.RescheduleMeetingCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Meeting;
 
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
-import static seedu.address.logic.parser.ParserUtil.parseLocalDateTime;
+/**
+ * Parses input arguments and creates a new {@code RescheduleMeetingCommand} object
+ */
 public class RescheduleMeetingCommandParser implements Parser<RescheduleMeetingCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the {@code ScheduleMeetingCommand}

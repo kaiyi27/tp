@@ -1,11 +1,8 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_AGENDA;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_INDEX;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_NOTES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_TIME;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -20,7 +17,6 @@ import seedu.address.model.person.Meeting;
 import seedu.address.model.person.Person;
 
 /**
-
  * Schedules a meeting with an existing person in the address book.
  */
 public class RescheduleMeetingCommand extends Command {
@@ -28,7 +24,6 @@ public class RescheduleMeetingCommand extends Command {
     public static final String COMMAND_WORD = "reschedule";
 
     public static final String MESSAGE_MEETING_RESCHEDULED_SUCCESS = "Meeting rescheduled successfully: %1$s";
-    public static final String MESSAGE_MEETING_OVERLAP = "Meeting cannot be scheduled due to overlapping times";
     public static final String MESSAGE_MEETING_INVALID_INDEX = "Invalid index provided for meeting list";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Reschedules a meeting with the person identified "

@@ -18,7 +18,6 @@ import seedu.address.model.person.Meeting;
 import seedu.address.model.person.Person;
 
 /**
-
  * Schedules a meeting with an existing person in the address book.
  */
 public class ScheduleMeetingCommand extends Command {

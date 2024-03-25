@@ -29,9 +29,11 @@ public class ScheduleMeetingCommandTest {
         Person validPerson = new PersonBuilder().build();
         model.addPerson(validPerson); // Add a person to the model
         Meeting validMeeting = new MeetingBuilder().build();
-        CommandResult commandResult = new ScheduleMeetingCommand(Index.fromZeroBased(0), validMeeting).execute(model);
+        CommandResult commandResult = new ScheduleMeetingCommand(Index.fromZeroBased(0),
+                validMeeting).execute(model);
 
-        assertEquals(String.format(ScheduleMeetingCommand.MESSAGE_MEETING_SCHEDULED_SUCCESS, Messages.format(validPerson)),
+        assertEquals(String.format(ScheduleMeetingCommand.MESSAGE_MEETING_SCHEDULED_SUCCESS,
+                        Messages.format(validPerson)),
                 commandResult.getFeedbackToUser());
     }
 

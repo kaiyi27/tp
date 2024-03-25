@@ -2,7 +2,11 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import java.time.*;
+import java.time.DayOfWeek;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.TemporalAdjusters;
@@ -30,13 +34,12 @@ public class ParserUtil {
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final String[] POSSIBLE_DAY_OF_WEEK_FORMATS = {"EEEE", "EEE", "EEEEE"};
     public static final String[] POSSIBLE_DATE_FORMATS = {
-            "yyyy-MM-dd",
-            "dd-MM-yyyy",
-            "yyyyMMdd",
-            "yyyy MM dd",
-            "dd MM yyyy",
-            "ddMMyyyy"
-            // Add more formats as needed
+        "yyyy-MM-dd",
+        "dd-MM-yyyy",
+        "yyyyMMdd",
+        "yyyy MM dd",
+        "dd MM yyyy",
+        "ddMMyyyy" // Add more formats as needed
     };
 
     /**
@@ -210,6 +213,14 @@ public class ParserUtil {
             throw new ParseException("Invalid duration format. Use minutes as an integer.");
         }
     }
+
+    /**
+     * Converts the string of date and time to a LocalDateTime format
+     * @param stringDate input date string
+     * @param stringTime input time string
+     * @return LocalDateTime the meeting date time
+     * @throws ParseException for invalid inputs
+     */
     public static LocalDateTime parseLocalDateTime(String stringDate, String stringTime) throws ParseException {
         try {
             String stringDateAndTime = stringDate + " " + stringTime;
@@ -225,10 +236,16 @@ public class ParserUtil {
             }
             LocalDateTime meetingDateTime = LocalDateTime.of(meetingDate, meetingTime);
             return meetingDateTime;
-        } catch (ParseException e ) {
+        } catch (ParseException e) {
             throw e;
         }
     }
+
+    /**
+     * Checks if the date provided is in day of week format
+     * @param dateTime the date input string
+     * @return if true if it is in the day of week format
+     */
     public static boolean isDayOfWeek(String dateTime) {
         String date = dateTime.split("\\s+")[0];
         for (String format : POSSIBLE_DAY_OF_WEEK_FORMATS) {
