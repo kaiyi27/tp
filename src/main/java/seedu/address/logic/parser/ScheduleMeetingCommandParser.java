@@ -42,9 +42,17 @@ public class ScheduleMeetingCommandParser implements Parser<ScheduleMeetingComma
                     ScheduleMeetingCommand.MESSAGE_USAGE), ive);
         }
 
-        if (!argMultimap.arePrefixesPresent(PREFIX_MEETING_DATE, PREFIX_MEETING_TIME, PREFIX_MEETING_DURATION,
-                PREFIX_MEETING_AGENDA)) {
-            throw new ParseException("Date, time, duration, and agenda are required for scheduling a meeting.");
+        if (!argMultimap.getValue(PREFIX_MEETING_DATE).isPresent()) {
+            throw new ParseException(Meeting.MESSAGE_CONSTRAINTS_DATE);
+        }
+        if (!argMultimap.getValue(PREFIX_MEETING_TIME).isPresent()) {
+            throw new ParseException(Meeting.MESSAGE_CONSTRAINTS_TIME);
+        }
+        if (!argMultimap.getValue(PREFIX_MEETING_DURATION).isPresent()) {
+            throw new ParseException(Meeting.MESSAGE_CONSTRAINTS_DURATION);
+        }
+        if (!argMultimap.getValue(PREFIX_MEETING_AGENDA).isPresent()) {
+            throw new ParseException(Meeting.MESSAGE_CONSTRAINTS_AGENDA);
         }
 
         LocalDate meetingDate;
@@ -61,6 +69,12 @@ public class ScheduleMeetingCommandParser implements Parser<ScheduleMeetingComma
 
         String agenda = argMultimap.getValue(PREFIX_MEETING_AGENDA)
                 .orElseThrow(() -> new ParseException("Agenda is required."));
+
+        // Add a check for empty agenda
+        if (agenda.trim().isEmpty()) {
+            throw new ParseException("Agenda is required and cannot be empty.");
+        }
+
         String notes = argMultimap.getValue(PREFIX_MEETING_NOTES).orElse("");
 
         Meeting meeting = new Meeting(meetingDate, meetingTime, duration, agenda, notes);
