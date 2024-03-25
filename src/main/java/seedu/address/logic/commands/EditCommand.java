@@ -113,10 +113,10 @@ public class EditCommand extends Command {
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         List<Meeting> meetings = personToEdit.getMeetings();
 
-        Person EditedPerson = new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, sameRelationship,
+        Person editedPerson = new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, sameRelationship,
                 samePolicy, updatedTags);
-        EditedPerson.setMeetings(meetings);
-        return EditedPerson;
+        editedPerson.setMeetings(meetings);
+        return editedPerson;
 
     }
 

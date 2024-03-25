@@ -186,7 +186,11 @@ public class AddCommandTest {
 
         @Override
         public boolean hasMeetingOverlap(Meeting meeting) {
-            throw new AssertionError("Meeting should not be overlapped.");
+            throw new AssertionError("This method should not be called.");
+        }
+        @Override
+        public void removeExpiredMeetings() {
+            throw new AssertionError("This method should not be called.");
         }
     }
 

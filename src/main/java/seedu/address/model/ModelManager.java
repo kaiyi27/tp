@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -180,6 +179,9 @@ public class ModelManager implements Model {
                 .anyMatch(existingMeeting -> existingMeeting.overlapsWith(meeting));
     }
 
+    /**
+     * Removes meeting that is past the current time from meeting list of each person
+     */
     public void removeExpiredMeetings() {
         versionedAddressBook.getPersonList().forEach(person -> {
             List<Meeting> updatedMeetings = person.getMeetings().stream()
