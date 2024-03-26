@@ -13,6 +13,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -63,8 +64,7 @@ public class ScheduleMeetingCommandParser implements Parser<ScheduleMeetingComma
             meetingDateTime = parseLocalDateTime(stringMeetingDate, stringMeetingTime);
             duration = ParserUtil.parseDuration(argMultimap.getValue(PREFIX_MEETING_DURATION).orElse(""));
         } catch (ParseException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    ScheduleMeetingCommand.MESSAGE_USAGE), e);
+            throw e;
         }
         LocalDate today = LocalDate.now();
         LocalDate meetingDate = meetingDateTime.toLocalDate();
