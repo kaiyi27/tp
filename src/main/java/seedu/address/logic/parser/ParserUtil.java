@@ -176,6 +176,7 @@ public class ParserUtil {
                 // If parsing fails, ignore the exception and try the next format
             }
         }
+
         throw new ParseException("Invalid date format. Use YYYY-MM-DD.");
     }
 
@@ -237,7 +238,7 @@ public class ParserUtil {
             LocalDateTime meetingDateTime = LocalDateTime.of(meetingDate, meetingTime);
             return meetingDateTime;
         } catch (ParseException e) {
-            throw e;
+            throw new ParseException("Invalid date or time format. Use YYYY-MM-DD for date and HH:MM for time.");
         }
     }
 

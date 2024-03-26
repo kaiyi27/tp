@@ -129,7 +129,7 @@ public class ScheduleMeetingCommandParserTest {
                         PREFIX_MEETING_AGENDA + VALID_AGENDA + " "
                         +
                         PREFIX_MEETING_NOTES + VALID_NOTES,
-                "Invalid date format. Use YYYY-MM-DD.");
+                "Invalid date or time format. Use YYYY-MM-DD for date and HH:MM for time.");
 
         // Invalid time
         assertParseFailure(parser, "1 "
@@ -143,7 +143,7 @@ public class ScheduleMeetingCommandParserTest {
                         PREFIX_MEETING_AGENDA + VALID_AGENDA + " "
                         +
                         PREFIX_MEETING_NOTES + VALID_NOTES,
-                "Invalid time format. Use HH:MM.");
+                "Invalid date or time format. Use YYYY-MM-DD for date and HH:MM for time.");
 
         // Invalid duration
         assertParseFailure(parser, "1 "

@@ -5,14 +5,25 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.logic.parser.ParserUtil.parseLocalDateTime;
+import seedu.address.logic.parser.exceptions.ParseException;
+
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+
+
+
+
+
+
 
 import org.junit.jupiter.api.Test;
 
@@ -304,6 +315,50 @@ public class ParserUtilTest {
         String relationshipWithWhitespace = " client ";
         Relationship expectedRelationship = new Relationship("client");
         assertEquals(expectedRelationship, ParserUtil.parseRelationship(relationshipWithWhitespace));
+    }
+
+
+    @Test
+    public void parseLocalDateTime_validInput_success() throws Exception {
+        // Valid date and time
+        assertEquals(LocalDateTime.of(2023, 10, 25, 14, 30),
+                parseLocalDateTime("2023-10-25", "14:30"));
+
+        // Valid day of week with time
+        LocalDate nextWednesday = LocalDate.now().with(java.time.temporal.TemporalAdjusters.nextOrSame(java.time.DayOfWeek.WEDNESDAY));
+        assertEquals(LocalDateTime.of(nextWednesday, LocalTime.of(16, 0)),
+                parseLocalDateTime("Wednesday", "16:00"));
+    }
+
+//    @Test
+//    public void parseLocalDateTime_invalidDate_throwsParseException() {
+//        // Invalid date format
+//        assertThrows(ParseException.class, () ->
+//                ParserUtil.parseLocalDateTime("2023/10/25", "14:30"));
+//
+//        // Non-existent date
+//        assertThrows(ParseException.class, () ->
+//                ParserUtil.parseLocalDateTime("2023-02-30", "14:30"));
+//    }
+
+
+    @Test
+    public void parseLocalDateTime_invalidTime_throwsParseException() {
+
+        // Non-existent time
+        assertThrows(ParseException.class, () ->
+                ParserUtil.parseLocalDateTime("2023-10-25", "25:00"));
+    }
+
+    @Test
+    public void parseLocalDateTime_invalidDayOfWeek_throwsParseException() {
+        // Invalid day of week
+        assertThrows(ParseException.class, () ->
+                parseLocalDateTime("Funday", "14:30"));
+
+        // Invalid time format with day of week
+        assertThrows(ParseException.class, () ->
+                parseLocalDateTime("Monday", "14:30:00"));
     }
 
 

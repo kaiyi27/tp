@@ -66,7 +66,7 @@ public class CancelMeetingCommand extends Command {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof ScheduleMeetingCommand)) {
+        if (!(other instanceof CancelMeetingCommand)) {
             return false;
         }
         CancelMeetingCommand e = (CancelMeetingCommand) other;
