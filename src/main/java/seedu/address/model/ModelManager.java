@@ -195,9 +195,8 @@ public class ModelManager implements Model {
                     person.getRelationship(),
                     person.getPolicies(),
                     person.getClientStatus(),
-                    person.getTags());
-
-            updatedPerson.setMeetings(updatedMeetings);
+                    person.getTags(),
+                    updatedMeetings);
             setPerson(person, updatedPerson);
         });
         commitAddressBook();

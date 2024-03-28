@@ -45,7 +45,7 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Relationship relationship,
-                  Set<Policy> policies, ClientStatus clientStatus, Set<Tag> tags) {
+                  Set<Policy> policies, ClientStatus clientStatus, Set<Tag> tags, List<Meeting> meetings) {
         requireAllNonNull(name, phone, email, address, relationship, tags);
         this.name = name;
         this.phone = phone;
@@ -55,7 +55,7 @@ public class Person {
         this.relationship = relationship;
         this.clientStatus = clientStatus;
         this.tags.addAll(tags);
-        this.meetings = new ArrayList<>();
+        this.meetings = getMeetingListCopy(meetings);
     }
 
     public Name getName() {
@@ -258,7 +258,7 @@ public class Person {
 
     public Person getCopy() {
         Person p = new Person(this.name, this.phone, this.email, this.address, this.relationship,
-                this.getPolicies(), this.clientStatus, this.getTags());
+                this.getPolicies(), this.clientStatus, this.getTags(), meetings);
 
         // Create a deep copy of the meetings
         List<Meeting> copiedMeetings = new ArrayList<>();
@@ -275,6 +275,20 @@ public class Person {
         p.setMeetings(copiedMeetings);
 
         return p;
+    }
+    public List<Meeting> getMeetingListCopy(List<Meeting> listToBeCopied) {
+        List<Meeting> copiedMeetings = new ArrayList<>();
+        for (Meeting meeting : listToBeCopied) {
+            Meeting copiedMeeting = new Meeting(
+                    meeting.getMeetingDate(),
+                    meeting.getMeetingTime(),
+                    meeting.getDuration(),
+                    meeting.getAgenda(),
+                    meeting.getNotes()
+            );
+            copiedMeetings.add(copiedMeeting);
+        }
+        return copiedMeetings;
     }
 
     public Optional<Meeting> getEarliestMeeting() {

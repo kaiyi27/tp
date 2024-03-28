@@ -112,9 +112,9 @@ public class EditCommand extends Command {
         ClientStatus updatedClientStatus = personToEdit.getClientStatus();
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
+
         Person editedPerson = new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRelationship,
-                updatedPolicies, updatedClientStatus, updatedTags);
-        editedPerson.setMeetings(personToEdit.getMeetings());
+                updatedPolicies, updatedClientStatus, updatedTags, personToEdit.getMeetings());
         return editedPerson;
     }
 
