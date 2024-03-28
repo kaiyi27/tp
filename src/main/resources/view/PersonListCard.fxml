@@ -23,13 +23,15 @@
         <Insets top="5" right="5" bottom="5" left="15"/>
       </padding>
       <HBox spacing="5" alignment="CENTER_LEFT">
-        <Label fx:id="id" styleClass="cell_small_label"/>
+        <Label fx:id="id" styleClass="cell_big_label"/>
         <Label fx:id="name" text="\$first" styleClass="cell_big_label"/>
       </HBox>
       <FlowPane fx:id="tags" styleClass="tags-container"/>
-      <Label fx:id="relationship" styleClass="relationship-label"/>
+      <HBox spacing="5" alignment="CENTER_LEFT">
+        <Label fx:id="relationship" styleClass="relationship-label"/>
+        <Label fx:id="clientStatus" styleClass="client-status-label"/>
+      </HBox>
       <FlowPane fx:id="policies" styleClass="policies-container"/>
-        <Label fx:id="clientStatus" styleClass="cell_small_label"/>
         <Label fx:id="phone" styleClass="cell_small_label"/>
       <Label fx:id="address" styleClass="cell_small_label"/>
       <Label fx:id="email" styleClass="cell_small_label"/>

@@ -98,6 +98,16 @@ public class PersonCard extends UiPart<Region> {
         }
 
         clientStatus.setText(person.getClientStatus().toString());
+        switch(person.getClientStatus().getStatus()) {
+        case 2:
+            clientStatus.setStyle("-fx-background-color: #D97930;");
+            break;
+        case 3:
+            clientStatus.setStyle("-fx-background-color: #1fab2f;");
+            break;
+        default:
+            clientStatus.setStyle("-fx-background-color: #d32f2f;");
+        }
 
         tags.getChildren().clear();
         person.getTags().stream()

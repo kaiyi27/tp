@@ -541,6 +541,13 @@
     -fx-text-transform: uppercase !important; /* Transform text to uppercase */
 }
 
+.client-status-label {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 12px;
+    -fx-text-fill: #010504;
+    -fx-padding: 2px;
+    -fx-background-radius: 4;
+}
 
 
 .policies-container {
