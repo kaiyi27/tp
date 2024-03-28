@@ -26,8 +26,10 @@ public class CancelMeetingCommandTest {
     public void execute_validIndex_success() throws CommandException {
         Model model = new ModelManager();
         Person person = new PersonBuilder().build();
-        Meeting meeting1 = new MeetingBuilder().withDate(LocalDate.parse("2024-07-19")).withTime(LocalTime.parse("14:00")).build();
-        Meeting meeting2 = new MeetingBuilder().withDate(LocalDate.parse("2024-08-19")).withTime(LocalTime.parse("15:00")).build();
+        Meeting meeting1 = new MeetingBuilder().withDate(LocalDate.parse("2024-07-19"))
+                        .withTime(LocalTime.parse("14:00")).build();
+        Meeting meeting2 = new MeetingBuilder().withDate(LocalDate.parse("2024-08-19"))
+                .withTime(LocalTime.parse("15:00")).build();
         person.setMeetings(Arrays.asList(meeting1, meeting2));
         model.addPerson(person);
 
@@ -38,7 +40,8 @@ public class CancelMeetingCommandTest {
         CommandResult commandResult = cancelMeetingCommand.execute(model);
 
         String expectedMessage = String.format(CancelMeetingCommand.MESSAGE_MEETING_CANCELLED_SUCCESS,
-                "Amy Bee; Phone: 85355255; Email: amy@gmail.com; Address: 123, Jurong West Ave 6, #08-111; Relationship: client; Tags: ");
+                "Amy Bee; Phone: 85355255; Email: amy@gmail.com; Address: 123, Jurong West Ave 6, #08-111; "
+                        + "Relationship: client; Tags: ");
         assertEquals(expectedMessage, commandResult.getFeedbackToUser());
     }
 
