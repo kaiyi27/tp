@@ -3,10 +3,10 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
@@ -17,8 +17,9 @@ import seedu.address.testutil.MeetingBuilder;
 import seedu.address.testutil.PersonBuilder;
 
 public class RescheduleMeetingCommandTest {
-    private Model model = new ModelManager();
+
     private static final String VALID_DATE_TIME_STRING = "2024-07-19T14:00";
+    private Model model = new ModelManager();
 
     @Test
     public void execute_validReschedule_success() throws Exception {
