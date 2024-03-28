@@ -159,9 +159,7 @@ public class PersonBuilder {
      * @return A new Person object with the specified details.
      */
     public Person build() {
-        Person p = new Person(name, phone, email, address, relationship, policies, clientStatus, tags);
-
-        p.setMeetings(this.meetings);
+        Person p = new Person(name, phone, email, address, relationship, policies, clientStatus, tags, meetings);
 
         return p;
     }

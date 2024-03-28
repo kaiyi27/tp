@@ -73,8 +73,8 @@ public class VersionedAddressBook extends AddressBook {
                     person.getRelationship(),
                     person.getPolicies(),
                     person.getClientStatus(),
-                    person.getTags());
-            updatedPerson.setMeetings(updatedMeetings);
+                    person.getTags(),
+                    person.getMeetings());
             filteredPrevState.addPerson(updatedPerson);
         });
         resetData(filteredPrevState);
