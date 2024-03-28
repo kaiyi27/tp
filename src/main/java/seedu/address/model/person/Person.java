@@ -29,9 +29,11 @@ public class Person {
     // Data fields
     private final Address address;
 
-    private final Policy policy;
+    private final Set<Policy> policies = new HashSet<>();
 
     private final Relationship relationship;
+
+    private final ClientStatus clientStatus;
 
     private final Set<Tag> tags = new HashSet<>();
 
@@ -43,14 +45,15 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Relationship relationship,
-                  Policy policy, Set<Tag> tags) {
+                  Set<Policy> policies, ClientStatus clientStatus, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, relationship, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.policy = policy;
+        this.policies.addAll(policies);
         this.relationship = relationship;
+        this.clientStatus = clientStatus;
         this.tags.addAll(tags);
         this.meetings = new ArrayList<>();
     }
@@ -71,12 +74,16 @@ public class Person {
         return address;
     }
 
-    public Policy getPolicy() {
-        return policy;
+    public Set<Policy> getPolicies() {
+        return policies.isEmpty() ? new HashSet<>() : Collections.unmodifiableSet(policies);
     }
 
     public Relationship getRelationship() {
         return relationship;
+    }
+
+    public ClientStatus getClientStatus() {
+        return clientStatus;
     }
 
     public boolean isClient() {
@@ -131,14 +138,14 @@ public class Person {
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
                 && relationship.equals(otherPerson.relationship)
-                && policy.equals(otherPerson.policy)
+                && policies.equals(otherPerson.policies)
                 && tags.equals(otherPerson.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, policy, relationship, tags);
+        return Objects.hash(name, phone, email, address, policies, relationship, tags);
     }
 
     @Override
@@ -149,7 +156,7 @@ public class Person {
                 .add("email", email)
                 .add("address", address)
                 .add("relationship", relationship)
-                .add("policy", policy)
+                .add("policy", policies)
                 .add("tags", tags)
                 .toString();
     }
@@ -251,7 +258,7 @@ public class Person {
 
     public Person getCopy() {
         Person p = new Person(this.name, this.phone, this.email, this.address, this.relationship,
-                this.getPolicy(), this.getTags());
+                this.getPolicies(), this.clientStatus, this.getTags());
 
         // Create a deep copy of the meetings
         List<Meeting> copiedMeetings = new ArrayList<>();
