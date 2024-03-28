@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox fx:id="placeHolder" xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1">
+    <TextArea fx:id="clientStatusSummary1" editable="false" text="abc"/>
+    <TextArea fx:id="clientStatusSummary2" editable="false" text="def"/>
+    <TextArea fx:id="clientStatusSummary3" editable="false" text="xyz"/>
+</HBox>
