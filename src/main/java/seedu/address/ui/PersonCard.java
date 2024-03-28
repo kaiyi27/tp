@@ -71,26 +71,26 @@ public class PersonCard extends UiPart<Region> {
             clientStatus.setManaged(false);
         } else if (person.getPolicies().isEmpty()) {
             Label label = new Label("No policy assigned");
+            label.getStyleClass().add("policies-label");
             label.setStyle(
                     "-fx-background-color: #d32f2f; "
-                            + "-fx-font-size: 14px; "
-                            + "-fx-padding: 2px 4px; " // Adjust padding to fit the content
-                            + "-fx-background-radius: 2.5; "
             );
             policies.getChildren().add(label);
         } else {
             person.getPolicies().stream()
                     .sorted(Comparator.comparing(policy -> policy.value))
                     .forEach(policy -> {
-                        Label label = new Label("Policy: " + policy.value + "\n"
+                        Label label = new Label("Policy: " + policy.value
                                 + (policy.expiryDate != null
-                                ? "(" + formatLocalDate(policy.expiryDate) + ")" + " " : "") + "\n"
-                                + (policy.premium != 0.0 ? policy.premium + "$" + " " : ""));
+                                    ? "\n" + "(" + formatLocalDate(policy.expiryDate) + ")" + " "
+                                    : "")
+                                + (policy.premium != 0.0
+                                    ? "\n" + "$" + policy.premium + " "
+                                    : "")
+                        );
+                        label.getStyleClass().add("policies-label");
                         label.setStyle(
                                 "-fx-background-color: #1fab2f; "
-                                        + "-fx-font-size: 14px; "
-                                        + "-fx-padding: 2px 4px; " // Adjust padding to fit the content
-                                        + "-fx-background-radius: 2.5; "
                         );
                         policies.getChildren().add(label);
                         FlowPane.setMargin(label, new Insets(0, 6, 0, 0));
