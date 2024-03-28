@@ -193,7 +193,8 @@ public class ModelManager implements Model {
                     person.getEmail(),
                     person.getAddress(),
                     person.getRelationship(),
-                    person.getPolicy(),
+                    person.getPolicies(),
+                    person.getClientStatus(),
                     person.getTags());
 
             updatedPerson.setMeetings(updatedMeetings);
