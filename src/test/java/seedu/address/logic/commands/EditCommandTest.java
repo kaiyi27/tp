@@ -27,7 +27,6 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Meeting;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
-import seedu.address.testutil.MeetingBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.TypicalPersons;
 
