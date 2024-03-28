@@ -11,6 +11,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.CancelMeetingCommand;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.ClientStatusCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
@@ -85,6 +86,9 @@ public class AddressBookParser {
 
         case PolicyCommand.COMMAND_WORD:
             return new PolicyCommandParser().parse(arguments);
+
+        case ClientStatusCommand.COMMAND_WORD:
+            return new ClientStatusCommandParser().parse(arguments);
 
         case UndoCommand.COMMAND_WORD:
             return new UndoCommand();

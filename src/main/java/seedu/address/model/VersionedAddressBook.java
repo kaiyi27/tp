@@ -71,7 +71,8 @@ public class VersionedAddressBook extends AddressBook {
                     person.getEmail(),
                     person.getAddress(),
                     person.getRelationship(),
-                    person.getPolicy(),
+                    person.getPolicies(),
+                    person.getClientStatus(),
                     person.getTags());
             updatedPerson.setMeetings(updatedMeetings);
             filteredPrevState.addPerson(updatedPerson);
