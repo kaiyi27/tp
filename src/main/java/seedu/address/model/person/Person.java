@@ -2,13 +2,14 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -44,7 +45,7 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Relationship relationship,
-                  Set<Policy> policies, ClientStatus clientStatus, Set<Tag> tags) {
+                  Set<Policy> policies, ClientStatus clientStatus, Set<Tag> tags, List<Meeting> meetings) {
         requireAllNonNull(name, phone, email, address, relationship, tags);
         this.name = name;
         this.phone = phone;
@@ -54,7 +55,7 @@ public class Person {
         this.relationship = relationship;
         this.clientStatus = clientStatus;
         this.tags.addAll(tags);
-        this.meetings = new ArrayList<>();
+        this.meetings = getMeetingListCopy(meetings);
     }
 
     public Name getName() {
@@ -167,8 +168,13 @@ public class Person {
     //Meetings composition methods
 
 
+    /**
+     * Returns an immutable list of meetings, sorted by start date and time.
+     */
     public List<Meeting> getMeetings() {
-        return this.meetings;
+        List<Meeting> sortedMeetings = new ArrayList<>(meetings);
+        sortedMeetings.sort(Comparator.comparing(Meeting::getStartDateTime));
+        return Collections.unmodifiableList(sortedMeetings);
     }
 
     /**
@@ -179,15 +185,8 @@ public class Person {
      *     if scheduling constraints are violated.
      */
     public void addMeeting(Meeting meeting) {
-        LocalDate today = LocalDate.now();
-        LocalDate meetingDate = meeting.getMeetingDate();
-
         if (meetings.size() >= 5) {
             throw new IllegalArgumentException("Cannot have more than 5 meetings.");
-        } else if (meetingDate.isBefore(today)) {
-            throw new IllegalArgumentException("Cannot schedule a meeting in the past.");
-        } else if (meetingDate.isAfter(today.plusYears(1))) { // Assuming 1 year is too far in the future
-            throw new IllegalArgumentException("Cannot schedule a meeting more than a year in the future.");
         } else if (isOverlapWithOtherMeetings(meeting)) {
             throw new IllegalArgumentException("Meeting overlaps with existing meetings with this client.");
         } else {
@@ -201,7 +200,6 @@ public class Person {
      * @param meetings The list of meetings to be set.
      */
     public void setMeetings(List<Meeting> meetings) {
-
         this.meetings = meetings;
 
     }
@@ -260,7 +258,7 @@ public class Person {
 
     public Person getCopy() {
         Person p = new Person(this.name, this.phone, this.email, this.address, this.relationship,
-                this.getPolicies(), this.clientStatus, this.getTags());
+                this.getPolicies(), this.clientStatus, this.getTags(), meetings);
 
         // Create a deep copy of the meetings
         List<Meeting> copiedMeetings = new ArrayList<>();
@@ -277,5 +275,23 @@ public class Person {
         p.setMeetings(copiedMeetings);
 
         return p;
+    }
+    public List<Meeting> getMeetingListCopy(List<Meeting> listToBeCopied) {
+        List<Meeting> copiedMeetings = new ArrayList<>();
+        for (Meeting meeting : listToBeCopied) {
+            Meeting copiedMeeting = new Meeting(
+                    meeting.getMeetingDate(),
+                    meeting.getMeetingTime(),
+                    meeting.getDuration(),
+                    meeting.getAgenda(),
+                    meeting.getNotes()
+            );
+            copiedMeetings.add(copiedMeeting);
+        }
+        return copiedMeetings;
+    }
+
+    public Optional<Meeting> getEarliestMeeting() {
+        return getMeetings().stream().min(Comparator.comparing(Meeting::getStartDateTime));
     }
 }
