@@ -172,7 +172,6 @@ public class PersonCard extends UiPart<Region> {
         agendaBox.setSpacing(5);
         notesBox.setSpacing(5);
         durationBox.setSpacing(5);
-        
 
         // Add all HBoxes to the VBox
         meetingDetails.getChildren().addAll(dateBox, timeBox, durationBox, agendaBox, notesBox);
@@ -193,9 +192,10 @@ public class PersonCard extends UiPart<Region> {
 
             // Create a container for the title and the bell icon
             Label titleLabel = new Label(meetingPane.getText());
-            titleLabel.getStyleClass().add("meeting-title-label"); // Use the same style class as originally applied to the title text
+            // Use the same style class as originally applied to the title text
+            titleLabel.getStyleClass().add("meeting-title-label");
             HBox titleContainer = new HBox(titleLabel, bellIcon);
-            titleContainer.getStyleClass().add("meeting-title-container"); // Apply CSS styling for alignment and spacing
+            titleContainer.getStyleClass().add("meeting-title-container"); //Apply CSS styling for alignment and spacing
             titleContainer.setAlignment(Pos.CENTER_LEFT); // Align the title and icon to the left
             titleContainer.setSpacing(5); // Set spacing between the title and icon
 
