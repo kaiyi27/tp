@@ -8,12 +8,15 @@ import java.util.Locale;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -169,6 +172,7 @@ public class PersonCard extends UiPart<Region> {
         agendaBox.setSpacing(5);
         notesBox.setSpacing(5);
         durationBox.setSpacing(5);
+        
 
         // Add all HBoxes to the VBox
         meetingDetails.getChildren().addAll(dateBox, timeBox, durationBox, agendaBox, notesBox);
@@ -181,6 +185,27 @@ public class PersonCard extends UiPart<Region> {
         // Create the TitledPane
         TitledPane meetingPane = new TitledPane("Meeting on " + meeting.getMeetingDate().toString(), scrollPane);
         meetingPane.setAnimated(true); // Enable animation
+
+        if (meeting.isComingUp()) {
+            ImageView bellIcon = new ImageView(new Image(getClass().getResourceAsStream("/images/bell.png")));
+            bellIcon.setFitHeight(15);
+            bellIcon.setFitWidth(15);
+
+            // Create a container for the title and the bell icon
+            Label titleLabel = new Label(meetingPane.getText());
+            titleLabel.getStyleClass().add("meeting-title-label"); // Use the same style class as originally applied to the title text
+            HBox titleContainer = new HBox(titleLabel, bellIcon);
+            titleContainer.getStyleClass().add("meeting-title-container"); // Apply CSS styling for alignment and spacing
+            titleContainer.setAlignment(Pos.CENTER_LEFT); // Align the title and icon to the left
+            titleContainer.setSpacing(5); // Set spacing between the title and icon
+
+            // Set the title container as the graphic of the TitledPane
+            meetingPane.setGraphic(titleContainer);
+
+            // Since we are using the graphic now, we don't want the text to show up again
+            meetingPane.setText("");
+        }
+
 
         return meetingPane;
     }
