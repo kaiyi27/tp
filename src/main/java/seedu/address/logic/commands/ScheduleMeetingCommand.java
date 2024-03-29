@@ -38,13 +38,12 @@ public class ScheduleMeetingCommand extends Command {
             + PREFIX_MEETING_AGENDA + "[AGENDA] "
             + PREFIX_MEETING_NOTES + "[NOTES]\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_MEETING_DATE + "2023-03-20 "
+            + PREFIX_MEETING_DATE + "2024-07-19 "
             + PREFIX_MEETING_TIME + "14:00 "
             + PREFIX_MEETING_DURATION + "60 "
             + PREFIX_MEETING_AGENDA + "Discuss new policy "
             + PREFIX_MEETING_NOTES + "Bring all necessary documents";
 
-    public static final String MESSAGE_SUCCESS = "Meeting scheduled with Person: %1$s";
 
     private final Index index;
     private final Meeting meeting;
@@ -65,20 +64,15 @@ public class ScheduleMeetingCommand extends Command {
         List<Person> lastShownList = model.getFilteredPersonList();
 
         if (model.hasMeetingOverlap(this.meeting)) {
-            throw new CommandException("Meeting overlaps with existing meetings.");
+            throw new CommandException(ScheduleMeetingCommand.MESSAGE_MEETING_OVERLAP);
         }
-
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
-
         Person personToMeetOriginal = lastShownList.get(index.getZeroBased());
 
         // Create a copy of the original person and add the meeting to the copy
         Person personToMeetUpdated = personToMeetOriginal.getCopy();
-
-
-        System.out.println(personToMeetUpdated.getMeetings());
         try {
             personToMeetUpdated.addMeeting(this.meeting);
         } catch (IllegalArgumentException e) {
@@ -93,7 +87,8 @@ public class ScheduleMeetingCommand extends Command {
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, personToMeetUpdated));
+        return new CommandResult(String.format(MESSAGE_MEETING_SCHEDULED_SUCCESS,
+                Messages.format(personToMeetUpdated)));
     }
 
 
@@ -102,15 +97,11 @@ public class ScheduleMeetingCommand extends Command {
         if (other == this) {
             return true;
         }
-
         if (!(other instanceof ScheduleMeetingCommand)) {
             return false;
         }
-        //to dist
-
         ScheduleMeetingCommand e = (ScheduleMeetingCommand) other;
         return index.equals(e.index)
                 && meeting.equals(e.meeting);
     }
 }
-

@@ -3,9 +3,12 @@ package seedu.address;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Logger;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.LogsCenter;
@@ -40,16 +43,19 @@ public class MainApp extends Application {
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
+
     protected Ui ui;
     protected Logic logic;
     protected Storage storage;
     protected Model model;
     protected Config config;
 
+    private Timer timer;
     @Override
     public void init() throws Exception {
         logger.info("=============================[ Initializing AddressBook ]===========================");
         super.init();
+
 
         AppParameters appParameters = AppParameters.parse(getParameters());
         config = initConfig(appParameters.getConfigPath());
@@ -172,11 +178,35 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting AddressBook " + MainApp.VERSION);
+        setupMeetingExpiryCheck();
         ui.start(primaryStage);
+    }
+
+    /**
+     * Sets up a scheduled task to regularly check for and remove expired meetings.
+     */
+    private void setupMeetingExpiryCheck() {
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                // Remove expired meetings and update the UI
+                Platform.runLater(() -> {
+                    model.removeExpiredMeetings();
+                    // Assuming you have a method to update the UI
+                });
+            }
+        }, 0, 60000); // Check every minute (60000 milliseconds)
     }
 
     @Override
     public void stop() {
+
+        // Cancel the scheduled task when the application stops
+        if (timer != null) {
+            timer.cancel();
+        }
+
         logger.info("============================ [ Stopping Address Book ] =============================");
         try {
             storage.saveUserPrefs(model.getUserPrefs());
