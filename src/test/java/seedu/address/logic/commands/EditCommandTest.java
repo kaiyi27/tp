@@ -26,6 +26,7 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Meeting;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Policy;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.TypicalPersons;
@@ -40,7 +41,7 @@ public class EditCommandTest {
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         Meeting typicalMeeting = TypicalPersons.MEETING_1;
-        Person editedPerson = new PersonBuilder().withPolicy("Policy 1", "Policy 2")
+        Person editedPerson = new PersonBuilder().withPolicy(new Policy("Policy 1")).withPolicy(new Policy("Policy 2"))
                 .withMeeting(typicalMeeting).build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(editedPerson).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
