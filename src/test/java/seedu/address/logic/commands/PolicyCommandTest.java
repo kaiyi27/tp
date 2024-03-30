@@ -16,7 +16,6 @@ import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -77,7 +76,7 @@ public class PolicyCommandTest {
     }
 
         @Test
-    public void execute_deletePolicyUnfilteredList_success() {
+        public void execute_deletePolicyUnfilteredList_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(firstPerson).build();
 
