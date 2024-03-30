@@ -104,7 +104,7 @@ public class PolicyCommand extends Command {
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
             model.commitAddressBook();
 
-            return new CommandResult(String.format(MESSAGE_POLICY_RESCHEDULED_SUCCESS,
+            return new CommandResult(String.format(MESSAGE_ADD_POLICY_SUCCESS,
                     Messages.format(personToUpdated)));
         } else {
             List<Policy> policies = personToEditOriginal.getPolicies();

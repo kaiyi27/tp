@@ -14,13 +14,16 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Policy;
 import seedu.address.model.person.PolicyContainsKeywordsPredicate;
 import seedu.address.model.person.RelationshipContainsKeywordsPredicate;
 import seedu.address.model.person.TagContainsKeywordsPredicate;
 import seedu.address.testutil.PersonBuilder;
 
 public class FindCommandParserTest {
-
+    private static final Policy LIFE_INSURANCE = new Policy("life insurance");
+    private static final Policy CAR_INSURANCE = new Policy("car insurance");
+    private static final Policy DUMMY_INSURANCE = new Policy("dummy insurance");
     private FindCommandParser parser = new FindCommandParser();
 
     @Test
@@ -91,9 +94,9 @@ public class FindCommandParserTest {
         FindCommand command = parser.parse(" po/life po/car");
 
         List<Person> testPersons = Arrays.asList(
-                new PersonBuilder().withPolicy("life insurance").build(),
-                new PersonBuilder().withPolicy("car insurance").build(),
-                new PersonBuilder().withPolicy("dummy value").build()
+                new PersonBuilder().withPolicy(LIFE_INSURANCE).build(),
+                new PersonBuilder().withPolicy(CAR_INSURANCE).build(),
+                new PersonBuilder().withPolicy(DUMMY_INSURANCE).build()
         );
 
         for (Person person : testPersons) {
@@ -113,11 +116,11 @@ public class FindCommandParserTest {
 
         List<Person> testPersons = Arrays.asList(
                 new PersonBuilder().withName("Alice").withRelationship("client")
-                        .withTags("friends").withPolicy("life insurance").build(),
+                        .withTags("friends").withPolicy(LIFE_INSURANCE).build(),
                 new PersonBuilder().withName("Bob").withRelationship("partner")
-                        .withTags("colleagues").withPolicy("car insurance").build(),
+                        .withTags("colleagues").withPolicy(CAR_INSURANCE).build(),
                 new PersonBuilder().withName("Charlie").withRelationship("client")
-                        .withTags("friends").withPolicy("dummy insurance").build()
+                        .withTags("friends").withPolicy(DUMMY_INSURANCE).build()
         );
 
         for (Person person : testPersons) {
@@ -138,11 +141,11 @@ public class FindCommandParserTest {
 
         List<Person> testPersons = Arrays.asList(
                 new PersonBuilder().withName("Alice").withRelationship("client")
-                        .withTags("friends").withPolicy("life insurance").build(),
+                        .withTags("friends").withPolicy(LIFE_INSURANCE).build(),
                 new PersonBuilder().withName("Bob").withRelationship("partner")
-                        .withTags("colleagues").withPolicy("car insurance").build(),
+                        .withTags("colleagues").withPolicy(CAR_INSURANCE).build(),
                 new PersonBuilder().withName("Charlie").withRelationship("client")
-                        .withTags("friends").withPolicy("dummy insurance").build()
+                        .withTags("friends").withPolicy(DUMMY_INSURANCE).build()
         );
 
         for (Person person : testPersons) {

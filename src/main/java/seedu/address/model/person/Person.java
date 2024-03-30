@@ -29,7 +29,7 @@ public class Person {
     // Data fields
     private final Address address;
 
-    private final List<Policy> policies;
+    private List<Policy> policies;
 
     private final Relationship relationship;
 
@@ -214,7 +214,10 @@ public class Person {
      */
     public void setMeetings(List<Meeting> meetings) {
         this.meetings = meetings;
+    }
 
+    public void setPolicies(List<Policy> policies) {
+        this.policies = policies;
     }
 
     /**
