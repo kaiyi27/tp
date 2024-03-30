@@ -133,6 +133,10 @@ public class Meeting {
         return start.isBefore(otherEnd) && otherStart.isBefore(end);
     }
 
+    public boolean isComingUp() {
+        return LocalDateTime.now().plusWeeks(2).isAfter(this.startDateTime);
+    }
+
 
     @Override
     public boolean equals(Object obj) {

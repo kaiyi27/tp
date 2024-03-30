@@ -609,3 +609,14 @@
     -fx-text-fill: WHITE;
 
 }
+
+.meeting-title-label {
+    /* Your styling for title label here (font size, weight, color, etc.) */
+
+        -fx-background-color: #EED3D9;
+        -fx-font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
+        -fx-font-size: 16px;
+        -fx-font-weight: bold;
+        -fx-text-fill: BLACK !important;
+}
+

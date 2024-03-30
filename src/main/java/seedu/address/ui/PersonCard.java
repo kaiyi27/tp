@@ -7,12 +7,15 @@ import java.util.Comparator;
 import java.util.Locale;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -168,6 +171,28 @@ public class PersonCard extends UiPart<Region> {
         TitledPane meetingPane = new TitledPane("Meeting on " + meeting.getMeetingDate().toString(), scrollPane);
         meetingPane.setAnimated(true); // Enable animation
 
+        if (meeting.isComingUp()) {
+            ImageView bellIcon = new ImageView(new Image(getClass().getResourceAsStream("/images/bell.png")));
+            bellIcon.setFitHeight(15);
+            bellIcon.setFitWidth(15);
+
+            // Create a container for the title and the bell icon
+            Label titleLabel = new Label(meetingPane.getText());
+            // Use the same style class as originally applied to the title text
+            titleLabel.getStyleClass().add("meeting-title-label");
+            HBox titleContainer = new HBox(titleLabel, bellIcon);
+            titleContainer.getStyleClass().add("meeting-title-container"); //Apply CSS styling for alignment and spacing
+            titleContainer.setAlignment(Pos.CENTER_LEFT); // Align the title and icon to the left
+            titleContainer.setSpacing(5); // Set spacing between the title and icon
+
+            // Set the title container as the graphic of the TitledPane
+            meetingPane.setGraphic(titleContainer);
+
+            // Since we are using the graphic now, we don't want the text to show up again
+            meetingPane.setText("");
+        }
+
+
         return meetingPane;
     }
 
@@ -181,16 +206,11 @@ public class PersonCard extends UiPart<Region> {
 
         Label dateHeading = new Label("Expiry Date: ");
         dateHeading.setStyle("-fx-font-weight: bold !important; -fx-text-fill: #2a2a2a !important;");
-        Label timeLabel;
-        if (policy.expiryDate == null) {
-            timeLabel = new Label("-");
-        } else {
-            timeLabel = new Label(policy.expiryDate.toString());
-        }
+        Label timeLabel = (policy.expiryDate == null) ? new Label("-") : new Label(policy.expiryDate.toString());
 
         Label premiumHeading = new Label("Premium: ");
         premiumHeading.setStyle("-fx-font-weight: bold !important; -fx-text-fill: #2a2a2a !important;");
-        Label premiumLabel = new Label(policy.value);
+        Label premiumLabel = (policy.premium == 0.0) ? new Label("-") : new Label(Double.toString(policy.premium));
 
         // Combine the headings and content into horizontal layouts
         HBox policyBox = new HBox(policyHeading, policyLabel);
