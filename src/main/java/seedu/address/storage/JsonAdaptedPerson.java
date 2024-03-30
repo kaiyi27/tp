@@ -273,7 +273,7 @@ class JsonAdaptedPerson {
         }
         final Relationship modelRelationship = new Relationship(relationship);
 
-        final Set<Policy> modelPolicies = new HashSet<>(personPolicies);
+        final ArrayList<Policy> modelPolicies = new ArrayList<>(personPolicies);
 
         final ClientStatus modelClientStatus = new ClientStatus(Integer.parseInt(clientStatus));
         final ArrayList<Meeting> modelMeetings = new ArrayList<>(personMeetings);

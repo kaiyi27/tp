@@ -1,10 +1,12 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Objects;
 
 /**
  * Represents a Person's policy in the address book.
@@ -15,7 +17,6 @@ public class Policy {
             + " and cannot be in the past";
     public static final String PREMIUM_MESSAGE_CONSTRAINTS = "Premium value should be a floating number which is "
             + "larger than or equal 0.0.";
-
     public final String value;
     public final LocalDate expiryDate;
     public final double premium;
@@ -103,6 +104,6 @@ public class Policy {
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return Objects.hash(value, expiryDate, premium);
     }
 }

@@ -2,6 +2,8 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.sql.Array;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +31,7 @@ public class Person {
     // Data fields
     private final Address address;
 
-    private final Set<Policy> policies = new HashSet<>();
+    private final List<Policy> policies;
 
     private final Relationship relationship;
 
@@ -45,13 +47,13 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Relationship relationship,
-                  Set<Policy> policies, ClientStatus clientStatus, Set<Tag> tags, List<Meeting> meetings) {
+                  List<Policy> policies, ClientStatus clientStatus, Set<Tag> tags, List<Meeting> meetings) {
         requireAllNonNull(name, phone, email, address, relationship, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.policies.addAll(policies);
+        this.policies = getPolicyListCopy(policies);
         this.relationship = relationship;
         this.clientStatus = clientStatus;
         this.tags.addAll(tags);
@@ -72,10 +74,6 @@ public class Person {
 
     public Address getAddress() {
         return address;
-    }
-
-    public Set<Policy> getPolicies() {
-        return policies.isEmpty() ? new HashSet<>() : Collections.unmodifiableSet(policies);
     }
 
     public Relationship getRelationship() {
@@ -161,13 +159,6 @@ public class Person {
                 .toString();
     }
 
-
-
-
-
-    //Meetings composition methods
-
-
     /**
      * Returns an immutable list of meetings, sorted by start date and time.
      */
@@ -175,6 +166,15 @@ public class Person {
         List<Meeting> sortedMeetings = new ArrayList<>(meetings);
         sortedMeetings.sort(Comparator.comparing(Meeting::getStartDateTime));
         return Collections.unmodifiableList(sortedMeetings);
+    }
+
+    /**
+     * Returns an immutable list of policies, sorted by policy value.
+     */
+    public List<Policy> getPolicies() {
+        List<Policy> sortedPolicies = new ArrayList<>(policies);
+        sortedPolicies.sort(Comparator.comparing(policy -> policy.value));
+        return Collections.unmodifiableList(sortedPolicies);
     }
 
     /**
@@ -191,6 +191,21 @@ public class Person {
             throw new IllegalArgumentException("Meeting overlaps with existing meetings with this client.");
         } else {
             meetings.add(meeting);
+        }
+    }
+
+    /**
+     * Adds a meeting to the list of meetings associated with this person.
+     *
+     * @param policy The meeting to be added.
+     * @throws IllegalArgumentException if the meeting overlaps with existing meetings or
+     *     if scheduling constraints are violated.
+     */
+    public void addPolicy(Policy policy) {
+        if (policies.size() >= 5) {
+            throw new IllegalArgumentException("Cannot have more than 5 policies.");
+        } else {
+            policies.add(policy);
         }
     }
 
@@ -232,9 +247,25 @@ public class Person {
         }
     }
 
+    /**
+     * Reschedules a meeting associated with this person.
+     *
+     * @param index      The index of the meeting to be rescheduled.
+     * @param newDateTime The new date and time for the meeting.
+     * @throws IllegalArgumentException if the rescheduled meeting overlaps with existing meetings.
+     */
+    public void reschedulePolicy(int index, Policy policy) {
+        policies.remove(index);
+        policies.add(index, policy);
+    }
+
 
     public void cancelMeeting(int index) {
         meetings.remove(index);
+    }
+
+    public void cancelPolicy(int index) {
+        policies.remove(index);
     }
 
     private boolean isOverlapWithOtherMeetings(Meeting meetingToCheck) {
@@ -289,6 +320,19 @@ public class Person {
             copiedMeetings.add(copiedMeeting);
         }
         return copiedMeetings;
+    }
+
+    public List<Policy> getPolicyListCopy(List<Policy> listToBeCopied) {
+        List<Policy> copiedPolicies = new ArrayList<>();
+        for (Policy policy : listToBeCopied) {
+            Policy copiedPolicy = new Policy(
+                    policy.value,
+                    policy.expiryDate,
+                    policy.premium
+            );
+            copiedPolicies.add(copiedPolicy);
+        }
+        return copiedPolicies;
     }
 
     public Optional<Meeting> getEarliestMeeting() {

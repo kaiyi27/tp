@@ -53,7 +53,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Relationship relationship = ParserUtil.parseRelationship((argMultimap.getValue(PREFIX_RELATIONSHIP).get()));
-        Set<Policy> policies = new HashSet<>();
+        ArrayList<Policy> policies = new ArrayList<>();
         ClientStatus clientStatus = !relationship.value.equals("client")
                 ? ClientStatus.initNotClientStatus()
                 : ClientStatus.initClientStatus();

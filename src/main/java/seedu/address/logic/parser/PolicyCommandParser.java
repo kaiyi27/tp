@@ -4,17 +4,16 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EXPIRY_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_INDEX;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PREMIUM;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.PolicyCommand;
+import seedu.address.logic.commands.RescheduleMeetingCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Policy;
 
@@ -29,8 +28,8 @@ public class PolicyCommandParser implements Parser<PolicyCommand> {
      */
     public PolicyCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_POLICY, PREFIX_EXPIRY_DATE,
-                PREFIX_PREMIUM);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_POLICY, PREFIX_POLICY_INDEX,
+                PREFIX_EXPIRY_DATE, PREFIX_PREMIUM);
 
         Index index;
         try {
@@ -43,37 +42,40 @@ public class PolicyCommandParser implements Parser<PolicyCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, PolicyCommand.MESSAGE_USAGE));
         }
 
-        Set<Policy> policies = new HashSet<>();
-        List<String> policyValues = argMultimap.getAllValues(PREFIX_POLICY);
-        List<String> expiryDates = argMultimap.getAllValues(PREFIX_EXPIRY_DATE);
-        List<String> premiums = argMultimap.getAllValues(PREFIX_PREMIUM);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_POLICY, PREFIX_POLICY_INDEX, PREFIX_EXPIRY_DATE
+                , PREFIX_PREMIUM);
 
-        for (int i = 0; i < policyValues.size(); i++) {
-            String policy = policyValues.get(i);
-            String expiryDateStr = expiryDates.size() > i ? expiryDates.get(i) : null;
-            String premiumStr = premiums.size() > i ? premiums.get(i) : null;
+        String value = argMultimap.getValue(PREFIX_POLICY).get();
+        LocalDate expiryDate = null;
+        double premium = 0.0;
 
-            if (policy.isEmpty()) {
-                return new PolicyCommand(index, policies);
-            }
-
-            policy = policy.trim();
-            LocalDate expiryDate = null;
-            double premium = 0.0;
-
-            if (expiryDateStr != null && !expiryDateStr.isEmpty()) {
-                expiryDate = ParserUtil.parseExpiryDate(expiryDateStr);
-            }
-
-            if (premiumStr != null && !premiumStr.isEmpty()) {
-                premium = ParserUtil.parsePremium(premiumStr);
-            }
-
-            Policy newPolicy = new Policy(policy, expiryDate, premium);
-            policies.add(newPolicy);
+        if (argMultimap.getValue(PREFIX_EXPIRY_DATE).isPresent()) {
+            expiryDate = ParserUtil.parseExpiryDate(argMultimap.getValue(PREFIX_EXPIRY_DATE).get());
         }
 
-        return new PolicyCommand(index, policies);
+        if (argMultimap.getValue(PREFIX_PREMIUM).isPresent()) {
+            premium = ParserUtil.parsePremium(argMultimap.getValue(PREFIX_PREMIUM).get());
+        }
+
+        if (argMultimap.getValue(PREFIX_POLICY_INDEX).isPresent()) {
+            Index policyIndex;
+            try {
+                policyIndex = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_POLICY_INDEX).orElse(""));
+            } catch (ParseException e) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        PolicyCommand.MESSAGE_USAGE), e);
+            }
+            Policy policy = new Policy(value, expiryDate, premium);
+
+            return new PolicyCommand(index, policyIndex, policy);
+        } else {
+            if (value.isBlank()) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, PolicyCommand.MESSAGE_USAGE));
+            }
+            Policy policy = new Policy(value, expiryDate, premium);
+
+            return new PolicyCommand(index, policy);
+        }
     }
 
     /**
