@@ -1,5 +1,6 @@
 package seedu.address.model.person;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -78,5 +79,14 @@ public class PolicyTest {
         assertFalse(policy.equals(new Policy("Hello", null, 100.0))); // Null expiry date
         assertFalse(policy.equals(new Policy("Hello", LocalDate.of(2023, 01, 01),
                 0.0))); // Null premium
+    }
+
+    @Test
+    public void hashCode_equalPolicy_sameHashCode() {
+        Policy policy1 = new Policy("Hello", LocalDate.of(2023, 01, 01), 100.0);
+
+        Policy policy2 = new Policy("Hello", LocalDate.of(2023, 01, 01), 100.0);
+
+        assertEquals(policy1.hashCode(), policy2.hashCode());
     }
 }

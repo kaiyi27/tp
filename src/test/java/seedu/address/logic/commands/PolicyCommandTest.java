@@ -177,20 +177,27 @@ public class PolicyCommandTest {
     public void equals() {
         final PolicyCommand standardCommand = new PolicyCommand(INDEX_FIRST_PERSON,
                 new Policy(VALID_POLICY_AMY));
+        final PolicyCommand standardCommand2 = new PolicyCommand(INDEX_FIRST_PERSON, INDEX_FIRST_POLICY,
+                new Policy(VALID_POLICY_AMY));
 
         // same values -> returns true
         PolicyCommand commandWithSameValues = new PolicyCommand(INDEX_FIRST_PERSON,
                 new Policy(VALID_POLICY_AMY));
+        PolicyCommand commandWithSameValues2 = new PolicyCommand(INDEX_FIRST_PERSON, INDEX_FIRST_POLICY, 
+                new Policy(VALID_POLICY_AMY));
         assertTrue(standardCommand.equals(commandWithSameValues));
+        assertTrue(standardCommand2.equals(commandWithSameValues2));
 
         // same object -> returns true
         assertTrue(standardCommand.equals(standardCommand));
+        assertTrue(standardCommand2.equals(standardCommand2));
 
         // null -> returns false
         assertFalse(standardCommand.equals(null));
+        assertFalse(standardCommand2.equals(null));
 
         // different types -> returns false
         assertFalse(standardCommand.equals(new ClearCommand()));
-
+        assertFalse(standardCommand2.equals(new ClearCommand()));
     }
 }
