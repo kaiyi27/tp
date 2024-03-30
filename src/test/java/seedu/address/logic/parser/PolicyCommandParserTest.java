@@ -41,10 +41,11 @@ public class PolicyCommandParserTest {
     }
 
     @Test
-    public void parse_invalidInput_parsesIncorrectly() throws ParseException {
+    public void parse_invalidInput_parsesIncorrectly() {
         String args = "1 po/Policy ABC pi/dummy ";
         assertParseFailure(parser, args, String.format(MESSAGE_INVALID_COMMAND_FORMAT, PolicyCommand.MESSAGE_USAGE));
     }
+
     @Test
     public void parse_validInput_parsesCorrectly() throws ParseException {
         String args = "1 po/PolicyName ed/31-12-2024 pm/100.50";
