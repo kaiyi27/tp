@@ -7,7 +7,6 @@ import java.util.Comparator;
 import java.util.Locale;
 
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;

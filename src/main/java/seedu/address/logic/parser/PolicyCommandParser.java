@@ -13,7 +13,6 @@ import java.util.stream.Stream;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.PolicyCommand;
-import seedu.address.logic.commands.RescheduleMeetingCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Policy;
 
@@ -42,8 +41,8 @@ public class PolicyCommandParser implements Parser<PolicyCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, PolicyCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_POLICY, PREFIX_POLICY_INDEX, PREFIX_EXPIRY_DATE
-                , PREFIX_PREMIUM);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_POLICY, PREFIX_POLICY_INDEX, PREFIX_EXPIRY_DATE,
+                PREFIX_PREMIUM);
 
         String value = argMultimap.getValue(PREFIX_POLICY).get();
         LocalDate expiryDate = null;

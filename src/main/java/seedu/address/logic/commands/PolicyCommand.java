@@ -1,25 +1,18 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.commands.ScheduleMeetingCommand.MESSAGE_MEETING_SCHEDULED_SUCCESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EXPIRY_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_INDEX;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PREMIUM;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Meeting;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Policy;
 
@@ -56,8 +49,10 @@ public class PolicyCommand extends Command {
     private final Policy policy;
 
     /**
-     * @param index of the person in the filtered person list to edit the policy
-     * @param policy of the person to be updated to
+     * Constructs a PolicyCommand to add a new policy to the person at the specified index.
+     *
+     * @param index  The index of the person in the filtered person list.
+     * @param policy The policy to be added.
      */
     public PolicyCommand(Index index, Policy policy) {
         requireAllNonNull(index, policy);
@@ -67,6 +62,13 @@ public class PolicyCommand extends Command {
         this.policy = policy;
     }
 
+    /**
+     * Constructs a PolicyCommand to edit or delete an existing policy of the person at the specified index.
+     *
+     * @param index       The index of the person in the filtered person list.
+     * @param policyIndex The index of the policy to be edited or deleted.
+     * @param policy      The new policy to replace the existing policy (or null if deleting).
+     */
     public PolicyCommand(Index index, Index policyIndex, Policy policy) {
         requireAllNonNull(index, policyIndex, policy);
 
@@ -112,8 +114,8 @@ public class PolicyCommand extends Command {
 
             Person personToUpdated = personToEditOriginal.getCopy();
 
-
             if (policy.value.isBlank()) {
+                // delete policy if policy value is blank
                 personToUpdated.cancelPolicy(policyIndex.getZeroBased());
 
                 model.setPerson(personToEditOriginal, personToUpdated);
@@ -122,6 +124,7 @@ public class PolicyCommand extends Command {
                 return new CommandResult(String.format(MESSAGE_DELETE_POLICY_SUCCESS,
                         Messages.format(personToUpdated)));
             } else {
+                // edit policy if policy value exist
                 personToUpdated.reschedulePolicy(policyIndex.getZeroBased(), policy);
 
                 model.setPerson(personToEditOriginal, personToUpdated);

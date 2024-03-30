@@ -2,8 +2,6 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.sql.Array;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -248,11 +246,10 @@ public class Person {
     }
 
     /**
-     * Reschedules a meeting associated with this person.
+     * Reschedules a policy at the specified index by replacing it with the provided policy.
      *
-     * @param index      The index of the meeting to be rescheduled.
-     * @param newDateTime The new date and time for the meeting.
-     * @throws IllegalArgumentException if the rescheduled meeting overlaps with existing meetings.
+     * @param index The index of the policy to be rescheduled.
+     * @param policy The new policy to replace the existing one.
      */
     public void reschedulePolicy(int index, Policy policy) {
         policies.remove(index);
@@ -269,9 +266,6 @@ public class Person {
     }
 
     private boolean isOverlapWithOtherMeetings(Meeting meetingToCheck) {
-
-
-
         LocalDateTime startDateTimeToCheck = LocalDateTime.of(meetingToCheck.getMeetingDate(),
                 meetingToCheck.getMeetingTime());
         LocalDateTime endDateTimeToCheck = startDateTimeToCheck.plus(meetingToCheck.getDuration());
