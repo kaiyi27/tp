@@ -75,8 +75,8 @@ public class PolicyCommandTest {
         assertCommandSuccess(policyCommand, model, expectedMessage, expectedModel);
     }
 
-        @Test
-        public void execute_deletePolicyUnfilteredList_success() {
+    @Test
+    public void execute_deletePolicyUnfilteredList_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(firstPerson).build();
 
