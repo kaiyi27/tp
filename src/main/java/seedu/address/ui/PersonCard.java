@@ -22,6 +22,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import seedu.address.model.person.Meeting;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Policy;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -45,7 +46,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label relationship;
     @FXML
-    private FlowPane policies;
+    private Accordion policiesAccordion;
     @FXML
     private Label clientStatus;
     @FXML
@@ -68,35 +69,21 @@ public class PersonCard extends UiPart<Region> {
         email.setText(person.getEmail().value);
         relationship.setText(person.getRelationship().value);
 
+        policiesAccordion.getPanes().clear();
+
+        policiesAccordion.getPanes().clear();
         if (!person.isClient()) {
-            policies.setVisible(false);
-            clientStatus.setManaged(false);
+            policiesAccordion.setVisible(false);
         } else if (person.getPolicies().isEmpty()) {
-            Label label = new Label("No policy assigned");
-            label.getStyleClass().add("policies-label");
-            label.setStyle(
-                    "-fx-background-color: #d32f2f; "
-            );
-            policies.getChildren().add(label);
+            TitledPane noPoliciesPane = new TitledPane("No policies assigned",
+                    new Label("No policies assigned"));
+            noPoliciesPane.setDisable(true);
+            policiesAccordion.getPanes().add(noPoliciesPane);
         } else {
-            person.getPolicies().stream()
-                    .sorted(Comparator.comparing(policy -> policy.value))
-                    .forEach(policy -> {
-                        Label label = new Label("Policy: " + policy.value
-                                + (policy.expiryDate != null
-                                    ? "\n" + "(" + formatLocalDate(policy.expiryDate) + ")" + " "
-                                    : "")
-                                + (policy.premium != 0.0
-                                    ? "\n" + "$" + policy.premium + " "
-                                    : "")
-                        );
-                        label.getStyleClass().add("policies-label");
-                        label.setStyle(
-                                "-fx-background-color: #1fab2f; "
-                        );
-                        policies.getChildren().add(label);
-                        FlowPane.setMargin(label, new Insets(0, 6, 0, 0));
-                    });
+            for (Policy policy : person.getPolicies()) {
+                TitledPane policyPane = createPolicyEntry(policy);
+                policiesAccordion.getPanes().add(policyPane);
+            }
         }
 
         clientStatus.setText(person.getClientStatus().toString());
@@ -183,6 +170,51 @@ public class PersonCard extends UiPart<Region> {
         meetingPane.setAnimated(true); // Enable animation
 
         return meetingPane;
+    }
+
+    private TitledPane createPolicyEntry(Policy policy) {
+        VBox policyDetails = new VBox(5); // Padding around the VBox content
+
+        // Create styled labels for the headings
+        Label policyHeading = new Label("Policy: ");
+        policyHeading.setStyle("-fx-font-weight: bold !important; -fx-text-fill: #2a2a2a !important;");
+        Label policyLabel = new Label(policy.value);
+
+        Label dateHeading = new Label("Expiry Date: ");
+        dateHeading.setStyle("-fx-font-weight: bold !important; -fx-text-fill: #2a2a2a !important;");
+        Label timeLabel;
+        if (policy.expiryDate == null) {
+            timeLabel = new Label("-");
+        } else {
+            timeLabel = new Label(policy.expiryDate.toString());
+        }
+
+        Label premiumHeading = new Label("Premium: ");
+        premiumHeading.setStyle("-fx-font-weight: bold !important; -fx-text-fill: #2a2a2a !important;");
+        Label premiumLabel = new Label(policy.value);
+
+        // Combine the headings and content into horizontal layouts
+        HBox policyBox = new HBox(policyHeading, policyLabel);
+        HBox timeBox = new HBox(dateHeading, timeLabel);
+        HBox premiumBox = new HBox(premiumHeading, premiumLabel);
+
+        // Add some spacing between the heading and content
+        policyBox.setSpacing(5);
+        timeBox.setSpacing(5);
+        premiumBox.setSpacing(5);
+
+        // Add all HBoxes to the VBox
+        policyDetails.getChildren().addAll(policyBox, timeBox, premiumBox);
+
+        ScrollPane scrollPane = new ScrollPane(policyDetails);
+        scrollPane.setFitToHeight(true); // Ensures the scroll pane fits the height of VBox
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // Only show the horizontal bar when needed
+
+        // Create the TitledPane
+        TitledPane policyPane = new TitledPane("Policy: " + policy.value, scrollPane);
+        policyPane.setAnimated(true); // Enable animation
+
+        return policyPane;
     }
 
     private String formatDuration(Duration duration) {

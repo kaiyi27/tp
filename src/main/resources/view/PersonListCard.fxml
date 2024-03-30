@@ -31,17 +31,26 @@
         <Label fx:id="relationship" styleClass="relationship-label"/>
         <Label fx:id="clientStatus" styleClass="client-status-label"/>
       </HBox>
-      <FlowPane fx:id="policies" styleClass="policies-container"/>
         <Label fx:id="phone" styleClass="cell_small_label"/>
       <Label fx:id="address" styleClass="cell_small_label"/>
       <Label fx:id="email" styleClass="cell_small_label"/>
     </VBox>
 
+    <ScrollPane fx:id="policyScrollPane" GridPane.columnIndex="1" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED" fitToHeight="true" fitToWidth="true" styleClass="policy-scroll-pane">
+      <VBox fx:id="policiesVBox" alignment="TOP_RIGHT" fillWidth="true" styleClass="policy-details-container">
+        <!-- Wrap Accordion in a VBox and set alignment to TOP_RIGHT -->
+        <Accordion fx:id="policiesAccordion" minWidth="300" maxWidth="300" VBox.vgrow="ALWAYS" styleClass="accordion">
+          <!-- Policy TitledPanes will be added here in the controller code -->
+        </Accordion>
+      </VBox>
+    </ScrollPane>
+
+
     <!-- ScrollPane to contain the meetings -->
-    <ScrollPane fx:id="scrollPane" GridPane.columnIndex="1" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED" fitToHeight="true" fitToWidth="true" styleClass="meeting-scroll-pane">
+    <ScrollPane fx:id="scrollPane" GridPane.columnIndex="2" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED" fitToHeight="true" fitToWidth="true" styleClass="meeting-scroll-pane">
       <VBox fx:id="meetingsVBox" alignment="TOP_RIGHT" fillWidth="true" styleClass="meeting-details-container">
         <!-- Wrap Accordion in a VBox and set alignment to TOP_RIGHT -->
-        <Accordion fx:id="meetingsAccordion" minWidth="200" maxWidth="300" VBox.vgrow="ALWAYS" styleClass="accordion">
+        <Accordion fx:id="meetingsAccordion" minWidth="300" maxWidth="300" VBox.vgrow="ALWAYS" styleClass="accordion">
           <!-- Meeting TitledPanes will be added here in the controller code -->
         </Accordion>
       </VBox>
