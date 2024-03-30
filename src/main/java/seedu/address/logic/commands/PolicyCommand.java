@@ -144,6 +144,10 @@ public class PolicyCommand extends Command {
         return this.policy;
     }
 
+    public Index getPolicyIndex() {
+        return this.policyIndex;
+    }
+
     @Override
     public boolean equals(Object other) {
         // short circuit if same object

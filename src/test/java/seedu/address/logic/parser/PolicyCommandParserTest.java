@@ -41,6 +41,12 @@ public class PolicyCommandParserTest {
     }
 
     @Test
+    public void parse_invalidInput_parsesIncorrectly() throws ParseException {
+        String args = "1 po/Policy ABC pi/dummy ";
+        assertParseFailure(parser, args,
+                (String.format(MESSAGE_INVALID_COMMAND_FORMAT, PolicyCommand.MESSAGE_USAGE)));
+    }
+    @Test
     public void parse_validInput_parsesCorrectly() throws ParseException {
         String args = "1 po/PolicyName ed/31-12-2024 pm/100.50";
         try {
@@ -73,6 +79,25 @@ public class PolicyCommandParserTest {
             Policy expectedPolicies = new Policy("PolicyName", LocalDate.of(2024, 12, 31),
                     0.0);
             assertEquals(expectedPolicies, policyCommand.getPolicy());
+        } catch (ParseException e) {
+            throw new ParseException(e.getMessage());
+        }
+
+        String args4 = "1 po/PolicyName pi/1 ed/31-12-2024";
+        try {
+            PolicyCommand policyCommand = parser.parse(args4);
+            assertEquals(Index.fromOneBased(1), policyCommand.getIndex());
+
+            Policy expectedPolicies = new Policy("PolicyName", LocalDate.of(2024, 12, 31),
+                    0.0);
+            PolicyCommand expectedPolicyCommand = new PolicyCommand(Index.fromOneBased(1),
+                    Index.fromOneBased(1), expectedPolicies);
+            Index expectedIndex = Index.fromOneBased(1);
+
+
+            assertEquals(expectedPolicyCommand, policyCommand);
+            assertEquals(expectedPolicies, policyCommand.getPolicy());
+            assertEquals(expectedIndex, policyCommand.getPolicyIndex());
         } catch (ParseException e) {
             throw new ParseException(e.getMessage());
         }

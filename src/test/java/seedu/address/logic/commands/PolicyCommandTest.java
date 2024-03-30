@@ -14,6 +14,9 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -53,6 +56,27 @@ public class PolicyCommandTest {
     }
 
     @Test
+    public void execute_editPolicyFilteredList_success() {
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person editedPerson = new PersonBuilder(firstPerson).build();
+
+        List<Policy> policies = new ArrayList<>(firstPerson.getPolicies());
+        policies.set(INDEX_FIRST_POLICY.getZeroBased(), POLICY_STUB);
+        editedPerson.setPolicies(policies);
+
+        PolicyCommand policyCommand = new PolicyCommand(INDEX_FIRST_PERSON, INDEX_FIRST_POLICY, POLICY_STUB);
+
+        String expectedMessage = String.format(PolicyCommand.MESSAGE_POLICY_RESCHEDULED_SUCCESS,
+                Messages.format(editedPerson));
+
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        expectedModel.setPerson(firstPerson, editedPerson);
+        expectedModel.commitAddressBook();
+
+        assertCommandSuccess(policyCommand, model, expectedMessage, expectedModel);
+    }
+
+        @Test
     public void execute_deletePolicyUnfilteredList_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(firstPerson).build();
@@ -99,6 +123,25 @@ public class PolicyCommandTest {
     }
 
     @Test
+    public void execute_fullPoliciesFilteredList_failure() {
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        ArrayList<Policy> policies = new ArrayList<>(Collections.nCopies(5, new Policy("Policy ABC")));
+        Person editedPerson = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
+                .build();
+        editedPerson.setPolicies(policies);
+
+        PolicyCommand policyCommand = new PolicyCommand(INDEX_FIRST_PERSON, POLICY_STUB);
+
+        String expectedMessage = "Cannot have more than 5 policies.";
+
+        Model editedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        editedModel.setPerson(firstPerson, editedPerson);
+        editedModel.commitAddressBook();
+
+        assertCommandFailure(policyCommand, editedModel, expectedMessage);
+    }
+
+    @Test
     public void execute_invalidRelationshipFilteredList_failure() {
         PolicyCommand policyCommand = new PolicyCommand(INDEX_FIFTH_PERSON, POLICY_STUB);
 
@@ -115,6 +158,20 @@ public class PolicyCommandTest {
         PolicyCommand policyCommand = new PolicyCommand(outOfBoundIndex,
                 new Policy(VALID_POLICY_BOB));
         assertCommandFailure(policyCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_invalidPolicyIndexFilteredList_failure() {
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        List<Policy> policies = firstPerson.getPolicies();
+        Index outOfBoundIndex = Index.fromZeroBased(policies.size());
+
+        assertTrue(outOfBoundIndex.getZeroBased() >= policies.size());
+
+        PolicyCommand policyCommand = new PolicyCommand(Index.fromOneBased(1), outOfBoundIndex,
+                new Policy(VALID_POLICY_BOB));
+
+        assertCommandFailure(policyCommand, model, PolicyCommand.MESSAGE_POLICY_INVALID_INDEX);
     }
 
     @Test
