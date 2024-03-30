@@ -64,4 +64,19 @@ public class PolicyTest {
         Policy differentPolicy = new Policy("Bye");
         assertFalse(policy.equals(differentPolicy));
     }
+
+    @Test
+    public void equals_additionalScenarios() {
+        Policy policy = new Policy("Hello", LocalDate.of(2023, 01, 01), 100.0);
+
+        // Additional scenarios for equals method
+        assertTrue(policy.equals(policy)); // Policy compared to itself
+        assertFalse(policy.equals(new Policy("Hello", LocalDate.of(2023, 01, 02),
+                100.0))); // Different expiry date
+        assertFalse(policy.equals(new Policy("Hello", LocalDate.of(2023, 01, 01),
+                200.0))); // Different premium
+        assertFalse(policy.equals(new Policy("Hello", null, 100.0))); // Null expiry date
+        assertFalse(policy.equals(new Policy("Hello", LocalDate.of(2023, 01, 01),
+                0.0))); // Null premium
+    }
 }

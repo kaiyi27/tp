@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PREMIUM;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
+import java.util.Objects;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
@@ -160,13 +161,10 @@ public class PolicyCommand extends Command {
             return false;
         }
 
-        if (other == null || getClass() != other.getClass()) {
-            return false;
-        }
-
         // state check
         PolicyCommand e = (PolicyCommand) other;
         return index.equals(e.index)
+                && Objects.equals(policyIndex, e.policyIndex)
                 && policy.equals(e.policy);
     }
 }
