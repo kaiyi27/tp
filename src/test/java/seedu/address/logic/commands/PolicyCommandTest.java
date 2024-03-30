@@ -183,7 +183,7 @@ public class PolicyCommandTest {
         // same values -> returns true
         PolicyCommand commandWithSameValues = new PolicyCommand(INDEX_FIRST_PERSON,
                 new Policy(VALID_POLICY_AMY));
-        PolicyCommand commandWithSameValues2 = new PolicyCommand(INDEX_FIRST_PERSON, INDEX_FIRST_POLICY, 
+        PolicyCommand commandWithSameValues2 = new PolicyCommand(INDEX_FIRST_PERSON, INDEX_FIRST_POLICY,
                 new Policy(VALID_POLICY_AMY));
         assertTrue(standardCommand.equals(commandWithSameValues));
         assertTrue(standardCommand2.equals(commandWithSameValues2));
