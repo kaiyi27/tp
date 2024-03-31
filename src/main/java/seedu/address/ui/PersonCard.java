@@ -76,6 +76,7 @@ public class PersonCard extends UiPart<Region> {
         policiesAccordion.getPanes().clear();
         if (!person.isClient()) {
             policiesAccordion.setVisible(false);
+            clientStatus.setVisible(false);
         } else if (person.getPolicies().isEmpty()) {
             TitledPane noPoliciesPane = new TitledPane("No policies assigned",
                     new Label("No policies assigned"));
