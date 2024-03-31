@@ -87,6 +87,7 @@ public class PersonCard extends UiPart<Region> {
                 policiesAccordion.getPanes().add(policyPane);
             }
         }
+        policiesAccordion.setStyle("-fx-background-color: #D9EDBF !important; -fx-border-color: rgba(0, 60, 136, 0.8); -fx-font-family: 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif; -fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: BLACK;");
 
         clientStatus.setText(person.getClientStatus().toString());
         switch(person.getClientStatus().getStatus()) {
@@ -226,11 +227,15 @@ public class PersonCard extends UiPart<Region> {
         policyDetails.getChildren().addAll(policyBox, timeBox, premiumBox);
 
         ScrollPane scrollPane = new ScrollPane(policyDetails);
+
         scrollPane.setFitToHeight(true); // Ensures the scroll pane fits the height of VBox
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // Only show the horizontal bar when needed
 
         // Create the TitledPane
         TitledPane policyPane = new TitledPane("Policy: " + policy.value, scrollPane);
+
+
+
         policyPane.setAnimated(true); // Enable animation
 
         return policyPane;
