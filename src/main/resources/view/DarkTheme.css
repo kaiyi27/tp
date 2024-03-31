@@ -579,29 +579,45 @@
 }
 
 /* TitledPane styling when collapsed */
-.accordion .titled-pane:collapsed {
+#meetingsAccordion .titled-pane:collapsed {
     -fx-background-color: #e7e7e7; /* A slightly darker grey for collapsed panes */
     -fx-background-radius: 8px; /* Slightly less rounded corners for collapsed panes */
 }
 
 /* TitledPane styling when expanded */
-.accordion .titled-pane:expanded {
+.#meetingsAccordion .titled-pane:expanded {
     -fx-background-color: #F3CCF3 !important; /* White background for expanded pane */
     -fx-background-radius: 8px; /* Slightly less rounded corners for expanded panes */
 }
 
 /* Content area inside each TitledPane */
-.accordion .titled-pane > .content {
+#meetingsAccordion .titled-pane > .content {
     -fx-background-color: #F3CCF3 !important; /* White background for content */
     -fx-background-radius: 8px; /* Rounded corners for content */
 }
 
+#policiesAccordion .title-pane > .content {
+    -fx-background-color: #C3E2C2 !important; /* White background for content */
+    -fx-background-radius: 8px; /* Rounded corners for content */
 
+}
+
+/* TitledPane styling when collapsed */
+#policiesAccordion .titled-pane:collapsed {
+    -fx-background-color: #e7e7e7; /* A slightly darker grey for collapsed panes */
+    -fx-background-radius: 8px; /* Slightly less rounded corners for collapsed panes */
+}
+
+/* TitledPane styling when expanded */
+.#policiesAccordion .titled-pane:expanded {
+    -fx-background-color: #C3E2C2 !important; /* White background for expanded pane */
+    -fx-background-radius: 8px; /* Slightly less rounded corners for expanded panes */
+}
 
 
 .titled-pane > .title
 {
-    -fx-background-color: #EED3D9;
+    -fx-background-color: #F8DFD4 !important;
     -fx-border-color: rgba(0, 60, 136, 0.8);
     -fx-font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
     -fx-font-size: 16px;
@@ -610,7 +626,25 @@
 
 }
 
+
+#policiesAccordion .titled-pane > .title {
+ -fx-background-color: #C6EBC5 !important;
+
+}
+
+
 .meeting-title-label {
+    /* Your styling for title label here (font size, weight, color, etc.) */
+
+        -fx-background-color: #EED3D9;
+        -fx-font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
+        -fx-font-size: 16px;
+        -fx-font-weight: bold;
+        -fx-text-fill: BLACK !important;
+}
+
+
+.policy-title-label {
     /* Your styling for title label here (font size, weight, color, etc.) */
 
         -fx-background-color: #EED3D9;
