@@ -215,7 +215,9 @@ public class PersonCard extends UiPart<Region> {
 
         Label premiumHeading = new Label("Premium: ");
         premiumHeading.setStyle("-fx-font-weight: bold !important; -fx-text-fill: #2a2a2a !important;");
-        Label premiumLabel = (policy.premium == 0.0) ? new Label("-") : new Label(Double.toString(policy.premium));
+        String formattedPremium = String.format("%.2f", policy.premium);
+        Label premiumLabel = (policy.premium == 0.0) ? new Label("-")
+                : new Label(formattedPremium + "$");
 
         // Combine the headings and content into horizontal layouts
         HBox policyBox = new HBox(policyHeading, policyLabel);
