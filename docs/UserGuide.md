@@ -107,7 +107,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* The relationship field is not allowed to edit.
+* The relationship and policy field is not allowed to edit.
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
 * You can remove all the person’s tags by typing `t/` without
     specifying any tags after it.
@@ -152,7 +152,6 @@ Examples:
 ### How to modify a policy?
 * Format of expiry date is `dd-mm-yyyy` e.g: `31-12-2025` and it should not be a past date.
 * Value of premium should be larger than 0.
-* Policies cannot be changed with the `edit`command. They can only be changed with `policy`.
 * Only clients can be assigned a policy. Attempts to assign a policy to a partner will be denied.
 
 ___
@@ -258,6 +257,8 @@ Action     | Format, Examples
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
 **Help**   | `help`
-**Policy** | `policy INDEX po/POLICY_NAME`
+**Add Policy** | `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 po/Policy ABC ed/01-01-2025`
+**Edit Policy** | `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 pi/2 po/Policy ABC pm/1000`
+**Delete Policy** | `policy INDEX pi/POLICY_INDEX po/` <br> e.g., `policy 2 pi/2 po/`
 **Undo**   | `undo`
 **Redo**   | `redo`
