@@ -76,6 +76,7 @@ public class PersonCard extends UiPart<Region> {
         policiesAccordion.getPanes().clear();
         if (!person.isClient()) {
             policiesAccordion.setVisible(false);
+            clientStatus.setVisible(false);
         } else if (person.getPolicies().isEmpty()) {
             TitledPane noPoliciesPane = new TitledPane("No policies assigned",
                     new Label("No policies assigned"));
@@ -87,7 +88,10 @@ public class PersonCard extends UiPart<Region> {
                 policiesAccordion.getPanes().add(policyPane);
             }
         }
-        policiesAccordion.setStyle("-fx-background-color: #D9EDBF !important; -fx-border-color: rgba(0, 60, 136, 0.8); -fx-font-family: 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif; -fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: BLACK;");
+        policiesAccordion.setStyle("-fx-background-color: #D9EDBF !important;"
+                + "-fx-border-color: rgba(0, 60, 136, 0.8);"
+                + "-fx-font-family: 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif;"
+                + "-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: BLACK;");
 
         clientStatus.setText(person.getClientStatus().toString());
         switch(person.getClientStatus().getStatus()) {
