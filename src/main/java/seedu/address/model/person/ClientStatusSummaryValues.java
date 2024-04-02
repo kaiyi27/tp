@@ -17,7 +17,7 @@ public class ClientStatusSummaryValues {
      * Creates a {@code ClientStatusSummaryValues} with the given values.
      */
     public ClientStatusSummaryValues(int numClients, int numStart, int numMid, int numEnd) {
-        checkArgument(numClients == numStart + numMid + numEnd);
+        checkArgument(numClients == numStart + numMid + numEnd, MESSAGE_CONSTRAINTS);
         numberOfClients = numClients;
         numberOfStart = numStart;
         numberOfMid = numMid;

@@ -152,6 +152,7 @@ public class Person {
                 .add("email", email)
                 .add("address", address)
                 .add("relationship", relationship)
+                .add("clientStatus", clientStatus)
                 .add("policy", policies)
                 .add("tags", tags)
                 .toString();
