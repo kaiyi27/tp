@@ -18,19 +18,22 @@ public class ClientStatusSummary extends UiPart<Region> {
     @FXML
     private Label endSummary;
 
+    /**
+     * Creates a {@code ClientStatusSummary} with the given (@code ClientStatusSummaryValues}.
+     */
     public ClientStatusSummary(ClientStatusSummaryValues clientStatusSummaryValues) {
         super(FXML);
         startSummary.setText("Yet to start - "
-                + clientStatusSummaryValues.NUMBER_OF_START
+                + clientStatusSummaryValues.numberOfStart
                 + "/"
-                + clientStatusSummaryValues.NUMBER_OF_CLIENTS);
+                + clientStatusSummaryValues.numberOfClients);
         midSummary.setText("In progress - "
-                + clientStatusSummaryValues.NUMBER_OF_MID
+                + clientStatusSummaryValues.numberOfMid
                 + "/"
-                + clientStatusSummaryValues.NUMBER_OF_CLIENTS);
+                + clientStatusSummaryValues.numberOfClients);
         endSummary.setText("Completed - "
-                + clientStatusSummaryValues.NUMBER_OF_END
+                + clientStatusSummaryValues.numberOfEnd
                 + "/"
-                + clientStatusSummaryValues.NUMBER_OF_CLIENTS);
+                + clientStatusSummaryValues.numberOfClients);
     }
 }
