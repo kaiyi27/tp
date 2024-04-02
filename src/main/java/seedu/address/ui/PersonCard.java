@@ -7,13 +7,15 @@ import java.util.Comparator;
 import java.util.Locale;
 
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -22,6 +24,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import seedu.address.model.person.Meeting;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Policy;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -45,9 +48,11 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label relationship;
     @FXML
-    private FlowPane policies;
+    private Accordion policiesAccordion;
     @FXML
     private Label clientStatus;
+    @FXML
+    private Label meeting;
     @FXML
     private FlowPane tags;
     @FXML
@@ -66,38 +71,39 @@ public class PersonCard extends UiPart<Region> {
         email.setText(person.getEmail().value);
         relationship.setText(person.getRelationship().value);
 
+        policiesAccordion.getPanes().clear();
+
+        policiesAccordion.getPanes().clear();
         if (!person.isClient()) {
-            policies.setVisible(false);
-            clientStatus.setManaged(false);
+            policiesAccordion.setVisible(false);
+            clientStatus.setVisible(false);
         } else if (person.getPolicies().isEmpty()) {
-            Label label = new Label("No policy assigned");
-            label.setStyle(
-                    "-fx-background-color: #d32f2f; "
-                            + "-fx-font-size: 14px; "
-                            + "-fx-padding: 2px 4px; " // Adjust padding to fit the content
-                            + "-fx-background-radius: 2.5; "
-            );
-            policies.getChildren().add(label);
+            TitledPane noPoliciesPane = new TitledPane("No policies assigned",
+                    new Label("No policies assigned"));
+            noPoliciesPane.setDisable(true);
+            policiesAccordion.getPanes().add(noPoliciesPane);
         } else {
-            person.getPolicies().stream()
-                    .sorted(Comparator.comparing(policy -> policy.value))
-                    .forEach(policy -> {
-                        Label label = new Label("Policy: " + policy.value + "\n"
-                                + (policy.expiryDate != null
-                                ? "(" + formatLocalDate(policy.expiryDate) + ")" + " " : "") + "\n"
-                                + (policy.premium != 0.0 ? policy.premium + "$" + " " : ""));
-                        label.setStyle(
-                                "-fx-background-color: #1fab2f; "
-                                        + "-fx-font-size: 14px; "
-                                        + "-fx-padding: 2px 4px; " // Adjust padding to fit the content
-                                        + "-fx-background-radius: 2.5; "
-                        );
-                        policies.getChildren().add(label);
-                        FlowPane.setMargin(label, new Insets(0, 6, 0, 0));
-                    });
+            for (Policy policy : person.getPolicies()) {
+                TitledPane policyPane = createPolicyEntry(policy);
+                policiesAccordion.getPanes().add(policyPane);
+            }
         }
+        policiesAccordion.setStyle("-fx-background-color: #D9EDBF !important;"
+                + "-fx-border-color: rgba(0, 60, 136, 0.8);"
+                + "-fx-font-family: 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif;"
+                + "-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: BLACK;");
 
         clientStatus.setText(person.getClientStatus().toString());
+        switch(person.getClientStatus().getStatus()) {
+        case 2:
+            clientStatus.setStyle("-fx-background-color: #D97930;");
+            break;
+        case 3:
+            clientStatus.setStyle("-fx-background-color: #1fab2f;");
+            break;
+        default:
+            clientStatus.setStyle("-fx-background-color: #d32f2f;");
+        }
 
         tags.getChildren().clear();
         person.getTags().stream()
@@ -170,7 +176,73 @@ public class PersonCard extends UiPart<Region> {
         TitledPane meetingPane = new TitledPane("Meeting on " + meeting.getMeetingDate().toString(), scrollPane);
         meetingPane.setAnimated(true); // Enable animation
 
+        if (meeting.isComingUp()) {
+            ImageView bellIcon = new ImageView(new Image(getClass().getResourceAsStream("/images/bell.png")));
+            bellIcon.setFitHeight(15);
+            bellIcon.setFitWidth(15);
+
+            // Create a container for the title and the bell icon
+            Label titleLabel = new Label(meetingPane.getText());
+            // Use the same style class as originally applied to the title text
+            titleLabel.getStyleClass().add("meeting-title-label");
+            HBox titleContainer = new HBox(titleLabel, bellIcon);
+            titleContainer.getStyleClass().add("meeting-title-container"); //Apply CSS styling for alignment and spacing
+            titleContainer.setAlignment(Pos.CENTER_LEFT); // Align the title and icon to the left
+            titleContainer.setSpacing(5); // Set spacing between the title and icon
+
+            // Set the title container as the graphic of the TitledPane
+            meetingPane.setGraphic(titleContainer);
+
+            // Since we are using the graphic now, we don't want the text to show up again
+            meetingPane.setText("");
+        }
+
+
         return meetingPane;
+    }
+
+    private TitledPane createPolicyEntry(Policy policy) {
+        VBox policyDetails = new VBox(5); // Padding around the VBox content
+
+        // Create styled labels for the headings
+        Label policyHeading = new Label("Policy: ");
+        policyHeading.setStyle("-fx-font-weight: bold !important; -fx-text-fill: #2a2a2a !important;");
+        Label policyLabel = new Label(policy.value);
+
+        Label dateHeading = new Label("Expiry Date: ");
+        dateHeading.setStyle("-fx-font-weight: bold !important; -fx-text-fill: #2a2a2a !important;");
+        Label timeLabel = (policy.expiryDate == null) ? new Label("-") : new Label(policy.expiryDate.toString());
+
+        Label premiumHeading = new Label("Premium: ");
+        premiumHeading.setStyle("-fx-font-weight: bold !important; -fx-text-fill: #2a2a2a !important;");
+        Label premiumLabel = (policy.premium == 0.0) ? new Label("-") : new Label(Double.toString(policy.premium));
+
+        // Combine the headings and content into horizontal layouts
+        HBox policyBox = new HBox(policyHeading, policyLabel);
+        HBox timeBox = new HBox(dateHeading, timeLabel);
+        HBox premiumBox = new HBox(premiumHeading, premiumLabel);
+
+        // Add some spacing between the heading and content
+        policyBox.setSpacing(5);
+        timeBox.setSpacing(5);
+        premiumBox.setSpacing(5);
+
+        // Add all HBoxes to the VBox
+        policyDetails.getChildren().addAll(policyBox, timeBox, premiumBox);
+
+        ScrollPane scrollPane = new ScrollPane(policyDetails);
+
+        scrollPane.setFitToHeight(true); // Ensures the scroll pane fits the height of VBox
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // Only show the horizontal bar when needed
+
+        // Create the TitledPane
+        TitledPane policyPane = new TitledPane("Policy: " + policy.value, scrollPane);
+
+
+
+        policyPane.setAnimated(true); // Enable animation
+
+        return policyPane;
     }
 
     private String formatDuration(Duration duration) {

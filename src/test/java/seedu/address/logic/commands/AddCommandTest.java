@@ -10,6 +10,7 @@ import static seedu.address.testutil.TypicalPersons.ALICE;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -185,7 +186,11 @@ public class AddCommandTest {
 
         @Override
         public boolean hasMeetingOverlap(Meeting meeting) {
-            throw new AssertionError("Meeting should not be overlapped.");
+            throw new AssertionError("This method should not be called.");
+        }
+        @Override
+        public void removeExpiredMeetings() {
+            throw new AssertionError("This method should not be called.");
         }
     }
 
@@ -233,5 +238,27 @@ public class AddCommandTest {
             return new AddressBook();
         }
     }
+
+    private class ModelStubWithMeetingOverlap extends ModelStub {
+        private final List<Meeting> meetings = new ArrayList<>();
+
+        @Override
+        public void addPerson(Person person) {
+            requireNonNull(person);
+            // Add all meetings of the person to the list
+            meetings.addAll(person.getMeetings());
+        }
+
+        @Override
+        public boolean hasMeetingOverlap(Meeting meeting) {
+            for (Meeting existingMeeting : meetings) {
+                if (meeting.overlapsWith(existingMeeting)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
 
 }

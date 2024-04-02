@@ -15,13 +15,15 @@ public class CliSyntax {
     public static final Prefix PREFIX_PREMIUM = new Prefix("pm/");
     public static final Prefix PREFIX_STATUS = new Prefix("s/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
+
     public static final Prefix PREFIX_RELATIONSHIP = new Prefix("r/"); // Add this line
 
     public static final Prefix PREFIX_MEETING_DATE = new Prefix("md/");
     public static final Prefix PREFIX_MEETING_TIME = new Prefix("mt/");
     public static final Prefix PREFIX_MEETING_AGENDA = new Prefix("ma/");
     public static final Prefix PREFIX_MEETING_NOTES = new Prefix("mn/");
-
     public static final Prefix PREFIX_MEETING_DURATION = new Prefix("mdur/");
+    public static final Prefix PREFIX_MEETING_INDEX = new Prefix("mi/");
+    public static final Prefix PREFIX_POLICY_INDEX = new Prefix("pi/");
 
 }

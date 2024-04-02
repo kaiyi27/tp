@@ -21,7 +21,7 @@ public class FindCommand extends Command {
             + "or tags contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD_TYPE/KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " n/alice n/bob";
+            + "Example: " + COMMAND_WORD + " n/alice n/bob r/client t/friend";
 
     private final Predicate<Person> predicate;
 

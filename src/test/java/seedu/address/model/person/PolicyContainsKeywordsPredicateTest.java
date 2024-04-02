@@ -13,11 +13,15 @@ import org.junit.jupiter.api.Test;
 import seedu.address.testutil.PersonBuilder;
 
 public class PolicyContainsKeywordsPredicateTest {
+    private static Policy samplePolicyOne = new Policy("life insurance");
+    private static Policy samplePolicyTwo = new Policy("car insurance");
+
+
 
     @Test
     public void equals() {
-        List<String> firstPredicateKeywordList = Collections.singletonList("life_insurance");
-        List<String> secondPredicateKeywordList = Arrays.asList("life_insurance", "car_insurance");
+        List<String> firstPredicateKeywordList = Collections.singletonList("life insurance");
+        List<String> secondPredicateKeywordList = Arrays.asList("life insurance", "car insurance");
 
         PolicyContainsKeywordsPredicate firstPredicate = new PolicyContainsKeywordsPredicate(firstPredicateKeywordList);
         PolicyContainsKeywordsPredicate secondPredicate =
@@ -46,29 +50,29 @@ public class PolicyContainsKeywordsPredicateTest {
         // One keyword
         PolicyContainsKeywordsPredicate predicate =
                 new PolicyContainsKeywordsPredicate(Collections.singletonList("life"));
-        assertTrue(predicate.test(new PersonBuilder().withPolicy("life insurance").build()));
+        assertTrue(predicate.test(new PersonBuilder().withPolicy(samplePolicyOne).build()));
 
         // Multiple keywords
         predicate = new PolicyContainsKeywordsPredicate(Arrays.asList("life", "car"));
-        assertTrue(predicate.test(new PersonBuilder().withPolicy("life insurance").build()));
-        assertTrue(predicate.test(new PersonBuilder().withPolicy("car insurance").build()));
+        assertTrue(predicate.test(new PersonBuilder().withPolicy(samplePolicyOne).build()));
+        assertTrue(predicate.test(new PersonBuilder().withPolicy(samplePolicyTwo).build()));
 
         // Mixed-case keywords
         predicate = new PolicyContainsKeywordsPredicate(Arrays.asList("liFe", "cAR"));
-        assertTrue(predicate.test(new PersonBuilder().withPolicy("life insurance").build()));
-        assertTrue(predicate.test(new PersonBuilder().withPolicy("car insurance").build()));
+        assertTrue(predicate.test(new PersonBuilder().withPolicy(samplePolicyOne).build()));
+        assertTrue(predicate.test(new PersonBuilder().withPolicy(samplePolicyTwo).build()));
     }
 
     @Test
     public void test_policyDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
         PolicyContainsKeywordsPredicate predicate = new PolicyContainsKeywordsPredicate(Collections.emptyList());
-        assertFalse(predicate.test(new PersonBuilder().withPolicy("life insurance").build()));
+        assertFalse(predicate.test(new PersonBuilder().withPolicy(samplePolicyOne).build()));
 
         // Non-matching keyword
         predicate = new PolicyContainsKeywordsPredicate(Arrays.asList("Associate"));
-        assertFalse(predicate.test(new PersonBuilder().withPolicy("life insurance").build()));
-        assertFalse(predicate.test(new PersonBuilder().withPolicy("car insurance").build()));
+        assertFalse(predicate.test(new PersonBuilder().withPolicy(samplePolicyOne).build()));
+        assertFalse(predicate.test(new PersonBuilder().withPolicy(samplePolicyTwo).build()));
     }
 
     @Test

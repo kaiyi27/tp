@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.CancelMeetingCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.ClientStatusCommand;
 import seedu.address.logic.commands.Command;
@@ -20,6 +21,7 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.PolicyCommand;
 import seedu.address.logic.commands.RedoCommand;
+import seedu.address.logic.commands.RescheduleMeetingCommand;
 import seedu.address.logic.commands.ScheduleMeetingCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -96,6 +98,11 @@ public class AddressBookParser {
 
         case ScheduleMeetingCommand.COMMAND_WORD:
             return new ScheduleMeetingCommandParser().parse(arguments);
+        case RescheduleMeetingCommand.COMMAND_WORD:
+            return new RescheduleMeetingCommandParser().parse(arguments);
+        case CancelMeetingCommand.COMMAND_WORD:
+            return new CancelMeetingCommandParser().parse(arguments);
+
 
 
 

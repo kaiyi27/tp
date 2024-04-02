@@ -10,6 +10,16 @@ import java.util.Objects;
  * Represents a meeting with a specific date, time, duration, agenda, and optional notes.
  */
 public class Meeting {
+
+    public static final String MESSAGE_CONSTRAINTS_DATE = "Meeting dates should be in the format YYYY-MM-DD.";
+    public static final String MESSAGE_CONSTRAINTS_TIME = "Meeting times should be in the format HH:MM.";
+
+    public static final String MESSAGE_CONSTRAINTS_DURATION = "Meeting duration should be a "
+            +
+            "positive integer representing minutes.";
+
+    public static final String MESSAGE_CONSTRAINTS_AGENDA = "Meeting agenda should not be blank.";
+    public static final String MESSAGE_CONSTRAINTS_NOTES = "Meeting notes should not be blank.";
     private LocalDate meetingDate;
     private LocalTime meetingTime;
 
@@ -81,6 +91,16 @@ public class Meeting {
         return startDateTime;
     }
 
+    /**
+     * Checks if this meeting has already occurred.
+     *
+     * @return True if the meeting is in the past, false otherwise.
+     */
+    public boolean isExpired() {
+        return LocalDateTime.of(meetingDate, meetingTime).isBefore(LocalDateTime.now());
+    }
+
+
     @Override
     public int hashCode() {
         return Objects.hash(meetingDate, meetingTime, duration, agenda, notes);
@@ -105,12 +125,16 @@ public class Meeting {
      * @return True if there is an overlap, false otherwise.
      */
     public boolean overlapsWith(Meeting other) {
-        LocalDateTime start = LocalDateTime.of(this.getMeetingDate(), this.getMeetingTime());
+        LocalDateTime start = this.startDateTime;
         LocalDateTime end = start.plus(this.getDuration());
         LocalDateTime otherStart = LocalDateTime.of(other.getMeetingDate(), other.getMeetingTime());
         LocalDateTime otherEnd = otherStart.plus(other.getDuration());
 
         return start.isBefore(otherEnd) && otherStart.isBefore(end);
+    }
+
+    public boolean isComingUp() {
+        return LocalDateTime.now().plusWeeks(2).isAfter(this.startDateTime);
     }
 
 

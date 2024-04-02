@@ -273,18 +273,14 @@ class JsonAdaptedPerson {
         }
         final Relationship modelRelationship = new Relationship(relationship);
 
-        final Set<Policy> modelPolicies = new HashSet<>(personPolicies);
+        final ArrayList<Policy> modelPolicies = new ArrayList<>(personPolicies);
 
         final ClientStatus modelClientStatus = new ClientStatus(Integer.parseInt(clientStatus));
+        final ArrayList<Meeting> modelMeetings = new ArrayList<>(personMeetings);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
         final Person person = new Person(modelName, modelPhone, modelEmail, modelAddress, modelRelationship,
-                modelPolicies, modelClientStatus, modelTags);
-
-        // Add meetings to the person
-        for (Meeting meeting : personMeetings) {
-            person.addMeeting(meeting);
-        }
+                modelPolicies, modelClientStatus, modelTags, modelMeetings);
 
         return person;
     }

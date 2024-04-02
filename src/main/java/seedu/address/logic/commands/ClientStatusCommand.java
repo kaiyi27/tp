@@ -85,8 +85,7 @@ public class ClientStatusCommand extends Command {
 
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), personToEdit.getRelationship(), personToEdit.getPolicies(),
-                clientStatus, personToEdit.getTags());
-
+                clientStatus, personToEdit.getTags(), personToEdit.getMeetings());
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();

@@ -1,11 +1,9 @@
 package seedu.address.testutil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import seedu.address.model.person.Address;
 import seedu.address.model.person.ClientStatus;
@@ -35,7 +33,7 @@ public class PersonBuilder {
     private Phone phone;
     private Email email;
     private Address address;
-    private Set<Policy> policies;
+    private List<Policy> policies;
     private Relationship relationship;
     private ClientStatus clientStatus;
     private Set<Tag> tags;
@@ -51,7 +49,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
-        policies = new HashSet<>();
+        policies = new ArrayList<>();
         clientStatus = ClientStatus.initClientStatus();
         relationship = new Relationship(DEFAULT_RELATIONSHIP);
         tags = new HashSet<>();
@@ -66,7 +64,7 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
-        policies = new HashSet<>(personToCopy.getPolicies());
+        policies = new ArrayList<>(personToCopy.getPolicies());
         relationship = personToCopy.getRelationship();
         clientStatus = personToCopy.getClientStatus();
         tags = new HashSet<>(personToCopy.getTags());
@@ -114,18 +112,10 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Policy} of the {@code Person} that we are building.
+     * Adds a {@code Policy} to the {@code Person} that we are building.
      */
-    public PersonBuilder withPolicy(String... policy) {
-        if (policy.length == 0) {
-            this.policies = new HashSet<>();
-            return this;
-        }
-
-        Set<Policy> newPolicies = Arrays.stream(policy)
-                .map(SampleDataUtil::parsePolicy) // Call parsePolicy from SampleDataUtil
-                .collect(Collectors.toSet());
-        this.policies.addAll(newPolicies);
+    public PersonBuilder withPolicy(Policy policy) {
+        this.policies.add(policy);
         return this;
     }
 
@@ -159,9 +149,7 @@ public class PersonBuilder {
      * @return A new Person object with the specified details.
      */
     public Person build() {
-        Person p = new Person(name, phone, email, address, relationship, policies, clientStatus, tags);
-
-        p.setMeetings(this.meetings);
+        Person p = new Person(name, phone, email, address, relationship, policies, clientStatus, tags, meetings);
 
         return p;
     }
