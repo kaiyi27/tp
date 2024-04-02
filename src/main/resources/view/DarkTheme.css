@@ -549,6 +549,16 @@
     -fx-background-radius: 4;
 }
 
+.client-status-label-summary {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+    -fx-text-fill: #010504;
+    -fx-padding: 3px;
+    -fx-background-radius: 4;
+    -fx-font-weight: bold;
+    -fx-text-fill: WHITE;
+}
+
 
 .policies-container {
     -fx-font-family: "Segoe UI" !important;

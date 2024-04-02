@@ -120,7 +120,7 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        clientStatusSummary = new ClientStatusSummary();
+        clientStatusSummary = new ClientStatusSummary(logic.getClientStatusSummaryValues());
         clientStatusSummaryPlaceholder.getChildren().add(clientStatusSummary.getRoot());
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
@@ -184,7 +184,8 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
-            clientStatusSummary.updateClientStatusSummary();
+            clientStatusSummary = new ClientStatusSummary(logic.getClientStatusSummaryValues());
+            clientStatusSummaryPlaceholder.getChildren().add(clientStatusSummary.getRoot());
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
@@ -198,7 +199,6 @@ public class MainWindow extends UiPart<Stage> {
         } catch (CommandException | ParseException e) {
             logger.info("An error occurred while executing command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
-            clientStatusSummary.updateClientStatusSummary();
             throw e;
         }
     }
