@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.person.ClientStatusSummaryValues;
 import seedu.address.model.person.Meeting;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
@@ -101,6 +102,10 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     public void sortPersonsByEarliestMeeting() {
         setPersons(getPersonList());
+    }
+
+    public ClientStatusSummaryValues getClientStatusSummaryValues() {
+        return persons.getClientStatusSummaryValues();
     }
 
 
