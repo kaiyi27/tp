@@ -1,6 +1,10 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RELATIONSHIP;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.function.Predicate;
 
@@ -20,9 +24,13 @@ public class FindCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names, relationships, policy "
             + "or tags contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD_TYPE/KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " n/alice n/bob r/client t/friend";
-
+            + "Parameters (at least one prefix needed): "
+            + PREFIX_NAME + "[NAME] "
+            + PREFIX_RELATIONSHIP + "[RELATIONSHIP] "
+            + PREFIX_POLICY + "[POLICY] "
+            + PREFIX_TAG + "[TAG] \n"
+            + "Example: " + COMMAND_WORD + " n/alice n/bob r/client t/friend po/Health policy";
+    public static final String NO_MATCHING_RESULT = "Unable to find any persons with the matching conditions";
     private final Predicate<Person> predicate;
 
     public FindCommand(Predicate<Person> predicate) {
@@ -33,6 +41,9 @@ public class FindCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPersonList(predicate);
+        if (model.getFilteredPersonList().size() == 0) {
+            return new CommandResult(NO_MATCHING_RESULT);
+        }
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
     }
