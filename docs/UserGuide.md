@@ -107,7 +107,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* The relationship field is not allowed to edit.
+* The relationship and policy field is not allowed to edit.
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
 * You can remove all the person’s tags by typing `t/` without
     specifying any tags after it.
@@ -116,11 +116,11 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Locating persons by name, relationship, tag: `find`
+### Locating persons by name, relationship, tag, policy: `find`
 
 Finds persons whose names contain any of the given keywords.
 
-Format: `find n/KEYWORD [MORE_KEYWORDS] r/RELATIONSHIP [MORE_RELATIONSHIPS] t/TAG [MORE_TAGS]`
+Format: `find n/KEYWORD [MORE_KEYWORDS] r/RELATIONSHIP [MORE_RELATIONSHIPS] t/TAG [MORE_TAGS] po/POLICY [MORE_POLICY]`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
@@ -148,21 +148,35 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
-### Assigning a policy : `policy`
 
-Assigns a policy to a client.
-
-Format: `policy INDEX po/POLICY_NAME`
-
-* Assigns a policy to the client at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+### How to modify a policy?
+* Format of expiry date is `dd-mm-yyyy` e.g: `31-12-2025` and it should not be a past date.
+* Value of premium should be larger than 0.
 * Only clients can be assigned a policy. Attempts to assign a policy to a partner will be denied.
-* Upon creating a new client, the initial policy will be empty.
-* Policies cannot be changed with the `edit`command. They can only be changed with `policy`.
-* Leaving `POLICY_NAME` blank will remove the policy from the client. Each client can only have one policy (for now). If the client is already assigned a policy, the current policy will be overwritten with the new one.
 
-Examples:
-* `policy 1 po/Policy ABC` Assigns the policy of the 1st person if it is a client to be `Policy ABC`
-* `policy 2 po/` Removes the existing policy of the 2nd person if it is a client.
+___
+#### Adding a policy to a client
+Format: `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
+* Assigns a policy to the client at the specified `INDEX`. 
+The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+
+Examples: `policy 1 po/Policy ABC ed/01-01-2025 pm/2000` (Add new policy to the first person).
+___
+#### Editing a policy of a client
+Format: `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
+* Edit a policy to the client at the specified `INDEX` with a specified `POLICY INDEX`. 
+Policy index refers to the index number shown in the person displayed policy list. Both index **must be a positive integer** 1, 2, 3, …​
+
+Examples: `policy 1 pi/2 po/Policy ABC ed/01-01-2025 pm/2000` (Edit the first person second policy).
+___
+#### Delete a policy from a client
+Format: `policy INDEX pi/POLICY_INDEX po/`
+* Delete a policy to the client at the specified `INDEX` with a specified `POLICY INDEX`.
+Both index **must be a positive integer** 1, 2, 3, …​
+* Leave the `POLICY_NAME` blank to remove a particular policy from a particular client.
+  
+Examples: `policy 1 pi/2 po/` (Delete the first person second policy).
+
 
 ### Undoing a command: `undo`
 
@@ -243,6 +257,8 @@ Action     | Format, Examples
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
 **Help**   | `help`
-**Policy** | `policy INDEX po/POLICY_NAME`
+**Add Policy** | `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 po/Policy ABC ed/01-01-2025`
+**Edit Policy** | `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 pi/2 po/Policy ABC pm/1000`
+**Delete Policy** | `policy INDEX pi/POLICY_INDEX po/` <br> e.g., `policy 2 pi/2 po/`
 **Undo**   | `undo`
 **Redo**   | `redo`
