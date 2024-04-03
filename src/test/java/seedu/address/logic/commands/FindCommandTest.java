@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.FindCommand.NO_MATCHING_RESULT;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalPersons.getTypicalPersons;
 
@@ -59,7 +60,7 @@ public class FindCommandTest {
 
     @Test
     public void execute_nameKeywords_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+        String expectedMessage = NO_MATCHING_RESULT;
         Predicate<Person> predicate = new NameContainsKeywordsPredicate(Collections.singletonList("NoSuchName"));
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);
@@ -69,7 +70,7 @@ public class FindCommandTest {
 
     @Test
     public void execute_relationshipKeywords_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+        String expectedMessage = NO_MATCHING_RESULT;
         Predicate<Person> predicate =
                 new RelationshipContainsKeywordsPredicate(Collections.singletonList("NoSuchRelationship"));
         FindCommand command = new FindCommand(predicate);
@@ -80,7 +81,7 @@ public class FindCommandTest {
 
     @Test
     public void execute_tagKeywords_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+        String expectedMessage = NO_MATCHING_RESULT;
         Predicate<Person> predicate = new TagContainsKeywordsPredicate(Collections.singletonList("NoSuchTag"));
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);
@@ -90,7 +91,7 @@ public class FindCommandTest {
 
     @Test
     public void execute_policyKeywords_noPolicyFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+        String expectedMessage = NO_MATCHING_RESULT;
         Predicate<Person> predicate = new PolicyContainsKeywordsPredicate(Collections.singletonList("NoSuchPolicy"));
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);

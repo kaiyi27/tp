@@ -317,9 +317,22 @@ public class ParserUtil {
         }
         throw new ParseException("Invalid format for day of week");
     }
-    private static LocalDate checkIfTimeHasPassedOnSameDayAsCurrent(LocalTime time, DayOfWeek dayOfWeek,
+
+    /**
+     * Checks if the time when the user inputted the command has passed
+     * if the day chosen is same as the current day as the
+     * TemporalAdjusters.nextOrSame(current day) does not take into account
+     * if the time chosen has already passed
+     *
+     * @param time time of input
+     * @param InputDayOfWeek day inputted by user
+     * @param currentDay the current day
+     * @param nextOccurrence the date returned by TemporalAdjusters.nextOrSame(current day)
+     * @return LocalDate of next occurence, taking time into account
+     */
+    public static LocalDate checkIfTimeHasPassedOnSameDayAsCurrent(LocalTime time, DayOfWeek InputDayOfWeek,
                                                                     LocalDate currentDay, LocalDate nextOccurrence) {
-        if (nextOccurrence.with(dayOfWeek) == currentDay) {
+        if (nextOccurrence.with(InputDayOfWeek) == currentDay) {
             LocalTime currentTime = LocalTime.now();
             if (time.isBefore(currentTime)) {
                 nextOccurrence = nextOccurrence.plusWeeks(1);
