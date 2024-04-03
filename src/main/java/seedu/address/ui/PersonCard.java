@@ -122,7 +122,6 @@ public class PersonCard extends UiPart<Region> {
             noMeetingsPane.setDisable(true);
             meetingsAccordion.getPanes().add(noMeetingsPane);
         }
-
         applyHoverEffect(cardPane);
     }
 
@@ -261,7 +260,7 @@ public class PersonCard extends UiPart<Region> {
     private void applyHoverEffect(Node node) {
         DropShadow hoverShadow = new DropShadow();
         hoverShadow.setColor(Color.PLUM);
-        hoverShadow.setRadius(30);
+        hoverShadow.setRadius(10);
         hoverShadow.setSpread(0.5);
 
         node.addEventHandler(MouseEvent.MOUSE_ENTERED, e -> node.setEffect(hoverShadow));
