@@ -35,5 +35,4 @@ public class RedoCommandTest {
         assertCommandFailure(command, model, expectedMessage);
     }
 
-
 }

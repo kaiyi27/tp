@@ -19,6 +19,7 @@ public class CombinedPredicate implements Predicate<Person> {
      *
      * @param predicates The list of predicates.
      */
+    @SafeVarargs
     public CombinedPredicate(Predicate<Person>... predicates) {
         combinedPredicate = Arrays.stream(predicates).reduce(p -> false, Predicate::or);
         predicateList = Arrays.asList(predicates);
