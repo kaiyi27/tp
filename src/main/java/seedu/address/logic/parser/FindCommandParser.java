@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.Messages.MESSAGE_NO_PREFIXES_FOUND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RELATIONSHIP;
@@ -44,6 +45,10 @@ public class FindCommandParser implements Parser<FindCommand> {
         List<String> tagKeywords = argMultimap.getAllValues(PREFIX_TAG);
         List<String> policyKeywords = argMultimap.getAllValues(PREFIX_POLICY);
 
+        if (nameKeywords.isEmpty() && relationshipKeywords.isEmpty()
+                && tagKeywords.isEmpty() && policyKeywords.isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_NO_PREFIXES_FOUND, FindCommand.MESSAGE_USAGE));
+        }
         CombinedPredicate combinedPredicate =
                 new CombinedPredicate(
                         new NameContainsKeywordsPredicate(nameKeywords),
