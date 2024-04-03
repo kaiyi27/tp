@@ -320,8 +320,8 @@ public class ParserUtilTest {
         // Valid day of week with time
         LocalDate nearestWednesday = LocalDate.now().with(java.time.temporal.TemporalAdjusters
                         .nextOrSame(java.time.DayOfWeek.WEDNESDAY));
-        LocalDate nextWednesday = checkIfTimeHasPassedOnSameDayAsCurrent(LocalTime.parse("16:00"), DayOfWeek.WEDNESDAY,
-                nearestWednesday, nearestWednesday );
+        LocalDate nextWednesday = checkIfTimeHasPassedOnSameDayAsCurrent(LocalTime.parse("16:00"),
+                DayOfWeek.WEDNESDAY, nearestWednesday, nearestWednesday);
         assertEquals(LocalDateTime.of(nextWednesday, LocalTime.of(16, 0)),
                 parseLocalDateTime("Wednesday", "16:00"));
     }
