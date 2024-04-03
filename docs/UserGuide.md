@@ -177,6 +177,22 @@ Both index **must be a positive integer** 1, 2, 3, …​
   
 Examples: `policy 1 pi/2 po/` (Delete the first person second policy).
 
+### Changing a client's status: `status`
+
+Changes a client's status to reflect the progress with that client. Possible statuses are `Yet to start`,
+`In progress`, and `Completed`.
+
+Format: `status INDEX s/DIRECTION`
+
+* Changes the status of the client at the specified `INDEX`.
+  The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* `DIRECTION` must be either `up` to indicate an increase in status e.g. `Yet to start` to `In progress`,
+or `down` to indicate a decrease in status e.g. `In progress` to `Yet to start`. Leave the direction
+blank to reset the client's status to `Yet to start`.
+* There is also a dashboard that displays the number of clients that are currently at each status. It is updated automatically.
+
+Examples: `status 1 s/up`
+
 
 ### Undoing a command: `undo`
 
