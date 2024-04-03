@@ -5,9 +5,15 @@
 ---
 
 # InsuraConnect User Guide
+Welcome to the user guide for InsuraConnect!
 
-InsuraConnect is an enhanced version of the AddressBook-Level3 project, which serves as a **personal contact management tool for insurance agents**.
-It provides fast access to client contact details, easily manage client relationships, collaborate with industry partners, and stay organised in a fast-paced industry.
+InsuraConnect is a **personal productivity booster tool for insurance agents**.
+
+It provides fast access to client contact details, easily manage client relationships, keep track of meetings and policies, and stay organised in a fast-paced and competitive industry.
+
+This user guide will serve to teach users in how to use InsuraConnect as well as its many features to boost your productivity.
+
+Refer to the table of contents on the right to find your answers as well as step-by-step instructions for all the features to be a **master** of InsuraConnect.
 <!-- * Table of Contents -->
 <page-nav-print />
 
@@ -34,11 +40,13 @@ It provides fast access to client contact details, easily manage client relation
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
-   * `clear` : Deletes all contacts.
+   * `schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60` : Schedules a meeting with the first contact in the current list at 5th may 2024 9am to discuss health policy.
+   * `policy 1 po/Health policy ed/2029-06-06 pm/1000` Adds a policy with the first contact in the current list with name of 
+   Health policy, expiry date on the 6th of June 2029, with a premium of 1000 SGD
 
    * `exit` : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+1. Refer to the [Features](#features) below for further details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -50,9 +58,11 @@ It provides fast access to client contact details, easily manage client relation
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+* Prefixes are in the form of a shortened word followed by a / such as `po/` for policy or`md/` for meeting date. 
+* Prefixes require a space before being used, such as `n/NAME e/EMAIL` requiring a space between `NAME` and `e/`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
@@ -107,8 +117,9 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* The relationship and policy field is not allowed to edit.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
+* Not allowed to edit the relationship.
+* Editing the policy and meeting fields will be through other commands, [policy](#editing-a-policy-of-a-client) and [reschedule](#rescheduling-a-meeting-with-a-person--reschedule) respectively.
+* When editing tags, the existing tags of the person will be removed i.e. adding of tags is not cumulative.
 * You can remove all the person’s tags by typing `t/` without
     specifying any tags after it.
 
@@ -149,7 +160,7 @@ Examples:
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
 
-### How to modify a policy?
+### Policy
 * Format of expiry date is `dd-mm-yyyy` e.g: `31-12-2025` and it should not be a past date.
 * Value of premium should be larger than 0.
 * Only clients can be assigned a policy. Attempts to assign a policy to a partner will be denied.
@@ -193,6 +204,47 @@ blank to reset the client's status to `Yet to start`.
 
 Examples: `status 1 s/up` increases the status of the 1st person in the address book if it is a client.
 
+### Meeting
+* Meeting date and time must not be in the past, or after 1 year in the future
+* Meeting date and time and duration must not overlap with previous meeting dates and times and duration
+* There should not be more than 5 meetings for any clients
+* Multiple classical date formats are accepted for further convenience as listed below with examples for `DATE`:
+  * yyyy-mm-dd i.e. 2024-12-30
+  * yyyy mm dd i.e. 2024 12 30
+  * dd mm yyyy i.e. 30 12 2024
+  * dd-mm-yyyy i.e. 30-12-2024
+* Days of week are also accepted for dates for even more convenience
+  * Examples: Mon or Monday (*first letter needs to be capitalised*)
+  * This chooses the nearest next occurrence of the day i.e
+    current day and time is Monday 05:00, selecting Mon for `DATE` and 04:59 for `TIME` will choose 
+    next weeks' monday while choosing 05:01 for `TIME` instead will choose the current monday at 05:01.
+
+
+#### Scheduling a meeting with a person: `schedule`
+
+Schedules a meeting with a person with an agenda and duration with optional notes
+
+Format: `schedule INDEX md/DATE mt/TIME mdur/DURATION ma/AGENDA mn/[NOTES]`
+
+* Schedules meeting with a person at the specified INDEX. The index refers to the index number shown in the displayed persons list.
+* Meeting notes are optional and can be used to represent any additional information that might be useful for the meeting.
+
+#### Rescheduling a meeting with a person: `reschedule
+
+Reschedules a meeting with a person
+
+Format: `reschedule INDEX mi/MEETING INDEX md/DATE mt/TIME `
+
+* Reschedules meeting with a person at the specified INDEX. The index is the same as the above for schedule.
+* Selects a meeting from the list of meeting using the MEETING INDEX
+
+#### Cancelling a meeting with a person: `cancel`
+
+Cancels a meeting with a person
+
+Format: `cancel INDEX mi/MEETING INDEX`
+
+* INDEX and MEETING INDEX is the same as the above for reschedule
 
 ### Undoing a command: `undo`
 
@@ -201,17 +253,21 @@ Undoes a previous command.
 Format: `undo`
 
 * Only undoes commands that made changes to the address book
-  Examples:
+
+Examples:
 * `delete 1`
 * `undo` Undoes the previous command which adds back the person that is deleted
-### Redoing a command:`redo`
+
+### Redoing a command: `redo`
 
 Redoes a previous undid command
 
 Format: `redo`
 
 * Requires a successful prior undo command to redo
-  Examples:
+  
+Examples:
+
 * `delete 1`
 * `undo`
 * `redo`
@@ -276,5 +332,8 @@ Action     | Format, Examples
 **Add Policy** | `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 po/Policy ABC ed/01-01-2025`
 **Edit Policy** | `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 pi/2 po/Policy ABC pm/1000`
 **Delete Policy** | `policy INDEX pi/POLICY_INDEX po/` <br> e.g., `policy 2 pi/2 po/`
+**Schedule Meeting**   | `schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60`
+**Reschedule Meeting**   | `reschedule 1 mi/1 md/2024-07-07 mt/11:00`
+**Cancel Meeting**   | `cancel 1 mi/1`
 **Undo**   | `undo`
 **Redo**   | `redo`
