@@ -191,7 +191,7 @@ or `down` to indicate a decrease in status e.g. `In progress` to `Yet to start`.
 blank to reset the client's status to `Yet to start`.
 * There is also a dashboard that displays the number of clients that are currently at each status. It is updated automatically.
 
-Examples: `status 1 s/up`
+Examples: `status 1 s/up` increases the status of the 1st person in the address book if it is a client.
 
 
 ### Undoing a command: `undo`
