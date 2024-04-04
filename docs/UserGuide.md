@@ -164,6 +164,7 @@ Examples:
 ### Policy
 * Format of expiry date is `dd-mm-yyyy` e.g: `31-12-2025` and it should not be a past date.
 * Value of premium should be larger than 0.
+* The maximum policies per person is 5.
 * Only clients can be assigned a policy. Attempts to assign a policy to a partner will be denied.
 
 ___
