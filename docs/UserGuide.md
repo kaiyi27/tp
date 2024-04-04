@@ -47,6 +47,7 @@ Refer to the table of contents on the right to find your answers as well as step
    * `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for further details of each command.
+2. Refer to the [Command Summary](#command-summary) for a full list of the available commands
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -78,7 +79,7 @@ Refer to the table of contents on the right to find your answers as well as step
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
