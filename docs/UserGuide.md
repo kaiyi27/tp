@@ -143,7 +143,7 @@ Format: `find n/KEYWORD [MORE_KEYWORDS] r/RELATIONSHIP [MORE_RELATIONSHIPS] t/TA
 Examples:
 * `find n/ John` returns `john` and `John Doe`
 * `find r/partner` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findCharlotteIrfanResult.png)
+  ![result for 'find alex david'](images/findAlexDavidResult.png)
 
 ### Deleting a person : `delete`
 
@@ -345,6 +345,7 @@ Action     | Format, Examples
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
 **Help**   | `help`
+**Change Client Status** | `status INDEX s/DIRECTION`
 **Add Policy** | `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 po/Policy ABC ed/01-01-2025`
 **Edit Policy** | `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 pi/2 po/Policy ABC pm/1000`
 **Delete Policy** | `policy INDEX pi/POLICY_INDEX po/` <br> e.g., `policy 2 pi/2 po/`
