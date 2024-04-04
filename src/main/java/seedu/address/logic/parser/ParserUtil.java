@@ -325,14 +325,14 @@ public class ParserUtil {
      * if the time chosen has already passed
      *
      * @param time time of input
-     * @param InputDayOfWeek day inputted by user
+     * @param inputDayOfWeek day inputted by user
      * @param currentDay the current day
      * @param nextOccurrence the date returned by TemporalAdjusters.nextOrSame(current day)
      * @return LocalDate of next occurence, taking time into account
      */
-    public static LocalDate checkIfTimeHasPassedOnSameDayAsCurrent(LocalTime time, DayOfWeek InputDayOfWeek,
+    public static LocalDate checkIfTimeHasPassedOnSameDayAsCurrent(LocalTime time, DayOfWeek inputDayOfWeek,
                                                                     LocalDate currentDay, LocalDate nextOccurrence) {
-        if (nextOccurrence.with(InputDayOfWeek) == currentDay) {
+        if (nextOccurrence.with(inputDayOfWeek) == currentDay) {
             LocalTime currentTime = LocalTime.now();
             if (time.isBefore(currentTime)) {
                 nextOccurrence = nextOccurrence.plusWeeks(1);
