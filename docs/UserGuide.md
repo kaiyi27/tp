@@ -185,6 +185,7 @@ Format: `policy INDEX pi/POLICY_INDEX po/`
 * Delete a policy to the client at the specified `INDEX` with a specified `POLICY INDEX`.
 Both index **must be a positive integer** 1, 2, 3, …​
 * Leave the `POLICY_NAME` blank to remove a particular policy from a particular client.
+* Need to note that if the policy leave blank it will delete that policy even if there are other information provided afterwards.
   
 Examples: `policy 1 pi/2 po/` (Delete the first person second policy).
 
@@ -342,7 +343,7 @@ Action     | Format, Examples
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Find**   | `find n/KEYWORD [MORE_KEYWORDS] r/RELATIONSHIP [MORE_RELATIONSHIPS] t/TAG [MORE_TAGS] po/POLICY [MORE_POLICY]` <br> e.g., `find n/John Doe r/client`
 **List**   | `list`
 **Help**   | `help`
 **Change Client Status** | `status INDEX s/DIRECTION`
