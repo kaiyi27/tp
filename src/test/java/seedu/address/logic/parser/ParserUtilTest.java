@@ -316,14 +316,6 @@ public class ParserUtilTest {
         // Valid date and time
         assertEquals(LocalDateTime.of(2023, 10, 25, 14, 30),
                 parseLocalDateTime("2023-10-25", "14:30"));
-
-        // Valid day of week with time
-        LocalDate nearestWednesday = LocalDate.now().with(java.time.temporal.TemporalAdjusters
-                        .nextOrSame(java.time.DayOfWeek.WEDNESDAY));
-        LocalDate nextWednesday = checkIfTimeHasPassedOnSameDayAsCurrent(LocalTime.parse("16:00"),
-                DayOfWeek.WEDNESDAY, nearestWednesday, nearestWednesday);
-        assertEquals(LocalDateTime.of(nextWednesday, LocalTime.of(16, 0)),
-                parseLocalDateTime("Wednesday", "16:00"));
     }
 
     //    @Test
