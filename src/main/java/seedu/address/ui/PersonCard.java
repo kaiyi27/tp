@@ -88,11 +88,10 @@ public class PersonCard extends UiPart<Region> {
                 policiesAccordion.getPanes().add(policyPane);
             }
         }
-        policiesAccordion.setStyle("-fx-background-color: #D9EDBF !important; "
-                +
-                "-fx-border-color: rgba(0, 60, 136, 0.8); -fx-font-family: 'Lucida Grande', Verdana, Geneva, Lucida, "
-                +
-                "Arial, Helvetica, sans-serif; -fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: BLACK;");
+        policiesAccordion.setStyle("-fx-background-color: #D9EDBF !important;"
+                + "-fx-border-color: rgba(0, 60, 136, 0.8);"
+                + "-fx-font-family: 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif;"
+                + "-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: BLACK;");
 
         clientStatus.setText(person.getClientStatus().toString());
         switch(person.getClientStatus().getStatus()) {
@@ -123,7 +122,6 @@ public class PersonCard extends UiPart<Region> {
             noMeetingsPane.setDisable(true);
             meetingsAccordion.getPanes().add(noMeetingsPane);
         }
-
         applyHoverEffect(cardPane);
     }
 
@@ -216,7 +214,9 @@ public class PersonCard extends UiPart<Region> {
 
         Label premiumHeading = new Label("Premium: ");
         premiumHeading.setStyle("-fx-font-weight: bold !important; -fx-text-fill: #2a2a2a !important;");
-        Label premiumLabel = (policy.premium == 0.0) ? new Label("-") : new Label(Double.toString(policy.premium));
+        String formattedPremium = String.format("%.2f", policy.premium);
+        Label premiumLabel = (policy.premium == 0.0) ? new Label("-")
+                : new Label(formattedPremium + "$");
 
         // Combine the headings and content into horizontal layouts
         HBox policyBox = new HBox(policyHeading, policyLabel);
@@ -260,7 +260,7 @@ public class PersonCard extends UiPart<Region> {
     private void applyHoverEffect(Node node) {
         DropShadow hoverShadow = new DropShadow();
         hoverShadow.setColor(Color.PLUM);
-        hoverShadow.setRadius(30);
+        hoverShadow.setRadius(10);
         hoverShadow.setSpread(0.5);
 
         node.addEventHandler(MouseEvent.MOUSE_ENTERED, e -> node.setEffect(hoverShadow));

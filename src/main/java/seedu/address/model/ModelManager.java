@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.person.ClientStatusSummaryValues;
 import seedu.address.model.person.Meeting;
 import seedu.address.model.person.Person;
 
@@ -112,6 +113,11 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedPerson);
 
         versionedAddressBook.setPerson(target, editedPerson);
+    }
+
+    @Override
+    public ClientStatusSummaryValues getClientStatusSummaryValues() {
+        return versionedAddressBook.getClientStatusSummaryValues();
     }
 
     //=========== Filtered Person List Accessors =============================================================
