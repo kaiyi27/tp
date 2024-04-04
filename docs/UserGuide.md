@@ -227,6 +227,7 @@ Schedules a meeting with a person with an agenda and duration with optional note
 Format: `schedule INDEX md/DATE mt/TIME mdur/DURATION ma/AGENDA mn/[NOTES]`
 
 * Schedules meeting with a person at the specified INDEX. The index refers to the index number shown in the displayed persons list.
+* Meeting can only be scheduled if it does not exist in the past and does not overlap with any of the existing meetings.
 * Meeting notes are optional and can be used to represent any additional information that might be useful for the meeting.
 
 #### Rescheduling a meeting with a person: `reschedule
@@ -245,6 +246,21 @@ Cancels a meeting with a person
 Format: `cancel INDEX mi/MEETING INDEX`
 
 * INDEX and MEETING INDEX is the same as the above for reschedule
+
+
+### Managing Meetings
+
+#### Meeting Scheduling and Rescheduling
+
+Meetings are automatically sorted by their scheduled dates and times. When multiple meetings are scheduled for a client, InsuraConnect will organize them in ascending order, showing the earliest upcoming meeting at the top. This feature allows insurance agents to quickly glance at their schedule and prioritize upcoming meetings.
+
+#### Automatic Purging of Expired Meetings
+
+To ensure the schedule remains current and manageable, InsuraConnect automatically purges past meetings. Once a meeting's end time has passed, it will be removed from the system during the next refresh cycle. This helps to maintain an up-to-date schedule for users, focusing only on relevant future engagements.
+
+#### Sorting Clients/Partners by Earliest Meeting
+
+Clients and partners are sorted in the user interface according to the time of their earliest scheduled meeting. This sorting mechanism places those individuals with the most imminent meetings at the top of the list, allowing for efficient time management and planning. Should there be no scheduled meetings for a client or partner, they will be positioned in the list based on the default sorting criteria.
 
 ### Undoing a command: `undo`
 
