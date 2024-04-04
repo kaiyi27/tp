@@ -233,7 +233,7 @@ Format: `schedule INDEX md/DATE mt/TIME mdur/DURATION ma/AGENDA mn/[NOTES]`
 * Meeting can only be scheduled if it does not exist in the past and does not overlap with any of the existing meetings.
 * Meeting notes are optional and can be used to represent any additional information that might be useful for the meeting.
 
-#### Rescheduling a meeting with a person: `reschedule
+#### Rescheduling a meeting with a person: `reschedule`
 
 Reschedules a meeting with a person
 
