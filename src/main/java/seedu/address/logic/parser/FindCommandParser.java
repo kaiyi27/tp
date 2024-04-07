@@ -27,8 +27,6 @@ public class FindCommandParser implements Parser<FindCommand> {
      * and returns a FindCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-
-
     @Override
     public FindCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_RELATIONSHIP,
@@ -80,7 +78,7 @@ public class FindCommandParser implements Parser<FindCommand> {
                         new PolicyContainsKeywordsPredicate(policyKeywords));
         return new FindCommand(combinedPredicate);
     }
-    
+
     /**
      * Checks if any element in the given list contains whitespace or is blank.
      *
