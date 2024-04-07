@@ -25,8 +25,6 @@ import seedu.address.model.person.Policy;
 import seedu.address.model.person.Relationship;
 import seedu.address.model.tag.Tag;
 
-
-
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
  */
@@ -143,7 +141,7 @@ public class ParserUtil {
         if (!Policy.isValidExpiryDate(trimmedExpiryDate)) {
             throw new ParseException(Policy.EXPIRY_DATE_MESSAGE_CONSTRAINTS);
         }
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu");
         return LocalDate.parse(trimmedExpiryDate, formatter);
     }
 
