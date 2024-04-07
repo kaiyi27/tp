@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.Objects;
 
 /**
@@ -12,8 +13,8 @@ import java.util.Objects;
  * Guarantees: immutable; is always valid
  */
 public class Policy {
-    public static final String EXPIRY_DATE_MESSAGE_CONSTRAINTS = "Expiry date format should be in the format dd/mm/yyyy"
-            + " and cannot be in the past";
+    public static final String EXPIRY_DATE_MESSAGE_CONSTRAINTS = "Expiry date format should be a valid date "
+            + "in the format dd-MM-yyyy and cannot be in the past";
     public static final String PREMIUM_MESSAGE_CONSTRAINTS = "Premium value should be a floating number which is "
             + "larger than or equal 0.0.";
     public final String value;
@@ -53,7 +54,8 @@ public class Policy {
     public static boolean isValidExpiryDate(String expiryDate) {
         try {
             String trimmedExpiryDate = expiryDate.trim();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu")
+                    .withResolverStyle(ResolverStyle.STRICT);
             LocalDate parsedDate = LocalDate.parse(trimmedExpiryDate, formatter);
 
             if (parsedDate.isBefore(LocalDate.now())) {

@@ -2,7 +2,7 @@
 
 ![Ui](docs/images/Ui-v1.3.png)
 
-* Insura-Connect is an enhanced version of the AddressBook-Level3 project, which serves as a personal contact management tool for insurance agents.
+* InsuraConnect is an enhanced version of the AddressBook-Level3 project, which serves as a personal contact management tool for insurance agents.
 * It provides fast access to client contact details, easily manage client relationships, collaborate with industry partners, and stay organised in a fast-paced industry.
-* For the detailed documentation of this project, see the **[Insura-Connect Product Website](https://ay2324s2-cs2103t-t13-3.github.io/tp/)**.
+* For the detailed documentation of this project, see the **[InsuraConnect Product Website](https://ay2324s2-cs2103t-t13-3.github.io/tp/)**.
 * This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).

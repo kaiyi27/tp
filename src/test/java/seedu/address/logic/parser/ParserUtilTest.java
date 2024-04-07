@@ -3,12 +3,10 @@ package seedu.address.logic.parser;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
-import static seedu.address.logic.parser.ParserUtil.checkIfTimeHasPassedOnSameDayAsCurrent;
 import static seedu.address.logic.parser.ParserUtil.parseLocalDateTime;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
-import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -311,6 +309,7 @@ public class ParserUtilTest {
     }
 
 
+
 //    @Test
 //    public void parseLocalDateTime_validInput_success() throws Exception {
 //        // Valid date and time
@@ -325,6 +324,14 @@ public class ParserUtilTest {
 //        assertEquals(LocalDateTime.of(nextWednesday, LocalTime.of(16, 0)),
 //                parseLocalDateTime("Wednesday", "16:00"));
 //    }
+
+    @Test
+    public void parseLocalDateTime_validInput_success() throws Exception {
+        // Valid date and time
+        assertEquals(LocalDateTime.of(2023, 10, 25, 14, 30),
+                parseLocalDateTime("2023-10-25", "14:30"));
+    }
+
 
     //    @Test
     //    public void parseLocalDateTime_invalidDate_throwsParseException() {

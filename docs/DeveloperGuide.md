@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# Insura-Connect Developer Guide
+# InsuraConnect Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />

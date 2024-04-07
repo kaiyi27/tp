@@ -29,7 +29,7 @@ public class FindCommand extends Command {
             + PREFIX_RELATIONSHIP + "[RELATIONSHIP] "
             + PREFIX_POLICY + "[POLICY] "
             + PREFIX_TAG + "[TAG] \n"
-            + "Example: " + COMMAND_WORD + " n/alice n/bob r/client t/friend po/Health policy";
+            + "Example: " + COMMAND_WORD + " n/alice n/bob r/client t/friend po/Health";
     public static final String NO_MATCHING_RESULT = "Unable to find any persons with the matching conditions";
     private final Predicate<Person> predicate;
 
