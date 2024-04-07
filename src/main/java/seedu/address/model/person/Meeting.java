@@ -11,15 +11,18 @@ import java.util.Objects;
  */
 public class Meeting {
 
-    public static final String MESSAGE_CONSTRAINTS_DATE = "Meeting dates should be in the format YYYY-MM-DD.";
+    public static final String MESSAGE_CONSTRAINTS_DATE = "Meeting dates should be present and should "
+            + "in the one of the following formats: YYYY-MM-DD, "
+            + "yyyy-MM-dd, dd-MM-yyyy, yyyyMMdd, yyyy MM dd, dd MM yyyy, ddMMyyyy .";
+
     public static final String MESSAGE_CONSTRAINTS_TIME = "Meeting times should be in the format HH:MM.";
 
     public static final String MESSAGE_CONSTRAINTS_DURATION = "Meeting duration should be a "
             +
-            "positive integer representing minutes.";
+            "positive integer representing minutes between 5 and 480 minutes.";
 
     public static final String MESSAGE_CONSTRAINTS_AGENDA = "Meeting agenda should not be blank.";
-    public static final String MESSAGE_CONSTRAINTS_NOTES = "Meeting notes should not be blank.";
+    public static final String MESSAGE_CONSTRAINTS_NOTES = "Meeting notes is optional and can be blank.";
     private LocalDate meetingDate;
     private LocalTime meetingTime;
 

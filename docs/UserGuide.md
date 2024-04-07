@@ -94,13 +94,14 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/RELATIONSHIP [t/TAG]â€¦â€
 <box type="tip" seamless>
 
 **Tip:** A person can have any number of tags (including 0)
+and the tag names should not have whitespaces in them.
 
 **Note:** The relationship field can only be `client` or `partner`.
 </box>
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/client`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Kent Ridge p/1234567 r/partner t/owe money`
+* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Kent Ridge p/1234567 r/partner t/oweMoney`
 
 ### Listing all persons : `list`
 
