@@ -134,9 +134,10 @@ Finds persons whose names contain any of the given keywords.
 Format: `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]...`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
-* The keywords (NAME, RELATIONSHIP, TAG, POLICY) cannot contain spaces between words e.g: Hans Bo, owe money.
+* The keywords (NAME, RELATIONSHIP, TAG, POLICY) cannot contain spaces between words e.g: `Hans Bo`, `owe money`.
+* Keywords containing white spaces at the beginning or end are allowed. e.g: ` Hans`, `client `.
 * The keywords cannot be empty e.g: `find n/`.
-* You can search by name, relationship, tags, policy.
+* You can search by name, relationship, tags or policy.
 * Only full words will be matched e.g. `Han` will not match `Hans`
 * Persons matching at least one keyword in any attribute will be returned (i.e. `OR` search).
   e.g. find n/Hans n/Bo r/partner will return `Hans Gruber`, `Bo Yang` if they are partners.
