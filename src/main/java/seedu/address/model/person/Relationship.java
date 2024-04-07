@@ -20,7 +20,11 @@ public class Relationship {
     public Relationship(String relationship) {
         requireNonNull(relationship);
         checkArgument(isValidRelationship(relationship), MESSAGE_CONSTRAINTS);
-        value = relationship;
+        if (relationship.equalsIgnoreCase("client")) {
+            this.value = "client";
+        } else {
+            this.value = "partner";
+        }
     }
 
     /**

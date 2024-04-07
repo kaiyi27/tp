@@ -25,8 +25,6 @@ import seedu.address.model.person.Policy;
 import seedu.address.model.person.Relationship;
 import seedu.address.model.tag.Tag;
 
-
-
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
  */
@@ -143,7 +141,7 @@ public class ParserUtil {
         if (!Policy.isValidExpiryDate(trimmedExpiryDate)) {
             throw new ParseException(Policy.EXPIRY_DATE_MESSAGE_CONSTRAINTS);
         }
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu");
         return LocalDate.parse(trimmedExpiryDate, formatter);
     }
 
@@ -325,14 +323,14 @@ public class ParserUtil {
      * if the time chosen has already passed
      *
      * @param time time of input
-     * @param InputDayOfWeek day inputted by user
+     * @param inputDayOfWeek day inputted by user
      * @param currentDay the current day
      * @param nextOccurrence the date returned by TemporalAdjusters.nextOrSame(current day)
      * @return LocalDate of next occurence, taking time into account
      */
-    public static LocalDate checkIfTimeHasPassedOnSameDayAsCurrent(LocalTime time, DayOfWeek InputDayOfWeek,
+    public static LocalDate checkIfTimeHasPassedOnSameDayAsCurrent(LocalTime time, DayOfWeek inputDayOfWeek,
                                                                     LocalDate currentDay, LocalDate nextOccurrence) {
-        if (nextOccurrence.with(InputDayOfWeek) == currentDay) {
+        if (nextOccurrence.with(inputDayOfWeek) == currentDay) {
             LocalTime currentTime = LocalTime.now();
             if (time.isBefore(currentTime)) {
                 nextOccurrence = nextOccurrence.plusWeeks(1);
