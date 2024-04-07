@@ -22,7 +22,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
+//import seedu.address.model.person.Phone;
 import seedu.address.model.person.Relationship;
 import seedu.address.model.tag.Tag;
 
@@ -95,18 +95,18 @@ public class ParserUtilTest {
         assertThrows(ParseException.class, () -> ParserUtil.parsePhone(INVALID_PHONE));
     }
 
-//    @Test
-//    public void parsePhone_validValueWithoutWhitespace_returnsPhone() throws Exception {
-//        Phone expectedPhone = new Phone(VALID_PHONE);
-//        assertEquals(expectedPhone, ParserUtil.parsePhone(VALID_PHONE));
-//    }
+    //    @Test
+    //    public void parsePhone_validValueWithoutWhitespace_returnsPhone() throws Exception {
+    //        Phone expectedPhone = new Phone(VALID_PHONE);
+    //        assertEquals(expectedPhone, ParserUtil.parsePhone(VALID_PHONE));
+    //    }
 
-//    @Test
-//    public void parsePhone_validValueWithWhitespace_returnsTrimmedPhone() throws Exception {
-//        String phoneWithWhitespace = WHITESPACE + VALID_PHONE + WHITESPACE;
-//        Phone expectedPhone = new Phone(VALID_PHONE);
-//        assertEquals(expectedPhone, ParserUtil.parsePhone(phoneWithWhitespace));
-//    }
+    //    @Test
+    //    public void parsePhone_validValueWithWhitespace_returnsTrimmedPhone() throws Exception {
+    //        String phoneWithWhitespace = WHITESPACE + VALID_PHONE + WHITESPACE;
+    //        Phone expectedPhone = new Phone(VALID_PHONE);
+    //        assertEquals(expectedPhone, ParserUtil.parsePhone(phoneWithWhitespace));
+    //    }
 
     @Test
     public void parseAddress_null_throwsNullPointerException() {
@@ -310,20 +310,20 @@ public class ParserUtilTest {
 
 
 
-//    @Test
-//    public void parseLocalDateTime_validInput_success() throws Exception {
-//        // Valid date and time
-//        assertEquals(LocalDateTime.of(2023, 10, 25, 14, 30),
-//                parseLocalDateTime("2023-10-25", "14:30"));
-//
-//        // Valid day of week with time
-//        LocalDate nearestWednesday = LocalDate.now().with(java.time.temporal.TemporalAdjusters
-//                        .nextOrSame(java.time.DayOfWeek.WEDNESDAY));
-//        LocalDate nextWednesday = checkIfTimeHasPassedOnSameDayAsCurrent(LocalTime.parse("16:00"),
-//                DayOfWeek.WEDNESDAY, nearestWednesday, nearestWednesday);
-//        assertEquals(LocalDateTime.of(nextWednesday, LocalTime.of(16, 0)),
-//                parseLocalDateTime("Wednesday", "16:00"));
-//    }
+    //    @Test
+    //    public void parseLocalDateTime_validInput_success() throws Exception {
+    //        // Valid date and time
+    //        assertEquals(LocalDateTime.of(2023, 10, 25, 14, 30),
+    //                parseLocalDateTime("2023-10-25", "14:30"));
+    //
+    //        // Valid day of week with time
+    //        LocalDate nearestWednesday = LocalDate.now().with(java.time.temporal.TemporalAdjusters
+    //                        .nextOrSame(java.time.DayOfWeek.WEDNESDAY));
+    //        LocalDate nextWednesday = checkIfTimeHasPassedOnSameDayAsCurrent(LocalTime.parse("16:00"),
+    //                DayOfWeek.WEDNESDAY, nearestWednesday, nearestWednesday);
+    //        assertEquals(LocalDateTime.of(nextWednesday, LocalTime.of(16, 0)),
+    //                parseLocalDateTime("Wednesday", "16:00"));
+    //    }
 
     @Test
     public void parseLocalDateTime_validInput_success() throws Exception {
