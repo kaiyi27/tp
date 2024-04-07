@@ -53,10 +53,10 @@ public class TypicalPersons {
             .withClientStatus("1").withTags("owesMoney", "friends").withMeeting(MEETING_2).build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
             .withEmail("heinz@example.com").withAddress("wall street").withRelationship("client")
-            .withClientStatus("1").build();
+            .withClientStatus("2").build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
             .withEmail("cornelia@example.com").withAddress("10th street").withRelationship("client")
-            .withTags("friends").withClientStatus("1").build();
+            .withTags("friends").withClientStatus("3").build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
             .withEmail("werner@example.com").withAddress("michegan ave").withRelationship("partner")
             .withClientStatus("0").build();

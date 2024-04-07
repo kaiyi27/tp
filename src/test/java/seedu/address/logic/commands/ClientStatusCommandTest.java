@@ -6,7 +6,9 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FOURTH_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Collections;
@@ -68,11 +70,11 @@ public class ClientStatusCommandTest {
 
     @Test
     public void execute_decrementStatusUnfilteredList_success() {
-        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_THIRD_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(firstPerson).withClientStatus("1").build();
 
         ClientStatusCommand clientStatusCommand =
-                new ClientStatusCommand(INDEX_FIRST_PERSON, CLIENT_STATUS_DOWN_STUB);
+                new ClientStatusCommand(INDEX_THIRD_PERSON, CLIENT_STATUS_DOWN_STUB);
 
         String expectedMessage =
                 String.format(ClientStatusCommand.MESSAGE_STATUS_DOWN_SUCCESS, Messages.format(editedPerson));
@@ -82,6 +84,42 @@ public class ClientStatusCommandTest {
         expectedModel.commitAddressBook();
 
         assertCommandSuccess(clientStatusCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_incrementMaxClientStatusUnfilteredList_failure() {
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FOURTH_PERSON.getZeroBased());
+        Person editedPerson = new PersonBuilder(firstPerson).withClientStatus(CLIENT_STATUS_MID_STUB).build();
+
+        ClientStatusCommand clientStatusCommand =
+                new ClientStatusCommand(INDEX_FOURTH_PERSON, CLIENT_STATUS_UP_STUB);
+
+        String expectedMessage =
+                String.format(ClientStatusCommand.MESSAGE_STATUS_UP_FAILURE, Messages.format(editedPerson));
+
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        expectedModel.setPerson(firstPerson, editedPerson);
+        expectedModel.commitAddressBook();
+
+        assertCommandFailure(clientStatusCommand, model, expectedMessage);
+    }
+
+    @Test
+    public void execute_decrementMinStatusUnfilteredList_failure() {
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person editedPerson = new PersonBuilder(firstPerson).withClientStatus("1").build();
+
+        ClientStatusCommand clientStatusCommand =
+                new ClientStatusCommand(INDEX_FIRST_PERSON, CLIENT_STATUS_DOWN_STUB);
+
+        String expectedMessage =
+                String.format(ClientStatusCommand.MESSAGE_STATUS_DOWN_FAILURE, Messages.format(editedPerson));
+
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        expectedModel.setPerson(firstPerson, editedPerson);
+        expectedModel.commitAddressBook();
+
+        assertCommandFailure(clientStatusCommand, model, expectedMessage);
     }
 
     @Test
