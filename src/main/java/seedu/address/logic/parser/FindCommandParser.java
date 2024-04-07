@@ -34,29 +34,59 @@ public class FindCommandParser implements Parser<FindCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_RELATIONSHIP,
                 PREFIX_TAG, PREFIX_POLICY);
 
-
-        if (args.trim().isEmpty()) {
+        String trimmedArgs = args.trim();
+        if (trimmedArgs.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
-
 
         List<String> nameKeywords = argMultimap.getAllValues(PREFIX_NAME);
         List<String> relationshipKeywords = argMultimap.getAllValues(PREFIX_RELATIONSHIP);
         List<String> tagKeywords = argMultimap.getAllValues(PREFIX_TAG);
         List<String> policyKeywords = argMultimap.getAllValues(PREFIX_POLICY);
 
+        // Validate nameKeywords list
+        if (anyElementsContainWhitespaceOrBlank(nameKeywords)) {
+            throw new ParseException("Name keywords cannot contain whitespace between words or be empty");
+        }
+
+        // Validate relationshipKeywords list
+        if (anyElementsContainWhitespaceOrBlank(relationshipKeywords)) {
+            throw new ParseException("Relationship keywords cannot contain whitespace between words or be empty");
+        }
+
+        // Validate tagKeywords list
+        if (anyElementsContainWhitespaceOrBlank(tagKeywords)) {
+            throw new ParseException("Tag keywords cannot contain whitespace between words or be empty");
+        }
+
+        // Validate policyKeywords list
+        if (anyElementsContainWhitespaceOrBlank(policyKeywords)) {
+            throw new ParseException("Policy keywords cannot contain whitespace between words or be empty");
+        }
+
         if (nameKeywords.isEmpty() && relationshipKeywords.isEmpty()
                 && tagKeywords.isEmpty() && policyKeywords.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_NO_PREFIXES_FOUND, FindCommand.MESSAGE_USAGE));
         }
+
+        nameKeywords.stream().forEach(System.out::println);
+        System.out.println((nameKeywords.isEmpty()));
+
         CombinedPredicate combinedPredicate =
                 new CombinedPredicate(
                         new NameContainsKeywordsPredicate(nameKeywords),
                         new RelationshipContainsKeywordsPredicate(relationshipKeywords),
                         new TagContainsKeywordsPredicate(tagKeywords),
                         new PolicyContainsKeywordsPredicate(policyKeywords));
-
         return new FindCommand(combinedPredicate);
     }
-}
 
+    public boolean anyElementsContainWhitespaceOrBlank(List<String> list) {
+        for (String element : list) {
+            if (element.isBlank() || element.contains(" ")) {
+                return true;
+            }
+        }
+        return false;
+    }
+}

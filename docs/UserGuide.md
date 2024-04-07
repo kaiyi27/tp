@@ -131,14 +131,15 @@ Examples:
 
 Finds persons whose names contain any of the given keywords.
 
-Format: `find n/KEYWORD [MORE_KEYWORDS] r/RELATIONSHIP [MORE_RELATIONSHIPS] t/TAG [MORE_TAGS] po/POLICY [MORE_POLICY]`
+Format: `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]...`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* You can search by name, relationship, tags.
+* The keywords (NAME, RELATIONSHIP, TAG, POLICY) cannot contain spaces between words e.g: Hans Bo, owe money.
+* The keywords cannot be empty e.g: `find n/`.
+* You can search by name, relationship, tags, policy.
 * Only full words will be matched e.g. `Han` will not match `Hans`
 * Persons matching at least one keyword in any attribute will be returned (i.e. `OR` search).
-  e.g. find n/Hans Bo r/partner will return `Hans Gruber`, `Bo Yang` if they are partners.
+  e.g. find n/Hans n/Bo r/partner will return `Hans Gruber`, `Bo Yang` if they are partners.
 
 Examples:
 * `find n/ John` returns `john` and `John Doe`
@@ -344,7 +345,7 @@ Action     | Format, Examples
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find n/KEYWORD [MORE_KEYWORDS] r/RELATIONSHIP [MORE_RELATIONSHIPS] t/TAG [MORE_TAGS] po/POLICY [MORE_POLICY]` <br> e.g., `find n/John Doe r/client`
+**Find**   | `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]... ` <br> e.g., `find n/John n/Alex r/client`
 **List**   | `list`
 **Help**   | `help`
 **Change Client Status** | `status INDEX s/DIRECTION`
