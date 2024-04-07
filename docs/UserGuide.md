@@ -196,7 +196,7 @@ Examples: `policy 1 pi/2 po/` (Delete the first person second policy).
 
 ### Changing a client's status: `status`
 
-Changes a client's status to reflect the progress with that client. Possible statuses are `Yet to start`,
+Changes a client's status to reflect the progress with that client. In increasing order, possible statuses are `Yet to start`,
 `In progress`, and `Completed`.
 
 Format: `status INDEX s/DIRECTION`
