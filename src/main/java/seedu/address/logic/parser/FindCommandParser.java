@@ -80,7 +80,14 @@ public class FindCommandParser implements Parser<FindCommand> {
                         new PolicyContainsKeywordsPredicate(policyKeywords));
         return new FindCommand(combinedPredicate);
     }
-
+    
+    /**
+     * Checks if any element in the given list contains whitespace or is blank.
+     *
+     * @param list the list of strings to be checked
+     * @return {@code true} if any element contains whitespace or is blank, {@code false} otherwise
+     * @throws NullPointerException if the specified list is null
+     */
     public boolean anyElementsContainWhitespaceOrBlank(List<String> list) {
         for (String element : list) {
             if (element.isBlank() || element.contains(" ")) {
