@@ -23,11 +23,11 @@ Refer to the table of contents on the right to find your answers as well as step
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `Insura-Connect.jar` from [here](https://github.com/AY2324S2-CS2103T-T13-3/tp/releases).
+1. Download the latest `InsuraConnect.jar` from [here](https://github.com/AY2324S2-CS2103T-T13-3/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar Insura-Connect.jar` command to run the application.<br>
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar InsuraConnect.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui-v1.3.png)
 
@@ -47,6 +47,7 @@ Refer to the table of contents on the right to find your answers as well as step
    * `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for further details of each command.
+2. Refer to the [Command Summary](#command-summary) for a full list of the available commands
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -78,7 +79,7 @@ Refer to the table of contents on the right to find your answers as well as step
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
@@ -132,19 +133,21 @@ Examples:
 
 Finds persons whose names contain any of the given keywords.
 
-Format: `find n/KEYWORD [MORE_KEYWORDS] r/RELATIONSHIP [MORE_RELATIONSHIPS] t/TAG [MORE_TAGS] po/POLICY [MORE_POLICY]`
+Format: `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]...`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* You can search by name, relationship, tags.
+* The keywords (NAME, RELATIONSHIP, TAG, POLICY) cannot contain spaces between words e.g: `Hans Bo`, `owe money`.
+* Keywords containing white spaces at the beginning or end are allowed. e.g: ` Hans`, `client `.
+* The keywords cannot be empty e.g: `find n/`.
+* You can search by name, relationship, tags or policy.
 * Only full words will be matched e.g. `Han` will not match `Hans`
 * Persons matching at least one keyword in any attribute will be returned (i.e. `OR` search).
-  e.g. find n/Hans Bo r/partner will return `Hans Gruber`, `Bo Yang` if they are partners.
+  e.g. find n/Hans n/Bo r/partner will return `Hans Gruber`, `Bo Yang` if they are partners.
 
 Examples:
 * `find n/ John` returns `john` and `John Doe`
 * `find r/partner` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findCharlotteIrfanResult.png)
+  ![result for 'find alex david'](images/findAlexDavidResult.png)
 
 ### Deleting a person : `delete`
 
@@ -164,6 +167,7 @@ Examples:
 ### Policy
 * Format of expiry date is `dd-mm-yyyy` e.g: `31-12-2025` and it should not be a past date.
 * Value of premium should be larger than 0.
+* The maximum policies per person is 5.
 * Only clients can be assigned a policy. Attempts to assign a policy to a partner will be denied.
 
 ___
@@ -186,6 +190,7 @@ Format: `policy INDEX pi/POLICY_INDEX po/`
 * Delete a policy to the client at the specified `INDEX` with a specified `POLICY INDEX`.
 Both index **must be a positive integer** 1, 2, 3, …​
 * Leave the `POLICY_NAME` blank to remove a particular policy from a particular client.
+* Need to note that if the policy leave blank it will delete that policy even if there are other information provided afterwards.
   
 Examples: `policy 1 pi/2 po/` (Delete the first person second policy).
 
@@ -231,7 +236,7 @@ Format: `schedule INDEX md/DATE mt/TIME mdur/DURATION ma/AGENDA mn/[NOTES]`
 * Meeting can only be scheduled if it does not exist in the past and does not overlap with any of the existing meetings.
 * Meeting notes are optional and can be used to represent any additional information that might be useful for the meeting.
 
-#### Rescheduling a meeting with a person: `reschedule
+#### Rescheduling a meeting with a person: `reschedule`
 
 Reschedules a meeting with a person
 
@@ -343,9 +348,10 @@ Action     | Format, Examples
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Find**   | `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]... ` <br> e.g., `find n/John n/Alex r/client`
 **List**   | `list`
 **Help**   | `help`
+**Change Client Status** | `status INDEX s/DIRECTION`
 **Add Policy** | `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 po/Policy ABC ed/01-01-2025`
 **Edit Policy** | `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 pi/2 po/Policy ABC pm/1000`
 **Delete Policy** | `policy INDEX pi/POLICY_INDEX po/` <br> e.g., `policy 2 pi/2 po/`
