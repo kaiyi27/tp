@@ -29,6 +29,10 @@ public class ClientStatusCommand extends Command {
 
     public static final String MESSAGE_STATUS_UP_SUCCESS = "Upgraded status of Client: %1$s";
     public static final String MESSAGE_STATUS_DOWN_SUCCESS = "Downgraded status of Client: %1$s";
+    public static final String MESSAGE_STATUS_UP_FAILURE =
+            "Status of Client: %1$s is already at the maximum and cannot be upgraded";
+    public static final String MESSAGE_STATUS_DOWN_FAILURE =
+            "Status of Client: %1$s is already at the minimum and cannot be downgraded";
     public static final String MESSAGE_STATUS_RESET_SUCCESS = "Reset status of Client: %1$s";
     public static final String MESSAGE_PERSON_NOT_CLIENT_FAILURE =
             "Invalid person. Only clients can be assigned a policy";
@@ -71,11 +75,19 @@ public class ClientStatusCommand extends Command {
 
         switch (direction) {
         case CHANGE_STATUS_UP:
-            clientStatus = personToEdit.getClientStatus().increment();
-            break;
+            if (personToEdit.getClientStatus().canIncrement()) {
+                clientStatus = personToEdit.getClientStatus().increment();
+                break;
+            } else {
+                throw new CommandException(String.format(MESSAGE_STATUS_UP_FAILURE, Messages.format(personToEdit)));
+            }
         case CHANGE_STATUS_DOWN:
-            clientStatus = personToEdit.getClientStatus().decrement();
-            break;
+            if (personToEdit.getClientStatus().canDecrement()) {
+                clientStatus = personToEdit.getClientStatus().decrement();
+                break;
+            } else {
+                throw new CommandException(String.format(MESSAGE_STATUS_DOWN_FAILURE, Messages.format(personToEdit)));
+            }
         case CHANGE_STATUS_RESET:
             clientStatus = ClientStatus.initClientStatus();
             break;

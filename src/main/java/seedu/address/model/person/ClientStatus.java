@@ -88,6 +88,14 @@ public class ClientStatus {
         return new ClientStatus(Math.max(this.getStatus() - 1, CLIENT_MIN));
     }
 
+    public boolean canIncrement() {
+        return getStatus() != CLIENT_MAX;
+    }
+
+    public boolean canDecrement() {
+        return getStatus() != CLIENT_MIN;
+    }
+
     @Override
     public String toString() {
         return value.toString();
