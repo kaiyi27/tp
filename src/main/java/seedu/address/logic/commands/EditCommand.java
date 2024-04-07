@@ -189,6 +189,10 @@ public class EditCommand extends Command {
         }
 
         public void setEmail(Email email) {
+            requireNonNull(email);
+            if (!Email.isValidEmail(email.toString())) {
+                throw new IllegalArgumentException("Invalid email format");
+            }
             this.email = email;
         }
 

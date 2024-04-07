@@ -105,6 +105,10 @@ public class PolicyCommand extends Command {
             throw new CommandException(MESSAGE_PERSON_NOT_CLIENT_FAILURE);
         }
 
+        if (policyIndex == null && personToEditOriginal.hasPolicy(policy)) {
+            throw new CommandException("This policy already exists for the selected person.");
+        }
+
         if (policyIndex == null) {
             Person personToUpdated = personToEditOriginal.getCopy();
 

@@ -336,4 +336,9 @@ public class Person {
     public Optional<Meeting> getEarliestMeeting() {
         return getMeetings().stream().min(Comparator.comparing(Meeting::getStartDateTime));
     }
+
+    public boolean hasPolicy(Policy policy) {
+        return policies.contains(policy);
+    }
+
 }

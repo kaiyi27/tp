@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.DateTimeException;
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -40,6 +41,10 @@ public class ParserUtil {
         "dd MM yyyy",
         "ddMMyyyy" // Add more formats as needed
     };
+
+    // Constants defined at the beginning of ParserUtil class
+    public static final long MIN_DURATION_IN_MINUTES = 5; // minimum allowed duration
+    public static final long MAX_DURATION_IN_MINUTES = 480; // maximum allowed duration, e.g., 8 hours
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -197,17 +202,39 @@ public class ParserUtil {
     public static LocalDate parseDate(String dateString) throws ParseException {
         requireNonNull(dateString);
         String trimmedDate = dateString.trim();
+        LocalDate parsedDate;
         for (String format : POSSIBLE_DATE_FORMATS) {
             try {
-                LocalDate date = LocalDate.parse(trimmedDate, DateTimeFormatter.ofPattern(format));
-                return date;
-            } catch (Exception ignored) {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+
+                parsedDate = LocalDate.parse(trimmedDate, formatter);
+                // Check if the parsed date is valid
+                if (isValidDate(parsedDate)) {
+                    return parsedDate;
+                } else {
+                    throw new DateTimeParseException("Date does not exist", trimmedDate, 0);
+                }
+            } catch (DateTimeParseException ignored) {
                 // If parsing fails, ignore the exception and try the next format
             }
         }
-
-        throw new ParseException("Invalid date format. Use YYYY-MM-DD.");
+        throw new ParseException("Invalid date format. Use one of the following formats: "
+                + String.join(", ", POSSIBLE_DATE_FORMATS) + ".");
     }
+
+    // Util method to check if the date exists
+    private static boolean isValidDate(LocalDate date) {
+        try {
+            // this will throw an exception if the date is not valid
+            date.getYear();
+            date.getMonthValue();
+            date.getDayOfMonth();
+            return true;
+        } catch (DateTimeException e) {
+            return false;
+        }
+    }
+
 
     /**
      * Parses a {@code String time} into a {@code LocalTime}.
@@ -235,8 +262,9 @@ public class ParserUtil {
         requireNonNull(durationStr);
         try {
             long minutes = Long.parseLong(durationStr.trim());
-            if (minutes < 0) {
-                throw new ParseException("Duration must be a non-negative integer.");
+            if (minutes < MIN_DURATION_IN_MINUTES || minutes > MAX_DURATION_IN_MINUTES) {
+                throw new ParseException(String.format("Duration must be between %d and %d minutes.",
+                        MIN_DURATION_IN_MINUTES, MAX_DURATION_IN_MINUTES));
             }
             return Duration.ofMinutes(minutes);
         } catch (NumberFormatException e) {
@@ -267,7 +295,9 @@ public class ParserUtil {
             LocalDateTime meetingDateTime = LocalDateTime.of(meetingDate, meetingTime);
             return meetingDateTime;
         } catch (ParseException e) {
-            throw new ParseException("Invalid date or time format. Use YYYY-MM-DD for date and HH:MM for time.");
+            throw new ParseException("Invalid date or time format. Use YYYY-MM-DD, "
+                    +
+                    "yyyy-MM-dd, dd-MM-yyyy, yyyyMMdd, yyyy MM dd, dd MM yyyy, ddMMyyyy for date and HH:MM for time.");
         }
     }
 
