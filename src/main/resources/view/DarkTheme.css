@@ -210,12 +210,7 @@
 }
 
 
-/* Override the default JavaFX behavior for list view cells when clicked/focused */
-.list-cell, .list-cell:filled:focused {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-outline: none;
-}
+
 
 .cell_big_label {
     -fx-font-family: "Segoe UI Semibold";
