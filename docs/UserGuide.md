@@ -97,12 +97,25 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/RELATIONSHIP [t/TAG]â€¦â€
 **Tip:** A person can have any number of tags (including 0)
 and the tag names should not have whitespaces in them.
 
-**Note:** The relationship field can only be `client` or `partner`.
+**Constraints:** 
+* The relationship field can only be `client` or `partner`.
+* Names can only consist of alphanumeric characters
+* Phone numbers can start with an optional + sign followed by the country code 
+then followed by the compulsory phone number, example :`p/+6590011040` or `p/90011040`
+* Email has to be of the format local-part@domain 
+and adhere to the following constraints:
+  1. The local-part should only contain alphanumeric characters and these special characters, excluding 
+the parentheses, (+_.-). The local-part may not start or end with any special characters.
+  2. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods.
+  3. The domain name must:
+      - end with a domain label at least 2 characters long
+      - have each domain label start and end with alphanumeric characters 
+      - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
 </box>
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/client`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Kent Ridge p/1234567 r/partner t/oweMoney`
+* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Kent Ridge p/+651234567 r/partner t/oweMoney`
 
 ### Listing all persons : `list`
 
