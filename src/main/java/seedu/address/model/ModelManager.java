@@ -160,6 +160,10 @@ public class ModelManager implements Model {
     public void commitAddressBook() {
         versionedAddressBook.commit();
     }
+    @Override
+    public void replaceCurrentAddressBook() {
+        versionedAddressBook.replaceCurrentAddressBook();
+    }
 
     @Override
     public boolean equals(Object other) {
@@ -205,7 +209,7 @@ public class ModelManager implements Model {
                     updatedMeetings);
             setPerson(person, updatedPerson);
         });
-        versionedAddressBook.replaceCurrentAddressBook();
+        replaceCurrentAddressBook();
     }
 }
 

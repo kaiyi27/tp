@@ -118,6 +118,12 @@ public interface Model {
     void commitAddressBook();
 
     /**
+     * Replaces the current address book without
+     * updating the state pointer in the list
+     */
+    void replaceCurrentAddressBook();
+
+    /**
      * Checks if the given meeting overlaps with any existing meetings across all persons in the address book.
      * @param meeting The meeting to check.
      * @return true if there is an overlap, false otherwise.
