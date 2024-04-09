@@ -21,8 +21,7 @@ public class ClientStatusCommand extends Command {
     public static final String COMMAND_WORD = "status";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Changes the status of the client identified "
-            + "by the index number used in the last person listing. "
-            + "Existing policy will be overwritten by the input.\n"
+            + "by the index number used in the displayed person list\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_STATUS + "[DIRECTION] (must be 'up' or 'down')\n"
             + "Example: " + COMMAND_WORD + " 1 " + PREFIX_STATUS + "up";
