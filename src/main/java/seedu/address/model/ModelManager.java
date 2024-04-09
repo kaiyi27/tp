@@ -205,7 +205,7 @@ public class ModelManager implements Model {
                     updatedMeetings);
             setPerson(person, updatedPerson);
         });
-        commitAddressBook();
+        versionedAddressBook.replaceCurrentAddressBook();
     }
 }
 

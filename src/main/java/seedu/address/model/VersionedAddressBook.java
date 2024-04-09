@@ -2,12 +2,6 @@ package seedu.address.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import seedu.address.model.person.Meeting;
-import seedu.address.model.person.Person;
-
-
 
 /**
  * {@code AddressBook} that keeps track of its own history.
@@ -60,24 +54,7 @@ public class VersionedAddressBook extends AddressBook {
         }
         currentStatePointer--;
         ReadOnlyAddressBook prevState = addressBookStateList.get(currentStatePointer);
-        AddressBook filteredPrevState = new AddressBook();
-        prevState.getPersonList().forEach(person -> {
-            List<Meeting> updatedMeetings = person.getMeetings().stream()
-                    .filter(meeting -> !meeting.isExpired())
-                    .collect(Collectors.toList());
-            Person updatedPerson = new Person(
-                    person.getName(),
-                    person.getPhone(),
-                    person.getEmail(),
-                    person.getAddress(),
-                    person.getRelationship(),
-                    person.getPolicies(),
-                    person.getClientStatus(),
-                    person.getTags(),
-                    person.getMeetings());
-            filteredPrevState.addPerson(updatedPerson);
-        });
-        resetData(filteredPrevState);
+        resetData(prevState);
     }
 
 
@@ -91,6 +68,13 @@ public class VersionedAddressBook extends AddressBook {
         }
         currentStatePointer++;
         resetData(addressBookStateList.get(currentStatePointer));
+    }
+
+    /**
+     * Replaces the current address book without increasing the state pointer
+     */
+    public void replaceCurrentAddressBook() {
+        addressBookStateList.add(currentStatePointer, new AddressBook(this));
     }
 
     /**
