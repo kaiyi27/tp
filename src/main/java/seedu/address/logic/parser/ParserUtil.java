@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Collection;
 import java.util.HashSet;
@@ -34,12 +35,12 @@ public class ParserUtil {
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final String[] POSSIBLE_DAY_OF_WEEK_FORMATS = {"EEEE", "EEE", "EEEEE"};
     public static final String[] POSSIBLE_DATE_FORMATS = {
-        "yyyy-MM-dd",
-        "dd-MM-yyyy",
-        "yyyyMMdd",
-        "yyyy MM dd",
-        "dd MM yyyy",
-        "ddMMyyyy" // Add more formats as needed
+        "uuuu-MM-dd",
+        "dd-MM-uuuu",
+        "uuuuMMdd",
+        "uuuu MM dd",
+        "dd MM uuuu",
+        "ddMMuuuu" // Add more formats as needed
     };
 
     // Constants defined at the beginning of ParserUtil class
@@ -205,7 +206,8 @@ public class ParserUtil {
         LocalDate parsedDate;
         for (String format : POSSIBLE_DATE_FORMATS) {
             try {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format)
+                        .withResolverStyle(ResolverStyle.STRICT);
 
                 parsedDate = LocalDate.parse(trimmedDate, formatter);
                 // Check if the parsed date is valid
