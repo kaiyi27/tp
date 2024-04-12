@@ -65,12 +65,12 @@ public class ScheduleMeetingCommandParser implements Parser<ScheduleMeetingComma
         } catch (ParseException e) {
             throw e;
         }
-        LocalDate today = LocalDate.now();
+        LocalDateTime today = LocalDateTime.now();
         LocalDate meetingDate = meetingDateTime.toLocalDate();
         LocalTime meetingTime = meetingDateTime.toLocalTime();
-        if (meetingDate.isAfter(today.plusYears(1))) { // Assuming 1 year is too far in the future
+        if (meetingDateTime.isAfter(today.plusYears(1))) { // Assuming 1 year is too far in the future
             throw new ParseException("Cannot schedule a meeting more than a year in the future.");
-        } else if (meetingDate.isBefore(today)) {
+        } else if (meetingDateTime.isBefore(today)) {
             throw new ParseException("Cannot schedule a meeting in the past.");
         }
         String agenda = argMultimap.getValue(PREFIX_MEETING_AGENDA)

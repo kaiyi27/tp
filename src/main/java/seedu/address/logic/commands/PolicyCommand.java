@@ -25,8 +25,8 @@ public class PolicyCommand extends Command {
     public static final String COMMAND_WORD = "policy";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add, edit or delete a policy of the person"
             + "by the index number used in the displayed person list.. \n"
-            + "Parameters: INDEX (must be a positive integer) \n"
             + "Add policy parameter: "
+            + "INDEX (must be a positive integer) "
             + PREFIX_POLICY + "POLICY"
             + "[" + PREFIX_EXPIRY_DATE + "EXPIRY DATE] "
             + "[" + PREFIX_PREMIUM + "PREMIUM]\n"
@@ -34,23 +34,22 @@ public class PolicyCommand extends Command {
             + PREFIX_POLICY + "Policy XYZ "
             + PREFIX_EXPIRY_DATE + "01-01-2025\n"
             + "Edit policy parameter: "
-            + PREFIX_POLICY_INDEX + "POLICY INDEX "
+            + "INDEX (must be a positive integer) "
+            + PREFIX_POLICY_INDEX + "POLICY INDEX (must be a positive integer) "
             + PREFIX_POLICY + "POLICY"
             + "[" + PREFIX_EXPIRY_DATE + "EXPIRY DATE] "
             + "[" + PREFIX_PREMIUM + "PREMIUM] (Include policy index)\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_POLICY_INDEX + "2 "
             + PREFIX_POLICY + "Policy XYZ "
-            + PREFIX_EXPIRY_DATE + "01-01-2025 (Include policy index and leave blank policy)\n"
+            + PREFIX_EXPIRY_DATE + "01-01-2025\n"
             + "Delete policy parameter: "
-            + PREFIX_POLICY_INDEX + "POLICY INDEX "
-            + PREFIX_POLICY + " "
-            + "[" + PREFIX_EXPIRY_DATE + "EXPIRY DATE] "
-            + "[" + PREFIX_PREMIUM + "PREMIUM]\n"
+            + "INDEX (must be a positive integer) "
+            + PREFIX_POLICY_INDEX + " POLICY INDEX (must be a positive integer) "
+            + PREFIX_POLICY + "(Include policy index and leave blank policy)\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_POLICY_INDEX + "2 "
-            + PREFIX_POLICY + " "
-            + PREFIX_EXPIRY_DATE + "01-01-2025\n";
+            + PREFIX_POLICY + " ";
     public static final String MESSAGE_ADD_POLICY_SUCCESS = "Added policy to Person: %1$s";
     public static final String MESSAGE_DELETE_POLICY_SUCCESS = "Removed policy from Person: %1$s";
     public static final String MESSAGE_PERSON_NOT_CLIENT_FAILURE =

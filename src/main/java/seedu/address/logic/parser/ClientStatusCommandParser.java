@@ -26,7 +26,14 @@ public class ClientStatusCommandParser implements Parser<ClientStatusCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ClientStatusCommand.MESSAGE_USAGE), ive);
         }
 
-        String direction = argMultimap.getValue(PREFIX_STATUS).orElse("");
+        String direction;
+
+        if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
+            direction = argMultimap.getValue(PREFIX_STATUS).get();
+        } else {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ClientStatusCommand.MESSAGE_USAGE));
+        }
 
         return new ClientStatusCommand(index, direction);
     }
