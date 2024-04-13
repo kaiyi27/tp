@@ -1,21 +1,71 @@
 ---
-  layout: default.md
-  title: "User Guide"
-  pageNav: 3
+layout: page
 ---
 
-# InsuraConnect User Guide
-Welcome to the user guide for InsuraConnect!
+<style>
+  .alert-primary{
+      background-color: #d6e6ff;
+      padding: 0.75rem 1.25rem;
+      color: #073984;
+      border-radius: 0.25rem;
+  }
 
-InsuraConnect is a **personal productivity booster tool for insurance agents**.
+  .Warning{
+      background-color: #fff3cd;
+      padding: 0.75rem 1.25rem;
+      color: #856404;
+      border-radius: 0.25rem;
+  }
+</style>
 
-It provides fast access to client contact details, easily manage client relationships, keep track of meetings and policies, and stay organised in a fast-paced and competitive industry.
+# <center>User Guide - InsuraConnect</center>
 
-This user guide will serve to teach users in how to use InsuraConnect as well as its many features to boost your productivity.
+<div markdown = "block" align="center">
+ <img src="images/InsuraConnectLogo.png" alt="InsuraConnect UI">
+</div>
+
+## Overview
+
+Welcome to InsuraConnect, your streamlined conduit to peak productivity in the insurance sector. Eschewing the complexity of redundant features, InsuraConnect is forged from in-depth research to deliver a swift, efficient, and user-friendly experience for the modern insurance agent.
+
+<div style="page-break-after: always;"></div>
+
+## What It Does
+
+InsuraConnect is a **desktop application tailored for managing client interactions and insurance policies**. It is optimized for speed via a **Command Line Interface** (CLI), backed by the visual accessibility of a Graphical User Interface (GUI). For agents adept at typing, InsuraConnect enhances task execution, outpacing conventional GUI applications.
+
+With InsuraConnect, you can swiftly access client information, manage policies, track meetings, and stay organized in a competitive landscape. Our goal is to transform your workflow into an efficient model of productivity.
+
+## Target Users
+
+InsuraConnect is designed for insurance agents who desire the efficacy of CLI without relinquishing GUI advantages. It's an essential tool for those who manage a **broad client base, track multiple insurance policies, organise meetings**, and value the efficiency of their time and resources.
 
 Refer to the table of contents on the right to find your answers as well as step-by-step instructions for all the features to be a **master** of InsuraConnect.
 <!-- * Table of Contents -->
 <page-nav-print />
+
+---
+<div style="page-break-after: always;"></div>
+
+## What can InsuraConnect do for you?
+
+:question: What really makes InsuraConnect standout?
+This is but the tip of the iceberg of the things you can do working with InsuraConnect.
+
+**Comprehensive Policy Management:** Dive into the essence of each policy with InsuraConnect's in-depth tracking system. Visualize expiry dates, premiums, and detailed coverage information, all laid out for clear understanding and quick access.
+
+**Dynamic Policy Administration:** Add zest to policy handling with agile tools that allow you to add, update, or remove policy details effortlessly. Maintain accurate client portfolios with just a few intuitive commands.
+
+**Streamlined Meeting Coordination:**  Command your schedule with robust scheduling capabilities. Organize, adjust, and cancel meetings with ease, enhanced by our integrated agenda setting and comprehensive note-taking tools.
+
+**Client Engagement Tracker** Keep your finger on the pulse of client relations. Monitor interactions and gauge policy engagement levels to ensure high client retention and satisfaction rates.
+
+**Proactive Meeting Reminders:** Stay ahead of the game with proactive notifications for impending meetings, ensuring you're always prepared to seize every client engagement opportunity.
+
+To explore more, visit [this section](#advanced-features) for more advanced tips.
+
+---
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -29,7 +79,9 @@ Refer to the table of contents on the right to find your answers as well as step
 
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar InsuraConnect.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui-v1.3.png)
+<br>
+   ![Ui](images/UILabelled.png)
+<br>
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -51,9 +103,9 @@ Refer to the table of contents on the right to find your answers as well as step
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
+## Before you start
 
-<box type="info" seamless>
+<div markdown="block" class="alert alert-primary">
 
 **Notes about the command format:**<br>
 
@@ -64,6 +116,7 @@ Refer to the table of contents on the right to find your answers as well as step
 
 * Items in square brackets are optional.<br>
   e.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g. `po/POLICY_NAME [ed/EXPIRY_DATE]` can be used as `po/Policy_ABC ed/01-01-2025` or as `po/Policy_ABC` .
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
@@ -75,7 +128,10 @@ Refer to the table of contents on the right to find your answers as well as step
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</box>
+</div>
+
+
+## Features
 
 ### Viewing help : `help`
 
@@ -350,9 +406,35 @@ _Details coming soon ..._
 
 ## Known issues
 
+
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+1. **When scrolling through Meetings and Policy Accordion**, if you scroll too quickly, the cells take some time to render and display the required information.
+1. **After using find command**, use `list` to list all tasks so that all operations are done on the correct index number. The filtered list doesn't revert back when doing next command, so user has to manually enter `list` to avoid any discrepancies.
+
 
 --------------------------------------------------------------------------------------------------------------------
+
+
+## Supported flags
+
+| **Name of flag**                                   | **Flag in command** | **Description**                |
+|----------------------------------------------------|---------------------|--------------------------------|
+| Name                                               | n/                  | The name of the person         |
+| Meeting Date                                       | md/                 | The date of the meeting        |
+| Phone Number                                       | p/                  | The phone number of the person |
+| Tag                                                | t/                  | The tag of the person          |
+| Address                                            | a/                  | The address of the person      |
+| Relationship                                       | r/                  | The relationship of the person |
+| Meeting Agenda (not editable through `reschedule`) | ma/                 | The agenda of the meeting      |
+| Meeting Time                                       | mt/                 | The time of the meeting        |
+| Meeting Duration                                   | mt/                 | The duration of the meeting    |
+| Meeting Notes                                      | mn/                 | The notes of the meeting       |
+| Policy Index                                       | pi/                 | The index of the policy        |
+| Policy Name                                        | po/                 | The name of the policy         |
+| Policy Premium                                     | pm/                 | The premium of the policy      |
+| Policy Expiry Date                                 | ed/                 | The expiry date of the policy  |
+
+<div style="page-break-after: always;"></div>
 
 ## Command summary
 
