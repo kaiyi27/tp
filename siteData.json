@@ -105,6 +105,7 @@
     },
     {
       "src": "UserGuide.md",
+      "title": "User Guide",
       "headings": {
         "user-guide-insuraconnect": "User Guide: InsuraConnect",
         "overview": "Overview",
@@ -124,6 +125,7 @@
         "changing-a-client-s-status-status": "Changing a client's status: status",
         "meeting": "Meeting",
         "managing-meetings": "Managing Meetings",
+        "changing-a-client-s-status-status-2": "Changing a client's status: status",
         "undoing-a-command-undo": "Undoing a command: undo",
         "redoing-a-command-redo": "Redoing a command: redo",
         "clearing-all-entries-clear": "Clearing all entries : clear",
@@ -133,6 +135,7 @@
         "archiving-data-files-coming-in-v2-0": "Archiving data files [coming in v2.0]",
         "faq": "FAQ",
         "known-issues": "Known issues",
+        "planned-enhancements": "Planned enhancements",
         "supported-flags": "Supported flags",
         "command-summary": "Command summary"
       },
