@@ -4,21 +4,6 @@
     pageNav: 3
 ---
 
-<style>
-  .alert-primary{
-      background-color: #d6e6ff;
-      padding: 0.75rem 1.25rem;
-      color: #073984;
-      border-radius: 0.25rem;
-  }
-
-  .Warning{
-      background-color: #fff3cd;
-      padding: 0.75rem 1.25rem;
-      color: #856404;
-      border-radius: 0.25rem;
-  }
-</style>
 
 # <center>User Guide: InsuraConnect</center>
 
