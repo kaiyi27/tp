@@ -263,7 +263,7 @@ Format: `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIU
 * Edit a policy to the client at the specified `INDEX` with a specified `POLICY INDEX`. 
 Policy index refers to the index number shown in the person displayed policy list. Both index **must be a positive integer** 1, 2, 3, …​
 
-Examples: `policy 1 pi/2 po/Life Policy ed/01-01-2025 pm/2000` (Edit the first person second policy).
+Examples: `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000` (Edit the first person second policy).
 
 ![Before editing policy](images/EditPolicyBefore.png)
 *Before editing the policy*
