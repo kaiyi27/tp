@@ -111,7 +111,8 @@ and the tag names should not have whitespaces in them.
 
 **Constraints:** 
 * The relationship field can only be `client` or `partner`.
-* Names can only consist of alphanumeric characters
+* Names can only consist of alphanumeric characters, regarding names that include special characters such as `s/o`, 
+unfortunately it is currently not allowed. However, it is one of our considerations in our future [planned enhancements](#planned-enhancements)  and for now, a current workaround would be directly using "son of" or "so" instead.
 * Phone numbers can start with an optional + sign followed by the country code 
 then followed by the compulsory phone number, example :`p/+6590011040` or `p/90011040`
 * Email has to be of the format local-part@domain 
@@ -394,6 +395,11 @@ _Details coming soon ..._
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+
+--------------------------------------------------------------------------------------------------------------------
+## Planned enhancements
+
+1. Allow special characters in name such as `s/o` and also in phone numbers such as `+65` to allow for country code for international contacts.
 
 --------------------------------------------------------------------------------------------------------------------
 
