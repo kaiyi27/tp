@@ -144,14 +144,11 @@ Adds a person to the InsuraConnect.
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/RELATIONSHIP [t/TAG]…​`
 
 <box type="tip" seamless>
-
 **Tip:** A person can have any number of tags (including 0)
 and the tag names should not have whitespaces in them.
-
 </box>
 
 <box type="warning" seamless>
-
 **Constraints:** 
 * The relationship field can only be `client` or `partner`.
 * Names can only consist of alphanumeric characters
@@ -166,7 +163,6 @@ the parentheses, (+_.-). The local-part may not start or end with any special ch
       - end with a domain label at least 2 characters long
       - have each domain label start and end with alphanumeric characters 
       - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
-
 </box>
 
 Examples:
@@ -355,10 +351,8 @@ Format: `status INDEX s/DIRECTION`
 Examples: `status 1 s/up` increases the status of the 1st person by one level if it is a client.
 
 <box type="tip" seamless>
-
 **Tip:** Use this whenever you schedule the first meeting with your client or assign them a policy, etc.
 The dashboard above the list of persons automatically displays the number of clients that are currently at each status for your convenience.
-
 </box>
 
 <br>
@@ -472,7 +466,7 @@ Action     | Format, Examples
 **Find**   | `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]... ` <br> e.g., `find n/John n/Alex r/client`
 **List**   | `list`
 **Help**   | `help`
-**Change Client Status** | `status INDEX s/DIRECTION`
+**Change Client Status** | `status INDEX s/DIRECTION` <br> e.g., `status 1 s/up`
 **Add Policy** | `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 po/Policy ABC ed/01-01-2025`
 **Edit Policy** | `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 pi/2 po/Policy ABC pm/1000`
 **Delete Policy** | `policy INDEX pi/POLICY_INDEX po/` <br> e.g., `policy 2 pi/2 po/`
