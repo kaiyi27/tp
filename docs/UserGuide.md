@@ -1,9 +1,9 @@
 ---
-  layout: default.md
-    title: "User Guide"
-    pageNav: 3
+layout: default.md
+title: "User Guide"
+pageNav: 3
+  
 ---
-
 
 # <center>User Guide: InsuraConnect</center>
 
@@ -30,6 +30,7 @@ InsuraConnect is designed for insurance agents who desire the efficacy of CLI wi
 
 Refer to the table of contents on the right to find your answers as well as step-by-step instructions for all the features to be a **master** of InsuraConnect.
 <!-- * Table of Contents -->
+
 <page-nav-print />
 
 ---
@@ -57,6 +58,10 @@ To explore more, visit [this section](#advanced-features) for more advanced tips
 
 --------------------------------------------------------------------------------------------------------------------
 
+Refer to the table of contents to find your answers as well as step-by-step instructions for all the features to be a **master** of InsuraConnect.
+<!-- * Table of Contents -->
+
+<page-nav-print />
 
 
 ## Quick start
