@@ -147,7 +147,6 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/RELATIONSHIP [t/TAG]â€¦â€
 
 **Tip:** A person can have any number of tags (including 0)
 and the tag names should not have whitespaces in them.
-
 </box>
 
 <box type="warning" seamless>
@@ -168,8 +167,7 @@ the parentheses, (+_.-). The local-part may not start or end with any special ch
       - end with a domain label at least 2 characters long
       - have each domain label start and end with alphanumeric characters 
       - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
-
-      - </box>
+</box>
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/client`
@@ -358,7 +356,8 @@ Examples: `status 1 s/up` increases the status of the 1st person by one level if
 
 <box type="tip" seamless>
 
-**Tip:** Use this whenever you schedule the first meeting with your client or assign them a policy, etc.
+**Tip:**
+Use this whenever you schedule the first meeting with your client or assign them a policy, etc.
 The dashboard above the list of persons automatically displays the number of clients that are currently at each status for your convenience.
 </box>
 
