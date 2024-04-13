@@ -67,9 +67,6 @@ public class FindCommandParser implements Parser<FindCommand> {
             throw new ParseException(String.format(MESSAGE_NO_PREFIXES_FOUND, FindCommand.MESSAGE_USAGE));
         }
 
-        nameKeywords.stream().forEach(System.out::println);
-        System.out.println((nameKeywords.isEmpty()));
-
         CombinedPredicate combinedPredicate =
                 new CombinedPredicate(
                         new NameContainsKeywordsPredicate(nameKeywords),

@@ -23,7 +23,7 @@ import seedu.address.model.person.Policy;
 public class PolicyCommand extends Command {
 
     public static final String COMMAND_WORD = "policy";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add, edit or delete a policy of the person"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add, edit or delete a policy of the person "
             + "by the index number used in the displayed person list.. \n"
             + "Add policy parameter: "
             + "INDEX (must be a positive integer) "

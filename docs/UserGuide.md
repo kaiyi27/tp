@@ -91,7 +91,7 @@ To explore more, visit [this section](#advanced-features) for more advanced tips
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/client` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/client` : Adds a contact named `John Doe` to the InsuraConnect.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -147,7 +147,7 @@ Format: `help`
 
 ### Adding a person: `add`
 
-Adds a person to the address book.
+Adds a person to the InsuraConnect.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/RELATIONSHIP [t/TAG]…​`
 
@@ -178,13 +178,13 @@ Examples:
 
 ### Listing all persons : `list`
 
-Shows a list of all persons in the address book.
+Shows a list of all persons in the InsuraConnect.
 
 Format: `list`
 
 ### Editing a person : `edit`
 
-Edits an existing person in the address book.
+Edits an existing person in the InsuraConnect.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
@@ -224,7 +224,7 @@ Examples:
 
 ### Deleting a person : `delete`
 
-Deletes the specified person from the address book.
+Deletes the specified person from the InsuraConnect.
 
 Format: `delete INDEX`
 
@@ -233,7 +233,7 @@ Format: `delete INDEX`
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
+* `list` followed by `delete 2` deletes the 2nd person in the InsuraConnect.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
 
@@ -281,7 +281,7 @@ or `down` to indicate a decrease in status e.g. `In progress` to `Yet to start`.
 blank to reset the client's status to `Yet to start`.
 * There is also a dashboard that displays the number of clients that are currently at each status. It is updated automatically.
 
-Examples: `status 1 s/up` increases the status of the 1st person in the address book if it is a client.
+Examples: `status 1 s/up` increases the status of the 1st person in the InsuraConnect if it is a client.
 
 ### Meeting
 * Meeting date and time must not be in the past, or after 1 year in the future
@@ -347,7 +347,7 @@ Undoes a previous command.
 
 Format: `undo`
 
-* Only undoes commands that made changes to the address book
+* Only undoes commands that made changes to the InsuraConnect
 
 Examples:
 * `delete 1`
@@ -369,7 +369,7 @@ Examples:
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+Clears all entries from the InsuraConnect.
 
 Format: `clear`
 

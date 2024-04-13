@@ -46,6 +46,7 @@ Person *--> Address
 Person *--> Policy
 Person *--> Relationship
 Person *--> "*" Tag
+Person *--> ClientStatus
 
 Person -[hidden]up--> I
 UniquePersonList -[hidden]right-> I
