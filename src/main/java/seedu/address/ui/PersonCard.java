@@ -73,7 +73,6 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         email.setWrapText(true);
-        name.setWrapText(true);
         id.setWrapText(true);
         address.setWrapText(true);
         phone.setWrapText(true);
