@@ -18,7 +18,7 @@ layout: page
   }
 </style>
 
-# <center>User Guide - InsuraConnect</center>
+# <center>User Guide: InsuraConnect</center>
 
 <div markdown = "block" align="center">
  <img src="images/InsuraConnectLogo.png" alt="InsuraConnect UI">
