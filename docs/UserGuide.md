@@ -150,7 +150,9 @@ and the tag names should not have whitespaces in them.
 
 **Constraints:** 
 * The relationship field can only be `client` or `partner`.
-* Names can only consist of alphanumeric characters
+* Names can only consist of alphanumeric characters, regarding names that include special characters such as `s/o`,
+  unfortunately it is currently not allowed. However, it is one of our considerations in our future [planned enhancements](#planned-enhancements)  and for now, a current workaround would be directly using "son of" or "so" instead.
+* Currently, we perform checks for duplicate contacts by comparing names, so we are unable to have multiple contacts with the same name. However, we plan to include more stringent validity checks in the future [planned enhancements](#planned-enhancements).
 * Phone numbers can start with an optional + sign followed by the country code 
 then followed by the compulsory phone number, example :`p/+6590011040` or `p/90011040`
 * Email has to be of the format local-part@domain 
@@ -342,8 +344,13 @@ Format: `undo`
 * Only undoes commands that made changes to the InsuraConnect
 
 Examples:
-* `delete 1`
-* `undo` Undoes the previous command which adds back the person that is deleted
+* `add n/Adam Ibnu p/11111111 e/Adam@gmail.com a/Sembawang road blk 509c #02-25 r/client t/friend`as shown in the figure below adds the adam contact.
+
+![img.png](images/undo_addAdam.png "Figure of newly added adam contact")
+
+* The previous add command is followed by `undo` which undoes the previous command, removing the newly added person as shown below.
+
+![img.png](images/undo_undoAdam.png "Figure of undo removing adam")
 
 ### Redoing a command: `redo`
 
@@ -355,9 +362,9 @@ Format: `redo`
   
 Examples:
 
-* `delete 1`
-* `undo`
-* `redo`
+* This example performs redo after the success undo in the above section [Undo](#undoing-a-command--undo)
+* Executing redo reapplies the actions that were previously undone which in this example is adding back Adam in the figure below and a successful redo will show a corresponding successful message as well.
+  ![img.png](images/redo_redoAddsAdam.png "Figure of redo adding back adam")
 
 ### Clearing all entries : `clear`
 
@@ -409,6 +416,12 @@ _Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
+## Planned enhancements
+
+1. Allow special characters in name such as `s/o` and also in phone numbers such as `+65` to allow for country code for international contacts.
+2. Include more stringent validity checks for duplicate contacts by checking against their phone number and emails and address instead of name.
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## Supported flags
 
