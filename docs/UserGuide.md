@@ -263,12 +263,12 @@ Format: `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIU
 * Edit a policy to the client at the specified `INDEX` with a specified `POLICY INDEX`. 
 Policy index refers to the index number shown in the person displayed policy list. Both index **must be a positive integer** 1, 2, 3, …​
 
-Examples: `policy 1 pi/2 po/Life Policy ed/01-01-2025 pm/2000` (Edit the first person second policy).
+Examples: `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000` (Edit the first person second policy).
 
 ![Before editing policy](images/EditPolicyBefore.png)
 *Before editing the policy*
 ![After editing policy](images/EditPolicyAfter.png)
-*After editing the first policy of the first person*
+*After editing the second policy of the first person*
 
 
 #### Delete a policy from a client
@@ -284,7 +284,7 @@ Examples: `policy 1 pi/2 po/` (Delete the first person second policy).
 ![Before deleting policy](images/DeletePolicyBefore.png)
 *Before deleting the policy*
 ![After deleting policy](images/DeletePolicyAfter.png)
-*After deleting the first policy of the first person*
+*After deleting the second policy of the first person*
 
 ### Changing a client's status: `status`
 
