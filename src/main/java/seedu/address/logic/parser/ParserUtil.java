@@ -41,7 +41,7 @@ public class ParserUtil {
         "dd MM yyyy",
         "ddMMyyyy" // Add more formats as needed
     };
-    
+
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
