@@ -356,8 +356,7 @@ Examples: `status 1 s/up` increases the status of the 1st person by one level if
 
 <box type="tip" seamless>
 
-**Tip:**
-Use this whenever you schedule the first meeting with your client or assign them a policy, etc.
+**Tip:** Use this whenever you schedule the first meeting with your client or assign them a policy, etc.
 The dashboard above the list of persons automatically displays the number of clients that are currently at each status for your convenience.
 </box>
 
