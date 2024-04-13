@@ -24,6 +24,7 @@ layout: page
  <img src="images/InsuraConnectLogo.png" alt="InsuraConnect UI">
 </div>
 
+
 ## Overview
 
 Welcome to InsuraConnect, your streamlined conduit to peak productivity in the insurance sector. Eschewing the complexity of redundant features, InsuraConnect is forged from in-depth research to deliver a swift, efficient, and user-friendly experience for the modern insurance agent.
@@ -68,6 +69,8 @@ To explore more, visit [this section](#advanced-features) for more advanced tips
 <div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
+
+
 
 ## Quick start
 
