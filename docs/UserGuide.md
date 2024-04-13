@@ -303,7 +303,6 @@ Format: `status INDEX s/DIRECTION`
 * Changes the status of the client at the specified `INDEX`.
   The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * `DIRECTION` must be either `up` to indicate an increase in status, or `down` to indicate a decrease in status.
-*
 * Leave the direction blank to reset the client's status to `Yet to start`.
 
 Examples: `status 1 s/up` increases the status of the 1st person by one level if it is a client.
