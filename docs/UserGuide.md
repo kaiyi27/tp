@@ -1,22 +1,9 @@
 ---
-layout: page
+layout: default.md
+title: "User Guide"
+pageNav: 3
+  
 ---
-
-<style>
-  .alert-primary{
-      background-color: #d6e6ff;
-      padding: 0.75rem 1.25rem;
-      color: #073984;
-      border-radius: 0.25rem;
-  }
-
-  .Warning{
-      background-color: #fff3cd;
-      padding: 0.75rem 1.25rem;
-      color: #856404;
-      border-radius: 0.25rem;
-  }
-</style>
 
 # <center>User Guide: InsuraConnect</center>
 
@@ -43,6 +30,7 @@ InsuraConnect is designed for insurance agents who desire the efficacy of CLI wi
 
 Refer to the table of contents on the right to find your answers as well as step-by-step instructions for all the features to be a **master** of InsuraConnect.
 <!-- * Table of Contents -->
+
 <page-nav-print />
 
 ---
@@ -70,6 +58,10 @@ To explore more, visit [this section](#advanced-features) for more advanced tips
 
 --------------------------------------------------------------------------------------------------------------------
 
+Refer to the table of contents to find your answers as well as step-by-step instructions for all the features to be a **master** of InsuraConnect.
+<!-- * Table of Contents -->
+
+<page-nav-print />
 
 
 ## Quick start
@@ -155,10 +147,15 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/RELATIONSHIP [t/TAG]…�
 
 **Tip:** A person can have any number of tags (including 0)
 and the tag names should not have whitespaces in them.
+</box>
+
+<box type="warning" seamless>
 
 **Constraints:** 
 * The relationship field can only be `client` or `partner`.
-* Names can only consist of alphanumeric characters
+* Names can only consist of alphanumeric characters, regarding names that include special characters such as `s/o`,
+  unfortunately it is currently not allowed. However, it is one of our considerations in our future [planned enhancements](#planned-enhancements)  and for now, a current workaround would be directly using "son of" or "so" instead.
+* Currently, we perform checks for duplicate contacts by comparing names, so we are unable to have multiple contacts with the same name. However, we plan to include more stringent validity checks in the future [planned enhancements](#planned-enhancements).
 * Phone numbers can start with an optional + sign followed by the country code 
 then followed by the compulsory phone number, example :`p/+6590011040` or `p/90011040`
 * Email has to be of the format local-part@domain 
@@ -353,6 +350,31 @@ To ensure the schedule remains current and manageable, InsuraConnect automatical
 
 Clients and partners are sorted in the user interface according to the time of their earliest scheduled meeting. This sorting mechanism places those individuals with the most imminent meetings at the top of the list, allowing for efficient time management and planning. Should there be no scheduled meetings for a client or partner, they will be positioned in the list based on the default sorting criteria.
 
+<br>
+
+### Changing a client's status: `status`
+
+Changes a client's status by one level to reflect the progress with that client. In increasing order, the possible status levels are `Yet to start`,
+`In progress`, and `Completed`.
+
+Format: `status INDEX s/DIRECTION`
+
+* Changes the status of the client at the specified `INDEX`.
+  The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* `DIRECTION` must be either `up` to indicate an increase in status, or `down` to indicate a decrease in status.
+* Leave the direction blank to reset the client's status to `Yet to start`.
+
+Examples: `status 1 s/up` increases the status of the 1st person by one level if it is a client.
+
+<box type="tip" seamless>
+
+**Tip:**
+Use this whenever you schedule the first meeting with your client or assign them a policy, etc.
+The dashboard above the list of persons automatically displays the number of clients that are currently at each status for your convenience.
+</box>
+
+<br>
+
 ### Undoing a command: `undo`
 
 Undoes a previous command.
@@ -362,8 +384,13 @@ Format: `undo`
 * Only undoes commands that made changes to the InsuraConnect
 
 Examples:
-* `delete 1`
-* `undo` Undoes the previous command which adds back the person that is deleted
+* `add n/Adam Ibnu p/11111111 e/Adam@gmail.com a/Sembawang road blk 509c #02-25 r/client t/friend`as shown in the figure below adds the adam contact.
+
+![img.png](images/undo_addAdam.png "Figure of newly added adam contact")
+
+* The previous add command is followed by `undo` which undoes the previous command, removing the newly added person as shown below.
+
+![img.png](images/undo_undoAdam.png "Figure of undo removing adam")
 
 ### Redoing a command: `redo`
 
@@ -375,9 +402,9 @@ Format: `redo`
   
 Examples:
 
-* `delete 1`
-* `undo`
-* `redo`
+* This example performs redo after the success undo in the above section [Undo](#undoing-a-command--undo)
+* Executing redo reapplies the actions that were previously undone which in this example is adding back Adam in the figure below and a successful redo will show a corresponding successful message as well.
+  ![img.png](images/redo_redoAddsAdam.png "Figure of redo adding back adam")
 
 ### Clearing all entries : `clear`
 
@@ -429,6 +456,12 @@ _Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
+## Planned enhancements
+
+1. Allow special characters in name such as `s/o` and also in phone numbers such as `+65` to allow for country code for international contacts.
+2. Include more stringent validity checks for duplicate contacts by checking against their phone number and emails and address instead of name.
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## Supported flags
 
@@ -462,7 +495,7 @@ Action     | Format, Examples
 **Find**   | `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]... ` <br> e.g., `find n/John n/Alex r/client`
 **List**   | `list`
 **Help**   | `help`
-**Change Client Status** | `status INDEX s/DIRECTION`
+**Change Client Status** | `status INDEX s/DIRECTION` <br> e.g., `status 1 s/up`
 **Add Policy** | `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 po/Policy ABC ed/01-01-2025`
 **Edit Policy** | `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 pi/2 po/Policy ABC pm/1000`
 **Delete Policy** | `policy INDEX pi/POLICY_INDEX po/` <br> e.g., `policy 2 pi/2 po/`
