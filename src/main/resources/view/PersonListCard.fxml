@@ -23,9 +23,10 @@
         <Insets top="5" right="5" bottom="5" left="15"/>
       </padding>
       <HBox spacing="5" alignment="CENTER_LEFT">
-        <Label fx:id="id" styleClass="cell_big_label"/>
-        <Label fx:id="name" text="\$first" styleClass="cell_big_label"/>
+        <Label fx:id="id" styleClass="cell_big_label" minWidth="30"/> <!-- Set minimum width for index -->
+        <Label fx:id="name" text="\$first" styleClass="cell_big_label" wrapText="true" maxWidth="250"/> <!-- Set maximum width for name -->
       </HBox>
+
       <FlowPane fx:id="tags" styleClass="tags-container"/>
       <HBox spacing="5" alignment="CENTER_LEFT">
         <Label fx:id="relationship" styleClass="relationship-label"/>
