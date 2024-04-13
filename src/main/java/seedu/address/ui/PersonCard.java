@@ -65,12 +65,14 @@ public class PersonCard extends UiPart<Region> {
         super(FXML);
         this.person = person;
         id.setText(displayedIndex + ". ");
+        id.setMinWidth(Region.USE_PREF_SIZE);
         name.setText(person.getName().fullName);
+        name.setMaxWidth(250); // Set the max width for name label
+        name.setWrapText(true); // Enable text wrapping within the max width
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         email.setWrapText(true);
-        name.setWrapText(true);
         id.setWrapText(true);
         address.setWrapText(true);
         phone.setWrapText(true);

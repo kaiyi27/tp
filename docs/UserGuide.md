@@ -1,43 +1,92 @@
 ---
-  layout: default.md
-  title: "User Guide"
-  pageNav: 3
+layout: page
 ---
 
-# InsuraConnect User Guide
-Welcome to the user guide for InsuraConnect!
+<style>
+  .alert-primary{
+      background-color: #d6e6ff;
+      padding: 0.75rem 1.25rem;
+      color: #073984;
+      border-radius: 0.25rem;
+  }
 
-InsuraConnect is a **personal productivity booster tool for insurance agents**.
+  .Warning{
+      background-color: #fff3cd;
+      padding: 0.75rem 1.25rem;
+      color: #856404;
+      border-radius: 0.25rem;
+  }
+</style>
 
-It provides fast access to client contact details and allows insurance agents to easily manage client relationships, keep track of meetings and policies, and stay organised in a fast-paced and competitive industry.
+# <center>User Guide: InsuraConnect</center>
 
-This user guide will serve to teach users in how to use InsuraConnect as well as its many features to boost your productivity.
+<div markdown = "block" align="center">
+ <img src="images/InsuraConnectLogo.png" alt="InsuraConnect UI">
+</div>
 
-Refer to the table of contents to find your answers as well as step-by-step instructions for all the features to be a **master** of InsuraConnect.
+
+## Overview
+
+Welcome to InsuraConnect, your streamlined conduit to peak productivity in the insurance sector. Eschewing the complexity of redundant features, InsuraConnect is forged from in-depth research to deliver a swift, efficient, and user-friendly experience for the modern insurance agent.
+
+<div style="page-break-after: always;"></div>
+
+## What It Does
+
+InsuraConnect is a **desktop application tailored for managing client interactions and insurance policies**. It is optimized for speed via a **Command Line Interface** (CLI), backed by the visual accessibility of a Graphical User Interface (GUI). For agents adept at typing, InsuraConnect enhances task execution, outpacing conventional GUI applications.
+
+With InsuraConnect, you can swiftly access client information, manage policies, track meetings, and stay organized in a competitive landscape. Our goal is to transform your workflow into an efficient model of productivity.
+
+## Target Users
+
+InsuraConnect is designed for insurance agents who desire the efficacy of CLI without relinquishing GUI advantages. It's an essential tool for those who manage a **broad client base, track multiple insurance policies, organise meetings**, and value the efficiency of their time and resources.
+
+Refer to the table of contents on the right to find your answers as well as step-by-step instructions for all the features to be a **master** of InsuraConnect.
 <!-- * Table of Contents -->
-
 <page-nav-print />
 
-***
-## About InsuraConnect
+---
+<div style="page-break-after: always;"></div>
+
+## What can InsuraConnect do for you?
+
+:question: What really makes InsuraConnect standout?
+This is but the tip of the iceberg of the things you can do working with InsuraConnect.
+
+**Comprehensive Policy Management:** Dive into the essence of each policy with InsuraConnect's in-depth tracking system. Visualize expiry dates, premiums, and detailed coverage information, all laid out for clear understanding and quick access.
+
+**Dynamic Policy Administration:** Add zest to policy handling with agile tools that allow you to add, update, or remove policy details effortlessly. Maintain accurate client portfolios with just a few intuitive commands.
+
+**Streamlined Meeting Coordination:**  Command your schedule with robust scheduling capabilities. Organize, adjust, and cancel meetings with ease, enhanced by our integrated agenda setting and comprehensive note-taking tools.
+
+**Client Engagement Tracker** Keep your finger on the pulse of client relations. Monitor interactions and gauge policy engagement levels to ensure high client retention and satisfaction rates.
+
+**Proactive Meeting Reminders:** Stay ahead of the game with proactive notifications for impending meetings, ensuring you're always prepared to seize every client engagement opportunity.
+
+To explore more, visit [this section](#advanced-features) for more advanced tips.
+
+---
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Getting Started
 
-1. Ensure you have Java `11` or above installed in your Computer. You can download Java `11` from [here](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html).
 
-2. Download the latest `InsuraConnect.jar` from [here](https://github.com/AY2324S2-CS2103T-T13-3/tp/releases).
+## Quick start
 
-3. Copy the file to the folder you want to use as the _home folder_ for InsuraConnect.
+1. Ensure you have Java `11` or above installed in your Computer.
 
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar InsuraConnect.jar` command to run the application.<br>
-   
-A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data.<br>
+1. Download the latest `InsuraConnect.jar` from [here](https://github.com/AY2324S2-CS2103T-T13-3/tp/releases).
 
-   ![Ui](images/Ui-v1.3.png)
+1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar InsuraConnect.jar` command to run the application.<br>
+   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+<br>
+   ![Ui](images/UILabelled.png)
+<br>
+
+1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * `list` : Lists all contacts.
@@ -47,9 +96,8 @@ A GUI similar to the one below should appear in a few seconds. Note how the app 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
    * `schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60` : Schedules a meeting with the first contact in the current list at 5th may 2024 9am to discuss health policy.
-
-   * `policy 1 po/Health policy ed/2029-06-06 pm/1000` : Adds a policy to the first contact in the current list with name of 
-   "Health policy", expiry date on 6 June 2029, with a premium of $1000.
+   * `policy 1 po/Health policy ed/2029-06-06 pm/1000` Adds a policy with the first contact in the current list with name of 
+   Health policy, expiry date on the 6th of June 2029, with a premium of 1000 SGD
 
    * `exit` : Exits the app.
 
@@ -58,24 +106,23 @@ A GUI similar to the one below should appear in a few seconds. Note how the app 
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
+## Before you start
 
-<box type="info" seamless>
+<div markdown="block" class="alert alert-primary">
 
 **Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-
-* Prefixes are in the form of a shortened word followed by a `/` such as `po/` for policy or`md/` for meeting date. 
-
+* Prefixes are in the form of a shortened word followed by a / such as `po/` for policy or`md/` for meeting date. 
 * Prefixes require a space before being used, such as `n/NAME e/EMAIL` requiring a space between `NAME` and `e/`.
 
 * Items in square brackets are optional.<br>
   e.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g. `po/POLICY_NAME [ed/EXPIRY_DATE]` can be used as `po/Policy_ABC ed/01-01-2025` or as `po/Policy_ABC` .
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be omitted (i.e. used 0 times), used once - `t/friend`, or used twice - `t/friend t/family`, etc.
+  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -84,9 +131,10 @@ A GUI similar to the one below should appear in a few seconds. Note how the app 
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</box>
+</div>
 
-<br>
+
+## Features
 
 ### Viewing help : `help`
 
@@ -96,11 +144,10 @@ Shows a message explaining how to access the help page.
 
 Format: `help`
 
-<br>
 
 ### Adding a person: `add`
 
-Adds a person to InsuraConnect.
+Adds a person to the InsuraConnect.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/RELATIONSHIP [t/TAG]…​`
 
@@ -111,9 +158,7 @@ and the tag names should not have whitespaces in them.
 
 **Constraints:** 
 * The relationship field can only be `client` or `partner`.
-* Names can only consist of alphanumeric characters, regarding names that include special characters such as `s/o`, 
-unfortunately it is currently not allowed. However, it is one of our considerations in our future [planned enhancements](#planned-enhancements)  and for now, a current workaround would be directly using "son of" or "so" instead.
-* Currently, we perform checks for duplicate contacts by comparing names, so we are unable to have multiple contacts with the same name. However, we plan to include more stringent validity checks in the future [planned enhancements](#planned-enhancements).
+* Names can only consist of alphanumeric characters
 * Phone numbers can start with an optional + sign followed by the country code 
 then followed by the compulsory phone number, example :`p/+6590011040` or `p/90011040`
 * Email has to be of the format local-part@domain 
@@ -131,19 +176,15 @@ Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/client`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Kent Ridge p/+651234567 r/partner t/oweMoney`
 
-<br>
-
 ### Listing all persons : `list`
 
-Shows a list of all persons in InsuraConnect.
+Shows a list of all persons in the InsuraConnect.
 
 Format: `list`
 
-<br>
-
 ### Editing a person : `edit`
 
-Edits an existing person in InsuraConnect.
+Edits an existing person in the InsuraConnect.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
@@ -160,8 +201,6 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
-
-<br>
 
 ### Locating persons by name, relationship, tag, policy: `find`
 
@@ -183,11 +222,9 @@ Examples:
 * `find r/partner` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-<br>
-
 ### Deleting a person : `delete`
 
-Deletes the specified person from InsuraConnect.
+Deletes the specified person from the InsuraConnect.
 
 Format: `delete INDEX`
 
@@ -196,10 +233,9 @@ Format: `delete INDEX`
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in InsuraConnect.
+* `list` followed by `delete 2` deletes the 2nd person in the InsuraConnect.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
-<br>
 
 ### Policy
 * Format of expiry date is `dd-mm-yyyy` e.g: `31-12-2025` and it should not be a past date.
@@ -231,7 +267,21 @@ Both index **must be a positive integer** 1, 2, 3, …​
   
 Examples: `policy 1 pi/2 po/` (Delete the first person second policy).
 
-<br>
+### Changing a client's status: `status`
+
+Changes a client's status to reflect the progress with that client. In increasing order, possible statuses are `Yet to start`,
+`In progress`, and `Completed`.
+
+Format: `status INDEX s/DIRECTION`
+
+* Changes the status of the client at the specified `INDEX`.
+  The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* `DIRECTION` must be either `up` to indicate an increase in status e.g. `Yet to start` to `In progress`,
+or `down` to indicate a decrease in status e.g. `In progress` to `Yet to start`. Leave the direction
+blank to reset the client's status to `Yet to start`.
+* There is also a dashboard that displays the number of clients that are currently at each status. It is updated automatically.
+
+Examples: `status 1 s/up` increases the status of the 1st person in the InsuraConnect if it is a client.
 
 ### Meeting
 * Meeting date and time must not be in the past, or after 1 year in the future
@@ -291,49 +341,17 @@ To ensure the schedule remains current and manageable, InsuraConnect automatical
 
 Clients and partners are sorted in the user interface according to the time of their earliest scheduled meeting. This sorting mechanism places those individuals with the most imminent meetings at the top of the list, allowing for efficient time management and planning. Should there be no scheduled meetings for a client or partner, they will be positioned in the list based on the default sorting criteria.
 
-<br>
-
-### Changing a client's status: `status`
-
-Changes a client's status by one level to reflect the progress with that client. In increasing order, the possible status levels are `Yet to start`,
-`In progress`, and `Completed`.
-
-Format: `status INDEX s/DIRECTION`
-
-* Changes the status of the client at the specified `INDEX`.
-  The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* `DIRECTION` must be either `up` to indicate an increase in status, or `down` to indicate a decrease in status.
-*
-* Leave the direction blank to reset the client's status to `Yet to start`.
-
-Examples: `status 1 s/up` increases the status of the 1st person by one level if it is a client.
-
-<box type="tip" seamless>
-
-**Tip:** Use this whenever you schedule the first meeting with your client or assign them a policy, etc.
-The dashboard above the list of persons automatically displays the number of clients that are currently at each status for your convenience.
-
-</box>
-
-<br>
-
 ### Undoing a command: `undo`
 
 Undoes a previous command.
 
 Format: `undo`
 
-* Only undoes commands that made changes to InsuraConnect.
+* Only undoes commands that made changes to the InsuraConnect
 
 Examples:
-* `add n/Adam Ibnu p/11111111 e/Adam@gmail.com a/Sembawang road blk 509c #02-25 r/client t/friend`as shown in the figure below adds the adam contact.
-
-![img.png](images/undo_addAdam.png "Figure of newly added adam contact")
-
-* The previous add command is followed by `undo` which undoes the previous command, removing the newly added person as shown below.
-
-![img.png](images/undo_undoAdam.png "Figure of undo removing adam")
-<br>
+* `delete 1`
+* `undo` Undoes the previous command which adds back the person that is deleted
 
 ### Redoing a command: `redo`
 
@@ -345,18 +363,15 @@ Format: `redo`
   
 Examples:
 
-* This example performs redo after the success undo in the above section [Undo](#undoing-a-command--undo)
-* Executing redo reapplies the actions that were previously undone which in this example is adding back Adam in the figure below and a successful redo will show a corresponding successful message as well.
-![img.png](images/redo_redoAddsAdam.png "Figure of redo adding back adam")
-<br>
+* `delete 1`
+* `undo`
+* `redo`
 
 ### Clearing all entries : `clear`
 
-Clears all entries from InsuraConnect.
+Clears all entries from the InsuraConnect.
 
 Format: `clear`
-
-<br>
 
 ### Exiting the program : `exit`
 
@@ -364,23 +379,19 @@ Exits the program.
 
 Format: `exit`
 
-<br>
-
 ### Saving the data
 
-InsuraConnect data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-<br>
+AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
-InsuraConnect data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, InsuraConnect will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause InsuraConnect to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
 ### Archiving data files `[coming in v2.0]`
@@ -392,21 +403,41 @@ _Details coming soon ..._
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous InsuraConnect home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
 
+
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+1. **When scrolling through Meetings and Policy Accordion**, if you scroll too quickly, the cells take some time to render and display the required information.
+1. **After using find command**, use `list` to list all tasks so that all operations are done on the correct index number. The filtered list doesn't revert back when doing next command, so user has to manually enter `list` to avoid any discrepancies.
+
 
 --------------------------------------------------------------------------------------------------------------------
-## Planned enhancements
 
-1. Allow special characters in name such as `s/o` and also in phone numbers such as `+65` to allow for country code for international contacts.
-2. Include more stringent validity checks for duplicate contacts by checking against their phone number and emails and address instead of name.
 
---------------------------------------------------------------------------------------------------------------------
+## Supported flags
+
+| **Name of flag**                                   | **Flag in command** | **Description**                |
+|----------------------------------------------------|---------------------|--------------------------------|
+| Name                                               | n/                  | The name of the person         |
+| Meeting Date                                       | md/                 | The date of the meeting        |
+| Phone Number                                       | p/                  | The phone number of the person |
+| Tag                                                | t/                  | The tag of the person          |
+| Address                                            | a/                  | The address of the person      |
+| Relationship                                       | r/                  | The relationship of the person |
+| Meeting Agenda (not editable through `reschedule`) | ma/                 | The agenda of the meeting      |
+| Meeting Time                                       | mt/                 | The time of the meeting        |
+| Meeting Duration                                   | mt/                 | The duration of the meeting    |
+| Meeting Notes                                      | mn/                 | The notes of the meeting       |
+| Policy Index                                       | pi/                 | The index of the policy        |
+| Policy Name                                        | po/                 | The name of the policy         |
+| Policy Premium                                     | pm/                 | The premium of the policy      |
+| Policy Expiry Date                                 | ed/                 | The expiry date of the policy  |
+
+<div style="page-break-after: always;"></div>
 
 ## Command summary
 
@@ -419,12 +450,12 @@ Action     | Format, Examples
 **Find**   | `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]... ` <br> e.g., `find n/John n/Alex r/client`
 **List**   | `list`
 **Help**   | `help`
+**Change Client Status** | `status INDEX s/DIRECTION`
 **Add Policy** | `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 po/Policy ABC ed/01-01-2025`
 **Edit Policy** | `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 pi/2 po/Policy ABC pm/1000`
 **Delete Policy** | `policy INDEX pi/POLICY_INDEX po/` <br> e.g., `policy 2 pi/2 po/`
 **Schedule Meeting**   | `schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60`
 **Reschedule Meeting**   | `reschedule 1 mi/1 md/2024-07-07 mt/11:00`
 **Cancel Meeting**   | `cancel 1 mi/1`
-**Change Client Status** | `status INDEX s/DIRECTION`
 **Undo**   | `undo`
 **Redo**   | `redo`
