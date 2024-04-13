@@ -74,7 +74,7 @@ public class VersionedAddressBook extends AddressBook {
      * Replaces the current address book without increasing the state pointer
      */
     public void replaceCurrentAddressBook() {
-        addressBookStateList.add(currentStatePointer, new AddressBook(this));
+        addressBookStateList.set(currentStatePointer, new AddressBook(this));
     }
 
     /**
