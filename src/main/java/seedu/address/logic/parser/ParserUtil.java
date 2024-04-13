@@ -41,11 +41,7 @@ public class ParserUtil {
         "dd MM yyyy",
         "ddMMyyyy" // Add more formats as needed
     };
-
-    // Constants defined at the beginning of ParserUtil class
-    public static final long MIN_DURATION_IN_MINUTES = 5; // minimum allowed duration
-    public static final long MAX_DURATION_IN_MINUTES = 480; // maximum allowed duration, e.g., 8 hours
-
+    
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
@@ -262,10 +258,6 @@ public class ParserUtil {
         requireNonNull(durationStr);
         try {
             long minutes = Long.parseLong(durationStr.trim());
-            if (minutes < MIN_DURATION_IN_MINUTES || minutes > MAX_DURATION_IN_MINUTES) {
-                throw new ParseException(String.format("Duration must be between %d and %d minutes.",
-                        MIN_DURATION_IN_MINUTES, MAX_DURATION_IN_MINUTES));
-            }
             return Duration.ofMinutes(minutes);
         } catch (NumberFormatException e) {
             throw new ParseException("Invalid duration format. Use minutes as an integer.");

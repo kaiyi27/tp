@@ -19,7 +19,7 @@ public class Meeting {
 
     public static final String MESSAGE_CONSTRAINTS_DURATION = "Meeting duration should be a "
             +
-            "positive integer representing minutes between 5 and 480 minutes.";
+            "positive integer representing minutes.";
 
     public static final String MESSAGE_CONSTRAINTS_AGENDA = "Meeting agenda should not be blank.";
     public static final String MESSAGE_CONSTRAINTS_NOTES = "Meeting notes is optional and can be blank.";
