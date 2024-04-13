@@ -245,43 +245,46 @@ Examples:
 </box>
 
 #### Adding a policy to a client
+Format: `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
+
+* Assigns a policy to the client at the specified `INDEX`. 
+The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+
+Examples: `policy 1 po/Health Policy ed/01-01-2030 pm/500000` (Add new policy to the first person).
+  
 ![Before adding policy](images/Add Policy Before.png)
 *Before adding a policy*
 ![After adding policy](images/Add Policy After.png)
 *After adding a policy to the first person*
 
-Format: `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
-* Assigns a policy to the client at the specified `INDEX`. 
-The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-Examples: `policy 1 po/Policy ABC ed/01-01-2025 pm/2000` (Add new policy to the first person).
-
-
 #### Editing a policy of a client
+Format: `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
+
+* Edit a policy to the client at the specified `INDEX` with a specified `POLICY INDEX`. 
+Policy index refers to the index number shown in the person displayed policy list. Both index **must be a positive integer** 1, 2, 3, …​
+
+Examples: `policy 1 pi/2 po/Life Policy ed/01-01-2025 pm/2000` (Edit the first person second policy).
+
 ![Before editing policy](images/Edit Policy Before.png)
 *Before editing the policy*
 ![After editing policy](images/Edit Policy After.png)
 *After editing the first policy of the first person*
 
-Format: `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
-* Edit a policy to the client at the specified `INDEX` with a specified `POLICY INDEX`. 
-Policy index refers to the index number shown in the person displayed policy list. Both index **must be a positive integer** 1, 2, 3, …​
-
-Examples: `policy 1 pi/2 po/Policy ABC ed/01-01-2025 pm/2000` (Edit the first person second policy).
-
 
 #### Delete a policy from a client
-![Before deleting policy](images/Delete Policy Before.png)
-*Before deleting the policy*
-![After deleting policy](images/Delete Policy After.png)
-*After deleting the first policy of the first person*
-
 Format: `policy INDEX pi/POLICY_INDEX po/`
+
 * Delete a policy to the client at the specified `INDEX` with a specified `POLICY INDEX`.
 Both index **must be a positive integer** 1, 2, 3, …​
 * Leave the `POLICY_NAME` blank to remove a particular policy from a particular client.
 * Need to note that if the policy leave blank it will delete that policy even if there are other information provided afterwards.
   
 Examples: `policy 1 pi/2 po/` (Delete the first person second policy).
+
+![Before deleting policy](images/Delete Policy Before.png)
+*Before deleting the policy*
+![After deleting policy](images/Delete Policy After.png)
+*After deleting the first policy of the first person*
 
 ### Changing a client's status: `status`
 
