@@ -105,11 +105,14 @@
     },
     {
       "src": "UserGuide.md",
-      "title": "User Guide",
       "headings": {
-        "insuraconnect-user-guide": "InsuraConnect User Guide",
-        "about-insuraconnect": "About InsuraConnect",
-        "getting-started": "Getting Started",
+        "user-guide-insuraconnect": "User Guide: InsuraConnect",
+        "overview": "Overview",
+        "what-it-does": "What It Does",
+        "target-users": "Target Users",
+        "what-can-insuraconnect-do-for-you": "What can InsuraConnect do for you?",
+        "quick-start": "Quick start",
+        "before-you-start": "Before you start",
         "features": "Features",
         "viewing-help-help": "Viewing help : help",
         "adding-a-person-add": "Adding a person: add",
@@ -118,9 +121,9 @@
         "locating-persons-by-name-relationship-tag-policy-find": "Locating persons by name, relationship, tag, policy: find",
         "deleting-a-person-delete": "Deleting a person : delete",
         "policy": "Policy",
+        "changing-a-client-s-status-status": "Changing a client's status: status",
         "meeting": "Meeting",
         "managing-meetings": "Managing Meetings",
-        "changing-a-client-s-status-status": "Changing a client's status: status",
         "undoing-a-command-undo": "Undoing a command: undo",
         "redoing-a-command-redo": "Redoing a command: redo",
         "clearing-all-entries-clear": "Clearing all entries : clear",
@@ -130,7 +133,7 @@
         "archiving-data-files-coming-in-v2-0": "Archiving data files [coming in v2.0]",
         "faq": "FAQ",
         "known-issues": "Known issues",
-        "planned-enhancements": "Planned enhancements",
+        "supported-flags": "Supported flags",
         "command-summary": "Command summary"
       },
       "headingKeywords": {}
