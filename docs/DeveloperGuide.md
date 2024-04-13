@@ -259,7 +259,61 @@ The following activity diagram summarizes what happens when a user executes a ne
   * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
-_{more aspects and alternatives to be added}_
+### Client Status
+
+#### Implementation
+
+The client status feature is facilitated by the `ClientStatus` attribute of each `Person`.
+`ClientStatus` uses the `Status` enum to record the status of the `Person`.
+
+The `Status` enum has 4 values/levels:
+* `NOT_CLIENT` &mdash; A `Person` who is a partner can only have this value which cannot be changed.
+* `START` &mdash; The minimum value for a client. All new clients will have this value by default.
+* `MIDDLE` &mdash; The middle value for a client.
+* `END` &mdash; The maximum value for a client.
+
+`ClientStatus` implements the following relevant methods:
+* `initNotClientStatus()` &mdash; Returns a `ClientStatus` that does not have a level. Only to be used for partners.
+* `initClientStatus()` &mdash; Returns a `ClientStatus` that has the lowest level. Only to be used for clients.
+* `getStatus()` &mdash; Returns the ordinal of the `Status` enum.
+* `increment()` &mdash; Returns a new `ClientStatus` whose level is higher, up to the maximum level.
+* `decrement()` &mdash; Returns a new `ClientStatus` whose level is lower, up to the minimum level.
+* `canIncrement()` &mdash; Checks if the `ClientStatus` can be incremented.
+* `canDecrement()` &mdash; Checks if the `ClientStatus` can be decremented.
+
+The following class diagram shows the `ClientStatus` and `Status` classes in relation with `Person`. Other classes associated with `Person` are omitted for clarity.
+
+<puml src="diagrams/ClientStatusClassDiagram.puml" width="250"/>
+
+Given below is an example usage scenario and how the client status feature behaves at each step.
+
+Step 1: The user executes `add n/David ... r/client` to add a new client. Since the relationship is a `client`, the new
+person will be created with a `ClientStatus` that has value `START`.
+
+Step 2: Assuming the person the user just added is the first person, the user executes `status 1 s/up` to increment the status.
+The value of `Status` that `ClientStatus` holds will now be incremented to `MIDDLE`.
+
+The following activity diagrams summarise what happens when the user attempts to increment and decrement a person's status.
+
+<puml src="diagrams/IncrementClientStatusActivityDiagram.puml"/>
+
+#### Design considerations:
+
+**Aspect: If `ClientStatus` should exist for non-clients:**
+* **Alternative 1 (current choice):** Partners have a `ClientStatus`, but the value is unique and cannot be changed.
+  * Pros: Easy to implement, less change required to other parts of the model.
+  * Cons: Less accurate to real-life model where partners would not have a client status.
+* **Alternative 2:** `ClientStatus` is wrapped in an `Optional` so partners will not have a valid `ClientStatus`.
+  * Pros: More accurate to real-life model.
+  * Cons: More challenging to implement, and may result in more bugs.
+
+**Aspect: How the values of status are stored:**
+* **Alternative 1 (current choice):** `Status` Enum within `ClientStatus`
+  * Pros: Easy to implement and keep track, more extensible for future use.
+  * Cons: Additional layer of abstraction.
+* **Alternative 2:** Use integers/strings to store values.
+  * Pros: Everything contained in one class.
+  * Cons: Less extensible, more prone to errors if inputs are not constrained.
 
 ### \[Proposed\] Data archiving
 
