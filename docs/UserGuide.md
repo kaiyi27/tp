@@ -148,6 +148,10 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/RELATIONSHIP [t/TAG]â€¦â€
 **Tip:** A person can have any number of tags (including 0)
 and the tag names should not have whitespaces in them.
 
+</box>
+
+<box type="warning" seamless>
+
 **Constraints:** 
 * The relationship field can only be `client` or `partner`.
 * Names can only consist of alphanumeric characters
@@ -162,6 +166,7 @@ the parentheses, (+_.-). The local-part may not start or end with any special ch
       - end with a domain label at least 2 characters long
       - have each domain label start and end with alphanumeric characters 
       - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
+
 </box>
 
 Examples:
