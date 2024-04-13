@@ -268,7 +268,7 @@ Examples: `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000` (Edit the first
 ![Before editing policy](images/EditPolicyBefore.png)
 *Before editing the policy*
 ![After editing policy](images/EditPolicyAfter.png)
-*After editing the first policy of the first person*
+*After editing the second policy of the first person*
 
 
 #### Delete a policy from a client
@@ -284,7 +284,7 @@ Examples: `policy 1 pi/2 po/` (Delete the first person second policy).
 ![Before deleting policy](images/DeletePolicyBefore.png)
 *Before deleting the policy*
 ![After deleting policy](images/DeletePolicyAfter.png)
-*After deleting the first policy of the first person*
+*After deleting the second policy of the first person*
 
 ### Changing a client's status: `status`
 
