@@ -1,0 +1,27 @@
+@startuml
+!include style.puml
+show fields
+skinparam ClassFontColor #000000
+skinparam ClassBorderColor #000000
+
+class P as "Person"
+class R as "Relationship" {
+    value: String
+}
+class C as "ClientStatus" {
+    value: Status
+}
+enum S as "<<enumeration>>\nStatus" {
+    NOT_CLIENT
+    START
+    MIDDLE
+    END
+}
+
+P-->R
+P->"1 "C
+C-[dashed]>S
+
+hide P members
+
+@enduml
