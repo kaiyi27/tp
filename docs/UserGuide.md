@@ -252,9 +252,9 @@ The index refers to the index number shown in the displayed person list. The ind
 
 Examples: `policy 1 po/Health Policy ed/01-01-2030 pm/500000` (Add new policy to the first person).
   
-![Before adding policy](images/Add Policy Before.png)
+![Before adding policy](images/AddPolicyBefore.png)
 *Before adding a policy*
-![After adding policy](images/Add Policy After.png)
+![After adding policy](images/AddPolicyAfter.png)
 *After adding a policy to the first person*
 
 #### Editing a policy of a client
@@ -265,9 +265,9 @@ Policy index refers to the index number shown in the person displayed policy lis
 
 Examples: `policy 1 pi/2 po/Life Policy ed/01-01-2025 pm/2000` (Edit the first person second policy).
 
-![Before editing policy](images/Edit Policy Before.png)
+![Before editing policy](images/EditPolicyBefore.png)
 *Before editing the policy*
-![After editing policy](images/Edit Policy After.png)
+![After editing policy](images/EditPolicyAfter.png)
 *After editing the first policy of the first person*
 
 
@@ -281,9 +281,9 @@ Both index **must be a positive integer** 1, 2, 3, …​
   
 Examples: `policy 1 pi/2 po/` (Delete the first person second policy).
 
-![Before deleting policy](images/Delete Policy Before.png)
+![Before deleting policy](images/DeletePolicyBefore.png)
 *Before deleting the policy*
-![After deleting policy](images/Delete Policy After.png)
+![After deleting policy](images/DeletePolicyAfter.png)
 *After deleting the first policy of the first person*
 
 ### Changing a client's status: `status`
