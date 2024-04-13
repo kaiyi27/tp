@@ -209,6 +209,10 @@ public class ParserUtilTest {
     public void parseDate_invalidValue_throwsParseException() {
         assertThrows(ParseException.class, () -> ParserUtil.parseDate("2025-02-41"));
         assertThrows(ParseException.class, () -> ParserUtil.parseDate("not a date"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseDate("2025-02-29"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseDate("2025-02-30"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseDate("2025-02-31"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseDate("20250229"));
     }
 
     @Test
