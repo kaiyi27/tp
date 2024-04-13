@@ -404,7 +404,7 @@ _Details coming soon ..._
 ## Planned enhancements
 
 1. Allow special characters in name such as `s/o` and also in phone numbers such as `+65` to allow for country code for international contacts.
-2. Include more stringent validity checks for duplicate contact by checking against their phone number and emails and address instead of name.
+2. Include more stringent validity checks for duplicate contacts by checking against their phone number and emails and address instead of name.
 
 --------------------------------------------------------------------------------------------------------------------
 
