@@ -205,7 +205,7 @@ Format: `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]...`
 * The keywords (`NAME`, `RELATIONSHIP`, `TAG`, `POLICY`) cannot contain spaces between words e.g: `Hans Bo`, `owe money` are not allowed.
 * Keywords containing white spaces at the beginning or end are allowed. e.g: ` Hans`, `client `.
 * The keywords cannot be empty e.g: `find n/`.
-* You can search by name, relationship, tags or policy.
+* You can search by name, relationship, tags or policy, but you need to include at least one prefix with a keyword.
 * Only full words will be matched e.g. `Han` will not match `Hans`.
 * Persons matching at least one keyword in any attribute will be returned (i.e. `OR` search).
   e.g. find n/Hans n/Bo r/partner will return `Hans Gruber`, `Bo Yang` and all person who have relationship `partner`.
