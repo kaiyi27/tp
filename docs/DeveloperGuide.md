@@ -647,4 +647,6 @@ testers are expected to do more *exploratory* testing.
 ## **Appendix: Planned Enhancements**
 Team size: 4
 1. Separate the three actions of adding, editing, and deleting policies into three different commands. Currently, the `policy` command handles these three actions, which can be quite confusing for users to differentiate. We plan to create three commands: `addpo`, `editpo`, and `delpo`, to handle each action clearly.
-2. The current `find` command can only find the full word based on the prefix. For example, `find n/Ben` will only list "Ben" and not "Benson." We plan to modify it to accept partial words so that users don't have to input the full word to search for something in the contact list.
+2. The current `find` command can only find the full word based on the prefix. For example, `find n/Ben` will only list "Ben" and not "Benson." We plan to modify it to accept partial words so that users don't have to input the full word to search for something in the contact list. 
+3. Allow special characters in name such as `s/o` and also in phone numbers such as `+65` to allow for country code for international contacts.
+4. Include more stringent validity checks for duplicate contacts by checking against their phone number and emails and address instead of name.
