@@ -331,7 +331,7 @@ The following class diagram shows the `Relationship` classes in relation to `Per
 
 <puml src="diagrams/PolicyClassDiagram.puml" width="250"/>
 
-#### Design Considerations:
+#### Design considerations:
 
 **Aspect: Extensibility and Future Compatibility:**
 * **Alternative 1 (current choice):** Restrict the relationship options to only "partner" or "client" using a String field with validation checks.
