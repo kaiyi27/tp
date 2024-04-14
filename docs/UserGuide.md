@@ -132,9 +132,10 @@ A GUI similar to the below should appear in a few seconds. Note how the app cont
 
 Shows a message explaining how to access the help page.
 
-![help message](images/helpMessage.png)
+
 <div style="text-align: center;">
 
+![help message](images/helpMessage.png)
 *Fig 2: Help Message*
 </div>
 
@@ -222,9 +223,10 @@ Examples:
 * `find n/ John` returns `john` and `John Doe`
 * `find r/partner` returns `Alex Yeoh`, `David Li`
 <br>
-![result for 'find alex david'](images/findAlexDavidResult.png)
+
 <div style="text-align: center;">
 
+![result for 'find alex david'](images/findAlexDavidResult.png)
 *Fig 3: Result from finding Alex and David*
 </div>
 ### Deleting a person : `delete`
@@ -435,7 +437,8 @@ Format: `undo`
 
 Examples:
 * `add n/Adam Ibnu p/11111111 e/Adam@gmail.com a/Sembawang road blk 509c #02-25 r/client t/friend`as shown in the figure below adds the adam contact.
-<div style="text-align: center;">
+
+
 ![img.png](images/undo_addAdam.png "Figure of newly added adam contact")
 
 <div style="text-align: center;">
