@@ -315,6 +315,31 @@ The following activity diagrams summarise what happens when the user attempts to
   * Pros: Everything contained in one class.
   * Cons: Less extensible, more prone to errors if inputs are not constrained.
 
+### Relationship
+
+#### Implementation
+
+The relationship feature is facilitated by the `Relationship` attribute of each `Person`. `Relationship` class contain a String field represents the `relationship` between the user and the person and it can only be `partner` or `client`.
+
+`Relationship` implements the following relevant methods:
+* Relationship(String) &mdash; Constructor for relationship which ensures that whether the input is a mix of uppercase and lowercase, it will result in lowercase form. Example: input `ParTNer` will be turn into `partner`.
+* isValidRelationship(String) &mdash; Checks if the given relationship is `client` or `partner`.
+
+The following class diagram shows the `Relationship` classes in relation with `Person`. Other classes associated with `Person` are omitted for clarity. Only `client` relationship can hold policies and have a series of action to it.
+
+<puml src="diagrams/PolicyClassDiagram.puml" width="250"/>
+
+**Aspect: Extensibility and Future Compatibility:**
+* **Alternative 1 (current choice):** Restrict the relationship options to only "partner" or "client" using a String field with validation checks.
+  * Pros: Simplified implementation, easy to understand and maintain.
+  * Cons: Limited flexibility for adding new relationship types in the future, may require changes to the data model if new relationship types are introduced.
+* **Alternative 2:** Implement a more flexible relationship system using a predefined set of relationship types stored in an enum or database table. This allows for easier addition of new relationship types without modifying the codebase.
+  * Pros: Improved extensibility, easier to accommodate future changes or additions to relationship types.
+  * Cons: Increased complexity in implementation, potential overhead in managing a larger set of relationship types.
+* **Alternative 3:** Introduce a relationship hierarchy where relationships can have parent-child relationships. For example, "partner" could be a parent relationship with child relationships such as "spouse" or "domestic partner".
+  * Pros: More granular control over relationship types, supports complex relationship structures.
+  * Cons: Increased complexity in implementation and management, potential for confusion in understanding relationship hierarchies.
+
 ### Policy
 
 #### Implementation
@@ -330,7 +355,7 @@ The policy feature is facilitated by the `Policy` attribute of each `Person`. `P
 * `isValidExpiryDate(LocalDate)` &mdash; Checks if the given expiryDate is a valid expiry date.
 * `isValidPremium(double)` &mdash; Checks if the given premium is a valid premium.
   
-The following class diagram shows the `Policy` and `Relationship` classes in relation with `Person`. Other classes associated with `Person` are omitted for clarity. Only `client` relationship can hold policies and have a series of action to it.
+The following class diagram shows the `Policy` classes in relation with `Person`. Other classes associated with `Person` are omitted for clarity. Only `client` relationship can hold policies and have a series of action to it.
 
 <puml src="diagrams/PolicyClassDiagram.puml" width="250"/>
 
