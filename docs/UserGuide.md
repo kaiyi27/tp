@@ -235,9 +235,9 @@ Examples:
 <box type="warning" seamless>
 
 **Constraints:**
-* Format of expiry date is `dd-mm-yyyy` e.g: `31-12-2025` and it should not be a past date.
-* Value of premium should be larger than 0.
-* The maximum policies per person is 5.
+* Format of the expiry date is `dd-mm-yyyy` e.g.: `31-12-2025` and it should not be a past date.
+* Value of the premium should be larger than 0.
+* The maximum number of policies per person is 5.
 * Only clients can be assigned a policy. Attempts to assign a policy to a partner will be denied.
 </box>
 
@@ -259,7 +259,7 @@ Examples: `policy 1 po/Health Policy ed/01-01-2030 pm/500000` adds a new policy 
 Format: `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
 
 * Edits a policy assigned to the client at the specified `INDEX` with a specified `POLICY INDEX`. 
-Policy index refers to the index number shown in the person's displayed policy list. Both index **must be a positive integer** 1, 2, 3, …​
+Policy index refers to the index number shown in the person's displayed policy list. Both indices **must be positive integer** 1, 2, 3, …​
 
 Examples: `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000` edits the 1st person's 2nd policy.
 
@@ -272,8 +272,7 @@ Examples: `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000` edits the 1st p
 ### Deleting a policy from a client: `policy`
 Format: `policy INDEX pi/POLICY_INDEX po/`
 
-* Deletes a policy assigned to the client at the specified `INDEX` with a specified `POLICY INDEX`.
-Both `INDEX` and `POLICY_INDEX` **must be a positive integer** 1, 2, 3, …​
+* Deletes a policy assigned to the client at the specified `INDEX` with a specified `POLICY INDEX`. Both indices **must be positive integer** 1, 2, 3, …​
 * Leave the `POLICY_NAME` blank to remove a particular policy from a particular client.
 * Note that any information provided after `po/` will be ignored and the policy will still be deleted,
 e.g., `policy 1 pi/2 po/ ed/01-01-2025 pm/2000` will still delete the 1st person's 2nd policy.
