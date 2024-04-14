@@ -71,6 +71,10 @@ To explore more, visit [this section](#features) for more advanced tips.
 A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
 <br>
    ![Ui](images/UILabelled.png)
+<div style="text-align: center;">
+
+*Fig 1: InsuraConnect's GUI*
+</div>
 <br>
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
@@ -129,6 +133,10 @@ A GUI similar to the below should appear in a few seconds. Note how the app cont
 Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
+<div style="text-align: center;">
+
+*Fig 2: Help Message*
+</div>
 
 Format: `help`
 
@@ -215,7 +223,10 @@ Examples:
 * `find r/partner` returns `Alex Yeoh`, `David Li`
 <br>
 ![result for 'find alex david'](images/findAlexDavidResult.png)
+<div style="text-align: center;">
 
+*Fig 3: Result from finding Alex and David*
+</div>
 ### Deleting a person : `delete`
 
 Deletes the specified person from InsuraConnect.
@@ -250,10 +261,18 @@ The index refers to the index number shown in the displayed person list. The ind
 Examples: `policy 1 po/Health Policy ed/01-01-2030 pm/500000` adds a new policy to the 1st person.
   
 ![Before adding policy](images/AddPolicyBefore.png)
-*Before adding a policy*
+<div style="text-align: center;">
+
+*Fig 4: Before adding a policy*
+</div>
 <br>
+
 ![After adding policy](images/AddPolicyAfter.png)
-*After adding a policy to the first person*
+<div style="text-align: center;">
+
+*Fig 5: After adding a policy to the first person*
+</div>
+
 
 ### Editing a policy of a client: `policy`
 Format: `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
@@ -264,9 +283,16 @@ Policy index refers to the index number shown in the person's displayed policy l
 Examples: `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000` edits the 1st person's 2nd policy.
 
 ![Before editing policy](images/EditPolicyBefore.png)
-*Before editing the policy*
+<div style="text-align: center;">
+
+*Fig 6: Before editing the policy*
+</div>
+
 ![After editing policy](images/EditPolicyAfter.png)
-*After editing the 2nd policy of the 1st person*
+<div style="text-align: center;">
+
+*Fig 7: After editing the 2nd policy of the 1st person*
+</div>
 
 
 ### Deleting a policy from a client: `policy`
@@ -280,10 +306,18 @@ e.g., `policy 1 pi/2 po/ ed/01-01-2025 pm/2000` will still delete the 1st person
 Examples: `policy 1 pi/2 po/` deletes the 1st person's 2nd policy.
 
 ![Before deleting policy](images/DeletePolicyBefore.png)
-*Before deleting the policy*
+<div style="text-align: center;">
+
+*Fig 8: Before deleting the policy*
+</div>
+
 <br>
+
 ![After deleting policy](images/DeletePolicyAfter.png)
-*After deleting the 2nd policy of the 1st person*
+<div style="text-align: center;">
+
+*Fig 9: After deleting the 2nd policy of the 1st person*
+</div>
 
 
 ### Meeting
@@ -376,10 +410,18 @@ Examples:
 * `status 1 s/` resets the status of the 1st person if it is a client.
 
 ![Before changing client status](images/ClientStatusBefore.png)
-*Before increasing the 1st client's status*
+<div style="text-align: center;">
+
+*Fig 10: Before increasing the 1st client's status*
+</div>
+
 <br>
+
 ![After changing client status](images/ClientStatusAfter.png)
-*After increasing the 2nd client's status*
+<div style="text-align: center;">
+
+*Fig 11: After increasing the 2nd client's status*
+</div>
 
 <br>
 
@@ -395,10 +437,19 @@ Examples:
 * `add n/Adam Ibnu p/11111111 e/Adam@gmail.com a/Sembawang road blk 509c #02-25 r/client t/friend`as shown in the figure below adds the adam contact.
 <div style="text-align: center;">
 ![img.png](images/undo_addAdam.png "Figure of newly added adam contact")
+
+<div style="text-align: center;">
+
+*Fig 12: Newly added Adam contact*
 </div>
+
 * The previous add command is followed by `undo` which undoes the previous command, removing the newly added person as shown below.
 
 ![img.png](images/undo_undoAdam.png "Figure of undo removing adam")
+<div style="text-align: center;">
+
+*Fig 13: Undo removing the Adam contact*
+</div>
 
 ### Redoing a command: `redo`
 
@@ -413,6 +464,10 @@ Examples:
 * This example performs redo after the success undo in the above section [Undo](#undoing-a-command-undo)
 * Executing redo reapplies the actions that were previously undone which in this example is adding back Adam in the figure below and a successful redo will show a corresponding successful message as well.
   ![img.png](images/redo_redoAddsAdam.png "Figure of redo adding back adam")
+<div style="text-align: center;">
+
+*Fig 14: Redo adding back Adam*
+</div>
 
 ### Clearing all entries : `clear`
 
@@ -441,9 +496,6 @@ If your changes to the data file makes its format invalid, InsuraConnect will di
 Furthermore, certain edits can cause InsuraConnect to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
-### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
