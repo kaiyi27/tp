@@ -371,7 +371,7 @@ The following activity diagrams summarise what happens when the user attempts to
   * Pros: Standardized approach to validation, reduces boilerplate code, supports complex validation rules.
   * Cons: Dependency on external libraries, less control over validation logic compared to custom implementations.
 
-.### \[Proposed\] Data archiving
+### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
 
