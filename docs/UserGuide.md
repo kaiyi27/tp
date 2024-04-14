@@ -467,6 +467,7 @@ _Details coming soon ..._
 
 **Q**: Is my data secure within InsuraConnect?<br>
 **A**: InsuraConnect prioritizes data security and confidentiality. All client data is stored locally on your computer in a JSON file and is not transmitted over the internet. However, it's advisable to take regular backups of your data to prevent loss in case of unforeseen circumstances.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
