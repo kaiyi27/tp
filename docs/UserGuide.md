@@ -50,8 +50,8 @@ Refer to the table of contents on the right to find your answers as well as step
 
 ## What can InsuraConnect do for you?
 
-:question: What really makes InsuraConnect standout?
-This is but the tip of the iceberg of the things you can do working with InsuraConnect.
+:question: What  truly sets InsuraConnect apart?
+This is only the tip of the iceberg of the things you can do working with InsuraConnect.
 
 **Comprehensive Policy Management:** Dive into the essence of each policy with InsuraConnect's in-depth tracking system. Visualize expiry dates, premiums, and detailed coverage information, all laid out for clear understanding and quick access.
 
@@ -59,7 +59,7 @@ This is but the tip of the iceberg of the things you can do working with InsuraC
 
 **Streamlined Meeting Coordination:**  Command your schedule with robust scheduling capabilities. Organize, adjust, and cancel meetings with ease, enhanced by our integrated agenda setting and comprehensive note-taking tools.
 
-**Client Engagement Tracker** Keep your finger on the pulse of client relations. Monitor interactions and gauge policy engagement levels to ensure high client retention and satisfaction rates.
+**Client Engagement Tracker:** Keep your finger on the pulse of client relations. Monitor interactions and gauge policy engagement levels to ensure high client retention and satisfaction rates.
 
 **Proactive Meeting Reminders:** Stay ahead of the game with proactive notifications for impending meetings, ensuring you're always prepared to seize every client engagement opportunity.
 
@@ -353,9 +353,9 @@ Format: `undo`
 
 Examples:
 * `add n/Adam Ibnu p/11111111 e/Adam@gmail.com a/Sembawang road blk 509c #02-25 r/client t/friend`as shown in the figure below adds the adam contact.
-
+<div style="text-align: center;">
 ![img.png](images/undo_addAdam.png "Figure of newly added adam contact")
-
+</div>
 * The previous add command is followed by `undo` which undoes the previous command, removing the newly added person as shown below.
 
 ![img.png](images/undo_undoAdam.png "Figure of undo removing adam")
