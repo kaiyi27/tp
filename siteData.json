@@ -53,6 +53,7 @@
         "undo-redo-feature": "Undo/redo feature",
         "client-status": "Client Status",
         "policy": "Policy",
+        "proposed-data-archiving": "[Proposed] Data archiving",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product scope",
@@ -139,7 +140,6 @@
         "archiving-data-files-coming-in-v2-0": "Archiving data files [coming in v2.0]",
         "faq": "FAQ",
         "known-issues": "Known issues",
-        "planned-enhancements": "Planned enhancements",
         "supported-flags": "Supported flags",
         "command-summary": "Command summary"
       },
