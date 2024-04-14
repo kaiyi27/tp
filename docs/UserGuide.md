@@ -480,14 +480,6 @@ _Details coming soon ..._
 2. **When scrolling through Meetings and Policy Accordion**, if you scroll too quickly, the cells take some time to render and display the required information.
 3. **After using find command**, use `list` to list all tasks so that all operations are done on the correct index number. The filtered list doesn't revert back when doing next command, so user has to manually enter `list` to avoid any discrepancies.
 
-
---------------------------------------------------------------------------------------------------------------------
-
-## Planned enhancements
-
-1. Allow special characters in name such as `s/o` and also in phone numbers such as `+65` to allow for country code for international contacts.
-2. Include more stringent validity checks for duplicate contacts by checking against their phone number and emails and address instead of name.
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## Supported prefixes
