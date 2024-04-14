@@ -301,11 +301,9 @@ The following activity diagrams summarise what happens when the user attempts to
 
 **Aspect: If `ClientStatus` should exist for partners:**
 * **Alternative 1 (current choice):** Partners have a `ClientStatus`, but the value is unique and cannot be changed.
-  
   * Pros: Easy to implement, less change required to other parts of the model.
   * Cons: Less accurate to real-life model where partners would not have a client status.
 * **Alternative 2:** `ClientStatus` is wrapped in an `Optional` so partners will not have a valid `ClientStatus`.
-  
   * Pros: More accurate to real-life model.
   * Cons: More challenging to implement, and may result in more bugs.
 
