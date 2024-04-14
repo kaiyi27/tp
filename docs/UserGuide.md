@@ -214,7 +214,7 @@ Format: `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]...`
 * You can search by name, relationship, tags or policy.
 * Only full words will be matched e.g. `Han` will not match `Hans`
 * Persons matching at least one keyword in any attribute will be returned (i.e. `OR` search).
-  e.g. find n/Hans n/Bo r/partner will return `Hans Gruber`, `Bo Yang` if they are partners.
+  e.g. find n/Hans n/Bo r/partner will return `Hans Gruber`, `Bo Yang` and all person that have relationship `partner`.
 
 Examples:
 * `find n/ John` returns `john` and `John Doe`
