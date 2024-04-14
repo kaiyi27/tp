@@ -587,3 +587,7 @@ testers are expected to do more *exploratory* testing.
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+## **Appendix: Planned Enhancements**
+1. Separate the three actions of adding, editing, and deleting policies into three different commands. Currently, the `policy` command handles these three actions, which can be quite confusing for users to differentiate. We plan to create three commands: `addpo`, `editpo`, and `delpo`, to handle each action clearly.
+2. The current `find` command can only find the full word based on the prefix. For example, `find n/Ben` will only list "Ben" and not "Benson." We plan to modify it to accept partial words so that users don't have to input the full word to search for something in the contact list.
