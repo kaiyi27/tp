@@ -57,6 +57,12 @@ activate Person
 Person --> PolicyCommand :
 deactivate Person
 
+PolicyCommand -> Person : addPolicy(Policy XYZ)
+activate Person
+
+Person --> PolicyCommand :
+deactivate Person
+
 PolicyCommand -> Model : setPerson(1, p)
 activate Model
 
