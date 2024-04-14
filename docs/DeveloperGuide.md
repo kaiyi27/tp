@@ -644,6 +644,56 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
+### Adding a policy
+
+1. Adding a policy to a person while all persons are being shown
+    1. Prerequisites: List all persons using the list command. Multiple persons in the list.
+
+    2. Test case: `policy 1 po/Policy ABC`<br>
+       Expected: Add a policy named `Policy ABC` to the first person. Details of the edited contact shown in the status message. Timestamp in the status bar is updated.
+    
+    3. Test case: `policy 0 po/Policy ABC`<br>
+       Expected: No person add the policy given. Error details shown in the status message. Status bar remains the same.
+
+    4. Other incorrect adding policy commands to try: `policy`, `policy 1 po/`, `policy x po/Policy ABC` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
+
+2. _{ more test cases …​ }_
+
+### Editing a policy
+
+1. Editing a policy to a person while all persons are being shown
+    1. Prerequisites: List all persons using the list command. Multiple persons in the list.
+
+    2. Test case: `policy 1 pi/2 po/Policy ABC`<br>
+       Expected: Edit the policy named `Policy ABC` to the first person. Details of the edited contact shown in the status message. Timestamp in the status bar is updated.
+
+    3. Test case: `policy 1 pi/0 po/Policy ABC`<br>
+       Expected: No person edit the policy given. Error details shown in the status message. Status bar remains the same.
+
+    4. Other incorrect adding policy commands to try: `policy 1 pi/`, `policy pi/1 po/`, `policy x pi/y po/Policy ABC` (where x is larger than the list size, y is larger than the policy list size)<br>
+       Expected: Similar to previous.
+
+2. _{ more test cases …​ }_
+
+### Deleting a policy
+
+1. Deleting a policy to a person while all persons are being shown
+    1. Prerequisites: List all persons using the list command. Multiple persons in the list.
+
+    2. Test case: `policy 1 pi/2 po/`<br>
+       Expected: Delete second policy of the first person. Details of the edited contact shown in the status message. Timestamp in the status bar is updated.
+
+    3. Test case: `policy 1 pi/0 po/`<br>
+       Expected: No person delete policy. Error details shown in the status message. Status bar remains the same.
+
+    4. Other incorrect adding policy commands to try: `policy x pi/y po/` (where x is larger than the list size, y is larger than the policy list size)<br>
+       Expected: Similar to previous.
+
+2. _{ more test cases …​ }_
+
+
+
 ## **Appendix: Planned Enhancements**
 Team size: 4
 1. Separate the three actions of adding, editing, and deleting policies into three different commands. Currently, the `policy` command handles these three actions, which can be quite confusing for users to differentiate. We plan to create three commands: `addpo`, `editpo`, and `delpo`, to handle each action clearly.
