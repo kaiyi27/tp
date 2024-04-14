@@ -317,6 +317,70 @@ The following activity diagrams summarise what happens when the user attempts to
   * Pros: Everything contained in one class.
   * Cons: Less extensible, more prone to errors if inputs are not constrained.
 
+### Relationship
+
+#### Implementation
+
+The relationship feature is facilitated by the `Relationship` attribute of each `Person`. `Relationship` class contain a String field represents the `relationship` between the user and the person and it can only be `partner` or `client`.
+
+`Relationship` implements the following relevant methods:
+* Relationship(String) &mdash; Constructor for relationship which ensures that whether the input is a mix of uppercase and lowercase, it will result in lowercase form. Example: input `ParTNer` will be turn into `partner`.
+* isValidRelationship(String) &mdash; Checks if the given relationship is `client` or `partner`.
+
+The following class diagram shows the `Relationship` classes in relation with `Person`. Other classes associated with `Person` are omitted for clarity. Only `client` relationship can hold policies and have a series of action to it.
+
+<puml src="diagrams/PolicyClassDiagram.puml" width="250"/>
+
+#### Design Considerations:
+
+**Aspect: Extensibility and Future Compatibility:**
+* **Alternative 1 (current choice):** Restrict the relationship options to only "partner" or "client" using a String field with validation checks.
+  * Pros: Simplified implementation, easy to understand and maintain.
+  * Cons: Limited flexibility for adding new relationship types in the future, may require changes to the data model if new relationship types are introduced.
+* **Alternative 2:** Implement a more flexible relationship system using a predefined set of relationship types stored in an enum or database table. This allows for easier addition of new relationship types without modifying the codebase.
+  * Pros: Improved extensibility, easier to accommodate future changes or additions to relationship types.
+  * Cons: Increased complexity in implementation, potential overhead in managing a larger set of relationship types.
+* **Alternative 3:** Introduce a relationship hierarchy where relationships can have parent-child relationships. For example, "partner" could be a parent relationship with child relationships such as "spouse" or "domestic partner".
+  * Pros: More granular control over relationship types, supports complex relationship structures.
+  * Cons: Increased complexity in implementation and management, potential for confusion in understanding relationship hierarchies.
+
+### Find feature:
+
+#### Implementation
+
+The find feature is facilitated by `NameContainsKeywordPredicate`, `PolicyContainsKeywordPredicate`, `RelationshipContainsKeywordPredicate` and `TagContainsKeywordPredicate`. It extends `Predicate` which search through all the contact list with the given keyword provided with respect to the prefix.
+
+All four classes implements the following relevant methods:
+* `NameContainsKeywordPredicate#test(Person)` &mdash; Checks if any of the names associated with a person contain any of the specified keywords.
+* `PolicyContainsKeywordPredicate#test(Person)` &mdash; Checks if any of the policies associated with a person contain any of the specified keywords.
+* `RelationshipContainsKeywordPredicate#test(Person)` &mdash; Checks if any of the relationships associated with a person contain any of the specified keywords.
+* `TagContainsKeywordPredicate#test(Person)` &mdash; Checks if any of the tags associated with a person contain any of the specified keywords.
+
+Given below is an example usage scenario and how the find feature behaves at each step.
+
+Step 1: The users executes `find n/Alice n/Bob` to find particular person contains these name in the contact list. The contact list will now list out all the person with name contain `Alice` or `Bob`. 
+
+Step 2: The user then decides to find his client, therefore he decides to find based on `relationship` by executing the command `find r/client`. Now, the contact list will list out all the client.
+
+Step 3: Instead of finding person based on one attribute, the user decides to find person with multiple attribute. He executes the command `find n/Alice r/client t/friend`. Any of the person in the contact list that fulfil one of these keyword based on the prefix will be listed out. 
+
+The following sequence diagrams shows how the find command go through the Logic component:
+
+<puml src="diagrams/FindSequenceDiagram.puml"/>
+
+#### Design considerations:
+
+**Aspect: Search Precision and Customization:**
+* **Alternative 1 (current choice):** Implement separate predicates for different search criteria (name, policy, relationship, tag), allowing users to customize their search based on specific attributes.
+  * Pros: Provides precise control over search criteria, enables users to target specific attributes for more focused searches.
+  * Cons: Increased complexity with multiple classes, potential for confusion if users are not familiar with the available search options.
+* **Alternative 2:** Use a single, generic predicate for searching all attributes simultaneously, without differentiation between attributes.
+  * Pros: Simplified implementation, easier for users to perform general searches without specifying attribute types.
+  * Cons: Less precise search results, may return irrelevant matches if keywords are found in multiple attributes.
+* **Alternative 3:** Allow users to specify custom search criteria by combining different predicates dynamically. For example, users could specify a combination of name and relationship predicates to find clients with specific names.
+  * Pros: Maximizes flexibility and customization options for users, allows for complex search scenarios.
+  * Cons: Increased complexity in usage, potential for user errors in specifying custom search criteria.
+
 ### Policy
 
 #### Implementation
@@ -332,7 +396,7 @@ The policy feature is facilitated by the `Policy` attribute of each `Person`. `P
 * `isValidExpiryDate(LocalDate)` &mdash; Checks if the given expiryDate is a valid expiry date.
 * `isValidPremium(double)` &mdash; Checks if the given premium is a valid premium.
   
-The following class diagram shows the `Policy` and `Relationship` classes in relation with `Person`. Other classes associated with `Person` are omitted for clarity. Only `client` relationship can hold policies and have a series of action to it.
+The following class diagram shows the `Policy` classes in relation with `Person`. Other classes associated with `Person` are omitted for clarity. Only `client` relationship can hold policies and have a series of action to it.
 
 <puml src="diagrams/PolicyClassDiagram.puml" width="250"/>
 
@@ -725,6 +789,84 @@ While there is still room for improvement, we feel that currently InsuraConnect 
 <br>
 
 ***
+
+### Adding a policy
+
+1. Adding a policy to a person while all persons are being shown
+    1. Prerequisites: List all persons using the list command. Multiple persons in the list.
+
+    2. Test case: `policy 1 po/Policy ABC`<br>
+       Expected: Add a policy named `Policy ABC` to the first person. Details of the edited contact shown in the status message. Timestamp in the status bar is updated.
+    
+    3. Test case: `policy 0 po/Policy ABC`<br>
+       Expected: No person add the policy given. Error details shown in the status message. Status bar remains the same.
+
+    4. Other incorrect adding policy commands to try: `policy`, `policy 1 po/`, `policy x po/Policy ABC` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
+
+2. _{ more test cases …​ }_
+
+### Editing a policy
+
+1. Editing a policy to a person while all persons are being shown
+    1. Prerequisites: List all persons using the list command. Multiple persons in the list.
+
+    2. Test case: `policy 1 pi/2 po/Policy ABC`<br>
+       Expected: Edit the policy named `Policy ABC` to the first person. Details of the edited contact shown in the status message. Timestamp in the status bar is updated.
+
+    3. Test case: `policy 1 pi/0 po/Policy ABC`<br>
+       Expected: No person edit the policy given. Error details shown in the status message. Status bar remains the same.
+
+    4. Other incorrect adding policy commands to try: `policy 1 pi/`, `policy pi/1 po/`, `policy x pi/y po/Policy ABC` (where x is larger than the list size, y is larger than the policy list size)<br>
+       Expected: Similar to previous.
+
+2. _{ more test cases …​ }_
+
+### Deleting a policy
+
+1. Deleting a policy to a person while all persons are being shown
+    1. Prerequisites: List all persons using the list command. Multiple persons in the list.
+
+    2. Test case: `policy 1 pi/2 po/`<br>
+       Expected: Delete second policy of the first person. Details of the edited contact shown in the status message. Timestamp in the status bar is updated.
+
+    3. Test case: `policy 1 pi/0 po/`<br>
+       Expected: No person delete policy. Error details shown in the status message. Status bar remains the same.
+
+    4. Other incorrect adding policy commands to try: `policy x pi/y po/` (where x is larger than the list size, y is larger than the policy list size)<br>
+       Expected: Similar to previous.
+
+2. _{ more test cases …​ }_
+
+### Adding a person
+
+1. Adding a person into the contact list
+
+    1. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 r/client t/friends t/owesMoney`<br>
+       Expected: Add this person contains these information into the contact list. Details of the added contact shown in the status message. Timestamp in the status bar is updated.
+
+    1. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 r/dummy t/friends t/owesMoney`<br>
+       Expected: No person is added. Error details shown in the status message. Status bar remains the same.
+
+    1. Other incorrect add commands to try: `add n/John Doe`, `add n/ ...`, `add n/1234 ...`, `add` <br>
+       Expected: Similar to previous.
+
+1. _{ more test cases …​ }_
+
+### Finding a person
+
+1. Find a person from the contact list
+
+    1. Test case: `find n/Alex`<br>
+       Expected: List all person that contains name `Alex` in the contact list. Successful message of find command shown in the status message. Timestamp in the status bar is updated.
+
+    1. Test case: `find n/`<br>
+       Expected: Contact list remain unchanged. Error details shown in the status message. Status bar remains the same.
+
+    1. Other incorrect add commands to try: `find n/Hans Bo`, `find`, `find 123` <br>
+       Expected: Similar to previous.
+
+1. _{ more test cases …​ }_
 
 ## **Appendix: Planned Enhancements**
 Team size: 4
