@@ -329,9 +329,10 @@ The policy feature is facilitated by the `Policy` attribute of each `Person`. `P
 * `Policy(String, LocalDate, double)` &mdash; Constructor for policy with expiryDate and premium value.
 * `isValidExpiryDate(LocalDate)` &mdash; Checks if the given expiryDate is a valid expiry date.
 * `isValidPremium(double)` &mdash; Checks if the given premium is a valid premium.
+  
+The following class diagram shows the `Policy` and `Relationship` classes in relation with `Person`. Other classes associated with `Person` are omitted for clarity. Only client relationship can hold policies and have a series of action to it.
 
 <puml src="diagrams/PolicyClassDiagram.puml" width="250"/>
-The following class diagram shows the `Policy` and `Relationship` classes in relation with `Person`. Other classes associated with `Person` are omitted for clarity. Only client relationship can hold policies and have a series of action to it.
 
 Given below is an example usage scenario and how the policy feature behaves at each step.
 
@@ -342,6 +343,7 @@ Step 2: Assuming the person the user just added is the first person, the user ex
 **Note:** The action (add, edit or delete) depends on the user input. Add action input don't need to accompany by a policy index, the other two values are optional. Edit action input need to contain policy index and policy value, the other two value are optional. Delete action input need to contain policy index and leave blank for policy value.
 
 The following activity diagrams summarise what happens when the user attempts to add, edit or delete a person's policy
+
 <puml src="diagrams/PolicyActivityDiagram.puml"/>
 
 #### Design considerations:
