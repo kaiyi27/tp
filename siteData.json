@@ -65,6 +65,9 @@
         "launch-and-shutdown": "Launch and shutdown",
         "deleting-a-person": "Deleting a person",
         "saving-data": "Saving data",
+        "adding-a-policy": "Adding a policy",
+        "editing-a-policy": "Editing a policy",
+        "deleting-a-policy": "Deleting a policy",
         "appendix-planned-enhancements": "Appendix: Planned Enhancements"
       },
       "headingKeywords": {}
