@@ -5,10 +5,10 @@ pageNav: 3
   
 ---
 
-# <center>User Guide: InsuraConnect</center>
+# <center>User Guide for InsuraConnect</center>
 
 <div markdown = "block" align="center">
- <img src="images/InsuraConnectLogo.png" alt="InsuraConnect UI">
+ <img src="images/InsuraConnectLogo.png" alt="InsuraConnect UI" width="250">
 </div>
 
 
