@@ -14,8 +14,8 @@ class Po as "Policy" {
     premium: Double
 }
 
-P-->"1"R
-P->"*"Po
+P->"1"R
+P-->"0..5"Po
 
 hide P members
 
