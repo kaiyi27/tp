@@ -150,8 +150,8 @@ and the tag names should not have whitespaces in them.
 **Constraints:** 
 * The relationship field can only be `client` or `partner`.
 * Names can only consist of alphanumeric characters, regarding names that include special characters such as `s/o`,
-  unfortunately it is currently not allowed. However, it is one of our considerations in our future [planned enhancements](#planned-enhancements)  and for now, a current workaround would be directly using "son of" or "so" instead.
-* Currently, we perform checks for duplicate contacts by comparing names, so we are unable to have multiple contacts with the same name. However, we plan to include more stringent validity checks in the future [planned enhancements](#planned-enhancements).
+  unfortunately it is currently not allowed. However, it is one of our considerations in our future planned enhancements and for now, a current workaround would be directly using "son of" or "so" instead.
+* Currently, we perform checks for duplicate contacts by comparing names, so we are unable to have multiple contacts with the same name. However, we plan to include more stringent validity checks in the future planned enhancements.
 * Phone numbers can start with an optional + sign followed by the country code 
 then followed by the compulsory phone number, example :`p/+6590011040` or `p/90011040`
 * Email has to be of the format local-part@domain 
@@ -181,12 +181,12 @@ Edits an existing person in InsuraConnect.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
-* Refer to the above [add](#adding-a-person--add) section for constraints for the values.
+* Refer to the above [add](#adding-a-person-add) section for constraints for the values.
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * Editing the relationship is not allowed.
-* Editing the policy and meeting fields will be through other commands, [policy](#editing-a-policy-of-a-client) and [reschedule](#rescheduling-a-meeting-with-a-person--reschedule) respectively.
+* Editing the policy and meeting fields will be through other commands, [policy](#editing-a-policy-of-a-client-policy) and [reschedule](#rescheduling-a-meeting-with-a-person-reschedule) respectively.
 * When editing tags, the existing tags of the person will be removed i.e. adding of tags is not cumulative.
 * You can remove all the person’s tags by typing `t/` without
     specifying any tags after it.
@@ -410,7 +410,7 @@ Format: `redo`
   
 Examples:
 
-* This example performs redo after the success undo in the above section [Undo](#undoing-a-command--undo)
+* This example performs redo after the success undo in the above section [Undo](#undoing-a-command-undo)
 * Executing redo reapplies the actions that were previously undone which in this example is adding back Adam in the figure below and a successful redo will show a corresponding successful message as well.
   ![img.png](images/redo_redoAddsAdam.png "Figure of redo adding back adam")
 

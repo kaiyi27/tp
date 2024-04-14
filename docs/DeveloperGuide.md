@@ -344,7 +344,7 @@ The following class diagram shows the `Relationship` classes in relation to `Per
   * Pros: More granular control over relationship types, and supports complex relationship structures.
   * Cons: Increased complexity in implementation and management, the potential for confusion in understanding relationship hierarchies.
 
-### Find feature:
+### Find feature
 
 #### Implementation
 
