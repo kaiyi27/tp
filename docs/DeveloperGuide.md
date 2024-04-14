@@ -610,16 +610,16 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-1. Saving window preferences
+2. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+   2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+3. _{ more test cases …​ }_
 
 ### Deleting a person
 
@@ -627,16 +627,47 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   1. Test case: `delete 1`<br>
+   2. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
+   3. Test case: `delete 0`<br>
       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+2. _{ more test cases …​ }_
+
+### Changing a client's status
+
+1. Incrementing a client's status
+
+    1. Prerequisites: List at least one client using the `list` or `find` command. The first person should be a client and the status should be `Yet to start`.
+
+    2. Test case: `status 1 s/up`<br>
+       Expected: Client status of the first person is updated to `In progress`. Details of the person shown in the status message. In the progress bar, the value for `Yet to start` decreased by 1 and the value for `In progress` increase by 1.
+
+    3. Test case: `status 0 s/up`<br>
+       Expected: No person is changed. Error details shown in the status message. Progress bar remains the same.
+
+    4. Test case: `status 1 s/right`<br>
+       Expected: No person is changed. Error details shown in the status message. Progress bar remains the same.
+
+    5. Other incorrect status commands to try: `status`, `status x s/up`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
+
+2. Resetting a client's status
+
+    1. Prerequisites: List at least one client using the `list` or `find` command. The first person should be a client.
+
+    2. Test case: `status 1 s/`<br>
+       Expected: Client status of the first person is reset to `Yet to start`. Details of the person shown in the status message. In the progress bar, the value for `Yet to start` increased by 1 if the person's previous status was not `Yet to start`.
+
+    3. Test case: `status 0 s/`<br>
+       Expected: No person is changed. Error details shown in the status message. Progress bar remains the same.
+
+    4. Other incorrect status commands to try: `status s/`, `status x s/`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
 
 ### Saving data
 
@@ -644,7 +675,7 @@ testers are expected to do more *exploratory* testing.
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
-1. _{ more test cases …​ }_
+2. _{ more test cases …​ }_
 
 ***
 
@@ -652,11 +683,46 @@ testers are expected to do more *exploratory* testing.
 
 ### Difficulty level
 
+We felt that the project was considerably difficult.
+We were initially ambitious and wanted to create a product that had multiple different features to solve the different user stories we had.
+Even after looking through and only focusing on the most important user stories, the features that we had to implement were still very elaborate and required a lot of time and effort.
+At the start, we also did not account for the other requirements such as the User Guide and Developer Guide which also took up time and effort.
+<br>
+
 ### Challenges faced
+
+We faced several challenges along the way during the project.
+
+First was quickly understanding how AB3 was structured and how we could add features to it.
+For most of us, it was our first experience working with such a huge codebase and there were many individual components working together.
+We had to quickly figure out how to implement our features that had parts in the Logic, Model, and Ui segments.
+The tutorial provided was helpful, but some of our features had parts that went beyond the scope of the tutorial that we had to find out how to implement ourselves.
+
+We also had to work out the kinks when working in a team and using the GitHub workflow to organise our changes.
+We were largely unfamiliar with working with a codebase in a team and so followed the GitHub workflow quite closely to avoid any mishaps.
+However, since it was also our first time working together, we made some critical mistakes when trying to merge our code together and had to spend some time trying to resolve these issues.
+There were also times when it was difficult to split the workload in a way that our changes would not overwrite what the rest contributed.
+<br>
 
 ### Effort required
 
+We feel that we put in a lot of effort over the course of this project.
+
+As our product is tailored towards insurance agents, we had to significantly change the Model component from AB3 which were more for generic people.
+We had to define the relationships a person could have, and then build the new fields that each person could have such as Policy and Meeting, where each of them also had their own details to track.
+We also significantly updated the UI to be more useful and intuitive for our target users. Creating the additional panels and drop-down functionalities required more advanced JavaFX than AB3 and we spent time and effort to implement it the best way possible.
+As our features are also quite advanced, we faced many different bugs close to the end of the project ranging from functionality issues to UI inconsistencies which we had to quickly identify and fix.
+Our User Guide and Developer Guide then also added to our workload as we had to explain each feature in depth.
+However, we were able to split the workload well and pulled through.
+<br>
+
 ### Achievements
+
+As a result of our efforts, we are proud of being able to create a product which significantly builds upon AB3.
+Our features are detailed, useful for our target users and work well together to create a complete product. Most of the user stories that we identified at the start are solved, especially the ones we deem as high priority.
+We believe that our UI is very user-friendly and intuitive, and is likely something that is beyond the normal expectations for this course.
+While there is still room for improvement, we feel that currently InsuraConnect is a good representation of our efforts thus far.
+<br>
 
 ***
 
