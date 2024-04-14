@@ -315,7 +315,63 @@ The following activity diagrams summarise what happens when the user attempts to
   * Pros: Everything contained in one class.
   * Cons: Less extensible, more prone to errors if inputs are not constrained.
 
-### \[Proposed\] Data archiving
+### Policy
+
+#### Implementation
+
+The policy feature is facilitated by the `Policy` attribute of each `Person`. `Policy` class keep track of three values which is `value`, `expiryDate` and `premium`. `Policy` consists of two constructors which enable `expiryDate` and `premium` to be optional. The default value of expiryDate and premium is null and 0 respectively. 
+* `value` &mdash; A `String` type that contain the name of the policy.
+* `expiryDate` &mdash; A `LocalDate` type that record the expiryDate of the policy.
+* `premium` &mdash; A `Double` type that hold the premium value of the policy.
+
+`Policy` implements the following relevant methods:
+* `Policy(String)` &mdash; Constructor for policy without expiryDate and premium, both values will be set as default.
+* `Policy(String, LocalDate, double)` &mdash; Constructor for policy with expiryDate and premium value.
+* `isValidExpiryDate(LocalDate)` &mdash; Checks if the given expiryDate is a valid expiry date.
+* `isValidPremium(double)` &mdash; Checks if the given premium is a valid premium.
+  
+The following class diagram shows the `Policy` and `Relationship` classes in relation with `Person`. Other classes associated with `Person` are omitted for clarity. Only client relationship can hold policies and have a series of action to it.
+
+<puml src="diagrams/PolicyClassDiagram.puml" width="250"/>
+
+Given below is an example usage scenario and how the policy feature behaves at each step.
+
+Step 1: The users executes `add n/David ... r/client` to add a new policy. Since the relationship is a `client`, the person is allowed to add policies. The new person will have empty policy in default.
+
+Step 2: Assuming the person the user just added is the first person, the user executes `policy 1 po/Policy ABC` to add the policy. The person now hold one `policy` which named Policy XYZ and don't contain any expiryDate and premium.
+
+**Note:** The action (add, edit or delete) depends on the user input. Add action input don't need to accompany by a policy index, the other two values are optional. Edit action input need to contain policy index and policy value, the other two value are optional. Delete action input need to contain policy index and leave blank for policy value.
+
+The following activity diagrams summarise what happens when the user attempts to add, edit or delete a person's policy
+
+<puml src="diagrams/PolicyActivityDiagram.puml"/>
+
+#### Design considerations:
+
+**Aspect: Persistence of Policy Data:**
+* **Alternative 1 (current choice):** Store policy data directly within the Person class.
+  * Pros: Simplified data structure, easier to access policy information.
+  * Cons: Tight coupling between Person and Policy, potential scalability issues with large datasets.
+
+* **Alternative 2:** Implement a separate database table for policies linked to persons.
+  * Pros: Better separation of concerns, improved scalability.
+  * Cons: Increased complexity in database queries and maintenance, potential performance overhead.
+
+**Aspect: Policy Validation and Enforcement:**
+
+* **Alternative 1 (current choice):** Implement validation checks within the Policy class to ensure that expiry dates are in the future and premium values are non-negative.
+  * Pros: Centralized validation logic, easier to maintain and update.
+  * Cons: Limited flexibility for custom validation rules, potential for increased complexity as validation rules evolve.
+
+* **Alternative 2:** Implement a separate policy validation service that encapsulates validation logic for policies. This service can be injected into the Policy class or used externally to validate policies before they are added or updated.
+  * Pros: Separation of concerns, allows for more flexible validation rules and customization.
+  * Cons: Increased complexity due to the need for additional service integration and potential overhead.
+  
+* **Alternative 3:** Use a validation framework or library (e.g., Java Bean Validation) to annotate policy attributes with validation constraints. These annotations can enforce validation rules automatically based on predefined constraints.
+  * Pros: Standardized approach to validation, reduces boilerplate code, supports complex validation rules.
+  * Cons: Dependency on external libraries, less control over validation logic compared to custom implementations.
+
+.### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
 

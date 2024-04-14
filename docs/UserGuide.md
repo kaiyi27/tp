@@ -380,8 +380,7 @@ Examples: `status 1 s/up` increases the status of the 1st person by one level if
 
 <box type="tip" seamless>
 
-**Tip:**
-Use this whenever you schedule the first meeting with your client or assign them a policy, etc.
+**Tip:** Use this whenever you schedule the first meeting with your client or assign them a policy, etc.
 The dashboard above the list of persons automatically displays the number of clients that are currently at each status for your convenience.
 </box>
 
@@ -474,8 +473,8 @@ _Details coming soon ..._
 
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-1. **When scrolling through Meetings and Policy Accordion**, if you scroll too quickly, the cells take some time to render and display the required information.
-1. **After using find command**, use `list` to list all tasks so that all operations are done on the correct index number. The filtered list doesn't revert back when doing next command, so user has to manually enter `list` to avoid any discrepancies.
+2. **When scrolling through Meetings and Policy Accordion**, if you scroll too quickly, the cells take some time to render and display the required information.
+3. **After using find command**, use `list` to list all tasks so that all operations are done on the correct index number. The filtered list doesn't revert back when doing next command, so user has to manually enter `list` to avoid any discrepancies.
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -487,44 +486,47 @@ _Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Supported flags
+## Supported prefixes
 
-| **Name of flag**                                   | **Flag in command** | **Description**                |
-|----------------------------------------------------|---------------------|--------------------------------|
-| Name                                               | n/                  | The name of the person         |
-| Meeting Date                                       | md/                 | The date of the meeting        |
-| Phone Number                                       | p/                  | The phone number of the person |
-| Tag                                                | t/                  | The tag of the person          |
-| Address                                            | a/                  | The address of the person      |
-| Relationship                                       | r/                  | The relationship of the person |
-| Meeting Agenda (not editable through `reschedule`) | ma/                 | The agenda of the meeting      |
-| Meeting Time                                       | mt/                 | The time of the meeting        |
-| Meeting Duration                                   | mt/                 | The duration of the meeting    |
-| Meeting Notes                                      | mn/                 | The notes of the meeting       |
-| Policy Index                                       | pi/                 | The index of the policy        |
-| Policy Name                                        | po/                 | The name of the policy         |
-| Policy Premium                                     | pm/                 | The premium of the policy      |
-| Policy Expiry Date                                 | ed/                 | The expiry date of the policy  |
+| **Name of prefix**                                 | **Prefix in command** | **Description**                 |
+|----------------------------------------------------|-----------------------|---------------------------------|
+| Name                                               | n/                    | The name of the person          |
+| Phone Number                                       | p/                    | The phone number of the person  |
+| Email Address                                      | e/                    | The email address of the person |
+| Address                                            | a/                    | The address of the person       |
+| Relationship                                       | r/                    | The relationship of the person  |
+| Tag                                                | t/                    | The tag of the person           |
+| Policy Name                                        | po/                   | The name of the policy          |
+| Policy Index                                       | pi/                   | The index of the policy         |
+| Policy Expiry Date                                 | ed/                   | The expiry date of the policy   |
+| Policy Premium                                     | pm/                   | The premium of the policy       |
+| Meeting Date                                       | md/                   | The date of the meeting         |
+| Meeting Time                                       | mt/                   | The time of the meeting         |
+| Meeting Duration                                   | mdur/                 | The duration of the meeting     |
+| Meeting Agenda (not editable through `reschedule`) | ma/                   | The agenda of the meeting       |
+| Meeting Notes                                      | mn/                   | The notes of the meeting        |
+
 
 <div style="page-break-after: always;"></div>
 
 ## Command summary
 
 Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Help**   | `help`
 **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/RELATIONSHIP [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 r/client t/friend`
-**Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
+**List**   | `list`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]... ` <br> e.g., `find n/John n/Alex r/client`
-**List**   | `list`
-**Help**   | `help`
-**Change Client Status** | `status INDEX s/DIRECTION` <br> e.g., `status 1 s/up`
+**Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Add Policy** | `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 po/Policy ABC ed/01-01-2025`
 **Edit Policy** | `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 pi/2 po/Policy ABC pm/1000`
 **Delete Policy** | `policy INDEX pi/POLICY_INDEX po/` <br> e.g., `policy 2 pi/2 po/`
-**Schedule Meeting**   | `schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60`
-**Reschedule Meeting**   | `reschedule 1 mi/1 md/2024-07-07 mt/11:00`
-**Cancel Meeting**   | `cancel 1 mi/1`
+**Schedule Meeting**   | `schedule INDEX md/DATE mt/TIME mdur/DURATION ma/AGENDA [mn/NOTES]` <br> e.g., `schedule 1 md/2024-05-05 mt/09:00 mdur/60 ma/Discuss health policy mn/Bring laptop`
+**Reschedule Meeting**   | `reschedule INDEX mi/MEETING_INDEX md/DATE mt/TIME` <br> e.g., `reschedule 1 mi/1 md/2024-07-07 mt/11:00`
+**Cancel Meeting**   | `cancel INDEX mi/MEETING_INDEX` <br> e.g., `cancel 1 mi/1`
+**Change Client Status** | `status INDEX s/DIRECTION` <br> e.g., `status 1 s/up`
 **Undo**   | `undo`
 **Redo**   | `redo`
+**Clear**  | `clear`
+**Exit**  | `exit`
