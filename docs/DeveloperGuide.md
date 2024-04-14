@@ -610,16 +610,16 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-1. Saving window preferences
+2. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+   2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+3. _{ more test cases …​ }_
 
 ### Deleting a person
 
@@ -627,16 +627,47 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   1. Test case: `delete 1`<br>
+   2. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
+   3. Test case: `delete 0`<br>
       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+2. _{ more test cases …​ }_
+
+### Changing a client's status
+
+1. Incrementing a client's status
+
+    1. Prerequisites: List at least one client using the `list` or `find` command. The first person should be a client and the status should be `Yet to start`.
+
+    2. Test case: `status 1 s/up`<br>
+       Expected: Client status of the first person is updated to `In progress`. Details of the person shown in the status message. In the progress bar, the value for `Yet to start` decreased by 1 and the value for `In progress` increase by 1.
+
+    3. Test case: `status 0 s/up`<br>
+       Expected: No person is changed. Error details shown in the status message. Progress bar remains the same.
+
+    4. Test case: `status 1 s/right`<br>
+       Expected: No person is changed. Error details shown in the status message. Progress bar remains the same.
+
+    5. Other incorrect status commands to try: `status`, `status x s/up`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
+
+2. Resetting a client's status
+
+    1. Prerequisites: List at least one client using the `list` or `find` command. The first person should be a client.
+
+    2. Test case: `status 1 s/`<br>
+       Expected: Client status of the first person is reset to `Yet to start`. Details of the person shown in the status message. In the progress bar, the value for `Yet to start` increased by 1 if the person's previous status was not `Yet to start`.
+
+    3. Test case: `status 0 s/`<br>
+       Expected: No person is changed. Error details shown in the status message. Progress bar remains the same.
+
+    4. Other incorrect status commands to try: `status s/`, `status x s/`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
 
 ### Saving data
 
@@ -644,7 +675,7 @@ testers are expected to do more *exploratory* testing.
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
-1. _{ more test cases …​ }_
+2. _{ more test cases …​ }_
 
 ***
 
