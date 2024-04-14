@@ -756,7 +756,35 @@ testers are expected to do more *exploratory* testing.
 
 2. _{ more test cases …​ }_
 
+### Adding a person
 
+1. Adding a person into the contact list
+
+    1. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 r/client t/friends t/owesMoney`<br>
+       Expected: Add this person contains these information into the contact list. Details of the added contact shown in the status message. Timestamp in the status bar is updated.
+
+    1. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 r/dummy t/friends t/owesMoney`<br>
+       Expected: No person is added. Error details shown in the status message. Status bar remains the same.
+
+    1. Other incorrect add commands to try: `add n/John Doe`, `add n/ ...`, `add n/1234 ...`, `add` <br>
+       Expected: Similar to previous.
+
+1. _{ more test cases …​ }_
+
+### Finding a person
+
+1. Find a person from the contact list
+
+    1. Test case: `find n/Alex`<br>
+       Expected: List all person that contains name `Alex` in the contact list. Successful message of find command shown in the status message. Timestamp in the status bar is updated.
+
+    1. Test case: `find n/`<br>
+       Expected: Contact list remain unchanged. Error details shown in the status message. Status bar remains the same.
+
+    1. Other incorrect add commands to try: `find n/Hans Bo`, `find`, `find 123` <br>
+       Expected: Similar to previous.
+
+1. _{ more test cases …​ }_
 
 ## **Appendix: Planned Enhancements**
 Team size: 4
