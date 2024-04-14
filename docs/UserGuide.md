@@ -136,6 +136,7 @@ Shows a message explaining how to access the help page.
 <div style="text-align: center;">
 
 ![help message](images/helpMessage.png)
+<br>
 *Fig 2: Help Message*
 </div>
 
@@ -227,8 +228,10 @@ Examples:
 <div style="text-align: center;">
 
 ![result for 'find alex david'](images/findAlexDavidResult.png)
+<br>
 *Fig 3: Result from finding Alex and David*
 </div>
+
 ### Deleting a person : `delete`
 
 Deletes the specified person from InsuraConnect.
@@ -323,6 +326,11 @@ Examples: `policy 1 pi/2 po/` deletes the 1st person's 2nd policy.
 
 
 ### Meeting
+
+<box type="warning" seamless>
+
+**Constraints:**
+
 * Meeting date and time must not be in the past, or after 1 year in the future
 * Meeting date and time and duration must not overlap with previous meeting dates and times and duration
 * There should not be more than 5 meetings for any clients
@@ -336,7 +344,7 @@ Examples: `policy 1 pi/2 po/` deletes the 1st person's 2nd policy.
   * This chooses the nearest next occurrence of the day i.e
     current day and time is Monday 05:00, selecting Mon for `DATE` and 04:59 for `TIME` will choose 
     next weeks' monday while choosing 05:01 for `TIME` instead will choose the current monday at 05:01.
-
+</box>
 
 #### Scheduling a meeting with a person: `schedule`
 
@@ -345,8 +353,26 @@ Schedules a meeting with a person with an agenda and duration with optional note
 Format: `schedule INDEX md/DATE mt/TIME mdur/DURATION ma/AGENDA mn/[NOTES]`
 
 * Schedules meeting with a person at the specified INDEX. The index refers to the index number shown in the displayed persons list.
-* Meeting can only be scheduled if it does not exist in the past and does not overlap with any of the existing meetings.
 * Meeting notes are optional and can be used to represent any additional information that might be useful for the meeting.
+* You can schedule multiple meetings as well, further details are included [below](#managing-meetings)
+
+Examples: 
+1. `schedule 1 md/09-09-2024 mt/09:00 mdur/60 ma/discuss health policy mn/urgent`
+2. `schedule 1 md/01-09-2024 mt/13:00 mdur/60 ma/discuss vehicle policy mn/urgent`
+
+![img.png](images/schedule_meeting.png)
+
+<div style="text-align: center;">
+
+*Fig 10: Schedule meeting at 9am 9th Sept 2024*
+</div>
+
+![img.png](images/schedule_2ndmeeting.png)
+
+<div style="text-align: center;">
+
+*Fig 10: Schedule another meeting at 1pm 1st Sept 2024*
+</div>
 
 #### Rescheduling a meeting with a person: `reschedule`
 
@@ -357,6 +383,14 @@ Format: `reschedule INDEX mi/MEETING INDEX md/DATE mt/TIME `
 * Reschedules meeting with a person at the specified INDEX. The index is the same as the above for schedule.
 * Selects a meeting from the list of meeting using the MEETING INDEX
 
+Examples: `reschedule 1 mi/2 md/05-09-2024 mt/17:00` after scheduling the [first](#scheduling-a-meeting-with-a-person--schedule) meeting
+
+![img.png](images/reschedule_1stmeeting.png)
+<div style="text-align: center;">
+
+*Fig 11: Reschedule meeting from 1pm 1st Sept 2024 to 5pm 5th Sept 2024*
+</div>
+
 #### Cancelling a meeting with a person: `cancel`
 
 Cancels a meeting with a person
@@ -364,6 +398,16 @@ Cancels a meeting with a person
 Format: `cancel INDEX mi/MEETING INDEX`
 
 * INDEX and MEETING INDEX is the same as the above for reschedule
+
+Examples: `cancel 1 mi/1` from the list of meetings [above](#rescheduling-a-meeting-with-a-person--reschedule)
+
+![img.png](cancel_1stmeeting.png)
+
+<div style="text-align: center;">
+
+*Fig 12: Cancel meeting at 1pm 1st Sept 2024*
+
+</div>
 
 
 ### Managing Meetings
