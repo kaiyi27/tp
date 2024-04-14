@@ -435,8 +435,9 @@ Format: `undo`
 
 Examples:
 * `add n/Adam Ibnu p/11111111 e/Adam@gmail.com a/Sembawang road blk 509c #02-25 r/client t/friend`as shown in the figure below adds the adam contact.
-
+<div style="text-align: center;">
 ![img.png](images/undo_addAdam.png "Figure of newly added adam contact")
+
 <div style="text-align: center;">
 
 *Fig 12: Newly added Adam contact*
