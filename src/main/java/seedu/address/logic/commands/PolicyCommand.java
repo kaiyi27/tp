@@ -54,7 +54,7 @@ public class PolicyCommand extends Command {
     public static final String MESSAGE_DELETE_POLICY_SUCCESS = "Removed policy from Person: %1$s";
     public static final String MESSAGE_PERSON_NOT_CLIENT_FAILURE =
             "Invalid person. Only clients can be assigned a policy";
-    public static final String MESSAGE_POLICY_RESCHEDULED_SUCCESS = "Policy rescheduled successfully: %1$s";
+    public static final String MESSAGE_POLICY_RESCHEDULED_SUCCESS = "Policy edited successfully: %1$s";
     public static final String MESSAGE_POLICY_INVALID_INDEX = "Invalid index provided for policy list";
 
     private final Index index;
