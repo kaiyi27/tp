@@ -212,7 +212,7 @@ Format: `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]...`
 
 Examples:
 * `find n/ John` returns `john` and `John Doe`
-* `find r/partner` returns `Alex Yeoh`, `David Li`
+* `find r/partner` retrieves all the partners listed in the contact list.
 <br>
 ![result for 'find alex david'](images/findAlexDavidResult.png)
 
