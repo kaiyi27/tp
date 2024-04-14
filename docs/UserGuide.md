@@ -244,7 +244,7 @@ Examples:
 * Only clients can be assigned a policy. Attempts to assign a policy to a partner will be denied.
 </box>
 
-#### Adding a policy to a client
+### Adding a policy to a client: `policy`
 Format: `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
 
 * Assigns a policy to the client at the specified `INDEX`. 
@@ -257,7 +257,7 @@ Examples: `policy 1 po/Health Policy ed/01-01-2030 pm/500000` (Add new policy to
 ![After adding policy](images/AddPolicyAfter.png)
 *After adding a policy to the first person*
 
-#### Editing a policy of a client
+### Editing a policy of a client: `policy`
 Format: `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
 
 * Edit a policy to the client at the specified `INDEX` with a specified `POLICY INDEX`. 
@@ -271,7 +271,7 @@ Examples: `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000` (Edit the first
 *After editing the second policy of the first person*
 
 
-#### Delete a policy from a client
+### Delete a policy from a client: `policy`
 Format: `policy INDEX pi/POLICY_INDEX po/`
 
 * Delete a policy to the client at the specified `INDEX` with a specified `POLICY INDEX`.
