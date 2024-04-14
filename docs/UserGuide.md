@@ -510,20 +510,21 @@ _Details coming soon ..._
 ## Command summary
 
 Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Help**   | `help`
 **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/RELATIONSHIP [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 r/client t/friend`
-**Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
+**List**   | `list`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]... ` <br> e.g., `find n/John n/Alex r/client`
-**List**   | `list`
-**Help**   | `help`
-**Change Client Status** | `status INDEX s/DIRECTION` <br> e.g., `status 1 s/up`
+**Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Add Policy** | `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 po/Policy ABC ed/01-01-2025`
 **Edit Policy** | `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]` <br> e.g., `policy 1 pi/2 po/Policy ABC pm/1000`
 **Delete Policy** | `policy INDEX pi/POLICY_INDEX po/` <br> e.g., `policy 2 pi/2 po/`
 **Schedule Meeting**   | `schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60`
 **Reschedule Meeting**   | `reschedule 1 mi/1 md/2024-07-07 mt/11:00`
 **Cancel Meeting**   | `cancel 1 mi/1`
+**Change Client Status** | `status INDEX s/DIRECTION` <br> e.g., `status 1 s/up`
 **Undo**   | `undo`
 **Redo**   | `redo`
+**Clear**  | `clear`
+**Exit**  | `exit`
