@@ -646,6 +646,8 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
+***
+
 ## **Appendix: Effort**
 
 ### Difficulty level
@@ -655,6 +657,8 @@ testers are expected to do more *exploratory* testing.
 ### Effort required
 
 ### Achievements
+
+***
 
 ## **Appendix: Planned Enhancements**
 Team size: 4
