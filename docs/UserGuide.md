@@ -381,9 +381,9 @@ Reschedules a meeting with a person
 Format: `reschedule INDEX mi/MEETING INDEX md/DATE mt/TIME `
 
 * Reschedules meeting with a person at the specified INDEX. The index is the same as the above for schedule.
-* Selects a meeting from the list of meeting using the MEETING INDEX
+* Selects a meeting from the list of meetings using the MEETING INDEX.
 
-Examples: `reschedule 1 mi/2 md/05-09-2024 mt/17:00` after scheduling the [first](#scheduling-a-meeting-with-a-person--schedule) meeting
+Examples: `reschedule 1 mi/2 md/05-09-2024 mt/17:00` after scheduling the first meeting in Fig 10.
 
 ![img.png](images/reschedule_1stmeeting.png)
 <div style="text-align: center;">
@@ -399,7 +399,7 @@ Format: `cancel INDEX mi/MEETING INDEX`
 
 * INDEX and MEETING INDEX is the same as the above for reschedule
 
-Examples: `cancel 1 mi/1` from the list of meetings [above](#rescheduling-a-meeting-with-a-person--reschedule)
+Examples: `cancel 1 mi/1` from the list of meetings above in Fig 11.
 
 ![img.png](cancel_1stmeeting.png)
 
