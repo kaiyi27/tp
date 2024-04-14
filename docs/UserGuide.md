@@ -54,7 +54,7 @@ This is but the tip of the iceberg of the things you can do working with InsuraC
 
 **Proactive Meeting Reminders:** Stay ahead of the game with proactive notifications for impending meetings, ensuring you're always prepared to seize every client engagement opportunity.
 
-To explore more, visit [this section](#features) for more advanced tips.
+To explore more, visit the [Features](#features) section for more advanced tips.
 
 ---
 <div style="page-break-after: always;"></div>
@@ -124,6 +124,8 @@ A GUI similar to the below should appear in a few seconds. Note how the app cont
 
 ## Features
 
+<br>
+
 ### Viewing help : `help`
 
 Shows a message explaining how to access the help page.
@@ -132,6 +134,7 @@ Shows a message explaining how to access the help page.
 
 Format: `help`
 
+<br>
 
 ### Adding a person: `add`
 
@@ -147,13 +150,11 @@ and the tag names should not have whitespaces in them.
 
 <box type="warning" seamless>
 
-**Constraints:** 
-* The relationship field can only be `client` or `partner`.
-* Names can only consist of alphanumeric characters, regarding names that include special characters such as `s/o`,
-  unfortunately it is currently not allowed. However, it is one of our considerations in our future planned enhancements and for now, a current workaround would be directly using "son of" or "so" instead.
+**Constraints:**
+* Names can only consist of alphanumeric characters. Names that include special characters such as `s/o`,
+  are currently not allowed. However, it is one of our considerations in our future planned enhancements and for now, a current workaround would be directly using "son of" or "so" instead.
 * Currently, we perform checks for duplicate contacts by comparing names, so we are unable to have multiple contacts with the same name. However, we plan to include more stringent validity checks in the future planned enhancements.
-* Phone numbers can start with an optional + sign followed by the country code 
-then followed by the compulsory phone number, example :`p/+6590011040` or `p/90011040`
+* Phone numbers can only consist of numbers. Phone numbers that start with a + sign are currently not allowed. This is a consideration for our future planned enhancements.
 * Email has to be of the format local-part@domain 
 and adhere to the following constraints:
   1. The local-part should only contain alphanumeric characters and these special characters, excluding 
@@ -163,17 +164,30 @@ the parentheses, (+_.-). The local-part may not start or end with any special ch
       - end with a domain label at least 2 characters long
       - have each domain label start and end with alphanumeric characters 
       - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
+* The relationship field can only be `client` or `partner`.
 </box>
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/client` adds a client with the respective details to InsuraConnect.
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Kent Ridge p/1234567 r/partner t/oweMoney` adds a partner with the respective details to InsuraConnect.
 
+The following images show the InsuraConnect UI before and after executing the command `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Kent Ridge p/1234567 r/partner t/oweMoney`.
+
+![Before adding person](images/AddBefore.png)
+*Before adding a person*
+
+![After adding person](images/AddAfter.png)
+*Outcome after adding a person*
+
+<br>
+
 ### Listing all persons : `list`
 
 Shows a list of all persons in InsuraConnect.
 
 Format: `list`
+
+<br>
 
 ### Editing a person : `edit`
 
@@ -188,12 +202,21 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * Editing the relationship is not allowed.
 * Editing the policy and meeting fields will be through other commands, [policy](#editing-a-policy-of-a-client-policy) and [reschedule](#rescheduling-a-meeting-with-a-person-reschedule) respectively.
 * When editing tags, the existing tags of the person will be removed i.e. adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+* You can remove all the person’s tags by typing `t/` without specifying any tags after it.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+
+The following images show the InsuraConnect UI before and after executing the command `edit 2 n/Betsy Crower t/`.
+
+![Before editing person](images/EditBefore.png)
+*Before editing the 2nd person*
+
+![After editing person](images/EditAfter.png)
+*Outcome after editing the 2nd person*
+
+<br>
 
 ### Locating persons by name, relationship, tag, policy: `find`
 
@@ -213,8 +236,13 @@ Format: `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]...`
 Examples:
 * `find n/ John` returns `john` and `John Doe`
 * `find r/partner` returns `Alex Yeoh`, `David Li`
-<br>
+
+The following image shows the InsuraConnect UI before and after executing the command `find n/Alex n/David`.
+
 ![result for 'find alex david'](images/findAlexDavidResult.png)
+*Outcome after executing find*
+
+<br>
 
 ### Deleting a person : `delete`
 
@@ -230,6 +258,7 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in InsuraConnect.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+<br>
 
 ### Policy
 <box type="warning" seamless>
@@ -241,6 +270,8 @@ Examples:
 * Only clients can be assigned a policy. Attempts to assign a policy to a partner will be denied.
 </box>
 
+<br>
+
 ### Adding a policy to a client: `policy`
 Format: `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
 
@@ -248,43 +279,54 @@ Format: `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
 The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 
 Examples: `policy 1 po/Health Policy ed/01-01-2030 pm/500000` adds a new policy to the 1st person.
-  
+
+The following images show the InsuraConnect UI before and after executing the command `policy 1 po/Health Policy ed/01-01-2030 pm/500000`.
+
 ![Before adding policy](images/AddPolicyBefore.png)
 *Before adding a policy*
-<br>
+
 ![After adding policy](images/AddPolicyAfter.png)
-*After adding a policy to the first person*
+*Outcome after adding a policy to the first person*
+
+<br>
 
 ### Editing a policy of a client: `policy`
 Format: `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
 
-* Edits a policy assigned to the client at the specified `INDEX` with a specified `POLICY INDEX`. 
+* Edits a policy assigned to the client at the specified `INDEX` with a specified `POLICY_INDEX`. 
 Policy index refers to the index number shown in the person's displayed policy list. Both indices **must be positive integer** 1, 2, 3, …​
 
 Examples: `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000` edits the 1st person's 2nd policy.
 
+The following images show the InsuraConnect UI before and after executing the command `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000`.
+
 ![Before editing policy](images/EditPolicyBefore.png)
 *Before editing the policy*
-![After editing policy](images/EditPolicyAfter.png)
-*After editing the 2nd policy of the 1st person*
 
+![After editing policy](images/EditPolicyAfter.png)
+*Outcome after editing the 2nd policy of the 1st person*
+
+<br>
 
 ### Deleting a policy from a client: `policy`
 Format: `policy INDEX pi/POLICY_INDEX po/`
 
-* Deletes a policy assigned to the client at the specified `INDEX` with a specified `POLICY INDEX`. Both indices **must be positive integer** 1, 2, 3, …​
+* Deletes a policy assigned to the client at the specified `INDEX` with a specified `POLICY_INDEX`. Both indices **must be positive integer** 1, 2, 3, …​
 * Leave the `POLICY_NAME` blank to remove a particular policy from a particular client.
 * Note that any information provided after `po/` will be ignored and the policy will still be deleted,
 e.g., `policy 1 pi/2 po/ ed/01-01-2025 pm/2000` will still delete the 1st person's 2nd policy.
   
 Examples: `policy 1 pi/2 po/` deletes the 1st person's 2nd policy.
 
+The following images show the InsuraConnect UI before and after executing the command `policy 1 pi/2 po/`.
+
 ![Before deleting policy](images/DeletePolicyBefore.png)
 *Before deleting the policy*
-<br>
-![After deleting policy](images/DeletePolicyAfter.png)
-*After deleting the 2nd policy of the 1st person*
 
+![After deleting policy](images/DeletePolicyAfter.png)
+*Outcome after deleting the 2nd policy of the 1st person*
+
+<br>
 
 ### Meeting
 * Meeting date and time must not be in the past, or after 1 year in the future
@@ -301,6 +343,7 @@ Examples: `policy 1 pi/2 po/` deletes the 1st person's 2nd policy.
     current day and time is Monday 05:00, selecting Mon for `DATE` and 04:59 for `TIME` will choose 
     next weeks' monday while choosing 05:01 for `TIME` instead will choose the current monday at 05:01.
 
+<br>
 
 #### Scheduling a meeting with a person: `schedule`
 
@@ -308,9 +351,11 @@ Schedules a meeting with a person with an agenda and duration with optional note
 
 Format: `schedule INDEX md/DATE mt/TIME mdur/DURATION ma/AGENDA mn/[NOTES]`
 
-* Schedules meeting with a person at the specified INDEX. The index refers to the index number shown in the displayed persons list.
+* Schedules meeting with a person at the specified `INDEX`. The index refers to the index number shown in the displayed persons list.
 * Meeting can only be scheduled if it does not exist in the past and does not overlap with any of the existing meetings.
 * Meeting notes are optional and can be used to represent any additional information that might be useful for the meeting.
+
+<br>
 
 #### Rescheduling a meeting with a person: `reschedule`
 
@@ -318,8 +363,10 @@ Reschedules a meeting with a person
 
 Format: `reschedule INDEX mi/MEETING INDEX md/DATE mt/TIME `
 
-* Reschedules meeting with a person at the specified INDEX. The index is the same as the above for schedule.
-* Selects a meeting from the list of meeting using the MEETING INDEX
+* Reschedules meeting with a person at the specified `INDEX`. The index is the same as the above for schedule.
+* Selects a meeting from the list of meeting using the `MEETING_INDEX`.
+
+<br>
 
 #### Cancelling a meeting with a person: `cancel`
 
@@ -329,6 +376,7 @@ Format: `cancel INDEX mi/MEETING INDEX`
 
 * INDEX and MEETING INDEX is the same as the above for reschedule
 
+<br>
 
 ### Managing Meetings
 
@@ -363,7 +411,6 @@ Format: `status INDEX s/DIRECTION`
 **Tip:** You can use this whenever you schedule the first meeting with your client or assign them a policy to track your progress.
 The dashboard above the persons list automatically displays the number of clients that are currently at each status for your convenience.
 </box>
-
 <box type="warning" seamless>
 
 **Constraints:**
@@ -375,11 +422,13 @@ Examples:
 * `status 1 s/up` increases the status of the 1st person by one level if it is a client.
 * `status 1 s/` resets the status of the 1st person if it is a client.
 
+The following images show the InsuraConnect UI before and after executing the command `status 1 s/up`.
+
 ![Before changing client status](images/ClientStatusBefore.png)
 *Before increasing the 1st client's status*
-<br>
+
 ![After changing client status](images/ClientStatusAfter.png)
-*After increasing the 2nd client's status*
+*Outcome after increasing the 1st client's status*
 
 <br>
 
@@ -400,6 +449,8 @@ Examples:
 
 ![img.png](images/undo_undoAdam.png "Figure of undo removing adam")
 
+<br>
+
 ### Redoing a command: `redo`
 
 Redoes a previous undid command
@@ -414,11 +465,15 @@ Examples:
 * Executing redo reapplies the actions that were previously undone which in this example is adding back Adam in the figure below and a successful redo will show a corresponding successful message as well.
   ![img.png](images/redo_redoAddsAdam.png "Figure of redo adding back adam")
 
+<br>
+
 ### Clearing all entries : `clear`
 
 Clears all entries from InsuraConnect.
 
 Format: `clear`
+
+<br>
 
 ### Exiting the program : `exit`
 
@@ -426,9 +481,13 @@ Exits the program.
 
 Format: `exit`
 
+<br>
+
 ### Saving the data
 
 InsuraConnect data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+<br>
 
 ### Editing the data file
 
@@ -440,6 +499,8 @@ InsuraConnect data are saved automatically as a JSON file `[JAR file location]/d
 If your changes to the data file makes its format invalid, InsuraConnect will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause InsuraConnect to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
+
+<br>
 
 ### Archiving data files `[coming in v2.0]`
 
@@ -497,6 +558,8 @@ _Details coming soon ..._
 
 
 <div style="page-break-after: always;"></div>
+
+***
 
 ## Command summary
 
