@@ -24,6 +24,8 @@ InsuraConnect is a **desktop application tailored for managing client interactio
 
 With InsuraConnect, you can swiftly access client information, manage policies, track meetings, and stay organized in a competitive landscape. Our goal is to transform your workflow into an efficient model of productivity.
 
+This user guide is crafted to provide installation process, clear explanations for each command, step-by-step instructions, insightful examples and troubleshooting recommendations to ensure you harness the full potential of InsuraConnect. In addition, the quick start guide provides an end-to-end setup process to get started.
+
 ## Target Users
 
 InsuraConnect is designed for insurance agents who desire the efficacy of CLI without relinquishing GUI advantages. It's an essential tool for those who manage a **broad client base, track multiple insurance policies, organise meetings**, and value the efficiency of their time and resources.
@@ -244,7 +246,7 @@ Examples:
 * Only clients can be assigned a policy. Attempts to assign a policy to a partner will be denied.
 </box>
 
-#### Adding a policy to a client
+### Adding a policy to a client: `policy`
 Format: `policy INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
 
 * Assigns a policy to the client at the specified `INDEX`. 
@@ -257,7 +259,7 @@ Examples: `policy 1 po/Health Policy ed/01-01-2030 pm/500000` (Add new policy to
 ![After adding policy](images/AddPolicyAfter.png)
 *After adding a policy to the first person*
 
-#### Editing a policy of a client
+### Editing a policy of a client: `policy`
 Format: `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
 
 * Edit a policy to the client at the specified `INDEX` with a specified `POLICY INDEX`. 
@@ -271,7 +273,7 @@ Examples: `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000` (Edit the first
 *After editing the second policy of the first person*
 
 
-#### Delete a policy from a client
+### Delete a policy from a client: `policy`
 Format: `policy INDEX pi/POLICY_INDEX po/`
 
 * Delete a policy to the client at the specified `INDEX` with a specified `POLICY INDEX`.
@@ -454,6 +456,17 @@ _Details coming soon ..._
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
 
+**Q**: Can I access InsuraConnect from multiple devices?<br>
+**A**: Currently, InsuraConnect is designed to be installed and used on a single computer. However, we are exploring options for multi-device access in future updates.
+
+**Q**: Is InsuraConnect compatible with all operating systems?<br>
+**A**: InsuraConnect is optimized for Windows, macOS, and Linux operating systems. Ensure your device meets the minimum system requirements for seamless performance.
+
+**Q**: Can I import existing client data into InsuraConnect?<br>
+**A**: Currently, there is no direct import feature within InsuraConnect. However, you can manually input your client data using the add command or directly edit the JSON data file if you have a large dataset. We are considering adding import functionality in future updates.
+
+**Q**: Is my data secure within InsuraConnect?<br>
+**A**: InsuraConnect prioritizes data security and confidentiality. All client data is stored locally on your computer in a JSON file and is not transmitted over the internet. However, it's advisable to take regular backups of your data to prevent loss in case of unforeseen circumstances.
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues

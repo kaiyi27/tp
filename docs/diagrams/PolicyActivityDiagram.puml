@@ -1,0 +1,22 @@
+@startuml
+!include style.puml
+!pragma useVerticalIf on
+skinparam ClassFontColor #000000
+skinparam ClassBorderColor #000000
+skinparam ClassBackgroundColor #FFFFAA
+
+start
+:Modify a person policy command;
+if () then ([else])
+    :Output person not client error;
+( [person is client]) elseif () then ([else])
+    :Add the policy to the person;
+( [is policy index provided]) elseif () then ([else])
+    :Edit the policy with the given policy index;
+else ( [is policy value blank])
+    :Delete the policy with the given policy index;
+endif
+:Replace old person in list with new person;
+stop
+
+@enduml
