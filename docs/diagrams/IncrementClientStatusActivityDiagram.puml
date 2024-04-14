@@ -6,7 +6,7 @@ skinparam ClassBorderColor #000000
 skinparam ClassBackgroundColor #FFFFAA
 
 start
-:Increment person's status command;
+:Execute increment person's status command;
 if () then ([else])
     :Output invalid person index error;
 ( [index in list]) elseif () then ([else])
@@ -14,7 +14,7 @@ if () then ([else])
 ( [person is client]) elseif () then ([else])
     :Output max status error;
 else ( [status can increment])
-    :Create person with incremented status;
+    :Create new person with incremented status;
 :Replace old person in list with new person;
 endif
 stop
