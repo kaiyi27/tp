@@ -1,0 +1,22 @@
+@startuml
+!include style.puml
+show fields
+skinparam ClassFontColor #000000
+skinparam ClassBorderColor #000000
+
+class P as "Person"
+class R as "Relationship" {
+    value: String
+}
+class Po as "Policy" {
+    value: String
+    expiryDate: LocalDate
+    premium: Double
+}
+
+P-->"1"R
+P->"*"Po
+
+hide P members
+
+@enduml
