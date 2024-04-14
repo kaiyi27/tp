@@ -301,9 +301,11 @@ The following activity diagrams summarise what happens when the user attempts to
 
 **Aspect: If `ClientStatus` should exist for partners:**
 * **Alternative 1 (current choice):** Partners have a `ClientStatus`, but the value is unique and cannot be changed.
+  
   * Pros: Easy to implement, less change required to other parts of the model.
   * Cons: Less accurate to real-life model where partners would not have a client status.
 * **Alternative 2:** `ClientStatus` is wrapped in an `Optional` so partners will not have a valid `ClientStatus`.
+  
   * Pros: More accurate to real-life model.
   * Cons: More challenging to implement, and may result in more bugs.
 
@@ -578,7 +580,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 6. Should be stable and not crash or lose data under normal use.
 7. Should be able to handle increasing amounts of data and users without significant degradation in performance (Scalability).
 8. Should protect sensitive data and prevent unauthorized access, ensuring data integrity and confidentiality (Security).
-9. Should be easy to maintain, with clear documentation and a modular design that allows for easy updates and fixes .
+9. Should be easy to maintain, with clear documentation and a modular design that allows for easy updates and fixes.
 10. Should be accessible to users with disabilities, following guidelines such as the Web Content Accessibility Guidelines (WCAG).
 
 
@@ -643,6 +645,20 @@ testers are expected to do more *exploratory* testing.
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+***
+
+## **Appendix: Effort**
+
+### Difficulty level
+
+### Challenges faced
+
+### Effort required
+
+### Achievements
+
+***
 
 ## **Appendix: Planned Enhancements**
 Team size: 4
