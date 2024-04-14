@@ -16,6 +16,7 @@ if () then ([else])
 else ( [is policy value blank])
     :Delete the policy with the given policy index;
 endif
+:Create new person with the modify policy;
 :Replace old person in list with new person;
 stop
 
