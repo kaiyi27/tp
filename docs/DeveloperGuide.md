@@ -287,13 +287,13 @@ The following class diagram shows the `ClientStatus` and `Status` classes in rel
 
 Given below is an example usage scenario and how the client status feature behaves at each step.
 
-Step 1: The user executes `add n/David ... r/client` to add a new client. The command only shows the relevant prefixes.
-Since the relationship is a `client`, the new person will be created with a `ClientStatus` that has value `START`.
+Step 1: The user executes `add n/David ... r/client` to add a new client. Since the relationship is a `client`, the new
+person will be created with a `ClientStatus` that has value `START`.
 
 Step 2: Assuming the person the user just added is the first person, the user executes `status 1 s/up` to increment the status.
 The value of `Status` that `ClientStatus` holds will now be incremented to `MIDDLE`.
 
-The following activity diagram summarise what happens when the user attempts to increment a person's status. Attempting to decrement a person's status will have a similar sequence.
+The following activity diagrams summarise what happens when the user attempts to increment and decrement a person's status.
 
 <puml src="diagrams/IncrementClientStatusActivityDiagram.puml"/>
 
@@ -331,7 +331,7 @@ The following class diagram shows the `Relationship` classes in relation to `Per
 
 <puml src="diagrams/PolicyClassDiagram.puml" width="250"/>
 
-#### Design considerations:
+#### Design Considerations:
 
 **Aspect: Extensibility and Future Compatibility:**
 * **Alternative 1 (current choice):** Restrict the relationship options to only "partner" or "client" using a String field with validation checks.
@@ -441,7 +441,7 @@ The following activity diagrams summarise what happens when the user attempts to
 
 ### Meeting
 
-#### Schedule meeting implementation
+#### Implementation
 
 The meeting feature is supported by the `Meeting` class, which is associated with the `Person` class. A `Person` can have multiple meetings, managed through a `UniqueMeetingList` that ensures no duplicate meetings are associated with a person.
 
@@ -458,7 +458,7 @@ Key functionalities provided by the meeting feature include scheduling, reschedu
 
 Here is a class diagram that shows the relationship between `Person` and `Meeting`:
 
-<puml src="diagrams/MeetingClassDiagram.puml" />
+<puml src="path/to/MeetingClassDiagram.puml" />
 
 An example usage scenario for scheduling a meeting is as follows:
 
@@ -476,7 +476,7 @@ Step 6: If no conflicts are found, the new meeting is added, and the display is 
 
 The sequence diagram below shows how the `schedule` command works within the `Logic` component:
 
-<puml src="diagrams/ScheduleSequenceDiagram.puml" />
+<puml src="path/to/ScheduleSequenceDiagram.puml" />
 
 The activity diagram below summarizes the process of scheduling a meeting:
 
@@ -500,6 +500,7 @@ The activity diagram below summarizes the process of scheduling a meeting:
     * Pros: Retains meeting history for records and future reference.
     * Cons: Might lead to clutter and require additional features to manage the archive.
 
+
 #### Reschedule meeting implementation
 
 The RescheduleMeetingCommand is facilitated by the `meeting` attribute of each person. 
@@ -522,6 +523,7 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 <puml src="path/to/RescheduleSequenceDiagram.puml"/>
 
+
 #### Design considerations
 
 **Aspect: Handling of editing other components in meeting**
@@ -535,11 +537,6 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
     * Pros: Consistency as edit would allow to edit every feature.
     * Cons: Increased complexity as well as hard to test to ensure that it is error free.
 
-#### Cancel meeting implementation
-
-The sequence diagram below illustrates the interactions within the `Logic` component with execute("cancel 1 mi/1) API call as an example.
-
-<puml src="path/to/CancelSequenceDiagram.puml"/>
 
 #### Date and Time parsing
 
@@ -636,20 +633,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | expert user                              | disable unnecessary features                             | the application is more customized and simpler to use                   |
 
 
-### Use cases
+## Use Cases for InsuraConnect
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `InsuraConnect` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Delete a client/partner**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User requests to list clients/partners.
+2. InsuraConnect shows a list of clients/partners.
+3. User requests to delete a specific client/partner in the list.
+4. InsuraConnect deletes the client/partner.
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
@@ -659,18 +656,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. InsuraConnect shows an error message.
 
       Use case resumes at step 2.
 
-**Use case: List out the contact information**
+**Use case: List out contact information**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
+1. User requests to list clients/partners.
+2. InsuraConnect shows a list of clients/partners.
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
@@ -682,25 +679,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to filter list of persons
-2.  AddressBook shows a list of persons that satisfy the filter
+1. User requests to filter list of clients/partners based on certain criteria.
+2. InsuraConnect shows a list of clients/partners that satisfy the filter criteria.
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 2a. The filtered list is empty.
 
   Use case ends.
 
-**Use case: Add a new person**
+**Use case: Add a new client/partner**
 
 **MSS**
 
-1.  User requests to add a new person.
-2.  AddressBook prompts the user to enter the details of the person.
-3. User enters the details of the person.
-4. AddressBook adds the new person to the list.
+1. User requests to add a new client/partner.
+2. InsuraConnect prompts the user to enter the details of the client/partner.
+3. User enters the details of the client/partner.
+4. InsuraConnect adds the new client/partner to the list.
 
    Use case ends.
 
@@ -708,200 +705,146 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The user enters invalid details.
 
-    * 3a1. AddressBook shows an error message.
-    * 3a2. AddressBook prompts the user to enter the details again.
-    
-      Use case resumes at step 2.
+    * 3a1. InsuraConnect shows an error message.
+    * 3a2. InsuraConnect prompts the user to enter the details again.
 
-**Use case: Update a person's details**
+      Use case resumes at step 3.
+
+**Use case: Update a client/partner's details**
 
 **MSS**
 
-1.  User requests to list persons..
-2.  AddressBook shows a list of persons.
-3. User requests to update the details of a specific person in the list.
-4. AddressBook prompts the user to enter the new details.
+1. User requests to list clients/partners.
+2. InsuraConnect shows a list of clients/partners.
+3. User requests to update the details of a specific client/partner in the list.
+4. InsuraConnect prompts the user to enter the new details.
 5. User enters the new details.
-6. AddressBook updates the person's details.
+6. InsuraConnect updates the client/partner's details.
 
    Use case ends.
 
 **Extensions**
 
 * 2a. The list is empty.
-
-  Use case ends.
-
-* 3a. The given index is invalid..
-
-    * 3a1. AddressBook shows an error message.
-  
-      Use case resumes at step 2.
-
-* 5a. The user enters invalid details.
-
-    * 5a1. AddressBook shows an error message. 
-    * 5a2. AddressBook prompts the user to enter the details again.
-      
-      Use case resumes at step 4.
-  
-**Use case: Clear AddressBook**
-
-**MSS**
-
-1. User requests to clear the AddressBook
-2. AddressBook shows the empty AddressBook
-
-    Use case ends
-
-**Use case: Add a new policy**
-
-**MSS**
-
-1. User requests to list persons.
-2. AddressBook shows a list of persons.
-3. User requests to add policy to a specific person in the list.
-4. AddressBook prompts the user to enter the details of the policy.
-5. User enters the details of the policy.
-6. AddressBook updates the person's policy details.
-
-   Use case ends.
-
-**Extensions**
-
-* 2a. The list is empty.
-
-    Use case ends.
-
-* 3a. The given person index is invalid.
-
-    * 3a1. AddressBook shows an error message.
-
-      Use case resumes at step 2.
-
-* 5a. The user enters invalid details.
-
-    * 5a1. AddressBook shows an error message.
-    * 5a2. AddressBook prompts the user to enter the details again.
-    
-      Use case resumes at step 4.
-
-
-**Use case: Edit a policy**
-
-**MSS**
-
-1. User requests to list persons.
-2. AddressBook shows a list of persons.
-3. User requests to edit a policy of a specific person in the list.
-4. AddressBook prompts the user to enter the details of the policy.
-5. User enters the details of the policy.
-6. AddressBook updates the person's policy details.
-
-   Use case ends.
-
-**Extensions**
-
-* 2a. The contact list or policy list is empty.
-
-  Use case ends.
-
-* 3a. The given person index or policy index is invalid.
-
-    * 3a1. AddressBook shows an error message.
-
-      Use case resumes at step 2.
-
-* 5a. The user enters invalid details.
-
-    * 5a1. AddressBook shows an error message.
-    * 5a2. AddressBook prompts the user to enter the details again.
-      
-      Use case resumes at step 4.
-
-**Use case: Delete a policy**
-
-**MSS**
-
-1. User requests to list persons.
-2. AddressBook shows a list of persons.
-3. User requests to delete a policy of a specific person in the list.
-4. AddressBook prompts the user to enter the details of the policy.
-5. User enters the details of the policy.
-6. AddressBook deletes the specified policy of the person.
-
-   Use case ends.
-
-**Extensions**
-
-* 2a. The contact list or policy list is empty.
-
-  Use case ends.
-
-* 3a. The given person index or policy index is invalid.
-
-    * 3a1. AddressBook shows an error message.
-
-      Use case resumes at step 2.
-
-* 5a. The user enters invalid details.
-
-    * 5a1. AddressBook shows an error message.
-    * 5a2. AddressBook prompts the user to enter the details again.
-      
-      Use case resumes at step 4.
-
-**Use case: Find person in the contact list**
-
-**MSS**
-
-1. User requests to find a particular person in the contact list.
-2. AddressBook prompts the user to enter the keywords to find the person.
-3. User enters the keywords that match the person.
-4. AddressBook list out all the person that match the keywords provided.
-
-   Use case ends.
-
-**Extensions**
-
-* 3a. The user enters invalid details.
-
-    * 3a1. AddressBook shows an error message.
-    * 3a2. AddressBook prompts the user to enter the details again.
-      
-      Use case resumes at step 2.
-
-**Use case: Increment a client's status**
-
-**MSS**
-
-1. User requests to list persons.
-2. AddressBook shows a list of persons.
-3. User requests to change a particular client's status in the contact list.
-4. AddressBook prompts the user to enter direction of status change.
-5. User enters the direction of status change.
-6. AddressBook changes the client's status and updates the progress dashboard.
-
-   Use case ends.
-
-**Extensions**
-
-* 2a. The contact list is empty.
 
   Use case ends.
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. InsuraConnect shows an error message.
 
       Use case resumes at step 2.
 
-* 5a. The user enters an invalid direction.
+* 5a. The user enters invalid details.
 
-    * 5a1. AddressBook shows an error message.
-    * 5a2. AddressBook prompts the user to enter the direction again.
+    * 5a1. InsuraConnect shows an error message.
+    * 5a2. InsuraConnect prompts the user to enter the details again.
 
       Use case resumes at step 4.
+
+**Use case: Clear InsuraConnect**
+
+**MSS**
+
+1. User requests to clear InsuraConnect.
+2. InsuraConnect confirms the action with the user.
+3. Upon confirmation, InsuraConnect clears all data and shows an empty list.
+
+   Use case ends.
+
+**Use case: Schedule a meeting with a client**
+
+**MSS**
+
+1. User requests to schedule a meeting with a client.
+2. InsuraConnect prompts the user to enter the meeting details.
+3. User enters the meeting details including date, time, and agenda.
+4. InsuraConnect schedules the meeting and updates the client's record.
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. The user enters invalid or past dates/times.
+
+    * 3a1. InsuraConnect shows an error message about invalid date/time.
+    * 3a2. InsuraConnect prompts the user to enter the details again.
+
+      Use case resumes at step 3.
+
+* 3b. The scheduled meeting overlaps with an existing meeting.
+
+    * 3b1. InsuraConnect shows an error message about the overlap.
+    * 3b2. InsuraConnect prompts the user to reschedule the meeting.
+
+      Use case resumes at step 3.
+
+**Use case: Manage policies for a client**
+
+**MSS**
+
+1. User chooses to manage policies for a selected client.
+2. InsuraConnect prompts the user to add, update, or delete policies.
+3. User provides details for the policy action they wish to perform.
+4. InsuraConnect executes the action on the policies (add, update, or delete) and updates the client's record.
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. The user enters invalid policy details (e.g., negative premium, past expiry date).
+
+    * 3a1. InsuraConnect shows an error message.
+    * 3a2. InsuraConnect prompts the user to enter the details again.
+
+      Use case resumes at step 3.
+
+* 3b. The user attempts to add more policies than the maximum allowed.
+
+    * 3b1. InsuraConnect shows an error message about the policy limit.
+    * 3b2. InsuraConnect prompts the user to update or remove existing policies.
+
+      Use case resumes at step 3.
+
+**Use case: Update meeting details**
+
+**MSS**
+
+1. User requests to update an existing meeting with a client.
+2. InsuraConnect shows current meeting details and prompts for changes.
+3. User enters new meeting details.
+4. InsuraConnect updates the meeting details in the client's record.
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. User enters invalid new meeting details.
+
+    * 3a1. InsuraConnect shows an error message.
+    * 3a2. InsuraConnect prompts the user to enter the correct details again.
+
+      Use case resumes at step 3.
+
+**Use case: Cancel a scheduled meeting**
+
+**MSS**
+
+1. User requests to cancel a scheduled meeting.
+2. InsuraConnect prompts for confirmation to cancel the meeting.
+3. User confirms the cancellation.
+4. InsuraConnect removes the meeting from the client’s record.
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. User decides not to cancel the meeting after all.
+
+    * 3a1. InsuraConnect does not cancel the meeting.
+
+      Use case ends.
+
 
 
 ### Non-Functional Requirements
