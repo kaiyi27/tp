@@ -204,6 +204,22 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+<br>
+
+<div style="text-align: center;">
+
+![result for 'edit 1 p/91234567 e/johndoe@example.com'](images/EditPersonBefore.png)
+<br>
+*Fig 3: Before editing John Doe's email and phone number*
+</div>
+
+<br>
+<div style="text-align: center;">
+
+![result for 'edit 1 p/91234567 e/johndoe@example.com'](images/EditPersonAfter.png)
+<br>
+*Fig 3: After editing John Doe's email and phone number*
+</div>
 
 ### Locating persons by name, relationship, tag, policy: `find`
 
@@ -416,6 +432,14 @@ Examples: `cancel 1 mi/1` from the list of meetings above in Fig 11.
 
 Meetings are automatically sorted by their scheduled dates and times. When multiple meetings are scheduled for a client, InsuraConnect will organize them in ascending order, showing the earliest upcoming meeting at the top. This feature allows insurance agents to quickly glance at their schedule and prioritize upcoming meetings.
 
+![img.png](images/MeetingForAClient.png)
+
+<div style="text-align: center;">
+
+*Fig 12: Meetings for John Doe displayed from earliest to latest*
+
+</div>
+
 #### Automatic Purging of Expired Meetings
 
 To ensure the schedule remains current and manageable, InsuraConnect automatically purges past meetings. Once a meeting's end time has passed, it will be removed from the system during the next refresh cycle. This helps to maintain an up-to-date schedule for users, focusing only on relevant future engagements.
@@ -424,7 +448,13 @@ To ensure the schedule remains current and manageable, InsuraConnect automatical
 
 Clients and partners are sorted in the user interface according to the time of their earliest scheduled meeting. This sorting mechanism places those individuals with the most imminent meetings at the top of the list, allowing for efficient time management and planning. Should there be no scheduled meetings for a client or partner, they will be positioned in the list based on the default sorting criteria.
 
-<br>
+![img.png](images/sortedClientMeetings.png)
+
+<div style="text-align: center;">
+
+*Fig 12: Client/Partners sorted by earliest meeting scheduled with insurance agent*
+
+</div>
 
 ### Changing a client's status: `status`
 
