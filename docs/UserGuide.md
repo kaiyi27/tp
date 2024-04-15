@@ -13,31 +13,35 @@ pageNav: 3
 
 <br>
 
-## Overview
+## Table of contents
+<!-- * Table of Contents -->
 
-Welcome to InsuraConnect, your streamlined conduit to peak productivity in the insurance sector. Eschewing the complexity of redundant features, InsuraConnect is forged from in-depth research to deliver a swift, efficient, and user-friendly experience for the modern insurance agent.
+<page-nav-print />
 
 <div style="page-break-after: always;"></div>
 
-## What It Does
+## Introduction
+
+Welcome to the InsuraConnect User Guide!
+This guide serves as a **complete manual to very aspect of InsuraConnect**, your streamlined conduit to peak productivity in the insurance sector.
+Eschewing the complexity of redundant features, InsuraConnect is forged from in-depth research to deliver a swift, efficient, and user-friendly experience for the modern insurance agent.
+
+Refer to the [Table of contents](#table-of-contents) to find your answers as well as step-by-step instructions for all the features to be a master of InsuraConnect.
+
+### What it does
 
 InsuraConnect is a **desktop application tailored for managing client interactions and insurance policies**. It is optimized for speed via a **Command Line Interface** (CLI), backed by the visual accessibility of a **Graphical User Interface** (GUI). For agents adept at typing, InsuraConnect enhances task execution, outpacing conventional GUI applications.
 
 With InsuraConnect, you can swiftly access client information, manage policies, track meetings, and stay organized in a competitive landscape. Our goal is to transform your workflow into an efficient model of productivity.
 
-This user guide is crafted to provide installation process, clear explanations for each command, step-by-step instructions, insightful examples and troubleshooting recommendations to ensure you harness the full potential of InsuraConnect. In addition, the quick start guide provides an end-to-end setup process to get started.
+This user guide provides the installation process, clear explanations for each command, step-by-step instructions, insightful examples and troubleshooting recommendations to ensure you harness the full potential of InsuraConnect. In addition, the quick start guide provides an end-to-end setup process to get started.
 
-## Target Users
+### Target users
 
-InsuraConnect is designed for insurance agents who desire the efficacy of CLI without relinquishing GUI advantages. It's an essential tool for those who manage a **broad client base, track multiple insurance policies, organise meetings**, and value the efficiency of their time and resources.
+InsuraConnect is designed for **insurance agents** who desire the efficacy of CLI without relinquishing GUI advantages. It is an essential tool for those who manage a **broad client base, track multiple insurance policies, organise meetings**, and value the efficiency of their time and resources.
 
-Refer to the table of contents to find your answers as well as step-by-step instructions for all the features to be a **master** of InsuraConnect.
-<!-- * Table of Contents -->
 
-<page-nav-print />
-
----
-<div style="page-break-after: always;"></div>
+***
 
 ## What can InsuraConnect do for you?
 
@@ -57,7 +61,6 @@ This is only the tip of the iceberg of the things you can do working with Insura
 To explore more, visit the [Features](#features) section for more advanced tips.
 
 ---
-<div style="page-break-after: always;"></div>
 
 ## Quick start
 
@@ -67,15 +70,16 @@ To explore more, visit the [Features](#features) section for more advanced tips.
 
 3. Copy the file to the folder you want to use as the _home folder_ for InsuraConnect.
 
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar InsuraConnect.jar` command to run the application.<br>
-A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar InsuraConnect.jar` command to run the application.
+
+    A GUI similar to the image below should appear in a few seconds. Note how the app contains some sample data.<br>
 <br>
    ![Ui](images/UILabelled.png)
 <div style="text-align: center;">
 
 *Fig 1: InsuraConnect's GUI*
 </div>
-<br>
+
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -86,43 +90,79 @@ A GUI similar to the below should appear in a few seconds. Note how the app cont
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
-   * `schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60` : Schedules a meeting with the first contact in the current list at 5th may 2024 9am to discuss health policy.
-   * `policy 1 po/Health policy ed/2029-06-06 pm/1000` Adds a policy with the first contact in the current list with name of 
-   Health policy, expiry date on the 6th of June 2029, with a premium of 1000 SGD
+   * `schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60` : Schedules a meeting with the 1st contact in the current list at 5th May 2024 9am to discuss health policy.
+   * `policy 1 po/Health policy ed/2029-06-06 pm/1000` Adds a policy with the 1st contact in the current list with name of 
+   Health policy, expiry date on the 6th of June 2029, with a premium of 1000 SGD.
 
    * `exit` : Exits the app.
 
 6. Refer to the [Features](#features) below for further details of each command.
-7. Refer to the [Command Summary](#command-summary) for a full list of the available commands
+7. Refer to the [Command summary](#command-summary) for a full list of the available commands
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Before you start
+## How to use this guide
 
-<div markdown="block" class="alert alert-primary">
+The InsuraConnect User Guide is structured to help you navigate as easily as possible. You can use the [Table of contents](#table-of-contents)
+to navigate any section you want. Hyperlinks are also included that will take you to relevant sections or features.
+If you already an experienced user, you can use the [Supported prefixes](#supported-prefixes) and [Command summary](#command-summary) sections for a quick overview.
+
+In the [Features](#features) section, each feature will contain:
+* a short **preface**
+* the **command format**
+* **details** on its use 
+* guided **examples**
+
+You can also find **visuals** that highlight how the features of InsuraConnect will look.
+They are located **below the description** of the feature and are labelled for your convenience.
+
+This guide uses the following **coloured icons and segments**. They represent different information to help you better understand how to use InsuraConnect. 
+
+<box type="tip" seamless>
+
+**Tip:**
+This indicates a helpful tip on how to utilise a particular feature of InsuraConnect.
+</box>
+
+<box type="warning" seamless>
+
+**Constraint:**
+This indicates a constraint on the command format or feature of InsuraConnect.
+</box>
+
+<box type="important">
+
+**Caution:**
+This indicates a precaution that you should read carefully and remember when using InsuraConnect.
+</box>
+
+
+Before you dive into the features, here are some notes regarding InsuraConnect's command format.
+
+<box type="info" theme="primary">
 
 **Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-* Prefixes are in the form of a shortened word followed by a / such as `po/` for policy or`md/` for meeting date. 
+* Words in `UPPER_CASE` are the parameters for you to input.
+  * Example: In `add n/NAME`, `NAME` is a parameter which you can use as `add n/John Doe`.
+* Prefixes are in the form of a shortened word followed by a / such as `po/` for policy or`md/` for meeting date.
+  * You can refer to the [supported prefixes](#supported-prefixes) section for a full list of prefixes.
 * Prefixes require a space before being used, such as `n/NAME e/EMAIL` requiring a space between `NAME` and `e/`.
 
-* Items in square brackets are optional.<br>
-  e.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-  e.g. `po/POLICY_NAME [ed/EXPIRY_DATE]` can be used as `po/Policy_ABC ed/01-01-2025` or as `po/Policy_ABC` .
+* Items in square brackets are optional.
+  * Example: You can use `n/NAME [t/TAG]` as `n/John Doe t/friend` or as `n/John Doe`.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+* You can use items with `…`​ after them multiple times including zero times.
+  * Example: You can use `[t/TAG]…​` as ` ` (i.e. 0 times), `t/friend`, or `t/friend t/family`, etc.
 
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+* You can use parameters in any order.
+  * Example: If the command specifies `n/NAME p/PHONE_NUMBER`, you can also input `p/PHONE_NUMBER n/NAME`.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.
+  * Example: If you input the command `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</div>
+</box>
 
 ***
 
@@ -508,23 +548,23 @@ Clients and partners are sorted in the user interface according to the time of t
 
 ### Changing a client's status: `status`
 
-Changes a client's status by one level to reflect the progress with that client. In increasing order, the possible status levels are `Yet to start`,
+Changes a client's status by **one level** to reflect the progress with that client. In increasing order, the possible status levels are `Yet to start`,
 `In progress`, and `Completed`.
 
 Format: `status INDEX s/DIRECTION`
 
 * Changes the status of the client at the specified `INDEX`.
   The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* Input `DIRECTION` as `up` to increase the status, or `down` decrease the status.
-* Leave the direction blank to reset the client's status to `Yet to start`.
+* Input `DIRECTION` as `up` to **increase** the status, or `down` to **decrease** the status.
+* Leave the direction **blank** to reset the client's status to `Yet to start`.
 
 <box type="tip" seamless>
 
 **Tip:** You can use this whenever you schedule the first meeting with your client or assign them a policy to track your progress.
 The dashboard above the persons list automatically displays the number of clients that are currently at each status for your convenience.
 </box>
+<br>
 <box type="warning" seamless>
-
 **Constraints:**
 * You can only change the status of clients. Attempts to change the status of partners are not allowed.
 * `DIRECTION` can only be `up`, `down`, or blank.
@@ -626,7 +666,7 @@ InsuraConnect data are saved in the hard disk automatically after any command th
 
 InsuraConnect data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<box type="warning" seamless>
+<box type="important" seamless>
 
 **Caution:**
 If your changes to the data file makes its format invalid, InsuraConnect will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
