@@ -521,7 +521,7 @@ create a new meeting list with the rescheduled meeting.
 
 The sequence diagram below illustrates the interactions within the `Logic` component with execute("reschedule 1 mi/1 md/2024-05-05 mt/09:00") API call as an example.
 
-<puml src="path/to/RescheduleSequenceDiagram.puml"/>
+<puml src="diagrams/RescheduleSequenceDiagram.puml"/>
 
 
 #### Design considerations
@@ -536,6 +536,12 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 * **Alternative 3:** Allow edit to edit meetings as well.
     * Pros: Consistency as edit would allow to edit every feature.
     * Cons: Increased complexity as well as hard to test to ensure that it is error free.
+
+#### Cancel meeting implementation
+
+The sequence diagram below illustrates the interactions within the `Logic` component with execute("cancel 1 mi/1) API call as an example.
+
+<puml src="diagrams/CancelSequenceDiagram.puml"/>
 
 
 #### Date and Time parsing
@@ -554,7 +560,7 @@ Here is an activity diagram below to illustrate what happens after a meeting dat
 8. If the current time has not passed, then the next occurrence of the input date will be the current day and time, otherwise, it will be next week's day and time.
 9. the LocalDateTime of the meeting is then returned back to the RescheduleCommand.
 
-<puml src="path/to/ParseLocalDateTimeActivityDiagram.puml"/>
+<puml src="diagrams/ParseLocalDateTimeActivityDiagram.puml"/>
 
 ### \[Proposed\] Data archiving
 
