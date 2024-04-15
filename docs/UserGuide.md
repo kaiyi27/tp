@@ -12,6 +12,7 @@ pageNav: 3
 </div>
 
 <br>
+<br>
 
 ## Table of contents
 <!-- * Table of Contents -->
@@ -74,8 +75,8 @@ To explore more, visit the [Features](#features) section for more advanced tips.
 
     A GUI similar to the image below should appear in a few seconds. Note how the app contains some sample data.<br>
 <br>
-   ![Ui](images/UILabelled.png)
 <div style="text-align: center;">
+<img src="images/UILabelled.png" alt="ui labelled" width="900">
 
 *Fig 1: InsuraConnect's GUI*
 </div>
