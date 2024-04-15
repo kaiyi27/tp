@@ -476,7 +476,7 @@ with(this){return _c('p',[_c('strong',[_v("Use case: Clear AddressBook")])])}
 with(this){return _c('p',[_c('strong',[_v("MSS")])])}
 },function anonymous(
 ) {
-with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to clear the AddressBook")])]),_v(" "),_c('li',[_c('p',[_v("AddressBook shows the empty AddressBook")]),_v(" "),_c('p',[_v("use case ends")])])])}
+with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to clear the AddressBook")])]),_v(" "),_c('li',[_c('p',[_v("AddressBook shows the empty AddressBook")]),_v(" "),_c('p',[_v("Use case ends")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Use case: Add a new policy")])])}
@@ -491,7 +491,7 @@ with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to list persons.")
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The list is empty.")]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3a. The given person index is invalid.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("3a1. AddressBook shows an error message.")]),_v(" "),_c('p',[_v("Use case resumes at step 4.")])])])]),_v(" "),_c('li',[_c('p',[_v("5a. The user enters invalid details.")]),_v(" "),_c('ul',[_c('li',[_v("5a1. AddressBook shows an error message.")]),_v(" "),_c('li',[_v("5a2. AddressBook prompts the user to enter the details again.\nUse case resumes at step 4.")])])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The list is empty.")]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3a. The given person index is invalid.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("3a1. AddressBook shows an error message.")]),_v(" "),_c('p',[_v("Use case resumes at step 4.")])])])]),_v(" "),_c('li',[_c('p',[_v("5a. The user enters invalid details.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("5a1. AddressBook shows an error message.")])]),_v(" "),_c('li',[_c('p',[_v("5a2. AddressBook prompts the user to enter the details again.")]),_v(" "),_c('p',[_v("Use case resumes at step 4.")])])])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Use case: Edit a policy")])])}
@@ -506,7 +506,7 @@ with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to list persons.")
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The contact list or policy list is empty.")]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3a. The given person index or policy index is invalid.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("3a1. AddressBook shows an error message.")]),_v(" "),_c('p',[_v("Use case resumes at step 4.")])])])]),_v(" "),_c('li',[_c('p',[_v("5a. The user enters invalid details.")]),_v(" "),_c('ul',[_c('li',[_v("5a1. AddressBook shows an error message.")]),_v(" "),_c('li',[_v("5a2. AddressBook prompts the user to enter the details again.\nUse case resumes at step 4.")])])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The contact list or policy list is empty.")]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3a. The given person index or policy index is invalid.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("3a1. AddressBook shows an error message.")]),_v(" "),_c('p',[_v("Use case resumes at step 4.")])])])]),_v(" "),_c('li',[_c('p',[_v("5a. The user enters invalid details.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("5a1. AddressBook shows an error message.")])]),_v(" "),_c('li',[_c('p',[_v("5a2. AddressBook prompts the user to enter the details again.")]),_v(" "),_c('p',[_v("Use case resumes at step 4.")])])])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Use case: Delete a policy")])])}
@@ -521,7 +521,7 @@ with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to list persons.")
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The contact list or policy list is empty.")]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3a. The given person index or policy index is invalid.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("3a1. AddressBook shows an error message.")]),_v(" "),_c('p',[_v("Use case resumes at step 4.")])])])]),_v(" "),_c('li',[_c('p',[_v("5a. The user enters invalid details.")]),_v(" "),_c('ul',[_c('li',[_v("5a1. AddressBook shows an error message.")]),_v(" "),_c('li',[_v("5a2. AddressBook prompts the user to enter the details again.\nUse case resumes at step 4.")])])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The contact list or policy list is empty.")]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3a. The given person index or policy index is invalid.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("3a1. AddressBook shows an error message.")]),_v(" "),_c('p',[_v("Use case resumes at step 4.")])])])]),_v(" "),_c('li',[_c('p',[_v("5a. The user enters invalid details.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("5a1. AddressBook shows an error message.")])]),_v(" "),_c('li',[_c('p',[_v("5a2. AddressBook prompts the user to enter the details again.")]),_v(" "),_c('p',[_v("Use case resumes at step 4.")])])])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Use case: Find person in the contact list")])])}
@@ -536,7 +536,7 @@ with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to find a particul
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("3a. The user enters invalid details.")]),_v(" "),_c('ul',[_c('li',[_v("5a1. AddressBook shows an error message.")]),_v(" "),_c('li',[_v("5a2. AddressBook prompts the user to enter the details again.\nUse case resumes at step 3.")])])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("3a. The user enters invalid details.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("5a1. AddressBook shows an error message.")])]),_v(" "),_c('li',[_c('p',[_v("5a2. AddressBook prompts the user to enter the details again.")]),_v(" "),_c('p',[_v("Use case resumes at step 3.")])])])])])}
 },function anonymous(
 ) {
 with(this){return _c('h3',{attrs:{"id":"non-functional-requirements"}},[_v("Non-Functional Requirements"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#non-functional-requirements","onclick":"event.stopPropagation()"}})])}
@@ -644,6 +644,6 @@ with(this){return _c('h2',{attrs:{"id":"appendix-planned-enhancements"}},[_c('st
 with(this){return _c('ol',[_c('li',[_v("Separate the three actions of adding, editing, and deleting policies into three different commands. Currently, the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("policy")]),_v(" command handles these three actions, which can be quite confusing for users to differentiate. We plan to create three commands: "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addpo")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("editpo")]),_v(", and "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delpo")]),_v(", to handle each action clearly.")]),_v(" "),_c('li',[_v("The current "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("find")]),_v(" command can only find the full word based on the prefix. For example, "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("find n/Ben")]),_v(" will only list \"Ben\" and not \"Benson.\" We plan to modify it to accept partial words so that users don't have to input the full word to search for something in the contact list.")]),_v(" "),_c('li',[_v("Allow special characters in name such as "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("s/o")]),_v(" and also in phone numbers such as "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("+65")]),_v(" to allow for country code for international contacts.")]),_v(" "),_c('li',[_v("Include more stringent validity checks for duplicate contacts by checking against their phone number and emails and address instead of name.")])])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.4.0")]),_v(", generated on Mon, 15 Apr 2024, 11:16:29 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.4.0")]),_v(", generated on Mon, 15 Apr 2024, 11:30:27 GMT+8]")])])])}
 }];
   
