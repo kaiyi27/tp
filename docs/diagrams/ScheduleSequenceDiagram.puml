@@ -15,10 +15,10 @@ box Model MODEL_COLOR_T1
 participant "m:Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60")
+[-> LogicManager : execute("sch")
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand("schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60")
+LogicManager -> AddressBookParser : parseCommand("sch")
 activate AddressBookParser
 
 create ScheduleCommandParser
@@ -28,7 +28,7 @@ activate ScheduleCommandParser
 ScheduleCommandParser --> AddressBookParser
 deactivate ScheduleCommandParser
 
-AddressBookParser -> ScheduleCommandParser : parse("1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60")
+AddressBookParser -> ScheduleCommandParser : parse("...")
 activate ScheduleCommandParser
 
 create ScheduleCommand
@@ -51,7 +51,7 @@ LogicManager -> ScheduleCommand : execute(m)
 activate ScheduleCommand
 
 create Person
-ScheduleCommand -> Person : createMeeting(md/2024-05-05, mt/09:00, ma/Discuss health policy, mdur/60)
+ScheduleCommand -> Person : createMeeting(...)
 activate Person
 
 Person --> ScheduleCommand :
