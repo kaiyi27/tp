@@ -741,7 +741,7 @@ Furthermore, certain edits can cause InsuraConnect to behave in unexpected ways 
 | Meeting Agenda (not editable through `reschedule`) | ma/                   | The agenda of the meeting       |
 | Meeting Notes                                      | mn/                   | The notes of the meeting        |
 | Meeting Index                                      | mi/                   | The index in the meeting list   |
-| Client status                                      | s/                    | The progress status with client |
+| Client status direction                            | s/                    | The direction of status change  |
 
 
 
