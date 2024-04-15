@@ -13,31 +13,35 @@ pageNav: 3
 
 <br>
 
-## Overview
+## Table of contents
+<!-- * Table of Contents -->
 
-Welcome to InsuraConnect, your streamlined conduit to peak productivity in the insurance sector. Eschewing the complexity of redundant features, InsuraConnect is forged from in-depth research to deliver a swift, efficient, and user-friendly experience for the modern insurance agent.
+<page-nav-print />
 
 <div style="page-break-after: always;"></div>
 
-## What It Does
+## Introduction
+
+Welcome to the InsuraConnect User Guide!
+This guide serves as a complete manual to very aspect of InsuraConnect, your streamlined conduit to peak productivity in the insurance sector.
+Eschewing the complexity of redundant features, InsuraConnect is forged from in-depth research to deliver a swift, efficient, and user-friendly experience for the modern insurance agent.
+
+Refer to the [table of contents](#table-of-contents) to find your answers as well as step-by-step instructions for all the features to be a master of InsuraConnect.
+
+### What it does
 
 InsuraConnect is a **desktop application tailored for managing client interactions and insurance policies**. It is optimized for speed via a **Command Line Interface** (CLI), backed by the visual accessibility of a **Graphical User Interface** (GUI). For agents adept at typing, InsuraConnect enhances task execution, outpacing conventional GUI applications.
 
 With InsuraConnect, you can swiftly access client information, manage policies, track meetings, and stay organized in a competitive landscape. Our goal is to transform your workflow into an efficient model of productivity.
 
-This user guide is crafted to provide installation process, clear explanations for each command, step-by-step instructions, insightful examples and troubleshooting recommendations to ensure you harness the full potential of InsuraConnect. In addition, the quick start guide provides an end-to-end setup process to get started.
+This user guide provides the installation process, clear explanations for each command, step-by-step instructions, insightful examples and troubleshooting recommendations to ensure you harness the full potential of InsuraConnect. In addition, the quick start guide provides an end-to-end setup process to get started.
 
-## Target Users
+### Target users
 
-InsuraConnect is designed for insurance agents who desire the efficacy of CLI without relinquishing GUI advantages. It's an essential tool for those who manage a **broad client base, track multiple insurance policies, organise meetings**, and value the efficiency of their time and resources.
+InsuraConnect is designed for **insurance agents** who desire the efficacy of CLI without relinquishing GUI advantages. It is an essential tool for those who manage a **broad client base, track multiple insurance policies, organise meetings**, and value the efficiency of their time and resources.
 
-Refer to the table of contents to find your answers as well as step-by-step instructions for all the features to be a **master** of InsuraConnect.
-<!-- * Table of Contents -->
 
-<page-nav-print />
-
----
-<div style="page-break-after: always;"></div>
+***
 
 ## What can InsuraConnect do for you?
 
@@ -57,7 +61,6 @@ This is only the tip of the iceberg of the things you can do working with Insura
 To explore more, visit the [Features](#features) section for more advanced tips.
 
 ---
-<div style="page-break-after: always;"></div>
 
 ## Quick start
 
@@ -67,8 +70,8 @@ To explore more, visit the [Features](#features) section for more advanced tips.
 
 3. Copy the file to the folder you want to use as the _home folder_ for InsuraConnect.
 
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar InsuraConnect.jar` command to run the application.<br>
-A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar InsuraConnect.jar` command to run the application.
+A GUI similar to the image below should appear in a few seconds. Note how the app contains some sample data.<br>
 <br>
    ![Ui](images/UILabelled.png)
 <div style="text-align: center;">
@@ -97,32 +100,32 @@ A GUI similar to the below should appear in a few seconds. Note how the app cont
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Before you start
+## How to use this guide
 
-<div markdown="block" class="alert alert-primary">
+<box type="info" theme="primary">
 
 **Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-* Prefixes are in the form of a shortened word followed by a / such as `po/` for policy or`md/` for meeting date. 
+* Words in `UPPER_CASE` are the parameters to be supplied by the user.
+  * e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+* Prefixes are in the form of a shortened word followed by a / such as `po/` for policy or`md/` for meeting date.
+  * You can refer to the [supported prefixes](#supported-prefixes) section for a full list of prefixes.
 * Prefixes require a space before being used, such as `n/NAME e/EMAIL` requiring a space between `NAME` and `e/`.
 
-* Items in square brackets are optional.<br>
-  e.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-  e.g. `po/POLICY_NAME [ed/EXPIRY_DATE]` can be used as `po/Policy_ABC ed/01-01-2025` or as `po/Policy_ABC` .
+* Items in square brackets are optional.
+  * e.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+* Items with `…`​ after them can be used multiple times including zero times.
+  * e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+* Parameters can be in any order.
+  * e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.
+  * e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</div>
+</box>
 
 ***
 
