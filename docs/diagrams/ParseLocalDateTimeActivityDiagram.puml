@@ -1,0 +1,29 @@
+@startuml
+skin rose
+skinparam ActivityFontSize 15
+skinparam ArrowFontSize 12
+start
+:ParseLocalDateTime is called with the string date and time;
+
+
+if () then ([else])
+    :Parse Local Date;
+
+    :Parse Local Time;
+else ([date entered is day of week])
+    :Get the next occurrence of the specified dayOfWeek
+    (or the same day if the current date is already on that day);
+    if() then ([Input day is same as current day and time has passed])
+    :Use next week's day as date;
+    else([else])
+    :Use current day as date;
+    endif
+    :return date and time;
+
+
+endif
+:Combine date and time to form LocalDateTime;
+:Return LocalDateTime;
+
+stop
+@enduml

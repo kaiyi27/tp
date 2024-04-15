@@ -457,7 +457,7 @@ The following images show the InsuraConnect UI before and after executing the co
     next weeks' monday while choosing 05:01 for `TIME` instead will choose the current monday at 05:01.
 </box>
 
-#### Scheduling a meeting with a person: `schedule`
+### Scheduling a meeting with a person: `schedule`
 
 Schedules a meeting with a person with an agenda and duration with optional notes
 
@@ -487,7 +487,7 @@ The following images show the InsuraConnect UI after executing two example comma
 *Fig 17: Schedule another meeting at 1pm 1st Sept 2024*
 </div>
 
-#### Rescheduling a meeting with a person: `reschedule`
+### Rescheduling a meeting with a person: `reschedule`
 
 Reschedules a meeting with a person
 
@@ -506,7 +506,7 @@ The following images show the InsuraConnect UI after executing the example comma
 *Fig 18: Reschedule meeting from 9am 9th Sept 2024 to 5pm 5th Sept 2024*
 </div>
 
-#### Cancelling a meeting with a person: `cancel`
+### Cancelling a meeting with a person: `cancel`
 
 Cancels a meeting with a person
 
@@ -516,7 +516,7 @@ Format: `cancel INDEX mi/MEETING_INDEX`
 
 Examples: `cancel 1 mi/1`
 
-The following images show the InsuraConnect UI after executing the example command above from Fig 18.
+The following image shows the InsuraConnect UI after executing the example command above following the commands above in reschedule that resulted in Fig 18.
 <div style="text-align: center;">
 
 <img src="images/cancel_1stmeeting.png" alt="Cancel first meeting" width="600">
@@ -739,6 +739,9 @@ Furthermore, certain edits can cause InsuraConnect to behave in unexpected ways 
 | Meeting Duration                                   | mdur/                 | The duration of the meeting     |
 | Meeting Agenda (not editable through `reschedule`) | ma/                   | The agenda of the meeting       |
 | Meeting Notes                                      | mn/                   | The notes of the meeting        |
+| Meeting Index                                      | mi/                   | The index in the meeting list   |
+| Client status                                      | s/                    | The progress status with client |
+
 
 
 <div style="page-break-after: always;"></div>

@@ -90,23 +90,16 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
-    /**
-     * Returns true if the model has previous address book states to restore.
-     */
-    boolean canUndoAddressBook();
-
-    /**
-     * Returns true if the model has undone address book states to restore.
-     */
-    boolean canRedoAddressBook();
 
     /**
      * Restores the model's address book to its previous state.
+     * Adapted by AB4
      */
     void undoAddressBook();
 
     /**
      * Restores the model's address book to its previously undone state.
+     * Adapted by AB4
      */
     void redoAddressBook();
 
@@ -114,6 +107,7 @@ public interface Model {
      * Saves the current address book state for undo/redo.
      * Execute this function whenever there's changes to the address book
      * during the execution of the various commands
+     * Adapted by AB4
      */
     void commitAddressBook();
 
