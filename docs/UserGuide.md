@@ -103,7 +103,17 @@ To explore more, visit the [Features](#features) section for more advanced tips.
 
 ## How to use this guide
 
-In this guide, you will find the following **coloured icons and segments** that represent different information to help you better understand how to use InsuraConnect. 
+The InsuraConnect User Guide is structured to help you navigate as easily as possible. You can use the [table of contents](#table-of-contents)
+to navigate any section you want. Hyperlinks are also included that will take you to relevant sections or features.
+If you already an experienced user, you can use the [supported prefixes](#supported-prefixes) and [command summary](#command-summary) sections for a quick overview.
+
+In the [Features](#features) section, each feature you will contain:
+* a short **preface**
+* the **command format**
+* **details** on its use 
+* guided **examples**
+
+This guide also contains the following **coloured icons and segments** that represent different information to help you better understand how to use InsuraConnect. 
 
 <box type="tip" seamless>
 
