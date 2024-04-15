@@ -458,7 +458,7 @@ Key functionalities provided by the meeting feature include scheduling, reschedu
 
 Here is a class diagram that shows the relationship between `Person` and `Meeting`:
 
-<puml src="path/to/MeetingClassDiagram.puml" />
+<puml src="diagrams/MeetingClassDiagram.puml" />
 
 An example usage scenario for scheduling a meeting is as follows:
 
@@ -476,7 +476,7 @@ Step 6: If no conflicts are found, the new meeting is added, and the display is 
 
 The sequence diagram below shows how the `schedule` command works within the `Logic` component:
 
-<puml src="path/to/ScheduleSequenceDiagram.puml" />
+<puml src="diagrams/ScheduleSequenceDiagram.puml" />
 
 The activity diagram below summarizes the process of scheduling a meeting:
 
