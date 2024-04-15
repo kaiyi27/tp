@@ -707,8 +707,7 @@ If your changes to the data file makes its format invalid, InsuraConnect will di
 Furthermore, certain edits can cause InsuraConnect to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
-
---------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## FAQ
 
@@ -749,7 +748,7 @@ Furthermore, certain edits can cause InsuraConnect to behave in unexpected ways 
 * **Command:** A specific instruction or action initiated by a user within InsuraConnect to trigger a particular function, operation, or task, such as scheduling a meeting, processing a policy update, or generating a report.
 * **Fig (Figure):** A reference to a visual representation or illustration within InsuraConnect documentation, often used to depict UI screens, workflow diagrams, or data charts related to insurance processes or functionalities.
 
---------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## Supported prefixes
 
