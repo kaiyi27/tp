@@ -641,7 +641,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. User requests to clear the AddressBook
 2. AddressBook shows the empty AddressBook
 
-    use case ends
+    Use case ends
 
 **Use case: Add a new policy**
 
@@ -672,7 +672,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 5a1. AddressBook shows an error message.
     * 5a2. AddressBook prompts the user to enter the details again.
-    Use case resumes at step 4.
+    
+      Use case resumes at step 4.
 
 
 **Use case: Edit a policy**
@@ -704,6 +705,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 5a1. AddressBook shows an error message.
     * 5a2. AddressBook prompts the user to enter the details again.
+      
       Use case resumes at step 4.
 
 **Use case: Delete a policy**
@@ -735,6 +737,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 5a1. AddressBook shows an error message.
     * 5a2. AddressBook prompts the user to enter the details again.
+      
       Use case resumes at step 4.
 
 **Use case: Find person in the contact list**
@@ -754,6 +757,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 5a1. AddressBook shows an error message.
     * 5a2. AddressBook prompts the user to enter the details again.
+      
       Use case resumes at step 3.
 
 ### Non-Functional Requirements
