@@ -502,10 +502,38 @@ The activity diagram below summarizes the process of scheduling a meeting:
 
 #### Reschedule meeting implementation
 
+The RescheduleMeetingCommand is facilitated by the `meeting` attribute of each person. 
+It also has the parser RescheduleMeetingCommandParser that takes in the user input and parses the index as well as relevant meeting prefixes,
+meeting index, meeting date and meeting time.
+It has the key functionality `Person#rescheduleMeeting()` that uses the meeting parameters provided to 
+RescheduleMeetingCommand from RescheduleMeetingCommandParser. First `Person#rescheduleMeeting()` removes the meeting at the index,
+then calls `Person#isOverlapWithOtherMeetings()` to check for overlaps with its meeting list. If there is an overlap then it will add back the previous meeting and throw an exception.
+
+Given below is example usage scenario and how the reschedule feature behaves at each step.
+1. The user has the existing meeting with the first person in the list at 1pm 1st september 2024.
+2. The user executes `reschedule 1 mi/1 md/2024-06-06 mt/09:00` to reschedule a meeting with the first person in the list to 9am 6th June 2024.
+3. The `Logic Manager` would then call the `AddressBookParser#parseCommand` which would call the `RescheduleMeetingCommandParser` which would parse the inputs
+4. This in turn returns the `RescheduleMeetingCommand` which would then be executed.
+4. Executing the `RescheduleMeetingCommand` would then create a meeting with the person then it will call `Person#rescheduleMeeting()` as listed above which will then
+create a new meeting list with the rescheduled meeting.
+5. Lastly, it causes the model to be updated with the new meeting list for the person and also returns the command result which would then be shown.
+
 The sequence diagram below illustrates the interactions within the `Logic` component with execute("reschedule 1 mi/1 md/2024-05-05 mt/09:00") API call as an example.
 
 <puml src="path/to/RescheduleSequenceDiagram.puml"/>
 
+#### Design considerations
+
+**Aspect: Handling of editing other components in meeting**
+* **Alternative 1 (current choice):** Reschedule meetings strictly only work with date and time, not including the other factors.
+    * Pros: Intuitive in terms of rescheduling command name.
+    * Cons: Users that want to modify other parts of meeting need to delete the current meeting and add another meeting with the modified details.
+* **Alternative 2:** Allow reschedule to edit all components of meeting.
+    * Pros: More flexibility in rescheduling, easily modify all parts of meeting.
+    * Cons: Might lead to more complex defensive coding to ensure that nothing will go wrong.
+* **Alternative 3:** Allow edit to edit meetings as well.
+    * Pros: Consistency as edit would allow to edit every feature.
+    * Cons: Increased complexity as well as hard to test to ensure that it is error free.
 
 #### Cancel meeting implementation
 
@@ -524,9 +552,9 @@ Here is an activity diagram below to illustrate what happens after a meeting dat
 3. If it is not a day of week, it then calls parseDate with the string date which returns the LocalDate.
 4. It will then call the parseTime with the string time which returns the LocalTime.
 5. Else, if the input date is a day of week, it first gets the day of week from the multiple formats available.
-6. Then, using the current date, returns the next occurrence of the input date unless the input date and current date is the same
+6. Get the next occurrence of the specified dayOfWeek (or the same day if the current date is already on that day)
 7. Checks if input date and current date is the same, if so, checks if input time has passed current time to select the next occurrence of the input day and time.
-8. If the current time has not passed, then the next occurence of the input date will be the current day and time, otherwise, it will be next weeks's day and time.
+8. If the current time has not passed, then the next occurrence of the input date will be the current day and time, otherwise, it will be next week's day and time.
 9. the LocalDateTime of the meeting is then returned back to the RescheduleCommand.
 
 <puml src="path/to/ParseLocalDateTimeActivityDiagram.puml"/>
