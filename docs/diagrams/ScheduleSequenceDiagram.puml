@@ -1,0 +1,79 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":ScheduleCommandParser" as ScheduleCommandParser LOGIC_COLOR
+participant "sc:ScheduleCommand" as ScheduleCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+participant "p:Person" as Person LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60")
+activate AddressBookParser
+
+create ScheduleCommandParser
+AddressBookParser -> ScheduleCommandParser
+activate ScheduleCommandParser
+
+ScheduleCommandParser --> AddressBookParser
+deactivate ScheduleCommandParser
+
+AddressBookParser -> ScheduleCommandParser : parse("1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60")
+activate ScheduleCommandParser
+
+create ScheduleCommand
+ScheduleCommandParser -> ScheduleCommand
+activate ScheduleCommand
+
+ScheduleCommand --> ScheduleCommandParser :
+deactivate ScheduleCommand
+
+ScheduleCommandParser --> AddressBookParser : sc
+deactivate ScheduleCommandParser
+'Secret arrow to position the destroy marker below the activation bar.
+ScheduleCommandParser -[hidden]-> AddressBookParser
+destroy ScheduleCommandParser
+
+AddressBookParser --> LogicManager : sc
+deactivate AddressBookParser
+
+LogicManager -> ScheduleCommand : execute(m)
+activate ScheduleCommand
+
+create Person
+ScheduleCommand -> Person : createMeeting(md/2024-05-05, mt/09:00, ma/Discuss health policy, mdur/60)
+activate Person
+
+Person --> ScheduleCommand :
+deactivate Person
+
+ScheduleCommand -> Model : setPerson(1, p)
+activate Model
+
+Model --> ScheduleCommand
+deactivate Model
+
+create CommandResult
+ScheduleCommand -> CommandResult
+activate CommandResult
+
+destroy Person
+CommandResult --> ScheduleCommand
+deactivate CommandResult
+
+ScheduleCommand --> LogicManager : r
+deactivate ScheduleCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

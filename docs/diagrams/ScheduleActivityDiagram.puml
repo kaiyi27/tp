@@ -1,0 +1,27 @@
+@startuml
+!include style.puml
+!pragma useVerticalIf on
+skinparam ClassFontColor #000000
+skinparam ClassBorderColor #000000
+skinparam ClassBackgroundColor #FFFFAA
+
+start
+:Parse the schedule command;
+if () then ([valid date and time?])
+    if () then ([meeting count < 5?])
+        if () then ([overlapping with existing meetings?])
+            :Output overlapping meetings error;
+        else ([no overlap])
+            :Schedule the meeting;
+        endif
+    else ([5 or more meetings])
+        :Output maximum meetings error;
+    endif
+else ([invalid date/time])
+    :Output invalid date/time error;
+endif
+:Update the person with the new meeting details;
+:Replace old person in list with updated person;
+stop
+
+@enduml
