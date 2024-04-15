@@ -460,7 +460,7 @@ Format: `cancel INDEX mi/MEETING INDEX`
 
 Examples: `cancel 1 mi/1` from the list of meetings above in Fig 11.
 
-![img.png](cancel_1stmeeting.png)
+![img.png](images/cancel_1stmeeting.png)
 
 <div style="text-align: center;">
 
@@ -677,6 +677,9 @@ Furthermore, certain edits can cause InsuraConnect to behave in unexpected ways 
 | Meeting Duration                                   | mdur/                 | The duration of the meeting     |
 | Meeting Agenda (not editable through `reschedule`) | ma/                   | The agenda of the meeting       |
 | Meeting Notes                                      | mn/                   | The notes of the meeting        |
+| Meeting Index                                      | mi/                   | The index in the meeting list   |
+| Client status                                      | s/                    | The progress status with client |
+
 
 
 <div style="page-break-after: always;"></div>
