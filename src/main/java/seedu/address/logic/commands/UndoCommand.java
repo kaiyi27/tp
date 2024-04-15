@@ -9,6 +9,7 @@ import seedu.address.model.VersionedAddressBook;
 
 /**
  * Reverts the {@code model}'s address book to its previous state.
+ * Adapted from AB4
  */
 public class UndoCommand extends Command {
 
