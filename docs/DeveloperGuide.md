@@ -655,7 +655,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. AddressBook shows an error message.
     * 3a2. AddressBook prompts the user to enter the details again.
     
-  Use case resumes at step 3.
+      Use case resumes at step 2.
 
 **Use case: Update a person's details**
 
@@ -684,10 +684,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 5a. The user enters invalid details.
 
-    * 5a1. AddressBook shows an error message.
+    * 5a1. AddressBook shows an error message. 
     * 5a2. AddressBook prompts the user to enter the details again.
       
-  Use case resumes at step 4.
+      Use case resumes at step 4.
   
 **Use case: Clear AddressBook**
 
@@ -721,7 +721,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 3a1. AddressBook shows an error message.
 
-      Use case resumes at step 4.
+      Use case resumes at step 2.
 
 * 5a. The user enters invalid details.
 
@@ -754,7 +754,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 3a1. AddressBook shows an error message.
 
-      Use case resumes at step 4.
+      Use case resumes at step 2.
 
 * 5a. The user enters invalid details.
 
@@ -786,7 +786,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 3a1. AddressBook shows an error message.
 
-      Use case resumes at step 4.
+      Use case resumes at step 2.
 
 * 5a. The user enters invalid details.
 
@@ -810,10 +810,43 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The user enters invalid details.
 
-    * 5a1. AddressBook shows an error message.
-    * 5a2. AddressBook prompts the user to enter the details again.
+    * 3a1. AddressBook shows an error message.
+    * 3a2. AddressBook prompts the user to enter the details again.
       
-      Use case resumes at step 3.
+      Use case resumes at step 2.
+
+**Use case: Increment a client's status**
+
+**MSS**
+
+1. User requests to list persons.
+2. AddressBook shows a list of persons.
+3. User requests to change a particular client's status in the contact list.
+4. AddressBook prompts the user to enter direction of status change.
+5. User enters the direction of status change.
+6. AddressBook changes the client's status and updates the progress dashboard.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The contact list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. AddressBook shows an error message.
+
+      Use case resumes at step 2.
+
+* 5a. The user enters an invalid direction.
+
+    * 5a1. AddressBook shows an error message.
+    * 5a2. AddressBook prompts the user to enter the direction again.
+
+      Use case resumes at step 4.
+
 
 ### Non-Functional Requirements
 
