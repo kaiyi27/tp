@@ -537,6 +537,12 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
     * Pros: Consistency as edit would allow to edit every feature.
     * Cons: Increased complexity as well as hard to test to ensure that it is error free.
 
+#### Cancel meeting implementation
+
+The sequence diagram below illustrates the interactions within the `Logic` component with execute("cancel 1 mi/1) API call as an example.
+
+<puml src="diagrams/CancelSequenceDiagram.puml"/>
+
 
 #### Date and Time parsing
 
