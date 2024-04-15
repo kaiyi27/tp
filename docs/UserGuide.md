@@ -81,8 +81,6 @@ To explore more, visit the [Features](#features) section for more advanced tips.
 *Fig 1: InsuraConnect's GUI*
 </div>
 
-<div style="page-break-after: always;"></div>
-
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
