@@ -632,7 +632,118 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     use case ends
 
+**Use case: Add a new policy**
 
+**MSS**
+
+1. User requests to list persons.
+2. AddressBook shows a list of persons.
+3. User requests to add policy to a specific person in the list.
+4. AddressBook prompts the user to enter the details of the policy.
+5. User enters the details of the policy.
+6. AddressBook updates the person's policy details.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+    Use case ends.
+
+* 3a. The given person index is invalid.
+
+    * 3a1. AddressBook shows an error message.
+
+      Use case resumes at step 4.
+
+* 5a. The user enters invalid details.
+
+    * 5a1. AddressBook shows an error message.
+    * 5a2. AddressBook prompts the user to enter the details again.
+    Use case resumes at step 4.
+
+
+**Use case: Edit a policy**
+
+**MSS**
+
+1. User requests to list persons.
+2. AddressBook shows a list of persons.
+3. User requests to edit a policy of a specific person in the list.
+4. AddressBook prompts the user to enter the details of the policy.
+5. User enters the details of the policy.
+6. AddressBook updates the person's policy details.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The contact list or policy list is empty.
+
+  Use case ends.
+
+* 3a. The given person index or policy index is invalid.
+
+    * 3a1. AddressBook shows an error message.
+
+      Use case resumes at step 4.
+
+* 5a. The user enters invalid details.
+
+    * 5a1. AddressBook shows an error message.
+    * 5a2. AddressBook prompts the user to enter the details again.
+      Use case resumes at step 4.
+
+**Use case: Delete a policy**
+
+**MSS**
+
+1. User requests to list persons.
+2. AddressBook shows a list of persons.
+3. User requests to delete a policy of a specific person in the list.
+4. AddressBook prompts the user to enter the details of the policy.
+5. User enters the details of the policy.
+6. AddressBook deletes the specified policy of the person.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The contact list or policy list is empty.
+
+  Use case ends.
+
+* 3a. The given person index or policy index is invalid.
+
+    * 3a1. AddressBook shows an error message.
+
+      Use case resumes at step 4.
+
+* 5a. The user enters invalid details.
+
+    * 5a1. AddressBook shows an error message.
+    * 5a2. AddressBook prompts the user to enter the details again.
+      Use case resumes at step 4.
+
+**Use case: Find person in the contact list**
+
+**MSS**
+
+1. User requests to find a particular person in the contact list.
+2. AddressBook prompts the user to enter the keywords to find the person.
+3. User enters the keywords that match the person.
+4. AddressBook list out all the person that match the keywords provided.
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. The user enters invalid details.
+
+    * 5a1. AddressBook shows an error message.
+    * 5a2. AddressBook prompts the user to enter the details again.
+      Use case resumes at step 3.
 
 ### Non-Functional Requirements
 
