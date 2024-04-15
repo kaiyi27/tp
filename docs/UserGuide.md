@@ -12,6 +12,7 @@ pageNav: 3
 </div>
 
 <br>
+<br>
 
 ## Table of contents
 <!-- * Table of Contents -->
@@ -74,8 +75,8 @@ To explore more, visit the [Features](#features) section for more advanced tips.
 
     A GUI similar to the image below should appear in a few seconds. Note how the app contains some sample data.<br>
 <br>
-   ![Ui](images/UILabelled.png)
 <div style="text-align: center;">
+<img src="images/UILabelled.png" alt="ui labelled" width="900">
 
 *Fig 1: InsuraConnect's GUI*
 </div>
@@ -711,8 +712,9 @@ Furthermore, certain edits can cause InsuraConnect to behave in unexpected ways 
 ## Glossary
 
 * **Meeting:** A scheduled interaction between insurance agents and clients or partners to discuss insurance products, coverage options, claims, or other related matters.
-* **Policy:** A formal contract or agreement between an insurance provider and a policyholder specifying the terms, conditions, coverage, and obligations related to an insurance product or service.
-* **Policyholder:** An individual or entity that holds an insurance policy and is entitled to the benefits and coverage outlined in the policy.
+* **Policy:** A formal contract or agreement between an insurance provider and a client specifying the terms, conditions, coverage, and obligations related to an insurance product or service.
+* **Client:** An individual or entity that holds an insurance policy and is entitled to the benefits and coverage outlined in the policy.
+* **Partner:** An individual who is a colleague or another insurance agent that user is in collaboration with.
 * **Policy Management:** The process of administering insurance policies, including issuing new policies, updating existing policies, processing endorsements, and handling policy renewals and cancellations.
 * **UI (User Interface):** The graphical interface provided by InsuraConnect for users to interact with the system, access features, view information, and perform tasks related to insurance activities.
 * **Command:** A specific instruction or action initiated by a user within InsuraConnect to trigger a particular function, operation, or task, such as scheduling a meeting, processing a policy update, or generating a report.
@@ -740,7 +742,7 @@ Furthermore, certain edits can cause InsuraConnect to behave in unexpected ways 
 | Meeting Agenda (not editable through `reschedule`) | ma/                   | The agenda of the meeting       |
 | Meeting Notes                                      | mn/                   | The notes of the meeting        |
 | Meeting Index                                      | mi/                   | The index in the meeting list   |
-| Client status                                      | s/                    | The progress status with client |
+| Client status direction                            | s/                    | The direction of status change  |
 
 
 
