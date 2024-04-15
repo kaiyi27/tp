@@ -331,7 +331,7 @@ The following class diagram shows the `Relationship` classes in relation to `Per
 
 <puml src="diagrams/PolicyClassDiagram.puml" width="250"/>
 
-#### Design Considerations:
+#### Design considerations:
 
 **Aspect: Extensibility and Future Compatibility:**
 * **Alternative 1 (current choice):** Restrict the relationship options to only "partner" or "client" using a String field with validation checks.
@@ -436,6 +436,72 @@ The following activity diagrams summarise what happens when the user attempts to
 * **Alternative 3:** Use a validation framework or library (e.g., Java Bean Validation) to annotate policy attributes with validation constraints. These annotations can enforce validation rules automatically based on predefined constraints.
   * Pros: Standardized approach to validation, reduces boilerplate code, supports complex validation rules.
   * Cons: Dependency on external libraries, less control over validation logic compared to custom implementations.
+
+
+
+### Meeting
+
+#### Implementation
+
+The meeting feature is supported by the `Meeting` class, which is associated with the `Person` class. A `Person` can have multiple meetings, managed through a `UniqueMeetingList` that ensures no duplicate meetings are associated with a person.
+
+Each `Meeting` contains:
+* `meetingDate` &mdash; a `LocalDate` object representing the date of the meeting.
+* `meetingTime` &mdash; a `LocalTime` object representing the time when the meeting starts.
+* `duration` &mdash; an `int` representing the duration of the meeting in minutes.
+* `agenda` &mdash; a `String` detailing the agenda of the meeting.
+* `notes` &mdash; an optional `String` for additional notes about the meeting.
+
+Key functionalities provided by the meeting feature include scheduling, rescheduling, and canceling meetings. These are executed by the `ScheduleCommand`, `RescheduleCommand`, and `CancelCommand` classes, respectively.
+
+`Meeting` interacts with the `Model` to ensure that the added meeting does not conflict with existing meetings for a person. This is done using `Model#hasMeeting` and `Model#getFilteredMeetingList`.
+
+Here is a class diagram that shows the relationship between `Person` and `Meeting`:
+
+<puml src="path/to/MeetingClassDiagram.puml" />
+
+An example usage scenario for scheduling a meeting is as follows:
+
+Step 1: The user launches the application and the `Ui` loads up.
+
+Step 2: The user inputs a command to schedule a meeting with a specific person in the list using the `schedule` command.
+
+Step 3: The `LogicManager` takes the user input and parses it using `ScheduleCommandParser`, which in turn creates a `ScheduleCommand` object.
+
+Step 4: `ScheduleCommand#execute` is called, which attempts to create a new `Meeting` and add it to the person specified.
+
+Step 5: The `Model` checks if the meeting conflicts with any existing meetings for that person.
+
+Step 6: If no conflicts are found, the new meeting is added, and the display is updated accordingly.
+
+The sequence diagram below shows how the `schedule` command works within the `Logic` component:
+
+<puml src="path/to/ScheduleSequenceDiagram.puml" />
+
+The activity diagram below summarizes the process of scheduling a meeting:
+
+<puml src="diagrams/ScheduleActivityDiagram.puml"/>
+
+#### Design considerations:
+
+**Aspect: Handling of Meeting Overlaps**
+* **Alternative 1 (current choice):** Meetings are strictly non-overlapping.
+    * Pros: Simple rule that is easy to understand and implement.
+    * Cons: Does not allow for flexibility in scheduling back-to-back meetings.
+* **Alternative 2:** Allow overlapping meetings but provide warnings to users.
+    * Pros: More flexibility in scheduling, can accommodate back-to-back meetings.
+    * Cons: Increased complexity in the system, potential for user confusion.
+
+**Aspect: Managing Meeting Lifecycle**
+* **Alternative 1 (current choice):** Automatically delete past meetings.
+    * Pros: Keeps the system clean and focused on future events.
+    * Cons: Users lose the history of past meetings which might be needed for reference.
+* **Alternative 2:** Keep past meetings and provide a mechanism to archive them.
+    * Pros: Retains meeting history for records and future reference.
+    * Cons: Might lead to clutter and require additional features to manage the archive.
+
+
+
 
 ### \[Proposed\] Data archiving
 
@@ -630,9 +696,124 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. User requests to clear the AddressBook
 2. AddressBook shows the empty AddressBook
 
-    use case ends
+    Use case ends
+
+**Use case: Add a new policy**
+
+**MSS**
+
+1. User requests to list persons.
+2. AddressBook shows a list of persons.
+3. User requests to add policy to a specific person in the list.
+4. AddressBook prompts the user to enter the details of the policy.
+5. User enters the details of the policy.
+6. AddressBook updates the person's policy details.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+    Use case ends.
+
+* 3a. The given person index is invalid.
+
+    * 3a1. AddressBook shows an error message.
+
+      Use case resumes at step 4.
+
+* 5a. The user enters invalid details.
+
+    * 5a1. AddressBook shows an error message.
+    * 5a2. AddressBook prompts the user to enter the details again.
+    
+      Use case resumes at step 4.
 
 
+**Use case: Edit a policy**
+
+**MSS**
+
+1. User requests to list persons.
+2. AddressBook shows a list of persons.
+3. User requests to edit a policy of a specific person in the list.
+4. AddressBook prompts the user to enter the details of the policy.
+5. User enters the details of the policy.
+6. AddressBook updates the person's policy details.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The contact list or policy list is empty.
+
+  Use case ends.
+
+* 3a. The given person index or policy index is invalid.
+
+    * 3a1. AddressBook shows an error message.
+
+      Use case resumes at step 4.
+
+* 5a. The user enters invalid details.
+
+    * 5a1. AddressBook shows an error message.
+    * 5a2. AddressBook prompts the user to enter the details again.
+      
+      Use case resumes at step 4.
+
+**Use case: Delete a policy**
+
+**MSS**
+
+1. User requests to list persons.
+2. AddressBook shows a list of persons.
+3. User requests to delete a policy of a specific person in the list.
+4. AddressBook prompts the user to enter the details of the policy.
+5. User enters the details of the policy.
+6. AddressBook deletes the specified policy of the person.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The contact list or policy list is empty.
+
+  Use case ends.
+
+* 3a. The given person index or policy index is invalid.
+
+    * 3a1. AddressBook shows an error message.
+
+      Use case resumes at step 4.
+
+* 5a. The user enters invalid details.
+
+    * 5a1. AddressBook shows an error message.
+    * 5a2. AddressBook prompts the user to enter the details again.
+      
+      Use case resumes at step 4.
+
+**Use case: Find person in the contact list**
+
+**MSS**
+
+1. User requests to find a particular person in the contact list.
+2. AddressBook prompts the user to enter the keywords to find the person.
+3. User enters the keywords that match the person.
+4. AddressBook list out all the person that match the keywords provided.
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. The user enters invalid details.
+
+    * 5a1. AddressBook shows an error message.
+    * 5a2. AddressBook prompts the user to enter the details again.
+      
+      Use case resumes at step 3.
 
 ### Non-Functional Requirements
 

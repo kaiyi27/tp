@@ -1,0 +1,24 @@
+@startuml
+!include style.puml
+show fields
+skinparam ClassFontColor #000000
+skinparam ClassBorderColor #000000
+
+class P as "Person"
+class R as "Relationship" {
+    value: String
+}
+class Me as "Meeting" {
+  -LocalDate meetingDate
+  -LocalTime meetingTime
+  -String agenda
+  -Duration duration
+  -Optional<String> notes
+}
+
+P->"1"R
+P-->"0..5"Me
+
+hide P members
+
+@enduml
