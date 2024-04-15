@@ -438,6 +438,7 @@ The following activity diagrams summarise what happens when the user attempts to
   * Cons: Dependency on external libraries, less control over validation logic compared to custom implementations.
 
 
+
 ### Meeting
 
 #### Implementation
@@ -498,6 +499,7 @@ The activity diagram below summarizes the process of scheduling a meeting:
 * **Alternative 2:** Keep past meetings and provide a mechanism to archive them.
     * Pros: Retains meeting history for records and future reference.
     * Cons: Might lead to clutter and require additional features to manage the archive.
+
 
 
 
