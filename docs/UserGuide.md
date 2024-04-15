@@ -81,6 +81,7 @@ To explore more, visit the [Features](#features) section for more advanced tips.
 *Fig 1: InsuraConnect's GUI*
 </div>
 
+<div style="page-break-after: always;"></div>
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -169,7 +170,7 @@ Example: If you input the command `help 123`, it will be interpreted as `help`.
 * If you encounter any errors when using commands, the output/error display will highlight potential formatting mistakes in your command.
 </box>
 
-***
+<div style="page-break-after: always;"></div>
 
 ## Features
 
@@ -242,6 +243,8 @@ The following images show the InsuraConnect UI before and after executing the co
 *Fig 4: Outcome after adding a person*
 </div>
 
+<br>
+
 ### Listing all persons : `list`
 
 Shows a list of all persons in InsuraConnect.
@@ -301,6 +304,8 @@ The following images show the InsuraConnect UI before and after executing the co
 *Fig 8: Outcome after editing the 2nd person*
 </div>
 
+<br>
+
 ### Locating persons by name, relationship, tag, policy: `find`
 
 Finds persons whose details contain any of the given keywords.
@@ -334,6 +339,8 @@ The following images show the InsuraConnect UI after executing the command `find
 
 *Fig 9: Outcome from finding Alex and David*
 </div>
+
+<br>
 
 ### Deleting a person : `delete`
 
@@ -387,6 +394,8 @@ The following images show the InsuraConnect UI before and after executing the co
 *Fig 11: After adding a policy to the 1st person*
 </div>
 
+<br>
+
 ### Editing a policy of a client: `policy`
 Format: `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
 
@@ -410,6 +419,8 @@ The following images show the InsuraConnect UI before and after executing the co
 
 *Fig 13: After editing the 2nd policy of the 1st person*
 </div>
+
+<br>
 
 ### Deleting a policy from a client: `policy`
 Format: `policy INDEX pi/POLICY_INDEX po/`
@@ -437,6 +448,8 @@ The following images show the InsuraConnect UI before and after executing the co
 *Fig 15: After deleting the 2nd policy of the 1st person*
 </div>
 
+<br>
+
 ### Meeting
 
 <box type="warning" seamless>
@@ -457,6 +470,8 @@ The following images show the InsuraConnect UI before and after executing the co
     current day and time is Monday 05:00, selecting Mon for `DATE` and 04:59 for `TIME` will choose 
     next weeks' monday while choosing 05:01 for `TIME` instead will choose the current monday at 05:01.
 </box>
+
+<br>
 
 ### Scheduling a meeting with a person: `schedule`
 
@@ -488,6 +503,8 @@ The following images show the InsuraConnect UI after executing two example comma
 *Fig 17: Schedule another meeting at 1pm 1st Sept 2024*
 </div>
 
+<br>
+
 ### Rescheduling a meeting with a person: `reschedule`
 
 Reschedules a meeting with a person
@@ -507,6 +524,8 @@ The following images show the InsuraConnect UI after executing the example comma
 *Fig 18: Reschedule meeting from 9am 9th Sept 2024 to 5pm 5th Sept 2024*
 </div>
 
+<br>
+
 ### Cancelling a meeting with a person: `cancel`
 
 Cancels a meeting with a person
@@ -525,6 +544,8 @@ The following image shows the InsuraConnect UI after executing the example comma
 *Fig 19: Cancel meeting at 1pm 1st Sept 2024*
 </div>
 
+<br>
+
 ### Managing Meetings
 
 #### Meeting Scheduling and Rescheduling
@@ -536,6 +557,8 @@ Meetings are automatically sorted by their scheduled dates and times. When multi
 
 *Fig 20: Meetings for Alex Yeoh displayed from earliest to latest*
 </div>
+
+<br>
 
 #### Automatic Purging of Expired Meetings
 
@@ -550,6 +573,8 @@ Clients and partners are sorted in the user interface according to the time of t
 
 *Fig 21: Client/Partners sorted by earliest meeting scheduled with insurance agent*
 </div>
+
+<br>
 
 ### Changing a client's status: `status`
 
@@ -595,6 +620,8 @@ The following images show the InsuraConnect UI before and after executing the co
 *Fig 23: After increasing the 1st client's status*
 </div>
 
+<br>
+
 ### Undoing a command: `undo`
 
 Undoes a previous command.
@@ -624,6 +651,8 @@ The following images show the InsuraConnect UI after executing the command `undo
 *Fig 25: Undo removing the Adam contact*
 </div>
 
+<br>
+
 ### Redoing a command: `redo`
 
 Redoes a previous undid command
@@ -644,6 +673,8 @@ The following images show the InsuraConnect UI after executing the command `redo
 
 *Fig 26: Redo adding back Adam*
 </div>
+
+<br>
 
 ### Clearing all entries : `clear`
 
@@ -714,7 +745,7 @@ Furthermore, certain edits can cause InsuraConnect to behave in unexpected ways 
 * **Meeting:** A scheduled interaction between insurance agents and clients or partners to discuss insurance products, coverage options, claims, or other related matters.
 * **Policy:** A formal contract or agreement between an insurance provider and a client specifying the terms, conditions, coverage, and obligations related to an insurance product or service.
 * **Client:** An individual or entity that holds an insurance policy and is entitled to the benefits and coverage outlined in the policy.
-* **Partner:** An individual who is a colleague or another insurance agent that user is in collaboration with.
+* **Partner:** An individual who is a colleague or another insurance agent that the user is in collaboration with.
 * **Policy Management:** The process of administering insurance policies, including issuing new policies, updating existing policies, processing endorsements, and handling policy renewals and cancellations.
 * **UI (User Interface):** The graphical interface provided by InsuraConnect for users to interact with the system, access features, view information, and perform tasks related to insurance activities.
 * **Command:** A specific instruction or action initiated by a user within InsuraConnect to trigger a particular function, operation, or task, such as scheduling a meeting, processing a policy update, or generating a report.
