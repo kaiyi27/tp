@@ -51,7 +51,7 @@ LogicManager -> ScheduleCommand : execute(m)
 activate ScheduleCommand
 
 create Person
-ScheduleCommand -> Person : createMeeting(...)
+ScheduleCommand -> Person : addMeeting(meeting)
 activate Person
 
 Person --> ScheduleCommand :

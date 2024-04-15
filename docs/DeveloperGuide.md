@@ -474,7 +474,9 @@ Step 5: The `Model` checks if the meeting conflicts with any existing meetings f
 
 Step 6: If no conflicts are found, the new meeting is added, and the display is updated accordingly.
 
-The sequence diagram below shows how the `schedule` command works within the `Logic` component:
+The sequence diagram below shows how the `schedule` command works within the `Logic` component using the API call `schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60`:
+To shorten the names to improve readability, the parameters for the execute as well as the parse commands are the same as the API call. 
+For parse, it is `1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60` while for createMeeting, it is `md/2024-05-05, mt/09:00, ma/Discuss health policy, mdur/60`
 
 <puml src="diagrams/ScheduleSequenceDiagram.puml" />
 

@@ -81,7 +81,7 @@ public class RescheduleMeetingCommand extends Command {
         // Create a copy of the original person and add the meeting to the copy
         Person personToMeetUpdated = personToMeetOriginal.getCopy();
         try {
-            personToMeetUpdated.rescheduleMeeting(meetingIndex.getZeroBased(), newMeetingDateTime);
+            personToMeetUpdated.rescheduleMeeting(meetingIndex.getZeroBased(), newMeeting);
         } catch (IllegalArgumentException e) {
             throw new CommandException(e.getMessage());
         }

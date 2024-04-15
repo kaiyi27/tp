@@ -225,26 +225,14 @@ public class Person {
      * Reschedules a meeting associated with this person.
      *
      * @param index      The index of the meeting to be rescheduled.
-     * @param newDateTime The new date and time for the meeting.
+     * @param meeting The new meeting
      * @throws IllegalArgumentException if the rescheduled meeting overlaps with existing meetings.
      */
-    public void rescheduleMeeting(int index, LocalDateTime newDateTime) {
-        Meeting meetingToReschedule = meetings.get(index);
-        Meeting rescheduledMeeting = new Meeting(
-                newDateTime.toLocalDate(),
-                newDateTime.toLocalTime(),
-                meetingToReschedule.getDuration(),
-                meetingToReschedule.getAgenda(),
-                meetingToReschedule.getNotes()
-        );
-
-        // Remove the old meeting and try adding the rescheduled one
+    public void rescheduleMeeting(int index, Meeting meeting) {
+        // Remove the old meeting and add the rescheduled one
         meetings.remove(index);
-        assert !isOverlapWithOtherMeetings(rescheduledMeeting);
-        meetings.add(rescheduledMeeting);
-        // If there's an overlap, add the old meeting back and throw an exception
-        meetings.add(index, meetingToReschedule);
-
+        assert !isOverlapWithOtherMeetings(meeting);
+        meetings.add(meeting);
     }
 
     /**
