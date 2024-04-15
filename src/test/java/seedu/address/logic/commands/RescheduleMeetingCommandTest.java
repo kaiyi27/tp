@@ -18,7 +18,7 @@ import seedu.address.testutil.PersonBuilder;
 
 public class RescheduleMeetingCommandTest {
 
-    private static final String VALID_DATE_TIME_STRING = "2024-07-19T14:00";
+    private static final String VALID_DATE_TIME_STRING = "2024-07-20T14:00";
     private Model model = new ModelManager();
 
     @Test

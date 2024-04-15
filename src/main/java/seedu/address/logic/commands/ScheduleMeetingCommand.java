@@ -25,8 +25,6 @@ public class ScheduleMeetingCommand extends Command {
     public static final String COMMAND_WORD = "schedule";
 
     public static final String MESSAGE_MEETING_SCHEDULED_SUCCESS = "Meeting scheduled successfully: %1$s";
-    public static final String MESSAGE_MEETING_RESCHEDULED_SUCCESS = "Meeting rescheduled successfully: %1$s";
-    public static final String MESSAGE_MEETING_CANCELED_SUCCESS = "Meeting canceled successfully: %1$s";
     public static final String MESSAGE_MEETING_OVERLAP = "Meeting cannot be scheduled due to overlapping times";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Schedules a meeting with the person identified "
