@@ -287,13 +287,13 @@ The following class diagram shows the `ClientStatus` and `Status` classes in rel
 
 Given below is an example usage scenario and how the client status feature behaves at each step.
 
-Step 1: The user executes `add n/David ... r/client` to add a new client. Since the relationship is a `client`, the new
-person will be created with a `ClientStatus` that has value `START`.
+Step 1: The user executes `add n/David ... r/client` to add a new client. The command only shows the relevant prefixes.
+Since the relationship is a `client`, the new person will be created with a `ClientStatus` that has value `START`.
 
 Step 2: Assuming the person the user just added is the first person, the user executes `status 1 s/up` to increment the status.
 The value of `Status` that `ClientStatus` holds will now be incremented to `MIDDLE`.
 
-The following activity diagrams summarise what happens when the user attempts to increment and decrement a person's status.
+The following activity diagram summarise what happens when the user attempts to increment a person's status. Attempting to decrement a person's status will have a similar sequence.
 
 <puml src="diagrams/IncrementClientStatusActivityDiagram.puml"/>
 
@@ -458,7 +458,7 @@ Key functionalities provided by the meeting feature include scheduling, reschedu
 
 Here is a class diagram that shows the relationship between `Person` and `Meeting`:
 
-<puml src="path/to/MeetingClassDiagram.puml" />
+<puml src="diagrams/MeetingClassDiagram.puml" />
 
 An example usage scenario for scheduling a meeting is as follows:
 
@@ -476,7 +476,7 @@ Step 6: If no conflicts are found, the new meeting is added, and the display is 
 
 The sequence diagram below shows how the `schedule` command works within the `Logic` component:
 
-<puml src="path/to/ScheduleSequenceDiagram.puml" />
+<puml src="diagrams/ScheduleSequenceDiagram.puml" />
 
 The activity diagram below summarizes the process of scheduling a meeting:
 
@@ -655,7 +655,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. AddressBook shows an error message.
     * 3a2. AddressBook prompts the user to enter the details again.
     
-  Use case resumes at step 3.
+      Use case resumes at step 2.
 
 **Use case: Update a person's details**
 
@@ -684,10 +684,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 5a. The user enters invalid details.
 
-    * 5a1. AddressBook shows an error message.
+    * 5a1. AddressBook shows an error message. 
     * 5a2. AddressBook prompts the user to enter the details again.
       
-  Use case resumes at step 4.
+      Use case resumes at step 4.
   
 **Use case: Clear AddressBook**
 
@@ -721,7 +721,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 3a1. AddressBook shows an error message.
 
-      Use case resumes at step 4.
+      Use case resumes at step 2.
 
 * 5a. The user enters invalid details.
 
@@ -754,7 +754,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 3a1. AddressBook shows an error message.
 
-      Use case resumes at step 4.
+      Use case resumes at step 2.
 
 * 5a. The user enters invalid details.
 
@@ -786,7 +786,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 3a1. AddressBook shows an error message.
 
-      Use case resumes at step 4.
+      Use case resumes at step 2.
 
 * 5a. The user enters invalid details.
 
@@ -810,10 +810,43 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The user enters invalid details.
 
-    * 5a1. AddressBook shows an error message.
-    * 5a2. AddressBook prompts the user to enter the details again.
+    * 3a1. AddressBook shows an error message.
+    * 3a2. AddressBook prompts the user to enter the details again.
       
-      Use case resumes at step 3.
+      Use case resumes at step 2.
+
+**Use case: Increment a client's status**
+
+**MSS**
+
+1. User requests to list persons.
+2. AddressBook shows a list of persons.
+3. User requests to change a particular client's status in the contact list.
+4. AddressBook prompts the user to enter direction of status change.
+5. User enters the direction of status change.
+6. AddressBook changes the client's status and updates the progress dashboard.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The contact list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. AddressBook shows an error message.
+
+      Use case resumes at step 2.
+
+* 5a. The user enters an invalid direction.
+
+    * 5a1. AddressBook shows an error message.
+    * 5a2. AddressBook prompts the user to enter the direction again.
+
+      Use case resumes at step 4.
+
 
 ### Non-Functional Requirements
 
