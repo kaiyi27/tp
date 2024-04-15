@@ -403,7 +403,7 @@ The following images show the InsuraConnect UI before and after executing the co
     next weeks' monday while choosing 05:01 for `TIME` instead will choose the current monday at 05:01.
 </box>
 
-#### Scheduling a meeting with a person: `schedule`
+### Scheduling a meeting with a person: `schedule`
 
 Schedules a meeting with a person with an agenda and duration with optional notes
 
@@ -433,7 +433,7 @@ Examples:
 
 <br>
 
-#### Rescheduling a meeting with a person: `reschedule`
+### Rescheduling a meeting with a person: `reschedule`
 
 Reschedules a meeting with a person
 
@@ -450,7 +450,7 @@ Examples: `reschedule 1 mi/2 md/05-09-2024 mt/17:00` after scheduling the first 
 *Fig 11: Reschedule meeting from 1pm 1st Sept 2024 to 5pm 5th Sept 2024*
 </div>
 
-#### Cancelling a meeting with a person: `cancel`
+### Cancelling a meeting with a person: `cancel`
 
 Cancels a meeting with a person
 
