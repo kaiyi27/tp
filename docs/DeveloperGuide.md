@@ -499,9 +499,6 @@ The activity diagram below summarizes the process of scheduling a meeting:
     * Pros: Retains meeting history for records and future reference.
     * Cons: Might lead to clutter and require additional features to manage the archive.
 
-Remember to replace the placeholder paths with the actual paths to your PUML diagrams and ensure they are correctly set up
-
-
 
 
 ### \[Proposed\] Data archiving
