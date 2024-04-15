@@ -108,22 +108,22 @@ To explore more, visit the [Features](#features) section for more advanced tips.
 **Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters for you to input.
-  * e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  * Example: In `add n/NAME`, `NAME` is a parameter which you can use as `add n/John Doe`.
 * Prefixes are in the form of a shortened word followed by a / such as `po/` for policy or`md/` for meeting date.
   * You can refer to the [supported prefixes](#supported-prefixes) section for a full list of prefixes.
 * Prefixes require a space before being used, such as `n/NAME e/EMAIL` requiring a space between `NAME` and `e/`.
 
 * Items in square brackets are optional.
-  * e.g. you can use `n/NAME [t/TAG]` as `n/John Doe t/friend` or as `n/John Doe`.
+  * Example: You can use `n/NAME [t/TAG]` as `n/John Doe t/friend` or as `n/John Doe`.
 
 * You can use items with `…`​ after them multiple times including zero times.
-  * e.g. you can use `[t/TAG]…​` as ` ` (i.e. 0 times), `t/friend`, or `t/friend t/family`, etc.
+  * Example: You can use `[t/TAG]…​` as ` ` (i.e. 0 times), `t/friend`, or `t/friend t/family`, etc.
 
 * You can use parameters in any order.
-  * e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, you can also input `p/PHONE_NUMBER n/NAME`.
+  * Example: If the command specifies `n/NAME p/PHONE_NUMBER`, you can also input `p/PHONE_NUMBER n/NAME`.
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.
-  * e.g. if you input the command `help 123`, it will be interpreted as `help`.
+  * Example: If you input the command `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
