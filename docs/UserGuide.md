@@ -182,17 +182,16 @@ Examples:
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Kent Ridge p/1234567 r/partner t/oweMoney` adds a partner with the respective details to InsuraConnect.
 
 The following images show the InsuraConnect UI before and after executing the command `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Kent Ridge p/1234567 r/partner t/oweMoney`.
-<div style="text-align: center;">
-
-<img src="images/AddBefore.png" alt="before adding a person" width="450">
-
-*Fig 1: Before adding a person*
+<div style="display: flex; justify-content: space-between; padding: 0 20px;">
+    <div>
+        <img src="images/AddBefore.png" alt="before adding a person" width="450">
+        <p style="text-align: center;">Fig 1: Before adding a person</p>
+    </div>
+    <div>
+        <img src="images/AddAfter.png" alt="after adding a person" width="450">
+        <p style="text-align: center;">Fig 2: After adding a person</p>
+    </div>
 </div>
-
-<br>
-<div style="text-align: center;">
-
-<img src="images/AddAfter.png" alt="after adding a person" width="450">
 
 *Fig 2: Outcome after adding a person*
 </div>
@@ -227,7 +226,7 @@ Examples:
 The following images show the InsuraConnect UI before and after executing the command `edit 1 p/91234567 e/alexyeoh1234@example.com`.
 <div style="text-align: center;">
 
-<img src="images/EditAlexBefore.png" alt="before editing Alex" width="450">
+<img src="images/EditAlexBefore.png" alt="before editing Alex" width="500">
 
 *Fig 3: Before editing Alex's email and phone number*
 </div>
@@ -235,7 +234,7 @@ The following images show the InsuraConnect UI before and after executing the co
 <br>
 <div style="text-align: center;">
 
-<img src="images/EditAlexAfter.png" alt="after editing Alex" width="450">
+<img src="images/EditAlexAfter.png" alt="after editing Alex" width="500">
 
 *Fig 4: After editing Alex's email and phone number*
 </div>
