@@ -71,14 +71,15 @@ To explore more, visit the [Features](#features) section for more advanced tips.
 3. Copy the file to the folder you want to use as the _home folder_ for InsuraConnect.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar InsuraConnect.jar` command to run the application.
-A GUI similar to the image below should appear in a few seconds. Note how the app contains some sample data.<br>
+
+    A GUI similar to the image below should appear in a few seconds. Note how the app contains some sample data.<br>
 <br>
    ![Ui](images/UILabelled.png)
 <div style="text-align: center;">
 
 *Fig 1: InsuraConnect's GUI*
 </div>
-<br>
+
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -89,9 +90,9 @@ A GUI similar to the image below should appear in a few seconds. Note how the ap
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
-   * `schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60` : Schedules a meeting with the first contact in the current list at 5th may 2024 9am to discuss health policy.
-   * `policy 1 po/Health policy ed/2029-06-06 pm/1000` Adds a policy with the first contact in the current list with name of 
-   Health policy, expiry date on the 6th of June 2029, with a premium of 1000 SGD
+   * `schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60` : Schedules a meeting with the 1st contact in the current list at 5th May 2024 9am to discuss health policy.
+   * `policy 1 po/Health policy ed/2029-06-06 pm/1000` Adds a policy with the 1st contact in the current list with name of 
+   Health policy, expiry date on the 6th of June 2029, with a premium of 1000 SGD.
 
    * `exit` : Exits the app.
 
@@ -106,23 +107,23 @@ A GUI similar to the image below should appear in a few seconds. Note how the ap
 
 **Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.
+* Words in `UPPER_CASE` are the parameters for you to input.
   * e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 * Prefixes are in the form of a shortened word followed by a / such as `po/` for policy or`md/` for meeting date.
   * You can refer to the [supported prefixes](#supported-prefixes) section for a full list of prefixes.
 * Prefixes require a space before being used, such as `n/NAME e/EMAIL` requiring a space between `NAME` and `e/`.
 
 * Items in square brackets are optional.
-  * e.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  * e.g. you can use `n/NAME [t/TAG]` as `n/John Doe t/friend` or as `n/John Doe`.
 
-* Items with `…`​ after them can be used multiple times including zero times.
-  * e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+* You can use items with `…`​ after them multiple times including zero times.
+  * e.g. you can use `[t/TAG]…​` as ` ` (i.e. 0 times), `t/friend`, or `t/friend t/family`, etc.
 
-* Parameters can be in any order.
-  * e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+* You can use parameters in any order.
+  * e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, you can also input `p/PHONE_NUMBER n/NAME`.
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.
-  * e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+  * e.g. if you input the command `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
