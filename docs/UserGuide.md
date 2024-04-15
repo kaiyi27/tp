@@ -130,38 +130,42 @@ This indicates a helpful tip on how to utilise a particular feature of InsuraCon
 This indicates a constraint on the command format or feature of InsuraConnect.
 </box>
 
-<box type="important">
+<box type="important" seamless>
 
 **Caution:**
 This indicates a precaution that you should read carefully and remember when using InsuraConnect.
 </box>
 
 
-Before you dive into the features, here are some notes regarding InsuraConnect's command format.
+Before you dive into the features, read through the notes regarding InsuraConnect's command format.
 
 <box type="info" theme="primary">
 
 **Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters for you to input.
-  * Example: In `add n/NAME`, `NAME` is a parameter which you can use as `add n/John Doe`.
-* Prefixes are in the form of a shortened word followed by a / such as `po/` for policy or`md/` for meeting date.
-  * You can refer to the [supported prefixes](#supported-prefixes) section for a full list of prefixes.
+* Words in `UPPER_CASE` are the parameters for you to input.<br>
+Example: In `add n/NAME`, `NAME` is a parameter which you can use as `add n/John Doe`.
+
+* Prefixes are in the form of a shortened word followed by a / such as `po/` for policy or`md/` for meeting date.<br>
+You can refer to the [supported prefixes](#supported-prefixes) section for a full list of prefixes.
+
 * Prefixes require a space before being used, such as `n/NAME e/EMAIL` requiring a space between `NAME` and `e/`.
 
-* Items in square brackets are optional.
-  * Example: You can use `n/NAME [t/TAG]` as `n/John Doe t/friend` or as `n/John Doe`.
+* Items in square brackets are optional.<br>
+Example: You can use `n/NAME [t/TAG]` as `n/John Doe t/friend` or as `n/John Doe`.
 
-* You can use items with `…`​ after them multiple times including zero times.
-  * Example: You can use `[t/TAG]…​` as ` ` (i.e. 0 times), `t/friend`, or `t/friend t/family`, etc.
+* You can use items with `…`​ after them multiple times including zero times.<br>
+Example: You can use `[t/TAG]…​` as ` ` (i.e. 0 times), `t/friend`, or `t/friend t/family`, etc.
 
-* You can use parameters in any order.
-  * Example: If the command specifies `n/NAME p/PHONE_NUMBER`, you can also input `p/PHONE_NUMBER n/NAME`.
+* You can use parameters in any order.<br>
+Example: If the command specifies `n/NAME p/PHONE_NUMBER`, you can also input `p/PHONE_NUMBER n/NAME`.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.
-  * Example: If you input the command `help 123`, it will be interpreted as `help`.
+* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
+Example: If you input the command `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+
+* If you encounter any errors when using commands, the output/error display will highlight potential formatting mistakes in your command.
 </box>
 
 ***
@@ -302,6 +306,12 @@ Finds persons whose details contain any of the given keywords.
 
 Format: `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]...`
 
+* The search is case-insensitive. e.g `hans` will match `Hans`.
+* Keywords containing white spaces at the beginning or end are allowed. e.g: ` Hans`, `client `.
+* You can search by name, relationship, tags or policy.
+* Persons matching at least one keyword in any attribute will be returned (i.e. `OR` search).
+  e.g. find n/Hans n/Bo r/partner will return `Hans Gruber`, `Bo Yang` and all person who have relationship `partner`.
+
 <box type="warning" seamless>
 
 **Constraints:**
@@ -311,12 +321,6 @@ Format: `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]...`
 * Only full words will be matched e.g. `Han` will not match `Hans`.
 
 </box>
-
-* The search is case-insensitive. e.g `hans` will match `Hans`.
-* Keywords containing white spaces at the beginning or end are allowed. e.g: ` Hans`, `client `.
-* You can search by name, relationship, tags or policy.
-* Persons matching at least one keyword in any attribute will be returned (i.e. `OR` search).
-  e.g. find n/Hans n/Bo r/partner will return `Hans Gruber`, `Bo Yang` and all person who have relationship `partner`.
 
 Examples:
 * `find n/ John` returns `john` and `John Doe`
@@ -459,7 +463,7 @@ Schedules a meeting with a person with an agenda and duration with optional note
 
 Format: `schedule INDEX md/DATE mt/TIME mdur/DURATION ma/AGENDA mn/[NOTES]`
 
-* Schedules meeting with a person at the specified INDEX. The index refers to the index number shown in the displayed persons list.
+* Schedules meeting with a person at the specified `INDEX`. The index refers to the index number shown in the displayed persons list.
 * Meeting notes are optional and can be used to represent any additional information that might be useful for the meeting.
 * You can schedule multiple meetings as well, further details are included [below](#managing-meetings)
 
@@ -487,10 +491,10 @@ The following images show the InsuraConnect UI after executing two example comma
 
 Reschedules a meeting with a person
 
-Format: `reschedule INDEX mi/MEETING INDEX md/DATE mt/TIME `
+Format: `reschedule INDEX mi/MEETING_INDEX md/DATE mt/TIME `
 
-* Reschedules meeting with a person at the specified INDEX. The index is the same as the above for schedule.
-* Selects a meeting from the list of meetings using the MEETING INDEX.
+* Reschedules meeting with a person at the specified `INDEX`. The index is the same as the above for schedule.
+* Selects a meeting from the list of meetings using the `MEETING_INDEX`.
 
 Examples: `reschedule 1 mi/2 md/05-09-2024 mt/17:00`
 
@@ -506,9 +510,9 @@ The following images show the InsuraConnect UI after executing the example comma
 
 Cancels a meeting with a person
 
-Format: `cancel INDEX mi/MEETING INDEX`
+Format: `cancel INDEX mi/MEETING_INDEX`
 
-* INDEX and MEETING INDEX is the same as the above for reschedule
+* `INDEX` and `MEETING_INDEX` is the same as the above for reschedule
 
 Examples: `cancel 1 mi/1`
 
@@ -563,8 +567,8 @@ Format: `status INDEX s/DIRECTION`
 **Tip:** You can use this whenever you schedule the first meeting with your client or assign them a policy to track your progress.
 The dashboard above the persons list automatically displays the number of clients that are currently at each status for your convenience.
 </box>
-<br>
 <box type="warning" seamless>
+
 **Constraints:**
 * You can only change the status of clients. Attempts to change the status of partners are not allowed.
 * `DIRECTION` can only be `up`, `down`, or blank.
