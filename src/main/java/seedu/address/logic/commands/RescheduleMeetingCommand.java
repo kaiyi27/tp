@@ -36,6 +36,7 @@ public class RescheduleMeetingCommand extends Command {
             + PREFIX_MEETING_INDEX + "1 "
             + PREFIX_MEETING_DATE + "2024-07-19 "
             + PREFIX_MEETING_TIME + "14:00 ";
+    public static final String MESSAGE_MEETING_OVERLAP = "Meeting cannot be rescheduled due to overlapping times";
 
     private final Index personIndex;
     private final Index meetingIndex;
@@ -60,10 +61,22 @@ public class RescheduleMeetingCommand extends Command {
         if (personIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
+
         Person personToMeetOriginal = lastShownList.get(personIndex.getZeroBased());
         List<Meeting> meetings = personToMeetOriginal.getMeetings();
         if (meetings.size() <= (meetingIndex.getZeroBased())) {
             throw new CommandException(RescheduleMeetingCommand.MESSAGE_MEETING_INVALID_INDEX);
+        }
+        Meeting oldMeeting = meetings.get(meetingIndex.getZeroBased());
+        Meeting newMeeting = new Meeting(
+                newMeetingDateTime.toLocalDate(),
+                newMeetingDateTime.toLocalTime(),
+                oldMeeting.getDuration(),
+                oldMeeting.getAgenda(),
+                oldMeeting.getNotes()
+        );
+        if (model.hasMeetingOverlap(newMeeting)) {
+            throw new CommandException(MESSAGE_MEETING_OVERLAP);
         }
         // Create a copy of the original person and add the meeting to the copy
         Person personToMeetUpdated = personToMeetOriginal.getCopy();

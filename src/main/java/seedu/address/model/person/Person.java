@@ -240,13 +240,11 @@ public class Person {
 
         // Remove the old meeting and try adding the rescheduled one
         meetings.remove(index);
-        if (!isOverlapWithOtherMeetings(rescheduledMeeting)) {
-            meetings.add(rescheduledMeeting);
-        } else {
-            // If there's an overlap, add the old meeting back and throw an exception
-            meetings.add(index, meetingToReschedule);
-            throw new IllegalArgumentException("Rescheduled meeting overlaps with existing meetings.");
-        }
+        assert !isOverlapWithOtherMeetings(rescheduledMeeting);
+        meetings.add(rescheduledMeeting);
+        // If there's an overlap, add the old meeting back and throw an exception
+        meetings.add(index, meetingToReschedule);
+
     }
 
     /**

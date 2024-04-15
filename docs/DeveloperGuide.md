@@ -13,7 +13,7 @@
 
 ## **Acknowledgements**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
+The undo and redo features were adapted from [AB4](https://se-education.org/addressbook-level4/DeveloperGuide.html#undo-redo-feature)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -501,7 +501,66 @@ The activity diagram below summarizes the process of scheduling a meeting:
     * Cons: Might lead to clutter and require additional features to manage the archive.
 
 
+#### Reschedule meeting implementation
 
+The RescheduleMeetingCommand is facilitated by the `meeting` attribute of each person. 
+It also has the parser RescheduleMeetingCommandParser that takes in the user input and parses the index as well as relevant meeting prefixes,
+meeting index, meeting date and meeting time.
+It has the key functionality `Person#rescheduleMeeting()` that uses the meeting parameters provided to 
+RescheduleMeetingCommand from RescheduleMeetingCommandParser. First `Person#rescheduleMeeting()` removes the meeting at the index,
+then calls `Person#isOverlapWithOtherMeetings()` to check for overlaps with its meeting list. If there is an overlap then it will add back the previous meeting and throw an exception.
+
+Given below is example usage scenario and how the reschedule feature behaves at each step.
+1. The user has the existing meeting with the first person in the list at 1pm 1st september 2024.
+2. The user executes `reschedule 1 mi/1 md/2024-06-06 mt/09:00` to reschedule a meeting with the first person in the list to 9am 6th June 2024.
+3. The `Logic Manager` would then call the `AddressBookParser#parseCommand` which would call the `RescheduleMeetingCommandParser` which would parse the inputs
+4. This in turn returns the `RescheduleMeetingCommand` which would then be executed.
+4. Executing the `RescheduleMeetingCommand` would then create a meeting with the person then it will call `Person#rescheduleMeeting()` as listed above which will then
+create a new meeting list with the rescheduled meeting.
+5. Lastly, it causes the model to be updated with the new meeting list for the person and also returns the command result which would then be shown.
+
+The sequence diagram below illustrates the interactions within the `Logic` component with execute("reschedule 1 mi/1 md/2024-05-05 mt/09:00") API call as an example.
+
+<puml src="diagrams/RescheduleSequenceDiagram.puml"/>
+
+
+#### Design considerations
+
+**Aspect: Handling of editing other components in meeting**
+* **Alternative 1 (current choice):** Reschedule meetings strictly only work with date and time, not including the other factors.
+    * Pros: Intuitive in terms of rescheduling command name.
+    * Cons: Users that want to modify other parts of meeting need to delete the current meeting and add another meeting with the modified details.
+* **Alternative 2:** Allow reschedule to edit all components of meeting.
+    * Pros: More flexibility in rescheduling, easily modify all parts of meeting.
+    * Cons: Might lead to more complex defensive coding to ensure that nothing will go wrong.
+* **Alternative 3:** Allow edit to edit meetings as well.
+    * Pros: Consistency as edit would allow to edit every feature.
+    * Cons: Increased complexity as well as hard to test to ensure that it is error free.
+
+#### Cancel meeting implementation
+
+The sequence diagram below illustrates the interactions within the `Logic` component with execute("cancel 1 mi/1) API call as an example.
+
+<puml src="diagrams/CancelSequenceDiagram.puml"/>
+
+
+#### Date and Time parsing
+
+The meeting date and time allows multiple formats to be entered, allow both classical formats as well as day of week formats.
+
+Here is an activity diagram below to illustrate what happens after a meeting date and time is entered and about to be parsed.
+
+1. RescheduleCommand calls the parseLocalDateTime function in parserUtil with the string date and time.
+2. parseLocalDateTime checks if the date provided is a day of week.
+3. If it is not a day of week, it then calls parseDate with the string date which returns the LocalDate.
+4. It will then call the parseTime with the string time which returns the LocalTime.
+5. Else, if the input date is a day of week, it first gets the day of week from the multiple formats available.
+6. Get the next occurrence of the specified dayOfWeek (or the same day if the current date is already on that day)
+7. Checks if input date and current date is the same, if so, checks if input time has passed current time to select the next occurrence of the input day and time.
+8. If the current time has not passed, then the next occurrence of the input date will be the current day and time, otherwise, it will be next week's day and time.
+9. the LocalDateTime of the meeting is then returned back to the RescheduleCommand.
+
+<puml src="diagrams/ParseLocalDateTimeActivityDiagram.puml"/>
 
 ### \[Proposed\] Data archiving
 
@@ -941,6 +1000,49 @@ testers are expected to do more *exploratory* testing.
 
 2. _{ more test cases …​ }_
 
+### Scheduling and rescheduling meetings
+
+1. Adding multiple meetings to a single contact resulting in the sorted meeting list.
+Tests both scheduling meetings and rescheduling meetings as well
+    1. Prerequisites: Have only a single person in the list and the person has no meetings
+
+    2. Test case: `schedule 1 md/2024-09-09 mt/09:00 mdur/60 ma/discuss health policy`<br>
+       Expected: Adds a meeting to the first person in the list at 9am 9th september 2024 
+    3. Test case: `schedule 1 md/2024-09-09 mt/13:00 mdur/60 ma/discuss health policy again`<br>
+       Expected: Adds another meeting to the person, and this meeting will be below the initial meeting
+    4. Test case: `reschedule 1 mi/2 md/2024-09-09 mt/08:00 `<br>
+       Expected: The initial meeting at 1pm that is rescheduled to 8am will now be above the 9am meeting.
+
+2. Adding more than the 5th meeting to a person results in error message
+    1. Prerequisites: Have only a single person in the list with 5 meetings without overlapping times with the test case
+   
+    1. Test case: `schedule 1 md/2024-09-09 mt/09:00 mdur/60 ma/discuss health policy`
+    Expected: The meeting won't be added and an error message `Cannot have more than 5 meetings` will be shown
+
+3. Scheduling meeting date using day of week adds the correct day of week
+   1. Prerequisites: Have only a single person in the list with no meetings
+   
+   2. Test case: `schedule 1 md/Mon mt/09:00 mdur/60 ma/discuss health policy`
+   Expected: New meeting will be added at 9am on this Monday or next Monday depending on the time .
+   
+4. { more test cases …​ }_
+
+### Undo and redo deleting a person
+
+1. Undo after deleting a person adds back the deleted person while executing redo will delete the person again.
+    1. Prerequisites: Have at least a person in the list 
+
+    2. Test case: `delete 1`<br>
+       Expected: The first person in the list is deleted
+    3. Test case: `undo`<br>
+       Expected: The person that was deleted is added back 
+    4. Test case: `redo `<br>
+       Expected: The person that was added back is now deleted again
+    5. Test case: `redo`<br>
+       Expected: Nothing happens to the list and the command result shows that there is no more commands to redo.
+
+2. _{ more test cases …​ }_
+
 ### Adding a person
 
 1. Adding a person to the contact list
@@ -1016,6 +1118,7 @@ We also significantly updated the UI to be more useful and intuitive for our tar
 As our features are also quite advanced, we faced many different bugs close to the end of the project ranging from functionality issues to UI inconsistencies which we had to quickly identify and fix.
 Our User Guide and Developer Guide then also added to our workload as we had to explain each feature in depth.
 However, we were able to split the workload well and pulled through.
+Adapting the undo and redo feature from AB4 helped to ease the workload a bit but still required work in order to implement with our system as well as implement testing with our features.
 <br>
 
 ### Achievements
