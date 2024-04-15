@@ -182,16 +182,17 @@ Examples:
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Kent Ridge p/1234567 r/partner t/oweMoney` adds a partner with the respective details to InsuraConnect.
 
 The following images show the InsuraConnect UI before and after executing the command `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Kent Ridge p/1234567 r/partner t/oweMoney`.
-<div style="display: flex; justify-content: space-between; padding: 0 20px;">
-    <div>
-        <img src="images/AddBefore.png" alt="before adding a person" width="450">
-        <p style="text-align: center;">Fig 1: Before adding a person</p>
-    </div>
-    <div>
-        <img src="images/AddAfter.png" alt="after adding a person" width="450">
-        <p style="text-align: center;">Fig 2: After adding a person</p>
-    </div>
+<div style="text-align: center;">
+
+<img src="images/AddBefore.png" alt="before adding a person" width="550">
+
+*Fig 1: Before adding a person*
 </div>
+
+<br>
+<div style="text-align: center;">
+
+<img src="images/AddAfter.png" alt="after adding a person" width="550">
 
 *Fig 2: Outcome after adding a person*
 </div>
@@ -226,7 +227,7 @@ Examples:
 The following images show the InsuraConnect UI before and after executing the command `edit 1 p/91234567 e/alexyeoh1234@example.com`.
 <div style="text-align: center;">
 
-<img src="images/EditAlexBefore.png" alt="before editing Alex" width="500">
+<img src="images/EditAlexBefore.png" alt="before editing Alex" width="550">
 
 *Fig 3: Before editing Alex's email and phone number*
 </div>
@@ -234,7 +235,7 @@ The following images show the InsuraConnect UI before and after executing the co
 <br>
 <div style="text-align: center;">
 
-<img src="images/EditAlexAfter.png" alt="after editing Alex" width="500">
+<img src="images/EditAlexAfter.png" alt="after editing Alex" width="550">
 
 *Fig 4: After editing Alex's email and phone number*
 </div>
@@ -242,7 +243,7 @@ The following images show the InsuraConnect UI before and after executing the co
 The following images show the InsuraConnect UI before and after executing the command `edit 2 n/Betsy Crower t/`.
 <div style="text-align: center;">
 
-<img src="images/EditBefore.png" alt="before editing person" width="450">
+<img src="images/EditBefore.png" alt="before editing person" width="550">
 
 *Fig 5: Before editing the 2nd person*
 </div>
@@ -250,7 +251,7 @@ The following images show the InsuraConnect UI before and after executing the co
 <br>
 <div style="text-align: center;">
 
-<img src="images/EditAfter.png" alt="after editing person" width="450">
+<img src="images/EditAfter.png" alt="after editing person" width="550">
 
 *Fig 6: Outcome after editing the 2nd person*
 </div>
@@ -284,7 +285,7 @@ Examples:
 The following images show the InsuraConnect UI after executing the command `find n/Alex n/David`.
 <div style="text-align: center;">
 
-<img src="images/FindAlexDavid.png" alt="find alex david" width="450">
+<img src="images/FindAlexDavid.png" alt="find alex david" width="550">
 
 *Fig 7: Outcome from finding Alex and David*
 </div>
@@ -328,7 +329,7 @@ Examples: `policy 1 po/Health Policy ed/01-01-2030 pm/500000` adds a new policy 
 The following images show the InsuraConnect UI before and after executing the command `policy 1 po/Health Policy ed/01-01-2030 pm/500000`.
 <div style="text-align: center;">
 
-<img src="images/AddPolicyBefore.png" alt="Before adding policy" width="450">
+<img src="images/AddPolicyBefore.png" alt="Before adding policy" width="550">
 
 *Fig 8: Before adding a policy*
 </div>
@@ -336,7 +337,7 @@ The following images show the InsuraConnect UI before and after executing the co
 <br>
 <div style="text-align: center;">
 
-<img src="images/AddPolicyAfter.png" alt="After adding policy" width="450">
+<img src="images/AddPolicyAfter.png" alt="After adding policy" width="550">
 
 *Fig 9: After adding a policy to the 1st person*
 </div>
@@ -352,7 +353,7 @@ Examples: `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000` edits the 1st p
 The following images show the InsuraConnect UI before and after executing the command `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000`.
 <div style="text-align: center;">
 
-<img src="images/EditPolicyBefore.png" alt="Before editing policy" width="450">
+<img src="images/EditPolicyBefore.png" alt="Before editing policy" width="550">
 
 *Fig 10: Before editing the policy*
 </div>
@@ -360,7 +361,7 @@ The following images show the InsuraConnect UI before and after executing the co
 <br>
 <div style="text-align: center;">
 
-<img src="images/EditPolicyAfter.png" alt="After editing policy" width="450">
+<img src="images/EditPolicyAfter.png" alt="After editing policy" width="550">
 
 *Fig 11: After editing the 2nd policy of the 1st person*
 </div>
@@ -378,7 +379,7 @@ Examples: `policy 1 pi/2 po/` deletes the 1st person's 2nd policy.
 The following images show the InsuraConnect UI before and after executing the command `policy 1 pi/2 po/`.
 <div style="text-align: center;">
 
-<img src="images/DeletePolicyBefore.png" alt="Before deleting policy" width="450">
+<img src="images/DeletePolicyBefore.png" alt="Before deleting policy" width="550">
 
 *Fig 12: Before deleting the policy*
 </div>
@@ -386,7 +387,7 @@ The following images show the InsuraConnect UI before and after executing the co
 <br>
 <div style="text-align: center;">
 
-<img src="images/DeletePolicyAfter.png" alt="After deleting policy" width="450">
+<img src="images/DeletePolicyAfter.png" alt="After deleting policy" width="550">
 
 *Fig 13: After deleting the 2nd policy of the 1st person*
 </div>
@@ -429,7 +430,7 @@ Examples:
 The following images show the InsuraConnect UI after executing two example commands above consecutively.
 <div style="text-align: center;">
 
-<img src="images/schedule_meeting.png" alt="Schedule first meeting" width="450">
+<img src="images/schedule_meeting.png" alt="Schedule first meeting" width="550">
 
 *Fig 14: Schedule meeting at 9am 9th Sept 2024*
 </div>
@@ -437,7 +438,7 @@ The following images show the InsuraConnect UI after executing two example comma
 <br>
 <div style="text-align: center;">
 
-<img src="images/schedule_2ndmeeting.png" alt="Schedule second meeting" width="450">
+<img src="images/schedule_2ndmeeting.png" alt="Schedule second meeting" width="550">
 
 *Fig 15: Schedule another meeting at 1pm 1st Sept 2024*
 </div>
@@ -456,7 +457,7 @@ Examples: `reschedule 1 mi/2 md/05-09-2024 mt/17:00` after scheduling meetings i
 The following images show the InsuraConnect UI after executing the example command above from Fig 15.
 <div style="text-align: center;">
 
-<img src="images/reschedule_1stmeeting.png" alt="Reschedule first meeting" width="450">
+<img src="images/reschedule_1stmeeting.png" alt="Reschedule first meeting" width="550">
 
 *Fig 16: Reschedule meeting from 9am 9th Sept 2024 to 5pm 5th Sept 2024*
 </div>
@@ -474,7 +475,7 @@ Examples: `cancel 1 mi/1` from the list of meetings above in Fig 16.
 The following images show the InsuraConnect UI after executing the example command above from Fig 16.
 <div style="text-align: center;">
 
-<img src="images/cancel_1stmeeting.png" alt="Cancel first meeting" width="450">
+<img src="images/cancel_1stmeeting.png" alt="Cancel first meeting" width="550">
 
 *Fig 17: Cancel meeting at 1pm 1st Sept 2024*
 </div>
@@ -486,7 +487,7 @@ The following images show the InsuraConnect UI after executing the example comma
 Meetings are automatically sorted by their scheduled dates and times. When multiple meetings are scheduled for a client, InsuraConnect will organize them in ascending order, showing the earliest upcoming meeting at the top. This feature allows insurance agents to quickly glance at their schedule and prioritize upcoming meetings.
 <div style="text-align: center;">
 
-<img src="images/MeetingForAClient.png" alt="Meeting for a client" width="450">
+<img src="images/MeetingForAClient.png" alt="Meeting for a client" width="550">
 
 *Fig 18: Meetings for Alex Yeoh displayed from earliest to latest*
 </div>
@@ -500,7 +501,7 @@ To ensure the schedule remains current and manageable, InsuraConnect automatical
 Clients and partners are sorted in the user interface according to the time of their earliest scheduled meeting. This sorting mechanism places those individuals with the most imminent meetings at the top of the list, allowing for efficient time management and planning. Should there be no scheduled meetings for a client or partner, they will be positioned in the list based on the default sorting criteria.
 <div style="text-align: center;">
 
-<img src="images/sortedClientMeetings.png" alt="sorted client meetings" width="450">
+<img src="images/sortedClientMeetings.png" alt="sorted client meetings" width="550">
 
 *Fig 19: Client/Partners sorted by earliest meeting scheduled with insurance agent*
 </div>
@@ -536,7 +537,7 @@ Examples:
 The following images show the InsuraConnect UI before and after executing the command `status 1 s/up`.
 <div style="text-align: center;">
 
-<img src="images/ClientStatusBefore.png" alt="Before changing client status" width="450">
+<img src="images/ClientStatusBefore.png" alt="Before changing client status" width="550">
 
 *Fig 20: Before increasing the 1st client's status*
 </div>
@@ -544,7 +545,7 @@ The following images show the InsuraConnect UI before and after executing the co
 <br>
 <div style="text-align: center;">
 
-<img src="images/ClientStatusAfter.png" alt="After changing client status" width="450">
+<img src="images/ClientStatusAfter.png" alt="After changing client status" width="550">
 
 *Fig 21: After increasing the 1st client's status*
 </div>
@@ -563,7 +564,7 @@ Examples:
 The following images show the InsuraConnect UI after executing the command above.
 <div style="text-align: center;">
 
-<img src="images/undo_addAdam.png" alt="Figure of newly added adam contact" width="450">
+<img src="images/undo_addAdam.png" alt="Figure of newly added adam contact" width="550">
 
 *Fig 22: Newly added Adam contact*
 </div>
@@ -573,7 +574,7 @@ The following images show the InsuraConnect UI after executing the command above
 The following images show the InsuraConnect UI after executing the command `undo` from Fig 22.
 <div style="text-align: center;">
 
-<img src="images/undo_undoAdam.png" alt="Figure of undo removing adam" width="450">
+<img src="images/undo_undoAdam.png" alt="Figure of undo removing adam" width="550">
 
 *Fig 23: Undo removing the Adam contact*
 </div>
@@ -594,7 +595,7 @@ Examples:
 The following images show the InsuraConnect UI after executing the command `redo` from Fig 23.
 <div style="text-align: center;">
 
-<img src="images/redo_redoAddsAdam.png" alt="Figure of redo adding back adam" width="450">
+<img src="images/redo_redoAddsAdam.png" alt="Figure of redo adding back adam" width="550">
 
 *Fig 24: Redo adding back Adam*
 </div>
