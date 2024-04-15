@@ -227,18 +227,25 @@ Finds persons whose details contain any of the given keywords.
 
 Format: `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]...`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`.
-* The keywords (`NAME`, `RELATIONSHIP`, `TAG`, `POLICY`) cannot contain spaces between words e.g: `Hans Bo`, `owe money` are not allowed.
-* Keywords containing white spaces at the beginning or end are allowed. e.g: ` Hans`, `client `.
+<box type="warning" seamless>
+
+**Constraints:**
 * The keywords cannot be empty e.g: `find n/`.
-* You can search by name, relationship, tags or policy.
+* The keywords (`NAME`, `RELATIONSHIP`, `TAG`, `POLICY`) cannot contain spaces between words e.g: `Hans Bo`, `owe money` are not allowed.
+* Need to include at least one prefix with a keyword.
 * Only full words will be matched e.g. `Han` will not match `Hans`.
+
+</box>
+
+* The search is case-insensitive. e.g `hans` will match `Hans`.
+* Keywords containing white spaces at the beginning or end are allowed. e.g: ` Hans`, `client `.
+* You can search by name, relationship, tags or policy.
 * Persons matching at least one keyword in any attribute will be returned (i.e. `OR` search).
   e.g. find n/Hans n/Bo r/partner will return `Hans Gruber`, `Bo Yang` and all person who have relationship `partner`.
 
 Examples:
 * `find n/ John` returns `john` and `John Doe`
-* `find r/partner` returns `Alex Yeoh`, `David Li`
+* `find r/partner` retrieves all the partners listed in the contact list.
 <br>
 
 <div style="text-align: center;">
