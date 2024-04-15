@@ -441,7 +441,7 @@ The following activity diagrams summarise what happens when the user attempts to
 
 ### Meeting
 
-#### Implementation
+#### Schedule meeting implementation
 
 The meeting feature is supported by the `Meeting` class, which is associated with the `Person` class. A `Person` can have multiple meetings, managed through a `UniqueMeetingList` that ensures no duplicate meetings are associated with a person.
 
@@ -500,8 +500,18 @@ The activity diagram below summarizes the process of scheduling a meeting:
     * Pros: Retains meeting history for records and future reference.
     * Cons: Might lead to clutter and require additional features to manage the archive.
 
+#### Reschedule meeting implementation
+
+The sequence diagram below illustrates the interactions within the `Logic` component with execute("reschedule 1 mi/1 md/2024-05-05 mt/09:00") API call as an example.
+
+<puml src="path/to/RescheduleSequenceDiagram.puml"/>
 
 
+#### Cancel meeting implementation
+
+The sequence diagram below illustrates the interactions within the `Logic` component with execute("cancel 1 mi/1) API call as an example.
+
+<puml src="path/to/CancelSequenceDiagram.puml"/>
 
 ### \[Proposed\] Data archiving
 
