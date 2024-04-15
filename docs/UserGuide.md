@@ -26,7 +26,7 @@ Welcome to the InsuraConnect User Guide!
 This guide serves as a **complete manual to very aspect of InsuraConnect**, your streamlined conduit to peak productivity in the insurance sector.
 Eschewing the complexity of redundant features, InsuraConnect is forged from in-depth research to deliver a swift, efficient, and user-friendly experience for the modern insurance agent.
 
-Refer to the [table of contents](#table-of-contents) to find your answers as well as step-by-step instructions for all the features to be a master of InsuraConnect.
+Refer to the [Table of contents](#table-of-contents) to find your answers as well as step-by-step instructions for all the features to be a master of InsuraConnect.
 
 ### What it does
 
@@ -97,23 +97,26 @@ To explore more, visit the [Features](#features) section for more advanced tips.
    * `exit` : Exits the app.
 
 6. Refer to the [Features](#features) below for further details of each command.
-7. Refer to the [Command Summary](#command-summary) for a full list of the available commands
+7. Refer to the [Command summary](#command-summary) for a full list of the available commands
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## How to use this guide
 
-The InsuraConnect User Guide is structured to help you navigate as easily as possible. You can use the [table of contents](#table-of-contents)
+The InsuraConnect User Guide is structured to help you navigate as easily as possible. You can use the [Table of contents](#table-of-contents)
 to navigate any section you want. Hyperlinks are also included that will take you to relevant sections or features.
-If you already an experienced user, you can use the [supported prefixes](#supported-prefixes) and [command summary](#command-summary) sections for a quick overview.
+If you already an experienced user, you can use the [Supported prefixes](#supported-prefixes) and [Command summary](#command-summary) sections for a quick overview.
 
-In the [Features](#features) section, each feature you will contain:
+In the [Features](#features) section, each feature will contain:
 * a short **preface**
 * the **command format**
 * **details** on its use 
 * guided **examples**
 
-This guide also contains the following **coloured icons and segments** that represent different information to help you better understand how to use InsuraConnect. 
+You can also find **visuals** that highlight how the features of InsuraConnect will look.
+They are located **below the description** of the feature and are labelled for your convenience.
+
+This guide uses the following **coloured icons and segments**. They represent different information to help you better understand how to use InsuraConnect. 
 
 <box type="tip" seamless>
 
@@ -133,8 +136,6 @@ This indicates a constraint on the command format or feature of InsuraConnect.
 This indicates a precaution that you should read carefully and remember when using InsuraConnect.
 </box>
 
-You can also find **examples complete with visuals** for most key features of InsuraConnect.
-They are located **below the description** of the feature and are labelled for your convenience.
 
 Before you dive into the features, here are some notes regarding InsuraConnect's command format.
 
