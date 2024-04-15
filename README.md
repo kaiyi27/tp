@@ -1,6 +1,6 @@
 [![CI Status](https://github.com/AY2324S2-CS2103T-T13-3/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2324S2-CS2103T-T13-3/tp/actions)
 
-![Ui](docs/images/Ui-v1.3.png)
+![Ui](docs/images/Ui.png)
 
 * InsuraConnect is an enhanced version of the AddressBook-Level3 project, which serves as a personal contact management tool for insurance agents.
 * It provides fast access to client contact details, easily manage client relationships, collaborate with industry partners, and stay organised in a fast-paced industry.
