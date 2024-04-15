@@ -13,31 +13,35 @@ pageNav: 3
 
 <br>
 
-## Overview
+## Table of contents
+<!-- * Table of Contents -->
 
-Welcome to InsuraConnect, your streamlined conduit to peak productivity in the insurance sector. Eschewing the complexity of redundant features, InsuraConnect is forged from in-depth research to deliver a swift, efficient, and user-friendly experience for the modern insurance agent.
+<page-nav-print />
 
 <div style="page-break-after: always;"></div>
 
-## What It Does
+## Introduction
+
+Welcome to the InsuraConnect User Guide!
+This guide serves as a **complete manual to very aspect of InsuraConnect**, your streamlined conduit to peak productivity in the insurance sector.
+Eschewing the complexity of redundant features, InsuraConnect is forged from in-depth research to deliver a swift, efficient, and user-friendly experience for the modern insurance agent.
+
+Refer to the [Table of contents](#table-of-contents) to find your answers as well as step-by-step instructions for all the features to be a master of InsuraConnect.
+
+### What it does
 
 InsuraConnect is a **desktop application tailored for managing client interactions and insurance policies**. It is optimized for speed via a **Command Line Interface** (CLI), backed by the visual accessibility of a **Graphical User Interface** (GUI). For agents adept at typing, InsuraConnect enhances task execution, outpacing conventional GUI applications.
 
 With InsuraConnect, you can swiftly access client information, manage policies, track meetings, and stay organized in a competitive landscape. Our goal is to transform your workflow into an efficient model of productivity.
 
-This user guide is crafted to provide installation process, clear explanations for each command, step-by-step instructions, insightful examples and troubleshooting recommendations to ensure you harness the full potential of InsuraConnect. In addition, the quick start guide provides an end-to-end setup process to get started.
+This user guide provides the installation process, clear explanations for each command, step-by-step instructions, insightful examples and troubleshooting recommendations to ensure you harness the full potential of InsuraConnect. In addition, the quick start guide provides an end-to-end setup process to get started.
 
-## Target Users
+### Target users
 
-InsuraConnect is designed for insurance agents who desire the efficacy of CLI without relinquishing GUI advantages. It's an essential tool for those who manage a **broad client base, track multiple insurance policies, organise meetings**, and value the efficiency of their time and resources.
+InsuraConnect is designed for **insurance agents** who desire the efficacy of CLI without relinquishing GUI advantages. It is an essential tool for those who manage a **broad client base, track multiple insurance policies, organise meetings**, and value the efficiency of their time and resources.
 
-Refer to the table of contents to find your answers as well as step-by-step instructions for all the features to be a **master** of InsuraConnect.
-<!-- * Table of Contents -->
 
-<page-nav-print />
-
----
-<div style="page-break-after: always;"></div>
+***
 
 ## What can InsuraConnect do for you?
 
@@ -57,7 +61,6 @@ This is only the tip of the iceberg of the things you can do working with Insura
 To explore more, visit the [Features](#features) section for more advanced tips.
 
 ---
-<div style="page-break-after: always;"></div>
 
 ## Quick start
 
@@ -67,15 +70,16 @@ To explore more, visit the [Features](#features) section for more advanced tips.
 
 3. Copy the file to the folder you want to use as the _home folder_ for InsuraConnect.
 
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar InsuraConnect.jar` command to run the application.<br>
-A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar InsuraConnect.jar` command to run the application.
+
+    A GUI similar to the image below should appear in a few seconds. Note how the app contains some sample data.<br>
 <br>
    ![Ui](images/UILabelled.png)
 <div style="text-align: center;">
 
 *Fig 1: InsuraConnect's GUI*
 </div>
-<br>
+
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -86,43 +90,83 @@ A GUI similar to the below should appear in a few seconds. Note how the app cont
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
-   * `schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60` : Schedules a meeting with the first contact in the current list at 5th may 2024 9am to discuss health policy.
-   * `policy 1 po/Health policy ed/2029-06-06 pm/1000` Adds a policy with the first contact in the current list with name of 
-   Health policy, expiry date on the 6th of June 2029, with a premium of 1000 SGD
+   * `schedule 1 md/2024-05-05 mt/09:00 ma/Discuss health policy mdur/60` : Schedules a meeting with the 1st contact in the current list at 5th May 2024 9am to discuss health policy.
+   * `policy 1 po/Health policy ed/2029-06-06 pm/1000` Adds a policy with the 1st contact in the current list with name of 
+   Health policy, expiry date on the 6th of June 2029, with a premium of 1000 SGD.
 
    * `exit` : Exits the app.
 
 6. Refer to the [Features](#features) below for further details of each command.
-7. Refer to the [Command Summary](#command-summary) for a full list of the available commands
+7. Refer to the [Command summary](#command-summary) for a full list of the available commands
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Before you start
+## How to use this guide
 
-<div markdown="block" class="alert alert-primary">
+The InsuraConnect User Guide is structured to help you navigate as easily as possible. You can use the [Table of contents](#table-of-contents)
+to navigate any section you want. Hyperlinks are also included that will take you to relevant sections or features.
+If you already an experienced user, you can use the [Supported prefixes](#supported-prefixes) and [Command summary](#command-summary) sections for a quick overview.
+
+In the [Features](#features) section, each feature will contain:
+* a short **preface**
+* the **command format**
+* **details** on its use 
+* guided **examples**
+
+You can also find **visuals** that highlight how the features of InsuraConnect will look.
+They are located **below the description** of the feature and are labelled for your convenience.
+
+This guide uses the following **coloured icons and segments**. They represent different information to help you better understand how to use InsuraConnect. 
+
+<box type="tip" seamless>
+
+**Tip:**
+This indicates a helpful tip on how to utilise a particular feature of InsuraConnect.
+</box>
+
+<box type="warning" seamless>
+
+**Constraint:**
+This indicates a constraint on the command format or feature of InsuraConnect.
+</box>
+
+<box type="important" seamless>
+
+**Caution:**
+This indicates a precaution that you should read carefully and remember when using InsuraConnect.
+</box>
+
+
+Before you dive into the features, read through the notes regarding InsuraConnect's command format.
+
+<box type="info" theme="primary">
 
 **Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-* Prefixes are in the form of a shortened word followed by a / such as `po/` for policy or`md/` for meeting date. 
+* Words in `UPPER_CASE` are the parameters for you to input.<br>
+Example: In `add n/NAME`, `NAME` is a parameter which you can use as `add n/John Doe`.
+
+* Prefixes are in the form of a shortened word followed by a / such as `po/` for policy or`md/` for meeting date.<br>
+You can refer to the [supported prefixes](#supported-prefixes) section for a full list of prefixes.
+
 * Prefixes require a space before being used, such as `n/NAME e/EMAIL` requiring a space between `NAME` and `e/`.
 
 * Items in square brackets are optional.<br>
-  e.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-  e.g. `po/POLICY_NAME [ed/EXPIRY_DATE]` can be used as `po/Policy_ABC ed/01-01-2025` or as `po/Policy_ABC` .
+Example: You can use `n/NAME [t/TAG]` as `n/John Doe t/friend` or as `n/John Doe`.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+* You can use items with `…`​ after them multiple times including zero times.<br>
+Example: You can use `[t/TAG]…​` as ` ` (i.e. 0 times), `t/friend`, or `t/friend t/family`, etc.
 
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+* You can use parameters in any order.<br>
+Example: If the command specifies `n/NAME p/PHONE_NUMBER`, you can also input `p/PHONE_NUMBER n/NAME`.
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+Example: If you input the command `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</div>
+
+* If you encounter any errors when using commands, the output/error display will highlight potential formatting mistakes in your command.
+</box>
 
 ***
 
@@ -182,14 +226,20 @@ Examples:
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Kent Ridge p/1234567 r/partner t/oweMoney` adds a partner with the respective details to InsuraConnect.
 
 The following images show the InsuraConnect UI before and after executing the command `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Kent Ridge p/1234567 r/partner t/oweMoney`.
+<div style="text-align: center;">
 
-![Before adding person](images/AddBefore.png)
-*Before adding a person*
+<img src="images/AddBefore.png" alt="before adding a person" width="600">
 
-![After adding person](images/AddAfter.png)
-*Outcome after adding a person*
+*Fig 3: Before adding a person*
+</div>
 
 <br>
+<div style="text-align: center;">
+
+<img src="images/AddAfter.png" alt="after adding a person" width="600">
+
+*Fig 4: Outcome after adding a person*
+</div>
 
 ### Listing all persons : `list`
 
@@ -215,40 +265,52 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * You can remove all the person’s tags by typing `t/` without specifying any tags after it.
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
-<br>
+*  `edit 1 p/91234567 e/alexyeoh1234@example.com` edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 2 n/Betsy Crower t/` edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags. 
 
+The following images show the InsuraConnect UI before and after executing the command `edit 1 p/91234567 e/alexyeoh1234@example.com`.
 <div style="text-align: center;">
 
-![result for 'edit 1 p/91234567 e/johndoe@example.com'](images/EditPersonBefore.png)
-<br>
-*Fig 3: Before editing John Doe's email and phone number*
+<img src="images/EditAlexBefore.png" alt="before editing Alex" width="600">
+
+*Fig 5: Before editing Alex's email and phone number*
 </div>
 
 <br>
 <div style="text-align: center;">
 
-![result for 'edit 1 p/91234567 e/johndoe@example.com'](images/EditPersonAfter.png)
-<br>
-*Fig 3: After editing John Doe's email and phone number*
+<img src="images/EditAlexAfter.png" alt="after editing Alex" width="600">
+
+*Fig 6: After editing Alex's email and phone number*
 </div>
 
 The following images show the InsuraConnect UI before and after executing the command `edit 2 n/Betsy Crower t/`.
+<div style="text-align: center;">
 
-![Before editing person](images/EditBefore.png)
-*Before editing the 2nd person*
+<img src="images/EditBefore.png" alt="before editing person" width="600">
 
-![After editing person](images/EditAfter.png)
-*Outcome after editing the 2nd person*
+*Fig 7: Before editing the 2nd person*
+</div>
 
 <br>
+<div style="text-align: center;">
+
+<img src="images/EditAfter.png" alt="after editing person" width="600">
+
+*Fig 8: Outcome after editing the 2nd person*
+</div>
 
 ### Locating persons by name, relationship, tag, policy: `find`
 
 Finds persons whose details contain any of the given keywords.
 
 Format: `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]...`
+
+* The search is case-insensitive. e.g `hans` will match `Hans`.
+* Keywords containing white spaces at the beginning or end are allowed. e.g: ` Hans`, `client `.
+* You can search by name, relationship, tags or policy.
+* Persons matching at least one keyword in any attribute will be returned (i.e. `OR` search).
+  e.g. find n/Hans n/Bo r/partner will return `Hans Gruber`, `Bo Yang` and all person who have relationship `partner`.
 
 <box type="warning" seamless>
 
@@ -260,22 +322,16 @@ Format: `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]...`
 
 </box>
 
-* The search is case-insensitive. e.g `hans` will match `Hans`.
-* Keywords containing white spaces at the beginning or end are allowed. e.g: ` Hans`, `client `.
-* You can search by name, relationship, tags or policy.
-* Persons matching at least one keyword in any attribute will be returned (i.e. `OR` search).
-  e.g. find n/Hans n/Bo r/partner will return `Hans Gruber`, `Bo Yang` and all person who have relationship `partner`.
-
 Examples:
 * `find n/ John` returns `john` and `John Doe`
 * `find r/partner` retrieves all the partners listed in the contact list.
-<br>
 
+The following images show the InsuraConnect UI after executing the command `find n/Alex n/David`.
 <div style="text-align: center;">
 
-![result for 'find alex david'](images/findAlexDavidResult.png)
-<br>
-*Fig 3: Result from finding Alex and David*
+<img src="images/FindAlexDavid.png" alt="find alex david" width="600">
+
+*Fig 9: Outcome from finding Alex and David*
 </div>
 
 ### Deleting a person : `delete`
@@ -315,20 +371,20 @@ The index refers to the index number shown in the displayed person list. The ind
 Examples: `policy 1 po/Health Policy ed/01-01-2030 pm/500000` adds a new policy to the 1st person.
 
 The following images show the InsuraConnect UI before and after executing the command `policy 1 po/Health Policy ed/01-01-2030 pm/500000`.
-
-![Before adding policy](images/AddPolicyBefore.png)
 <div style="text-align: center;">
 
-*Fig 4: Before adding a policy*
+<img src="images/AddPolicyBefore.png" alt="Before adding policy" width="600">
+
+*Fig 10: Before adding a policy*
 </div>
+
 <br>
-
-![After adding policy](images/AddPolicyAfter.png)
 <div style="text-align: center;">
 
-*Fig 5: After adding a policy to the first person*
-</div>
+<img src="images/AddPolicyAfter.png" alt="After adding policy" width="600">
 
+*Fig 11: After adding a policy to the 1st person*
+</div>
 
 ### Editing a policy of a client: `policy`
 Format: `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
@@ -339,20 +395,20 @@ Policy index refers to the index number shown in the person's displayed policy l
 Examples: `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000` edits the 1st person's 2nd policy.
 
 The following images show the InsuraConnect UI before and after executing the command `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000`.
-
-![Before editing policy](images/EditPolicyBefore.png)
 <div style="text-align: center;">
 
-*Fig 6: Before editing the policy*
-</div>
+<img src="images/EditPolicyBefore.png" alt="Before editing policy" width="600">
 
-![After editing policy](images/EditPolicyAfter.png)
-<div style="text-align: center;">
-
-*Fig 7: After editing the 2nd policy of the 1st person*
+*Fig 12: Before editing the policy*
 </div>
 
 <br>
+<div style="text-align: center;">
+
+<img src="images/EditPolicyAfter.png" alt="After editing policy" width="600">
+
+*Fig 13: After editing the 2nd policy of the 1st person*
+</div>
 
 ### Deleting a policy from a client: `policy`
 Format: `policy INDEX pi/POLICY_INDEX po/`
@@ -365,22 +421,20 @@ e.g., `policy 1 pi/2 po/ ed/01-01-2025 pm/2000` will still delete the 1st person
 Examples: `policy 1 pi/2 po/` deletes the 1st person's 2nd policy.
 
 The following images show the InsuraConnect UI before and after executing the command `policy 1 pi/2 po/`.
-
-![Before deleting policy](images/DeletePolicyBefore.png)
 <div style="text-align: center;">
 
-*Fig 8: Before deleting the policy*
+<img src="images/DeletePolicyBefore.png" alt="Before deleting policy" width="600">
+
+*Fig 14: Before deleting the policy*
 </div>
 
 <br>
-
-![After deleting policy](images/DeletePolicyAfter.png)
 <div style="text-align: center;">
 
-*Fig 9: After deleting the 2nd policy of the 1st person*
-</div>
+<img src="images/DeletePolicyAfter.png" alt="After deleting policy" width="600">
 
-<br>
+*Fig 15: After deleting the 2nd policy of the 1st person*
+</div>
 
 ### Meeting
 
@@ -409,7 +463,7 @@ Schedules a meeting with a person with an agenda and duration with optional note
 
 Format: `schedule INDEX md/DATE mt/TIME mdur/DURATION ma/AGENDA mn/[NOTES]`
 
-* Schedules meeting with a person at the specified INDEX. The index refers to the index number shown in the displayed persons list.
+* Schedules meeting with a person at the specified `INDEX`. The index refers to the index number shown in the displayed persons list.
 * Meeting notes are optional and can be used to represent any additional information that might be useful for the meeting.
 * You can schedule multiple meetings as well, further details are included [below](#managing-meetings)
 
@@ -417,70 +471,69 @@ Examples:
 1. `schedule 1 md/09-09-2024 mt/09:00 mdur/60 ma/discuss health policy mn/urgent`
 2. `schedule 1 md/01-09-2024 mt/13:00 mdur/60 ma/discuss vehicle policy mn/urgent`
 
-![img.png](images/schedule_meeting.png)
-
+The following images show the InsuraConnect UI after executing two example commands above consecutively.
 <div style="text-align: center;">
 
-*Fig 10: Schedule meeting at 9am 9th Sept 2024*
-</div>
+<img src="images/schedule_meeting.png" alt="Schedule first meeting" width="600">
 
-![img.png](images/schedule_2ndmeeting.png)
-
-<div style="text-align: center;">
-
-*Fig 10: Schedule another meeting at 1pm 1st Sept 2024*
+*Fig 16: Schedule meeting at 9am 9th Sept 2024*
 </div>
 
 <br>
+<div style="text-align: center;">
+
+<img src="images/schedule_2ndmeeting.png" alt="Schedule second meeting" width="600">
+
+*Fig 17: Schedule another meeting at 1pm 1st Sept 2024*
+</div>
 
 ### Rescheduling a meeting with a person: `reschedule`
 
 Reschedules a meeting with a person
 
-Format: `reschedule INDEX mi/MEETING INDEX md/DATE mt/TIME `
+Format: `reschedule INDEX mi/MEETING_INDEX md/DATE mt/TIME `
 
-* Reschedules meeting with a person at the specified INDEX. The index is the same as the above for schedule.
-* Selects a meeting from the list of meetings using the MEETING INDEX.
+* Reschedules meeting with a person at the specified `INDEX`. The index is the same as the above for schedule.
+* Selects a meeting from the list of meetings using the `MEETING_INDEX`.
 
-Examples: `reschedule 1 mi/2 md/05-09-2024 mt/17:00` after scheduling the first meeting in Fig 10.
+Examples: `reschedule 1 mi/2 md/05-09-2024 mt/17:00`
 
-![img.png](images/reschedule_1stmeeting.png)
+The following images show the InsuraConnect UI after executing the example command above from Fig 17.
 <div style="text-align: center;">
 
-*Fig 11: Reschedule meeting from 1pm 1st Sept 2024 to 5pm 5th Sept 2024*
+<img src="images/reschedule_1stmeeting.png" alt="Reschedule first meeting" width="600">
+
+*Fig 18: Reschedule meeting from 9am 9th Sept 2024 to 5pm 5th Sept 2024*
 </div>
 
 ### Cancelling a meeting with a person: `cancel`
 
 Cancels a meeting with a person
 
-Format: `cancel INDEX mi/MEETING INDEX`
+Format: `cancel INDEX mi/MEETING_INDEX`
 
-* INDEX and MEETING INDEX is the same as the above for reschedule
+* `INDEX` and `MEETING_INDEX` is the same as the above for reschedule
 
-Examples: `cancel 1 mi/1` from the list of meetings above in Fig 11.
+Examples: `cancel 1 mi/1`
 
-![img.png](images/cancel_1stmeeting.png)
-
+The following image shows the InsuraConnect UI after executing the example command above following the commands above in reschedule that resulted in Fig 18.
 <div style="text-align: center;">
 
-*Fig 12: Cancel meeting at 1pm 1st Sept 2024*
+<img src="images/cancel_1stmeeting.png" alt="Cancel first meeting" width="600">
 
+*Fig 19: Cancel meeting at 1pm 1st Sept 2024*
 </div>
-
 
 ### Managing Meetings
 
 #### Meeting Scheduling and Rescheduling
 
 Meetings are automatically sorted by their scheduled dates and times. When multiple meetings are scheduled for a client, InsuraConnect will organize them in ascending order, showing the earliest upcoming meeting at the top. This feature allows insurance agents to quickly glance at their schedule and prioritize upcoming meetings.
-
-![img.png](images/MeetingForAClient.png)
-
 <div style="text-align: center;">
 
-*Fig 12: Meetings for John Doe displayed from earliest to latest*
+<img src="images/MeetingForAClient.png" alt="Meeting for a client" width="600">
 
+*Fig 20: Meetings for Alex Yeoh displayed from earliest to latest*
 </div>
 
 #### Automatic Purging of Expired Meetings
@@ -490,26 +543,24 @@ To ensure the schedule remains current and manageable, InsuraConnect automatical
 #### Sorting Clients/Partners by Earliest Meeting
 
 Clients and partners are sorted in the user interface according to the time of their earliest scheduled meeting. This sorting mechanism places those individuals with the most imminent meetings at the top of the list, allowing for efficient time management and planning. Should there be no scheduled meetings for a client or partner, they will be positioned in the list based on the default sorting criteria.
-
-![img.png](images/sortedClientMeetings.png)
-
 <div style="text-align: center;">
 
-*Fig 12: Client/Partners sorted by earliest meeting scheduled with insurance agent*
+<img src="images/sortedClientMeetings.png" alt="sorted client meetings" width="600">
 
+*Fig 21: Client/Partners sorted by earliest meeting scheduled with insurance agent*
 </div>
 
 ### Changing a client's status: `status`
 
-Changes a client's status by one level to reflect the progress with that client. In increasing order, the possible status levels are `Yet to start`,
+Changes a client's status by **one level** to reflect the progress with that client. In increasing order, the possible status levels are `Yet to start`,
 `In progress`, and `Completed`.
 
 Format: `status INDEX s/DIRECTION`
 
 * Changes the status of the client at the specified `INDEX`.
   The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* Input `DIRECTION` as `up` to increase the status, or `down` decrease the status.
-* Leave the direction blank to reset the client's status to `Yet to start`.
+* Input `DIRECTION` as `up` to **increase** the status, or `down` to **decrease** the status.
+* Leave the direction **blank** to reset the client's status to `Yet to start`.
 
 <box type="tip" seamless>
 
@@ -528,22 +579,20 @@ Examples:
 * `status 1 s/` resets the status of the 1st person if it is a client.
 
 The following images show the InsuraConnect UI before and after executing the command `status 1 s/up`.
-
-![Before changing client status](images/ClientStatusBefore.png)
 <div style="text-align: center;">
 
-*Fig 10: Before increasing the 1st client's status*
+<img src="images/ClientStatusBefore.png" alt="Before changing client status" width="600">
+
+*Fig 22: Before increasing the 1st client's status*
 </div>
 
 <br>
-
-![After changing client status](images/ClientStatusAfter.png)
 <div style="text-align: center;">
 
-*Fig 11: After increasing the 2nd client's status*
-</div>
+<img src="images/ClientStatusAfter.png" alt="After changing client status" width="600">
 
-<br>
+*Fig 23: After increasing the 1st client's status*
+</div>
 
 ### Undoing a command: `undo`
 
@@ -554,25 +603,25 @@ Format: `undo`
 * Only undoes commands that made changes to InsuraConnect
 
 Examples:
-* `add n/Adam Ibnu p/11111111 e/Adam@gmail.com a/Sembawang road blk 509c #02-25 r/client t/friend`as shown in the figure below adds the adam contact.
+* `add n/Adam Ibnu p/11111111 e/Adam@gmail.com a/Sembawang road blk 509c #02-25 r/client t/friend`
 
-
-![img.png](images/undo_addAdam.png "Figure of newly added adam contact")
-
+The following images show the InsuraConnect UI after executing the command above.
 <div style="text-align: center;">
 
-*Fig 12: Newly added Adam contact*
+<img src="images/undo_addAdam.png" alt="Figure of newly added adam contact" width="600">
+
+*Fig 24: Newly added Adam contact*
 </div>
 
 * The previous add command is followed by `undo` which undoes the previous command, removing the newly added person as shown below.
 
-![img.png](images/undo_undoAdam.png "Figure of undo removing adam")
+The following images show the InsuraConnect UI after executing the command `undo` from Fig 24.
 <div style="text-align: center;">
 
-*Fig 13: Undo removing the Adam contact*
-</div>
+<img src="images/undo_undoAdam.png" alt="Figure of undo removing adam" width="600">
 
-<br>
+*Fig 25: Undo removing the Adam contact*
+</div>
 
 ### Redoing a command: `redo`
 
@@ -586,13 +635,14 @@ Examples:
 
 * This example performs redo after the success undo in the above section [Undo](#undoing-a-command-undo)
 * Executing redo reapplies the actions that were previously undone which in this example is adding back Adam in the figure below and a successful redo will show a corresponding successful message as well.
-  ![img.png](images/redo_redoAddsAdam.png "Figure of redo adding back adam")
+
+The following images show the InsuraConnect UI after executing the command `redo` from Fig 25.
 <div style="text-align: center;">
 
-*Fig 14: Redo adding back Adam*
-</div>
+<img src="images/redo_redoAddsAdam.png" alt="Figure of redo adding back adam" width="600">
 
-<br>
+*Fig 26: Redo adding back Adam*
+</div>
 
 ### Clearing all entries : `clear`
 
@@ -620,7 +670,7 @@ InsuraConnect data are saved in the hard disk automatically after any command th
 
 InsuraConnect data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<box type="warning" seamless>
+<box type="important" seamless>
 
 **Caution:**
 If your changes to the data file makes its format invalid, InsuraConnect will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
@@ -655,6 +705,18 @@ Furthermore, certain edits can cause InsuraConnect to behave in unexpected ways 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **When scrolling through Meetings and Policy Accordion**, if you scroll too quickly, the cells take some time to render and display the required information.
 3. **After using find command**, use `list` to list all tasks so that all operations are done on the correct index number. The filtered list doesn't revert back when doing next command, so user has to manually enter `list` to avoid any discrepancies.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Glossary
+
+* **Meeting:** A scheduled interaction between insurance agents and clients or partners to discuss insurance products, coverage options, claims, or other related matters.
+* **Policy:** A formal contract or agreement between an insurance provider and a policyholder specifying the terms, conditions, coverage, and obligations related to an insurance product or service.
+* **Policyholder:** An individual or entity that holds an insurance policy and is entitled to the benefits and coverage outlined in the policy.
+* **Policy Management:** The process of administering insurance policies, including issuing new policies, updating existing policies, processing endorsements, and handling policy renewals and cancellations.
+* **UI (User Interface):** The graphical interface provided by InsuraConnect for users to interact with the system, access features, view information, and perform tasks related to insurance activities.
+* **Command:** A specific instruction or action initiated by a user within InsuraConnect to trigger a particular function, operation, or task, such as scheduling a meeting, processing a policy update, or generating a report.
+* **Fig (Figure):** A reference to a visual representation or illustration within InsuraConnect documentation, often used to depict UI screens, workflow diagrams, or data charts related to insurance processes or functionalities.
 
 --------------------------------------------------------------------------------------------------------------------
 
