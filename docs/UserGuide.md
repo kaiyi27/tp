@@ -472,7 +472,7 @@ Format: `cancel INDEX mi/MEETING INDEX`
 
 Examples: `cancel 1 mi/1` from the list of meetings above in Fig 18.
 
-The following images show the InsuraConnect UI after executing the example command above from Fig 16.
+The following images show the InsuraConnect UI after executing the example command above from Fig 18.
 <div style="text-align: center;">
 
 <img src="images/cancel_1stmeeting.png" alt="Cancel first meeting" width="600">
