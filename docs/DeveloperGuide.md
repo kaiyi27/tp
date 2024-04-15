@@ -287,13 +287,13 @@ The following class diagram shows the `ClientStatus` and `Status` classes in rel
 
 Given below is an example usage scenario and how the client status feature behaves at each step.
 
-Step 1: The user executes `add n/David ... r/client` to add a new client. Since the relationship is a `client`, the new
-person will be created with a `ClientStatus` that has value `START`.
+Step 1: The user executes `add n/David ... r/client` to add a new client. The command only shows the relevant prefixes.
+Since the relationship is a `client`, the new person will be created with a `ClientStatus` that has value `START`.
 
 Step 2: Assuming the person the user just added is the first person, the user executes `status 1 s/up` to increment the status.
 The value of `Status` that `ClientStatus` holds will now be incremented to `MIDDLE`.
 
-The following activity diagrams summarise what happens when the user attempts to increment and decrement a person's status.
+The following activity diagram summarise what happens when the user attempts to increment a person's status. Attempting to decrement a person's status will have a similar sequence.
 
 <puml src="diagrams/IncrementClientStatusActivityDiagram.puml"/>
 
