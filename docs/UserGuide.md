@@ -664,6 +664,18 @@ Furthermore, certain edits can cause InsuraConnect to behave in unexpected ways 
 
 --------------------------------------------------------------------------------------------------------------------
 
+## Glossary
+
+* **Meeting:** A scheduled interaction between insurance agents and clients or partners to discuss insurance products, coverage options, claims, or other related matters.
+* **Policy:** A formal contract or agreement between an insurance provider and a policyholder specifying the terms, conditions, coverage, and obligations related to an insurance product or service.
+* **Policyholder:** An individual or entity that holds an insurance policy and is entitled to the benefits and coverage outlined in the policy.
+* **Policy Management:** The process of administering insurance policies, including issuing new policies, updating existing policies, processing endorsements, and handling policy renewals and cancellations.
+* **UI (User Interface):** The graphical interface provided by InsuraConnect for users to interact with the system, access features, view information, and perform tasks related to insurance activities.
+* **Command:** A specific instruction or action initiated by a user within InsuraConnect to trigger a particular function, operation, or task, such as scheduling a meeting, processing a policy update, or generating a report.
+* **Fig (Figure):** A reference to a visual representation or illustration within InsuraConnect documentation, often used to depict UI screens, workflow diagrams, or data charts related to insurance processes or functionalities.
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## Supported prefixes
 
 | **Name of prefix**                                 | **Prefix in command** | **Description**                 |
