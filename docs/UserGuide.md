@@ -182,14 +182,20 @@ Examples:
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Kent Ridge p/1234567 r/partner t/oweMoney` adds a partner with the respective details to InsuraConnect.
 
 The following images show the InsuraConnect UI before and after executing the command `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Kent Ridge p/1234567 r/partner t/oweMoney`.
+<div style="text-align: center;">
 
-![Before adding person](images/AddBefore.png)
-*Before adding a person*
+<img src="images/AddBefore.png" alt="before adding a person" width="450">
 
-![After adding person](images/AddAfter.png)
-*Outcome after adding a person*
+*Fig 1: Before adding a person*
+</div>
 
 <br>
+<div style="text-align: center;">
+
+<img src="images/AddAfter.png" alt="after adding a person" width="450">
+
+*Fig 2: Outcome after adding a person*
+</div>
 
 ### Listing all persons : `list`
 
@@ -215,34 +221,40 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * You can remove all the person’s tags by typing `t/` without specifying any tags after it.
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
-<br>
+*  `edit 1 p/91234567 e/alexyeoh1234@example.com` edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 2 n/Betsy Crower t/` edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags. 
 
+The following images show the InsuraConnect UI before and after executing the command `edit 1 p/91234567 e/alexyeoh1234@example.com`.
 <div style="text-align: center;">
 
-![result for 'edit 1 p/91234567 e/johndoe@example.com'](images/EditPersonBefore.png)
-<br>
-*Fig 3: Before editing John Doe's email and phone number*
+<img src="images/EditAlexBefore.png" alt="before editing Alex" width="450">
+
+*Fig 3: Before editing Alex's email and phone number*
 </div>
 
 <br>
 <div style="text-align: center;">
 
-![result for 'edit 1 p/91234567 e/johndoe@example.com'](images/EditPersonAfter.png)
-<br>
-*Fig 3: After editing John Doe's email and phone number*
+<img src="images/EditAlexAfter.png" alt="after editing Alex" width="450">
+
+*Fig 4: After editing Alex's email and phone number*
 </div>
 
 The following images show the InsuraConnect UI before and after executing the command `edit 2 n/Betsy Crower t/`.
+<div style="text-align: center;">
 
-![Before editing person](images/EditBefore.png)
-*Before editing the 2nd person*
+<img src="images/EditBefore.png" alt="before editing person" width="450">
 
-![After editing person](images/EditAfter.png)
-*Outcome after editing the 2nd person*
+*Fig 5: Before editing the 2nd person*
+</div>
 
 <br>
+<div style="text-align: center;">
+
+<img src="images/EditAfter.png" alt="after editing person" width="450">
+
+*Fig 6: Outcome after editing the 2nd person*
+</div>
 
 ### Locating persons by name, relationship, tag, policy: `find`
 
@@ -269,13 +281,13 @@ Format: `find [n/NAME]... [r/RELATIONSHIP]... [t/TAG]... [po/POLICY]...`
 Examples:
 * `find n/ John` returns `john` and `John Doe`
 * `find r/partner` retrieves all the partners listed in the contact list.
-<br>
 
+The following images show the InsuraConnect UI after executing the command `find n/Alex n/David`.
 <div style="text-align: center;">
 
-![result for 'find alex david'](images/findAlexDavidResult.png)
-<br>
-*Fig 3: Result from finding Alex and David*
+<img src="images/FindAlexDavid.png" alt="find alex david" width="450">
+
+*Fig 7: Outcome from finding Alex and David*
 </div>
 
 ### Deleting a person : `delete`
@@ -315,20 +327,20 @@ The index refers to the index number shown in the displayed person list. The ind
 Examples: `policy 1 po/Health Policy ed/01-01-2030 pm/500000` adds a new policy to the 1st person.
 
 The following images show the InsuraConnect UI before and after executing the command `policy 1 po/Health Policy ed/01-01-2030 pm/500000`.
-
-![Before adding policy](images/AddPolicyBefore.png)
 <div style="text-align: center;">
 
-*Fig 4: Before adding a policy*
+<img src="images/AddPolicyBefore.png" alt="Before adding policy" width="450">
+
+*Fig 8: Before adding a policy*
 </div>
+
 <br>
-
-![After adding policy](images/AddPolicyAfter.png)
 <div style="text-align: center;">
 
-*Fig 5: After adding a policy to the first person*
-</div>
+<img src="images/AddPolicyAfter.png" alt="After adding policy" width="450">
 
+*Fig 9: After adding a policy to the 1st person*
+</div>
 
 ### Editing a policy of a client: `policy`
 Format: `policy INDEX pi/POLICY_INDEX po/POLICY_NAME [ed/EXPIRY_DATE] [pm/PREMIUM]`
@@ -339,20 +351,20 @@ Policy index refers to the index number shown in the person's displayed policy l
 Examples: `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000` edits the 1st person's 2nd policy.
 
 The following images show the InsuraConnect UI before and after executing the command `policy 1 pi/2 po/Travel Policy ed/01-01-2025 pm/2000`.
-
-![Before editing policy](images/EditPolicyBefore.png)
 <div style="text-align: center;">
 
-*Fig 6: Before editing the policy*
-</div>
+<img src="images/EditPolicyBefore.png" alt="Before editing policy" width="450">
 
-![After editing policy](images/EditPolicyAfter.png)
-<div style="text-align: center;">
-
-*Fig 7: After editing the 2nd policy of the 1st person*
+*Fig 10: Before editing the policy*
 </div>
 
 <br>
+<div style="text-align: center;">
+
+<img src="images/EditPolicyAfter.png" alt="After editing policy" width="450">
+
+*Fig 11: After editing the 2nd policy of the 1st person*
+</div>
 
 ### Deleting a policy from a client: `policy`
 Format: `policy INDEX pi/POLICY_INDEX po/`
@@ -365,22 +377,20 @@ e.g., `policy 1 pi/2 po/ ed/01-01-2025 pm/2000` will still delete the 1st person
 Examples: `policy 1 pi/2 po/` deletes the 1st person's 2nd policy.
 
 The following images show the InsuraConnect UI before and after executing the command `policy 1 pi/2 po/`.
-
-![Before deleting policy](images/DeletePolicyBefore.png)
 <div style="text-align: center;">
 
-*Fig 8: Before deleting the policy*
+<img src="images/DeletePolicyBefore.png" alt="Before deleting policy" width="450">
+
+*Fig 12: Before deleting the policy*
 </div>
 
 <br>
-
-![After deleting policy](images/DeletePolicyAfter.png)
 <div style="text-align: center;">
 
-*Fig 9: After deleting the 2nd policy of the 1st person*
-</div>
+<img src="images/DeletePolicyAfter.png" alt="After deleting policy" width="450">
 
-<br>
+*Fig 13: After deleting the 2nd policy of the 1st person*
+</div>
 
 ### Meeting
 
@@ -417,21 +427,21 @@ Examples:
 1. `schedule 1 md/09-09-2024 mt/09:00 mdur/60 ma/discuss health policy mn/urgent`
 2. `schedule 1 md/01-09-2024 mt/13:00 mdur/60 ma/discuss vehicle policy mn/urgent`
 
-![img.png](images/schedule_meeting.png)
-
+The following images show the InsuraConnect UI after executing two example commands above consecutively.
 <div style="text-align: center;">
 
-*Fig 10: Schedule meeting at 9am 9th Sept 2024*
-</div>
+<img src="images/schedule_meeting.png" alt="Schedule first meeting" width="450">
 
-![img.png](images/schedule_2ndmeeting.png)
-
-<div style="text-align: center;">
-
-*Fig 10: Schedule another meeting at 1pm 1st Sept 2024*
+*Fig 14: Schedule meeting at 9am 9th Sept 2024*
 </div>
 
 <br>
+<div style="text-align: center;">
+
+<img src="images/schedule_2ndmeeting.png" alt="Schedule second meeting" width="450">
+
+*Fig 15: Schedule another meeting at 1pm 1st Sept 2024*
+</div>
 
 #### Rescheduling a meeting with a person: `reschedule`
 
@@ -442,12 +452,14 @@ Format: `reschedule INDEX mi/MEETING INDEX md/DATE mt/TIME `
 * Reschedules meeting with a person at the specified INDEX. The index is the same as the above for schedule.
 * Selects a meeting from the list of meetings using the MEETING INDEX.
 
-Examples: `reschedule 1 mi/2 md/05-09-2024 mt/17:00` after scheduling the first meeting in Fig 10.
+Examples: `reschedule 1 mi/2 md/05-09-2024 mt/17:00` after scheduling meetings in Fig 15.
 
-![img.png](images/reschedule_1stmeeting.png)
+The following images show the InsuraConnect UI after executing the example command above from Fig 15.
 <div style="text-align: center;">
 
-*Fig 11: Reschedule meeting from 1pm 1st Sept 2024 to 5pm 5th Sept 2024*
+<img src="images/reschedule_1stmeeting.png" alt="Reschedule first meeting" width="450">
+
+*Fig 16: Reschedule meeting from 9am 9th Sept 2024 to 5pm 5th Sept 2024*
 </div>
 
 #### Cancelling a meeting with a person: `cancel`
@@ -458,29 +470,26 @@ Format: `cancel INDEX mi/MEETING INDEX`
 
 * INDEX and MEETING INDEX is the same as the above for reschedule
 
-Examples: `cancel 1 mi/1` from the list of meetings above in Fig 11.
+Examples: `cancel 1 mi/1` from the list of meetings above in Fig 16.
 
-![img.png](cancel_1stmeeting.png)
-
+The following images show the InsuraConnect UI after executing the example command above from Fig 16.
 <div style="text-align: center;">
 
-*Fig 12: Cancel meeting at 1pm 1st Sept 2024*
+<img src="images/cancel_1stmeeting.png" alt="Cancel first meeting" width="450">
 
+*Fig 17: Cancel meeting at 1pm 1st Sept 2024*
 </div>
-
 
 ### Managing Meetings
 
 #### Meeting Scheduling and Rescheduling
 
 Meetings are automatically sorted by their scheduled dates and times. When multiple meetings are scheduled for a client, InsuraConnect will organize them in ascending order, showing the earliest upcoming meeting at the top. This feature allows insurance agents to quickly glance at their schedule and prioritize upcoming meetings.
-
-![img.png](images/MeetingForAClient.png)
-
 <div style="text-align: center;">
 
-*Fig 12: Meetings for John Doe displayed from earliest to latest*
+<img src="images/MeetingForAClient.png" alt="Meeting for a client" width="450">
 
+*Fig 18: Meetings for Alex Yeoh displayed from earliest to latest*
 </div>
 
 #### Automatic Purging of Expired Meetings
@@ -490,13 +499,11 @@ To ensure the schedule remains current and manageable, InsuraConnect automatical
 #### Sorting Clients/Partners by Earliest Meeting
 
 Clients and partners are sorted in the user interface according to the time of their earliest scheduled meeting. This sorting mechanism places those individuals with the most imminent meetings at the top of the list, allowing for efficient time management and planning. Should there be no scheduled meetings for a client or partner, they will be positioned in the list based on the default sorting criteria.
-
-![img.png](images/sortedClientMeetings.png)
-
 <div style="text-align: center;">
 
-*Fig 12: Client/Partners sorted by earliest meeting scheduled with insurance agent*
+<img src="images/sortedClientMeetings.png" alt="sorted client meetings" width="450">
 
+*Fig 19: Client/Partners sorted by earliest meeting scheduled with insurance agent*
 </div>
 
 ### Changing a client's status: `status`
@@ -528,22 +535,20 @@ Examples:
 * `status 1 s/` resets the status of the 1st person if it is a client.
 
 The following images show the InsuraConnect UI before and after executing the command `status 1 s/up`.
-
-![Before changing client status](images/ClientStatusBefore.png)
 <div style="text-align: center;">
 
-*Fig 10: Before increasing the 1st client's status*
+<img src="images/ClientStatusBefore.png" alt="Before changing client status" width="450">
+
+*Fig 20: Before increasing the 1st client's status*
 </div>
 
 <br>
-
-![After changing client status](images/ClientStatusAfter.png)
 <div style="text-align: center;">
 
-*Fig 11: After increasing the 2nd client's status*
-</div>
+<img src="images/ClientStatusAfter.png" alt="After changing client status" width="450">
 
-<br>
+*Fig 21: After increasing the 1st client's status*
+</div>
 
 ### Undoing a command: `undo`
 
@@ -554,25 +559,25 @@ Format: `undo`
 * Only undoes commands that made changes to InsuraConnect
 
 Examples:
-* `add n/Adam Ibnu p/11111111 e/Adam@gmail.com a/Sembawang road blk 509c #02-25 r/client t/friend`as shown in the figure below adds the adam contact.
+* `add n/Adam Ibnu p/11111111 e/Adam@gmail.com a/Sembawang road blk 509c #02-25 r/client t/friend`
 
-
-![img.png](images/undo_addAdam.png "Figure of newly added adam contact")
-
+The following images show the InsuraConnect UI after executing the command above.
 <div style="text-align: center;">
 
-*Fig 12: Newly added Adam contact*
+<img src="images/undo_addAdam.png" alt="Figure of newly added adam contact" width="450">
+
+*Fig 22: Newly added Adam contact*
 </div>
 
 * The previous add command is followed by `undo` which undoes the previous command, removing the newly added person as shown below.
 
-![img.png](images/undo_undoAdam.png "Figure of undo removing adam")
+The following images show the InsuraConnect UI after executing the command `undo` from Fig 22.
 <div style="text-align: center;">
 
-*Fig 13: Undo removing the Adam contact*
-</div>
+<img src="images/undo_undoAdam.png" alt="Figure of undo removing adam" width="450">
 
-<br>
+*Fig 23: Undo removing the Adam contact*
+</div>
 
 ### Redoing a command: `redo`
 
@@ -586,13 +591,14 @@ Examples:
 
 * This example performs redo after the success undo in the above section [Undo](#undoing-a-command-undo)
 * Executing redo reapplies the actions that were previously undone which in this example is adding back Adam in the figure below and a successful redo will show a corresponding successful message as well.
-  ![img.png](images/redo_redoAddsAdam.png "Figure of redo adding back adam")
+
+The following images show the InsuraConnect UI after executing the command `redo` from Fig 23.
 <div style="text-align: center;">
 
-*Fig 14: Redo adding back Adam*
-</div>
+<img src="images/redo_redoAddsAdam.png" alt="Figure of redo adding back adam" width="450">
 
-<br>
+*Fig 24: Redo adding back Adam*
+</div>
 
 ### Clearing all entries : `clear`
 
