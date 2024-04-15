@@ -60,10 +60,14 @@ public class RescheduleMeetingCommand extends Command {
         if (personIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
+
         Person personToMeetOriginal = lastShownList.get(personIndex.getZeroBased());
         List<Meeting> meetings = personToMeetOriginal.getMeetings();
         if (meetings.size() <= (meetingIndex.getZeroBased())) {
             throw new CommandException(RescheduleMeetingCommand.MESSAGE_MEETING_INVALID_INDEX);
+        }
+        if (model.hasMeetingOverlap(meetings.get(meetingIndex.getZeroBased()))) {
+            throw new CommandException(ScheduleMeetingCommand.MESSAGE_MEETING_OVERLAP);
         }
         // Create a copy of the original person and add the meeting to the copy
         Person personToMeetUpdated = personToMeetOriginal.getCopy();
