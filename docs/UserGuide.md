@@ -23,7 +23,7 @@ pageNav: 3
 ## Introduction
 
 Welcome to the InsuraConnect User Guide!
-This guide serves as a complete manual to very aspect of InsuraConnect, your streamlined conduit to peak productivity in the insurance sector.
+This guide serves as a **complete manual to very aspect of InsuraConnect**, your streamlined conduit to peak productivity in the insurance sector.
 Eschewing the complexity of redundant features, InsuraConnect is forged from in-depth research to deliver a swift, efficient, and user-friendly experience for the modern insurance agent.
 
 Refer to the [table of contents](#table-of-contents) to find your answers as well as step-by-step instructions for all the features to be a master of InsuraConnect.
@@ -102,6 +102,31 @@ To explore more, visit the [Features](#features) section for more advanced tips.
 --------------------------------------------------------------------------------------------------------------------
 
 ## How to use this guide
+
+In this guide, you will find the following **coloured icons and segments** that represent different information to help you better understand how to use InsuraConnect. 
+
+<box type="tip" seamless>
+
+**Tip:**
+This indicates a helpful tip on how to utilise a particular feature of InsuraConnect.
+</box>
+
+<box type="warning" seamless>
+
+**Constraint:**
+This indicates a constraint on the command format or feature of InsuraConnect.
+</box>
+
+<box type="important">
+
+**Caution:**
+This indicates a precaution that you should read carefully and remember when using InsuraConnect.
+</box>
+
+You can also find **examples complete with visuals** for most key features of InsuraConnect.
+They are located **below the description** of the feature and are labelled for your convenience.
+
+Before you dive into the features, here are some notes regarding InsuraConnect's command format.
 
 <box type="info" theme="primary">
 
@@ -512,23 +537,23 @@ Clients and partners are sorted in the user interface according to the time of t
 
 ### Changing a client's status: `status`
 
-Changes a client's status by one level to reflect the progress with that client. In increasing order, the possible status levels are `Yet to start`,
+Changes a client's status by **one level** to reflect the progress with that client. In increasing order, the possible status levels are `Yet to start`,
 `In progress`, and `Completed`.
 
 Format: `status INDEX s/DIRECTION`
 
 * Changes the status of the client at the specified `INDEX`.
   The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* Input `DIRECTION` as `up` to increase the status, or `down` decrease the status.
-* Leave the direction blank to reset the client's status to `Yet to start`.
+* Input `DIRECTION` as `up` to **increase** the status, or `down` to **decrease** the status.
+* Leave the direction **blank** to reset the client's status to `Yet to start`.
 
 <box type="tip" seamless>
 
 **Tip:** You can use this whenever you schedule the first meeting with your client or assign them a policy to track your progress.
 The dashboard above the persons list automatically displays the number of clients that are currently at each status for your convenience.
 </box>
+<br>
 <box type="warning" seamless>
-
 **Constraints:**
 * You can only change the status of clients. Attempts to change the status of partners are not allowed.
 * `DIRECTION` can only be `up`, `down`, or blank.
@@ -630,7 +655,7 @@ InsuraConnect data are saved in the hard disk automatically after any command th
 
 InsuraConnect data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<box type="warning" seamless>
+<box type="important" seamless>
 
 **Caution:**
 If your changes to the data file makes its format invalid, InsuraConnect will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
