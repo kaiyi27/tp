@@ -165,7 +165,7 @@ Example: If you input the command `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
-* If you encounter any error when using commands, the output/error display will highlight potential formatting mistakes in your command.
+* If you encounter any errors when using commands, the output/error display will highlight potential formatting mistakes in your command.
 </box>
 
 ***
