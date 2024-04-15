@@ -438,6 +438,7 @@ The following activity diagrams summarise what happens when the user attempts to
   * Cons: Dependency on external libraries, less control over validation logic compared to custom implementations.
 
 
+
 ### Meeting
 
 #### Implementation
@@ -500,6 +501,7 @@ The activity diagram below summarizes the process of scheduling a meeting:
     * Cons: Might lead to clutter and require additional features to manage the archive.
 
 Remember to replace the placeholder paths with the actual paths to your PUML diagrams and ensure they are correctly set up
+
 
 
 
