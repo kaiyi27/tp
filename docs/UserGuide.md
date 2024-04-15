@@ -8,7 +8,7 @@ pageNav: 3
 # <center>User Guide for InsuraConnect</center>
 
 <div markdown = "block" align="center">
- <img src="images/InsuraConnectLogo.png" alt="InsuraConnect UI" width="250">
+ <img src="images/InsuraConnectLogo.png" alt="InsuraConnect UI" width="225">
 </div>
 
 <br>
@@ -76,7 +76,7 @@ To explore more, visit the [Features](#features) section for more advanced tips.
     A GUI similar to the image below should appear in a few seconds. Note how the app contains some sample data.<br>
 <br>
 <div style="text-align: center;">
-<img src="images/UILabelled.png" alt="ui labelled" width="900">
+<img src="images/UILabelled.png" alt="ui labelled" width="700">
 
 *Fig 1: InsuraConnect's GUI*
 </div>
