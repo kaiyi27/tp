@@ -61,7 +61,7 @@ This is only the tip of the iceberg of the things you can do working with Insura
 
 To explore more, visit the [Features](#features) section for more advanced tips.
 
----
+<div style="page-break-after: always;"></div>
 
 ## Quick start
 
@@ -99,7 +99,7 @@ To explore more, visit the [Features](#features) section for more advanced tips.
 6. Refer to the [Features](#features) below for further details of each command.
 7. Refer to the [Command summary](#command-summary) for a full list of the available commands
 
---------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## How to use this guide
 
