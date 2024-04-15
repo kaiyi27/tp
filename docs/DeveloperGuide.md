@@ -521,7 +521,7 @@ create a new meeting list with the rescheduled meeting.
 
 The sequence diagram below illustrates the interactions within the `Logic` component with execute("reschedule 1 mi/1 md/2024-05-05 mt/09:00") API call as an example.
 
-<puml src="path/to/RescheduleSequenceDiagram.puml"/>
+<puml src="diagrams/RescheduleSequenceDiagram.puml"/>
 
 
 #### Design considerations
@@ -554,7 +554,7 @@ Here is an activity diagram below to illustrate what happens after a meeting dat
 8. If the current time has not passed, then the next occurrence of the input date will be the current day and time, otherwise, it will be next week's day and time.
 9. the LocalDateTime of the meeting is then returned back to the RescheduleCommand.
 
-<puml src="path/to/ParseLocalDateTimeActivityDiagram.puml"/>
+<puml src="diagrams/ParseLocalDateTimeActivityDiagram.puml"/>
 
 ### \[Proposed\] Data archiving
 
