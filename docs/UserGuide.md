@@ -469,7 +469,7 @@ The following images show the InsuraConnect UI before and after executing the co
     next weeks' monday while choosing 05:01 for `TIME` instead will choose the current monday at 05:01.
 </box>
 
-<br>
+<div style="page-break-after: always;"></div>
 
 ### Scheduling a meeting with a person: `schedule`
 
